@@ -1,23 +1,24 @@
 import express from "express";
-import flashcards from "./routes/flashcards.js";
+import host from "./routes/host.js";
+import renter from "./routes/renter.js";
 import * as db from "./data/db.js";
 import bodyParser from "body-parser";
-import cors from 'cors';
+import cors from "cors";
 
 db.connect();
 
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-
 app.get("/", (req, res) => {
-  res.send("Welcome to the Flashcard API!");
+  res.send("Welcome to the HopBox API!");
 });
 
-app.use(flashcards);
+app.use(host);
+app.use(renter);
 
 app.use((err, req, res, next) => {
   if (err) {

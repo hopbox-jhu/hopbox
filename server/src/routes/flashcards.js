@@ -1,11 +1,11 @@
 import express from "express";
-import DeckDAO from "../data/DeckDAO.js";
+import DeckDAO from "../data/HostDAO.js";
 
 const router = express.Router();
 export const deckDao = new DeckDAO();
 
 router.get("/decks", async (req, res) => {
-  try{
+  try {
     const { name } = req.query;
     const decks = await deckDao.readAllDeck({ name });
     res.json({
@@ -14,12 +14,12 @@ router.get("/decks", async (req, res) => {
       data: decks,
     });
   } catch (error) {
-    res.status(404).json({message: error.message});
+    res.status(404).json({ message: error.message });
   }
 });
 
 router.get("/decks/:id/flashcards", async (req, res) => {
-  try{
+  try {
     const { id } = req.params;
     const flashcards = await deckDao.readAllCard({ id });
     res.json({
@@ -28,7 +28,7 @@ router.get("/decks/:id/flashcards", async (req, res) => {
       data: flashcards,
     });
   } catch (error) {
-    res.status(404).json({message: error.message});
+    res.status(404).json({ message: error.message });
   }
 });
 
@@ -107,7 +107,7 @@ router.delete("/decks/:id", async (req, res) => {
 
 router.delete("/decks/:deckid/flashcards/:cardid", async (req, res) => {
   const { deckid, cardid } = req.params;
-  const flashcard = await deckDao.deleteCard(deckid,cardid);
+  const flashcard = await deckDao.deleteCard(deckid, cardid);
   res.json({
     status: 200,
     message: `Successfully deleted the following card!`,

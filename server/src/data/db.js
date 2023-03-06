@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 const URI = process.env.DB_URI;
 
@@ -18,7 +18,6 @@ export function connect() {
     console.log(err);
   });
 
-  
   mongoose.connection.on("open", () => {
     console.log("Connected to MongoDB!");
   });

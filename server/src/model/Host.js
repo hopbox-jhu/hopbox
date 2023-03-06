@@ -1,10 +1,9 @@
 import mongoose from "mongoose";
 
-const DeckSchema = new mongoose.Schema({
-    name: { type: String },
-    cards: [{front: String, back: String}],
+const HostSchema = new mongoose.Schema({
+  email: { type: String },
 });
 
-const Deck = mongoose.model('Deck', DeckSchema);
+const Host = mongoose.model("Host", HostSchema);
 
-export default Deck;
+export default Host;
