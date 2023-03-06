@@ -17,7 +17,7 @@ const CoverSection = () => {
       </CoverBg>
       <CoverContent>
         <CoverH1>Summer Storage?</CoverH1>
-        <CoverP>HopBox is here to help connect you with those who havefree space to rent out. Sign up to get more info</CoverP>
+        <CoverP>HopBox is here to help connect you with those who have free space to rent out. Sign up to get more info</CoverP>
         <CoverBtnWrapper>
           <Button to="signup" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true'>
             Get started {hover ? <ArrowForward /> : <ArrowRight />}
