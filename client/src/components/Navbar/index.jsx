@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
-import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink } from './NavbarElements';
+import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2 } from './NavbarElements';
 
 import logo from "../../assets/hoplogo.png";
 
@@ -31,27 +31,25 @@ const index = ({ toggle }) => {
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
               <NavLogo to='/'>
-                <img src={logo} alt={"logo"} width="100vw" />
+                <img src={logo} alt={"logo"} width="120vw" />
               </NavLogo>
               <MenuIcon onClick={toggle}>
               <FaBars />
             </MenuIcon>
             <NavMenu>
               <NavItem>
-                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >About</NavLink>
+                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >Renter</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Discover</NavLink>
+                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Host</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Services</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to='signup' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign Up</NavLink>
+                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign Up</NavLink>
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/signin">Sign In</NavBtnLink>
+              <NavBtnLink2 to="/signin">Sign In</NavBtnLink2>
+              <NavBtnLink to="/signin">Register</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>
