@@ -7,11 +7,11 @@ const ListingSchema = new mongoose.Schema({
     type: { type: String },
     description: { type: String },
     images: { type: [String] },
-    length: { type: Integer },
-    width: { type: Integer },
-    height: { type: Integer },
+    length: { type: Number },
+    width: { type: Number },
+    height: { type: Number },
     pricing: { type: String },
-    calendar: { type: [DateTime] },
+    calendar: { type: [Date] },
     renterID: { type: String}
 });
 

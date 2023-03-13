@@ -1,5 +1,11 @@
 {
   "dependencies": {
-    "mapbox-gl": "^2.13.0"
+    "mapbox-gl": "^2.13.0",
+    "nodemon": "^2.0.21"
+  },
+  "scripts": {
+    "server": "npm run watch --prefix server",
+    "client": "npm run dev --prefix client",
+    "dev": "npm run server & npm run client"
   }
 }
