@@ -28,7 +28,7 @@ function Map() {
                 (error, image) => {
                     if (error) throw error;
                     map.current.addImage('custom-marker', image);
-                    // Add a GeoJSON source with 2 points
+                    // Add a GeoJSON source with 1 point
                     map.current.addSource('points', {
                         'type': 'geojson',
                         'data': {
@@ -39,7 +39,7 @@ function Map() {
                                     'type': 'Feature',
                                     'geometry': {
                                         'type': 'Point',
-                                        'coordinates': [
+                                        'coordinates': [        //will need to GET coordinates from database
                                             lng, lat
                                         ]
                                     },
