@@ -16,8 +16,6 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-const User = mongoose.model("User", userSchema);
-
 export function connect() {
   mongoose.connect(URI, option);
 
@@ -39,4 +37,9 @@ export async function createUser(name, email, password) {
   } catch (error) {
     console.log("Error creating user in database:", error);
   }
+}
+
+export async function findUserByEmailAndPassword(email, password) {
+  const user = await User.findOne({ email, password });
+  return user;
 }
