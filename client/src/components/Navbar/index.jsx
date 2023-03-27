@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
 import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2 } from './NavbarElements';
 
-import logo from "../../assets/hoplogo.png";
+import logo from "../../assets/logo.png";
 
 const index = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
@@ -31,7 +31,7 @@ const index = ({ toggle }) => {
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
               <NavLogo to='/'>
-                <img src={logo} alt={"logo"} width="120vw" />
+                <img src={logo} alt={"logo"} width="110vw" />
               </NavLogo>
               <MenuIcon onClick={toggle}>
               <FaBars />

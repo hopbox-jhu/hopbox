@@ -1,33 +1,34 @@
-import Icon3 from '../../assets/iconlogo.png';
+import renter from '../../assets/renter.png';
+import host from '../../assets/host.png';
 
 export const aboutObj = {
   id: 'about',
-  lightBg: true,
-  lightText: true,
-  lightTextDesc: true,
-  topLine: 'Title of the Company',
-  headline: 'Sample headline goes here',
-  description: 'Here we will place a detailed description of the service we are providing',
+  lightBg: false,
+  lightText: false,
+  lightTextDesc: false,
+  topLine: 'You are looking for',
+  headline: 'Summer Storage',
+  description: 'that is Convenient, Affordable, and Secured?',
   buttonLabel: 'Get started',
-  imgStart: false,
-  img: {Icon3},
+  imgStart: true,
+  img: renter,
   alt: 'Car',
-  dark: true,
+  dark: false,
   primary: true,
-  darkText: false
+  darkText: true
 };
 
 export const discoverObj = {
   id: 'discover',
-  lightBg: false,
+  lightBg: true,
   lightText: false,
   lightTextDesc: false,
-  topLine: 'Discover a lot of things',
-  headline: 'Unlock potential of your unused space',
-  description: 'Here we will place a detailed description of the service we are providing that you can discover here',
+  topLine: 'You want to unlock',
+  headline: 'Potential of Your Unused Space',
+  description: 'without the hassle of subletting or sacrificing privacy?',
   buttonLabel: 'Get started',
-  imgStart: true,
-  img: {Icon3},
+  imgStart: false,
+  img: host,
   alt: 'Car',
   dark: false,
   primary: false,
@@ -44,7 +45,7 @@ export const signupObj = {
   description: 'Create a new account unless you already have one, and enjoy our offerings',
   buttonLabel: 'Get started',
   imgStart: false,
-  img: {Icon3},
+  img: renter,
   alt: 'svg3',
   dark: false,
   primary: false,

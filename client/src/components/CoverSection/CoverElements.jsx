@@ -52,8 +52,8 @@ export const CoverContent = styled.div`
 `;
 
 export const CoverH1 = styled.h1`
-  color: #EB65A0;
-  font-size: 46px;
+  color: #ffffff;
+  font-size: 78px;
   text-align: center;
   
 
@@ -68,7 +68,7 @@ export const CoverH1 = styled.h1`
 
 export const CoverP = styled.p`
   margin-top: 24px;
-  color: #090004;
+  color: #ffffff;
   font-size: 28px;
   text-align: center;
   max-width: 600px;

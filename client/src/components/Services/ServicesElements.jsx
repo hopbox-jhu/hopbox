@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
 export const ServicesContainer = styled.div`
-  height: 100vh;
+  height: 25vh;
   display: flex;
   flex-direction: column;
+  columns: 2;
   justify-content: center;
   align-items: center;
-  background: #f2eded;
+  background: #f7eeee;
 
   @media screen and (max-width: 768px) {
     height: 1100px;
@@ -21,7 +22,7 @@ export const ServicesWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
   grid-gap: 16px;
   padding: 0 50px;
@@ -42,32 +43,34 @@ export const ServicesCard = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border-radius: 30px;
-  max-height: 340px;
-  padding: 30px;
-  box-shadow: 0 1px 3px rgba(210, 190, 190, 0.2);
-  transition: all 0.8s ease-in-out;
+  border-radius: 20px;
+  max-height: 150px;
+  padding: 10px;
+  box-shadow: 0 4px 2px rgba(79, 48, 48, 0.447);
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     transform: scale(1.02);
-    transition: all 0.2s ease-in-out;
+    transition: all 0.1s ease-in-out;
     cursor: pointer;
   }
 `;
 
+
+
 export const ServicesIcon = styled.img`
-  height: 160px;
-  width: 160px;
+  height: 150px;
+  width: 150px;
   margin-bottom: 10px;
 `;
 
 export const ServicesH1 = styled.h1`
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: #090909;
   margin-bottom: 64px;
 
   @media screen and (max-width: 480px) {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 `;
 
@@ -81,10 +84,36 @@ export const ServicesP = styled.p`
   text-align: center;
 `;
 
-export const VideoBg = styled.video`
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
+export const Imgbg = styled.img`
+  width: 90%;
+  height: 55vh;
+
+  @media screen and (max-width: 480px) {
+    width: 450px;
+    height: 800px;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 700px;
+    height: 900px;
+  }
 `;
 
+
+export const Divider = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f2eded;
+  height: 100vh;
+  width: 100vw;
+
+  @media screen and (max-width: 768px) {
+    height: 1100px;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 1300px;
+  }
+`;
