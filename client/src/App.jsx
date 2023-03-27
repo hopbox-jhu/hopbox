@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
+
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
@@ -14,12 +15,16 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 
+import Map from "./components/Map";
+
+
 function App() {
   return (
     <>
     <GlobalStyle/>
     <Routes>
       <Route path="/" element={<Landing />} />
+      <Route path="/map" element={<Map />} />
     </Routes>
     </>
   );
