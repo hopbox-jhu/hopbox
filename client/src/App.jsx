@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
 
 import Map from "./components/Map";
+import AddListing from "./components/AddListing";
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/map" element={<Map />} />
+      <Route path="/addlisting" element={<AddListing />} />
     </Routes>
     </>
   );
