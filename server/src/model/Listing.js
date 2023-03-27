@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const ListingSchema = new mongoose.Schema({
     hostID: { type: String },
+    address: { type: String },
     longitude: { type: String },
     latitude: { type: String },
     type: { type: String },

@@ -6,8 +6,8 @@ export const listingDAO = new ListingDAO();
 
 router.post("/listing", async (req, res) => {
   try {
-    const { hostID, longitude, latitude, type, description, images, length, width, height, pricing, calendar, renterID } = req.body;
-    const listing = await listingDAO.createListing({ hostID, longitude, latitude, type, description, images, length, width, height, pricing, calendar, renterID });
+    const { hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, renterID } = req.body;
+    const listing = await listingDAO.createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, renterID });
     res.json({
       status: 201,
       message: `Successfully created listing!`,

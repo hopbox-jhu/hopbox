@@ -5,7 +5,6 @@ import listing from "./routes/listing.js";
 import * as db from "./data/db.js";
 import bodyParser from "body-parser";
 import cors from "cors";
-//import 'mapbox-gl/dist/mapbox-gl.css';
 
 db.connect();
 
