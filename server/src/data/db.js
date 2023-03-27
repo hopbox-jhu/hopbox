@@ -10,6 +10,14 @@ const option = {
   useUnifiedTopology: true,
 };
 
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String,
+});
+
+const User = mongoose.model("User", userSchema);
+
 export function connect() {
   mongoose.connect(URI, option);
 
@@ -21,4 +29,14 @@ export function connect() {
   mongoose.connection.on("open", () => {
     console.log("Connected to MongoDB!");
   });
+}
+
+export async function createUser(name, email, password) {
+  try {
+    const user = new User({ name, email, password });
+    await user.save();
+    console.log("User created successfully!");
+  } catch (error) {
+    console.log("Error creating user in database:", error);
+  }
 }

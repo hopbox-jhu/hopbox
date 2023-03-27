@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function SignInPage() {
   const [email, setEmail] = useState('');
@@ -23,6 +24,7 @@ function SignInPage() {
         </label>
         <button type="submit" style={{ marginTop: '1rem', padding: '0.5rem 1rem', backgroundColor: '#d6008e', color: 'white', borderRadius: '0.25rem', border: 'none', cursor: 'pointer' }}>Sign In</button>
       </form>
+      <p style={{ marginTop: '1rem' }}>Don't have an account? <Link to="/signup" style={{ color: '#d6008e', textDecoration: 'underline' }}>Create one</Link>.</p>
     </div>
   );
 }
