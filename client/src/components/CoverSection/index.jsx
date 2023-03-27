@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
-import Video from '../../videos/video.mp4';
+import React from 'react';
+import Video from '../../videos/main.mp4';
 import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, CoverBtnWrapper, ArrowForward, ArrowRight } from './CoverElements';
-import { Button } from '../ButtonElements';
+import { makeStyles } from '@material-ui/core/styles';
+import text from "../../assets/logo.png";
+
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
 
 const CoverSection = () => {
-  const [hover, setHover] = useState(false);
-
-  const onHover = () => {
-    setHover(!hover);
-  };
+  const classes = useStyles();
 
   return (
     <CoverContainer>
@@ -16,16 +23,20 @@ const CoverSection = () => {
         <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
       </CoverBg>
       <CoverContent>
-        <CoverH1>Summer Storage?</CoverH1>
-        <CoverP>HopBox is here to help connect you with those who havefree space to rent out. Sign up to get more info</CoverP>
-        <CoverBtnWrapper>
-          <Button to="signup" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true'>
-            Get started {hover ? <ArrowForward /> : <ArrowRight />}
-          </Button>
-        </CoverBtnWrapper>
+        <CoverH1>
+        <img src={text} alt="logo" width="450vw"/>
+        </CoverH1>
+        <CoverH1>
+        Together we store
+        </CoverH1>
+        <CoverP>
+        building a <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>community</mark> that <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>shares</mark> the load
+        </CoverP>
       </CoverContent>
     </CoverContainer>
   );
 };
 
 export default CoverSection;
+
+
