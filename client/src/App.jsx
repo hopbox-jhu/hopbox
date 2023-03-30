@@ -16,6 +16,8 @@ export const GlobalStyle = createGlobalStyle`
 
 
 import Map from "./components/Map";
+import SignUpPage from "./components/SignUpSection/SignUpPage";
+import SignInPage from "./components/SigninSection/SignInPage";
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/map" element={<Map />} />
+      <Route path="/signup" element={<SignUpPage />} />
+      <Route path="/signin" element={<SignInPage />} />
     </Routes>
     </>
   );
