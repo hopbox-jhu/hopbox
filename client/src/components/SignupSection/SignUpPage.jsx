@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { connect, createUser } from "../../../../server/src/data/db";
+
 
 function SignUpPage() {
   const [name, setName] = useState("");
@@ -10,8 +9,6 @@ function SignUpPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/signup", { name, email, password });
-      await connect(); // Connect to MongoDB
       await createUser({ name, email, password }); // Create user document in MongoDB
       alert("Successfully signed up!");
     } catch (error) {

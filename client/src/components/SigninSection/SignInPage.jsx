@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { findUserByEmailAndPassword } from '../../../../server/src/data/db';
+import { findUserByEmail } from '../../../../server/src/data/db';
 
 function SignInPage() {
   const [email, setEmail] = useState('');
@@ -8,9 +8,9 @@ function SignInPage() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const user = await findUserByEmailAndPassword(email, password);
+    const user = await findUserByEmail(email);
     if (user) {
-      console.log('User signed in successfully!');
+      console.log('User signed in successfully!'); //not getting here
       // TODO: Redirect the user to the dashboard or homepage
     } else {
       console.log('Invalid email or password');

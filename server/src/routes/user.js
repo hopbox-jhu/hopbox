@@ -18,4 +18,18 @@ router.post("/user", async (req, res) => {
   }
 });
 
+router.get("/getUser", async (req, res) => {
+  try {
+    const { email } = req.body;
+    const user = await userDAO.getUser({ email });
+    res.json({
+      status: 200,
+      message: "Successfully retrieved user!",
+      data: user,
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
 export default router;
