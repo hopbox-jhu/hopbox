@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { MdArrowForward, MdKeyboardArrowRight } from 'react-icons/md';
 
 export const CoverContainer = styled.div`
-  background: #0c0c0c;
+  background: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 30px;
-  height: 800px;
+  height: 100vh;
+  width: 100 vw;
   position: relative;
   z-index: 1;
 
@@ -18,20 +18,19 @@ export const CoverContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%),
-    linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
     z-index: 2;
   }
 `;
 
 export const CoverBg = styled.div`
   position: absolute;
+  margin: 0px;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
 `;
 
@@ -53,9 +52,10 @@ export const CoverContent = styled.div`
 `;
 
 export const CoverH1 = styled.h1`
-  color: #fff;
-  font-size: 48px;
+  color: #ffffff;
+  font-size: 60px;
   text-align: center;
+  
 
   @media screen and (max-width: 768px) {
     font-size: 40px;
@@ -68,11 +68,11 @@ export const CoverH1 = styled.h1`
 
 export const CoverP = styled.p`
   margin-top: 24px;
-  color: #fff;
-  font-size: 24px;
+  color: #ffffff;
+  font-size: 28px;
   text-align: center;
   max-width: 600px;
-
+  font-weight: bold;
   @media screen and (max-width: 768px) {
     font-size: 22px;
   }
@@ -98,3 +98,4 @@ export const ArrowRight = styled(MdKeyboardArrowRight)`
   margin-left: 8px;
   font-size: 20px;
 `;
+
