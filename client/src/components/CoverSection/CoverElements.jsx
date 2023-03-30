@@ -53,7 +53,7 @@ export const CoverContent = styled.div`
 
 export const CoverH1 = styled.h1`
   color: #ffffff;
-  font-size: 78px;
+  font-size: 60px;
   text-align: center;
   
 
