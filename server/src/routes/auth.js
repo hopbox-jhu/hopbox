@@ -1,9 +1,8 @@
 import { Router } from "express";
 import UserDAO from "../data/UserDAO.js";
 import ApiError from "../model/ApiError.js";
-
-import { createToken, decodeToken } from "../util/token.js";
-import { hashPassword, verifyPassword } from "../util/password.js";
+import { createToken } from "../util/token.js";
+import { verifyPassword } from "../util/password.js";
 import { verify } from "jsonwebtoken";
 
 const authRouter = Router();

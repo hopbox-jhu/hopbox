@@ -8,16 +8,10 @@ function SignUpPage() {
   
   const handleSubmit = async () => {
     try {
-      const user = await postApi.createUser(name, email, password); //pass data as user object?
-      //Create user successfully then move to login page
+      const user = await postApi.createUser(name, email, password);
+      navigator.navigate("/signin"); //Create user successfully then move to login page
       if (user) {
         alert("User created successfully!");
-        //TODO: navigate to login page
-        // notifications.show({
-        //   title: "Create new user successfully",
-        //   message: "Welcome to Out of the nest",
-        //   onClose: () => navigate("/login"),
-        // });
       }
     } catch (err) {
       alert("Failed to create user");

@@ -31,9 +31,9 @@ export async function postHostEmail(email) {
     }
   }
 
-  export async function login(postData) {
+  export async function login(email, password) {
     try {
-      const response = await axiosInstance.post("/login", postData);
+      const response = await axiosInstance.post("/login", email, password);
       return response.data;
     } catch (err) {
       throw err;

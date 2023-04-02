@@ -5,7 +5,10 @@ class UserDAO {
     const user = await User.create({ name, email, password})
     return user;
   }
-  
+  async findUserById(id) {
+    const user = await User.findOne({ _id: id });
+    return user;
+  }
 }
 
 export default UserDAO;
