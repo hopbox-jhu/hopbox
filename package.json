@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
     "mapbox-gl": "^2.13.0",
     "mongodb": "^5.1.0"
   }

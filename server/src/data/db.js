@@ -31,37 +31,3 @@ export function connect() {
     console.log("Connected to MongoDB!");
   });
 }
-
-// export async function createUser(name, email, password) {
-//   fetch('/user', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       name: name,
-//       email: email,
-//       password: password,
-//       occupation: '',
-//       school: '',
-//       description: '',
-//     }),
-//   })
-//     .then((res) => res.json())
-//     .then((data) => {
-//       console.log(data);
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });  
-// }
-
-// export async function findUserByEmail(email) {
-//   let user = null;
-//   fetch(`/getUser?email=${email}`)
-//     .then(res => res.json())
-//     .then(data => {
-//     user = data.data;
-//   });
-//   return user;
-// }

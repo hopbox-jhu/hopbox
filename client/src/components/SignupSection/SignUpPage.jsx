@@ -1,18 +1,27 @@
 import React, { useState } from "react";
-
+import * as postApi from "../../api/index";
 
 function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  
+  const handleSubmit = async () => {
     try {
-      await createUser({ name, email, password }); // Create user document in MongoDB
-      alert("Successfully signed up!");
-    } catch (error) {
-      alert("Error signing up");
+      const user = await postApi.createUser(name, email, password); //pass data as user object?
+      //Create user successfully then move to login page
+      if (user) {
+        alert("User created successfully!");
+        //TODO: navigate to login page
+        // notifications.show({
+        //   title: "Create new user successfully",
+        //   message: "Welcome to Out of the nest",
+        //   onClose: () => navigate("/login"),
+        // });
+      }
+    } catch (err) {
+      alert("Failed to create user");
+      console.log(err);
     }
   };
 
