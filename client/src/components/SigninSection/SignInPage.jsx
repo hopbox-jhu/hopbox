@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { findUserByEmail } from '../../../../server/src/data/db';
 
 function SignInPage() {
   const [email, setEmail] = useState('');

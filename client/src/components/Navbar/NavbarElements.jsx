@@ -17,6 +17,7 @@ export const Nav = styled.nav`
   transition: background 0.5s ease-in-out;
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
+    height:50px;
   }
 `;
 
@@ -27,7 +28,7 @@ export const NavbarContainer = styled.div`
   z-index: 1;
   width: 100%;
   padding: 0 -60px;
-  max-width: 1100px;
+
 `;
 
 export const NavLogo = styled(LinkR)`
@@ -36,9 +37,8 @@ export const NavLogo = styled(LinkR)`
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-left: 24px;
-  font-weight: bold;
-  text-decoration: none;
+  margin-left: 7vw;
+
 `;
 
 export const MenuIcon = styled.div`
@@ -49,7 +49,7 @@ export const MenuIcon = styled.div`
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     cursor: pointer;
     color: #EB65A0;
   }
@@ -86,6 +86,7 @@ export const NavLink = styled(LinkS)`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
+  margin-right: 7vw;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -123,5 +124,14 @@ export const NavBtnLink2 = styled(LinkR)`
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #f7d7e060;
+  }
+`;
+
+export const ImgLogo = styled.img`
+  width: 8vw;
+  height: 5vh;
+  @media screen and (max-width: 768px) {
+    width: 15vw;
+    height: 3vh;
   }
 `;
