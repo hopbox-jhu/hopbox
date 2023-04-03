@@ -27,21 +27,21 @@ function AddListing() {
     if (!permission) {
       alert("You must certify that you have the rights/permission to rent out this space.");
     } else if (!address) {
-      alert("Please enter an address for you space!");
+      alert("Please enter an address for you space.");
     } else if (!description) {
-      alert("Please enter a description for your space!");
+      alert("Please enter a description for your space.");
     } else if (!length || !width) {
-      alert("Please enter an approximation for the dimensions of your space!");
+      alert("Please enter an approximation for the dimensions of your space.");
     } else if (isNaN(lengthAsNumber)) {
-      alert("Please enter a number value for the length field!");
+      alert("Please enter a number value for the length field.");
     } else if (isNaN(widthAsNumber)) {
-      alert("Please enter a number value for the width field!");
+      alert("Please enter a number value for the width field.");
     } else if (height != null && isNaN(heightAsNumber)) {
-      alert("Please enter a number value for the height field!");
+      alert("Please enter a number value for the height field.");
     } else if (!pricing) {
-      alert("Please enter a pricing for your space!");
+      alert("Please enter a pricing for your space.");
     } else if (isNaN(pricingAsNumber)) {
-      alert("Please enter a number value for the pricing field!");
+      alert("Please enter a number value for the pricing field.");
     } else {
       const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
       const data = await response.json();
@@ -50,30 +50,30 @@ function AddListing() {
         const feature = features[0];
         setLongitude(feature.center[0]);
         setLatitude(feature.center[1]);
-        console.log(longitude + " " + latitude);
+        
+        const listing = {
+          hostID: "jyu132",
+          address: address,
+          longitude: longitude,
+          latitude: latitude,
+          type: type,
+          description: description,
+          images: [],
+          length: lengthAsNumber,
+          width: widthAsNumber,
+          height: heightAsNumber,
+          pricing: pricingAsNumber,
+          calendar: [],
+          renterID: "",
+        };
+        try {
+          const response = await api.createListing(listing);
+          alert("Successfully added listing!");
+        } catch (error) {
+          alert("Error adding listing");
+        }
       } else {
         alert("Address not found!");
-      }
-      const listing = {
-        hostID: "jyu132",
-        address: address,
-        longitude: longitude,
-        latitude: latitude,
-        type: type,
-        description: description,
-        images: [],
-        length: length,
-        width: width,
-        height: height,
-        pricing: pricing,
-        calendar: [],
-        renterID: "",
-      };
-      try {
-        const response = await api.createListing(listing);
-        alert("Successfully added listing!");
-      } catch (error) {
-        alert("Error adding listing");
       }
     }
   };
