@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import Icon1 from '../../assets/full.png';
-import demo from '../../assets/UI.png';
-import Icon3 from '../../assets/host.png';
+import word from '../../assets/hopbox word.png';
+import demo from '../../assets/coverobject.jpeg';
+import object1 from '../../assets/object1.png';
 import TextField from '@material-ui/core/TextField';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Button } from '../ButtonElements';
-import { ServicesContainer, ServicesH1, ServicesWrapper, ServicesCard, ServicesIcon, ServicesH2, ServicesP, Imgbg, Divider } from './ServicesElements';
+import { ServicesContainer, ServicesH1, ServicesWrapper, ServicesH2, ServicesP, Imgbg, Divider, Imgthingie, Imgword, ServicesBox, SubmitButton, ServicesH3, SignUpWrapper } from './ServicesElements';
 import * as smoketest from '../../api';
+
 
 const Services = () => {
   const [email, setEmail] = useState('');
@@ -45,29 +42,57 @@ const Services = () => {
   return (
     <Divider id='services'>
       <Imgbg src={demo}/>
-      <ServicesH1 style={{marginBottom: "1rem"}}>SIGN UP TO YOUR INTERESTED ROLE TO RECEIVE LATEST UPDATE</ServicesH1>
     <ServicesContainer>
-      <ServicesWrapper style={{marginBottom: "1rem"}} >
-        <ServicesCard onClick={handleRenterButtonClick} style={{background: isRenter=== true ?"#EB65A0":"white"}}>
-          <ServicesH2>Renter</ServicesH2>
-        </ServicesCard>
+      <Imgword src ={word}/>
+      <ServicesH1> We connect students who need storage with those who have extra space, solving the issues of mismatched housing dates, high costs of public storage options, and the need for secure and convenient storage.</ServicesH1>
 
-        <ServicesCard onClick={handleHostButtonClick} style={{background: isRenter=== false ?"#EB65A0":"#ffffff72"}}>
-          <ServicesH2>Host</ServicesH2>
-        </ServicesCard>
-      </ServicesWrapper>
-
-      <ServicesCard style={{background:"#ffffff05", boxShadow: "none"}}>
-            <form onSubmit={handleSubmit}>
-              <TextField
-                label="Email"
-                value={email}
-                onChange={handleEmailChange}
-                style={{marginBottom: "1rem"}}
-              />
-              <Button type="submit" onClick={handleSubmit}>Submit</Button>
-            </form>
-          </ServicesCard>
+      <SignUpWrapper> 
+        <Imgthingie src={object1}/>
+        <ServicesP>
+          Sign up to your interested role to <br/> receive our latest update!
+        </ServicesP>
+        <ServicesWrapper style={{marginBottom: "1rem", marginTop: "1rem"}} >
+          <ServicesBox onClick={handleRenterButtonClick} style={{background: isRenter=== true ?"#000000":"#ffffff00"}}>
+            <ServicesH2>Renter</ServicesH2>
+          </ServicesBox>
+          <ServicesBox onClick={handleHostButtonClick} style={{background: isRenter=== false ?"#000000":"#ffffff00"}}>
+            <ServicesH2>Host</ServicesH2>
+          </ServicesBox>
+        </ServicesWrapper>
+        <form onSubmit={handleSubmit} style = {{
+          marginLeft:"20px"
+        }}>
+        <TextField
+          className="emailTextInput"
+          variant="outlined"
+          label="Email"
+          value={email}
+          style={{ marginBottom: "1rem", color: "white", width: "95%", height: "5%" }}
+          onChange={handleEmailChange}
+          InputProps={{
+            style: {
+              borderRadius: 40,
+              border: "4px solid white",
+              color: "white",
+            }
+          }}
+          InputLabelProps={{
+            style: {
+            fontWeight: '500',
+            fontSize: '1.75rem',
+            color:"black",
+            fontStyle: "italic",
+            marginLeft:'20px'
+          }}}
+        />
+            <SubmitButton type="submit" onClick={handleSubmit}>
+            <ServicesH2>Submit</ServicesH2>
+            </SubmitButton>
+        </form>
+      </SignUpWrapper>
+          <ServicesH3>
+            Hassle-Free Storage Solution <br/> for College Students
+          </ServicesH3>
     </ServicesContainer>
     </Divider>
     
