@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
-import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2 } from './NavbarElements';
+import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2, ImgLogo } from './NavbarElements';
 
 import logo from "../../assets/logo.png";
 
@@ -30,8 +30,8 @@ const index = ({ toggle }) => {
       <IconContext.Provider value={{ color: '#fff' }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-              <NavLogo to='/'>
-                <img src={logo} alt={"logo"} width="110vw" />
+              <NavLogo onClick={toggleHome}>
+                <ImgLogo src={logo}/>
               </NavLogo>
               <MenuIcon onClick={toggle}>
               <FaBars />
