@@ -1,8 +1,9 @@
 import express from "express";
 import host from "./routes/host.js";
 import renter from "./routes/renter.js";
+import listing from "./routes/listing.js";
 import user from "./routes/user.js";
-import * as db from "./data/db.js";
+]import * as db from "./data/db.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 
 app.use(host);
 app.use(renter);
+app.use(listing);
 app.use(user);
 
 app.use((err, req, res, next) => {
