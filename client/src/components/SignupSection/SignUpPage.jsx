@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Title, Form, Label, Input, Button, LinkText, LinkStyled, IconInput } from './SignUpElements';
+import { Link } from 'react-router-dom';
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput } from './SignUpElements';
 
 function SignUpPage() {
   const [name, setName] = useState('');
@@ -18,7 +19,9 @@ function SignUpPage() {
 
   return (
     <Container>
+    <Link to="/">
     <img src="/src/assets/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
+    </Link>
       <Form onSubmit={handleSubmit}>
         <Label>
           <IconInput type="text" value={name} onChange={(event) => setName(event.target.value)} placeholder="Name" icon="name" />

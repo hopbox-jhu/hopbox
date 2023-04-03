@@ -1,9 +1,6 @@
 import { useState } from 'react';
-
-import { Container, Title, Form, Label, Input, Button, LinkText, LinkStyled, IconInput } from './SignInElements';
-
 import { Link } from 'react-router-dom';
-
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput } from './SignInElements';
 
 function SignInPage() {
   const [email, setEmail] = useState('');
@@ -22,7 +19,9 @@ function SignInPage() {
 
   return (
     <Container>
+    <Link to="/">
     <img src="/src/assets/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
+    </Link>
       <Form onSubmit={handleSubmit}>
         <Label>
           <IconInput type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Email" icon="email" />
