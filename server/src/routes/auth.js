@@ -1,14 +1,14 @@
-import { Router } from "express";
+import express from "express";
 import UserDAO from "../data/UserDAO.js";
-import ApiError from "../model/ApiError.js";
+import { ApiError } from "../model/ApiError.js";
 import { createToken } from "../util/token.js";
 import { verifyPassword } from "../util/password.js";
 import { verify } from "jsonwebtoken";
 
-const authRouter = Router();
-const userDao = new UserDAO();
+const authRouter = express.Router();
+export const userDao = new UserDAO();
 
-const decodeTokenFromRequest = (req) => {
+export const decodeTokenFromRequest = (req) => {
   const bearerHeader = req.headers["authorization"];
   if (!bearerHeader) {
     return null;
@@ -25,7 +25,7 @@ const decodeTokenFromRequest = (req) => {
   return token !== "null" ? decoded : null;
 };
 
-const checkPermission = (req, res, next) => {
+export const checkPermission = (req, res, next) => {
   try {
     const bearerHeader = req.headers["authorization"];
     const bearer = bearerHeader.split(" ");
@@ -62,17 +62,21 @@ authRouter.get("/isAuthorized", checkPermission, async (req, res, next) => {
   }
 });
 
-authRouter.post("/login", async (req, res, next) => {
+authRouter.post("/login", async (req, res, next) => {0
+  console.log("here 11");
   try {
+    console.log("here 7");
     const { email, password } = req.body;
     if (!email || !password) {
+      console.log("here 8");
       throw new ApiError(
         400,
         "You must provide an email and a password to login."
       );
     }
-
+    console.log("here 9");
     const user = await userDao.findUserByEmail(email);
+    console.log("here 10");
     const token = createToken({
       user: {
         id: user._id,
@@ -105,8 +109,4 @@ authRouter.post(
   async (req, res, next) => {}
 );
 
-export default {
-  authRouter,
-  checkPermission,
-  decodeTokenFromRequest,
-};
+export default authRouter;

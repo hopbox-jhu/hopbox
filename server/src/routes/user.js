@@ -1,5 +1,6 @@
 import express from "express";
 import UserDAO from "../data/UserDAO.js";
+import { hashPassword } from "../util/password.js";
 
 const router = express.Router();
 export const userDAO = new UserDAO();
@@ -7,7 +8,7 @@ export const userDAO = new UserDAO();
 router.post("/user/create", async (req, res) => {
   try {
     const { name, email, password } = req.body;
-    const user = await userDAO.createUser({ name, email, password });
+    const user = await userDAO.createUser({ name, email, password: hashPassword(password) });
     res.json({
       status: 201,
       message: `Successfully created user!`,
