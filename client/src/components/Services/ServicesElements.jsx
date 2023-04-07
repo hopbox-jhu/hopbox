@@ -160,15 +160,18 @@ export const ServicesP = styled.p`
 export const Imgbg = styled.img`
   width: 55vw;
   height: 100vh;
+  object-fit: cover;
 
   @media screen and (max-width: 480px) {
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
   }
 
   @media screen and (max-width: 768px) {
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
   }
 `;
 
@@ -199,12 +202,12 @@ export const Imgword = styled.img`
 
   @media screen and (max-width: 480px) {
     width: 70vw;
-    height: 14vh;
+    height: 12vh;
   }
 
   @media screen and (max-width: 768px) {
     width: 70vw;
-    height: 14vh;
+    height: 12vh;
   }
 `;
 

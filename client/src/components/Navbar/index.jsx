@@ -49,7 +49,7 @@ const index = ({ toggle }) => {
             </NavMenu>
             <NavBtn>
               <NavBtnLink2 to="/signin">Sign In</NavBtnLink2>
-              <NavBtnLink to="/signin">Register</NavBtnLink>
+              <NavBtnLink to="/signup">Register</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>
