@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import * as postApi from "../../api/index";
+import { useNavigate } from "react-router-dom";
+import { notifications } from "@mantine/notifications";
 
 function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   
-  const handleSubmit = async () => {
+  const handleSubmit = async (event) => {
     try {
+      event.preventDefault();
       const user = await postApi.createUser(name, email, password);
-      navigator.navigate("/signin"); //Create user successfully then move to login page
       if (user) {
-        alert("User created successfully!");
+        alert("Successfully created user.");
+        setTimeout(() => {
+          navigate("/signin");
+        }, 100);
+        // notifications.show({
+        //   title: "Create new user successfully",
+        //   message: "Welcome to Out of the nest",
+        //   onClose: () => navigate("/signin"),
+        // });
       }
     } catch (err) {
       alert("Failed to create user");

@@ -15,26 +15,34 @@ function SignInPage() {
   const location = useLocation();
   //const setAuth = useAuth().setIsAuth;
 
-  const handleSubmit = async() => {
+  const handleSubmit = async(event) => {
     try {
+      event.preventDefault();
+      console.log("here 1");
       const response = await postApi.login(email, password);
+      console.log("here 2");
       if (response.status === 200) {
+        console.log("here 3");
         afterReceiveAuth(response.data.user_id, response.data.user_name, response.data.token);
+        console.log("here 4");
         //const url = location.state ? location.state.from.pathname : "/";
         //setAuth(true);
         alert("Login successfully");
+        setTimeout(() => {
+          navigate("/");
+        }, 100);
         // navigate to logged in user??
-        const url = "http://localhost:5173/";
-        notifications.show({
-          title: "Login successfully",
-          message: `Redirecting to ${url}`,
-          autoClose: 1000,
-          onClose: () => { 
-            navigate(url);
-          },
-          loading: true,
-          position: 'top-right',
-        })
+        // const url = "http://localhost:5173/";
+        // notifications.show({
+        //   title: "Login successfully",
+        //   message: `Redirecting to ${url}`,
+        //   autoClose: 1000,
+        //   onClose: () => { 
+        //     navigate(url);
+        //   },
+        //   loading: true,
+        //   position: 'top-right',
+        // })
       }
     } catch (err) {
       alert("Invalid email or password");
