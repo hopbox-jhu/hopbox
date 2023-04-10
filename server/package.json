@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.js",
+    "watch": "nodemon server.js",
     "dev": "dotenv -e .env nodemon server.js",
     "test": "vitest --no-threads --no-isolate",
     "coverage": "vitest run --coverage --no-threads --no-isolate",
