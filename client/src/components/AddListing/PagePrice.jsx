@@ -7,10 +7,6 @@ function PagePrice(props) {
 
     const handlePricingChange = (event) => {
       setPricing(event.target.value);
-      // const pricingAsNumber = Number(pricing);
-      // if (!pricing || isNaN(pricingAsNumber)) {
-      //   alert("Please enter a number value for the pricing field.");
-      // }
     }
 
     return (
@@ -21,7 +17,7 @@ function PagePrice(props) {
             id="pricing"
             type="text"
             placeholder="$30"
-            value={pricing}
+            value={pricing || ''}
             onChange={handlePricingChange}
             />
         </Form>

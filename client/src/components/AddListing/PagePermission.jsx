@@ -6,11 +6,9 @@ function PagePermission(props) {
     const setPermission = props.setPermission;
 
     const handlePermissionChange = (event) => {
-      setPermission(event.target.value);
-      // if (!permission) {
-      //   alert("You must certify that you have the rights/permission to rent out this space.");
-      // }
+      setPermission(event.target.checked);
     }
+
     return (
       <div>
         <Form>
@@ -19,8 +17,8 @@ function PagePermission(props) {
           id="permission"
           type="checkbox"
           checked={permission}
-          onChange={handlePermissionChange}
-          />
+          onChange={handlePermissionChange}>
+          </input>
           <span>I have the rights/permission to rent out this space and understand that if not, I may be held financially and legally liable for any damage, loss, or fees incurred.</span>
         </Form>
       </div>

@@ -11,26 +11,14 @@ function PageSize(props) {
     
     const handleLengthChange = (event) => {
       setLength(event.target.value);
-      // const lengthAsNumber = Number(length);
-      // if (isNaN(lengthAsNumber)) {
-      //   alert("Please enter a number value for the length field.");
-      // }
     }
 
     const handlethWidthChange = (event) => {
       setWidth(event.target.value);
-      // const widthAsNumber = Number(width);
-      // if (isNaN(widthAsNumber)) {
-      //   alert("Please enter a number value for the width field.");
-      // }
     }
 
     const handleHeightChange = (event) => {
       setHeight(event.target.value);
-      // const heightAsNumber = Number(height);
-      // if (height != null && isNaN(heightAsNumber)) {
-      //   alert("Please enter a number value for the height field.");
-      // }
     }
 
     return (
@@ -42,7 +30,7 @@ function PageSize(props) {
               id="length"
               type="text"
               placeholder="5 feet"
-              value={length}
+              value={length || ''}
               onChange={handleLengthChange}
               />
               <Label htmlFor="width">Width (feet)</Label>
@@ -50,7 +38,7 @@ function PageSize(props) {
               id="width"
               type="text"
               placeholder="6 feet"
-              value={width}
+              value={width || ''}
               onChange={handlethWidthChange}
               />
               <Label htmlFor="height">Height (optional)</Label>
@@ -58,7 +46,7 @@ function PageSize(props) {
               id="height"
               type="text"
               placeholder="9 feet"
-              value={height}
+              value={height || ''}
               onChange={handleHeightChange}
               />
         </Form>

@@ -7,9 +7,6 @@ function PageDescription(props) {
   
     const handleDescriptiomChange = (event) => {
       setDescription(event.target.value);
-      // if (!description) {
-      //   alert("Please enter a description for your space.");
-      // }
     }
 
     return (

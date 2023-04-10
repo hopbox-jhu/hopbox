@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import * as api from "../../api";
-import { Heading } from "./AddListing";
 import PageType from './PageType';
 import PageAddress from "./PageAddress";
 import PageDescription from "./PageDescription";
 import PageSize from "./PageSize";
 import PagePrice from "./PagePrice";
 import PagePermission from "./PagePermission";
+import { Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer} from './AddListing';
+import logo from "/src/assets/logo.png";
+import spaceimg from "/src/assets/spacewithquestionmark.png";
+
+
 
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -87,6 +91,7 @@ function AddListing() {
           };
           try {
             const response = await api.createListing(listing);
+            console.log(response);
             alert("Successfully added listing!");
           } catch (error) {
             alert("Error adding listing");
@@ -97,25 +102,77 @@ function AddListing() {
       }
   };
 
-
   return (
     <div>
-      <Heading>Add Listing</Heading>
-      {currentPage === 1 && <PageType type={type} setType={setType}/>}
-      {currentPage === 2 && <PageAddress address={address} setAddress={setAddress} />}
-      {currentPage === 3 && <PageDescription description={description} setDescription={setDescription} />}
-      {currentPage === 4 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
-      {currentPage === 5 && <PagePrice pricing={pricing} setPricing={setPricing} />}
-      {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
-      <button onClick={handleBack} disabled={currentPage === 1}>
+      <Header>
+        <img src={logo} alt="Logo" />
+      </Header>
+      <Container>
+        <LeftContainer>
+        <Image src={spaceimg} alt="Space" />
+        <Heading>Tell us about your space</Heading>
+        </LeftContainer>
+        <RightContainer>
+        {currentPage === 1 && <PageType type={type} setType={setType}/>}
+        {currentPage === 2 && <PageAddress address={address} setAddress={setAddress} />}
+        {currentPage === 3 && <PageDescription description={description} setDescription={setDescription} />}
+        {currentPage === 4 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
+        {currentPage === 5 && <PagePrice pricing={pricing} setPricing={setPricing} />}
+        {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
+
+        <ButtonContainer>
+        <button onClick={handleBack} disabled={currentPage === 1} style={{ 
+          backgroundColor: currentPage !== 1 ? 'white' : '#D8D8D8',
+          color: currentPage !== 1 ? 'black' : 'white', 
+          padding: '15px 28px',
+          borderRadius: '15px',
+          border: 'none',
+          fontSize: '15px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          width: '90px'
+          }}>
         Back
-      </button>
-      <button onClick={handleNext} disabled={currentPage === 6}>
-        Next
-      </button>
-      <button onClick={handleOnSubmit} disabled={currentPage !== 6}>
-        Submit
-      </button>
+        </button>
+        {currentPage !== 6 && (
+          <button onClick={handleNext} disabled={currentPage === 6} style={{
+            backgroundColor: '#EB65A0',
+            color: 'white',
+            padding: '15px 28px',
+            borderRadius: '15px',
+            border: 'none',
+            fontSize: '15px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            width: '90px',
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          Next
+        </button>
+        )}
+
+        {currentPage === 6 && (
+          <button onClick={handleOnSubmit} disabled={currentPage === 6} style={{
+            backgroundColor: '#EB65A0',
+            color: 'white',
+            padding: '15px 28px',
+            borderRadius: '15px',
+            border: 'none',
+            fontSize: '15px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            width: '90px',
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            Submit
+          </button>
+        )}
+        </ButtonContainer>
+      </RightContainer>
+      </Container>
     </div>
   );
 }
