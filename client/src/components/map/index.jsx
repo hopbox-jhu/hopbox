@@ -1,8 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import { MapContainerStyle, Sidebar } from "./Map";
+import { MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper } from "./Map";
 import * as api from "../../api";
+import { ListingList } from "../listingList";
+import { ListingSearchBar } from "../listingSearch";
 
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
@@ -14,6 +16,24 @@ function Map() {
     const [lat, setLat] = useState(39.328888);
     const [zoom, setZoom] = useState(14);
     const [listings, setListings] = useState([]);
+    const [filteredListings, setFilteredListings] = useState([]);
+    const [searchLng, setSearchLng] = useState();
+    const [searchLat, setSearchLat] = useState();
+
+    const handleSearch = (query) => {
+        // const response = fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
+        // const data = response.json();
+        // const features = data.features;
+        // if (features.length > 0) {
+        //     const feature = features[0];
+        //     setSearchLng(feature.center[0]);
+        //     setSearchLat(feature.center[1]);
+        // }
+        const filtered = listings.filter((listing) => {
+          return listing.address.toLowerCase().includes(query.toLowerCase());
+        });
+        setFilteredListings(filtered);
+    };
 
     useEffect(() => {
         api.getAllListings().then((data) => {
@@ -138,11 +158,17 @@ function Map() {
     });
 
     return (
-        <>
-        <div>
-            <MapContainerStyle ref={mapContainer}/>
-        </div>
-        </>
+        <Wrapper>
+            <ListingSearchBar onSearch={handleSearch} />
+            <ListingWrapper>
+                <Sidebar>
+                    <ListingList listings={filteredListings} />
+                </Sidebar>
+            </ListingWrapper>
+            <MapWrapper>
+                <MapContainerStyle ref={mapContainer} />
+            </MapWrapper>
+        </Wrapper>
     );
 }
 
