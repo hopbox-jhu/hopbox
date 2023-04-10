@@ -82,20 +82,18 @@ export const CoverP = styled.p`
   }
 `;
 
-export const CoverBtnWrapper = styled.div`
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+export const ImgLogo = styled.img`
+  margin-top: 10%;
+  width: 26vw;
+  height: 16vh;
 
-export const ArrowForward = styled(MdArrowForward)`
-  margin-left: 8px;
-  font-size: 20px;
-`;
+  @media screen and (max-width: 480px) {
+    width: 70vw;
+    height: 14vh;
+  }
 
-export const ArrowRight = styled(MdKeyboardArrowRight)`
-  margin-left: 8px;
-  font-size: 20px;
+  @media screen and (max-width: 768px) {
+    width: 70vw;
+    height: 14vh;
+  }
 `;
-

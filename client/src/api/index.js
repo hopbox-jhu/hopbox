@@ -61,3 +61,21 @@ export async function testAuthorize(postData) {
     throw err;
   }
 }
+
+export async function createListing(listing) {
+  try {
+    const response = await axiosInstance.post("/listing", listing);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+  
+export async function getAllListings() {
+  try {
+    const response = await axiosInstance.get("/listings");
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
