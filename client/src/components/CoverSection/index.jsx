@@ -1,31 +1,44 @@
-import React, { useState } from 'react';
-import Video from '../../videos/video.mp4';
-import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, CoverBtnWrapper, ArrowForward, ArrowRight } from './CoverElements';
+import React from 'react';
+import Video from '../../videos/main.mp4';
+import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, ImgLogo } from './CoverElements';
+import { makeStyles } from '@material-ui/core/styles';
+import text from "../../assets/logo.png";
 import { Button } from '../ButtonElements';
 
-const CoverSection = () => {
-  const [hover, setHover] = useState(false);
 
-  const onHover = () => {
-    setHover(!hover);
-  };
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
+const CoverSection = () => {
+  const classes = useStyles();
 
   return (
-    <CoverContainer>
+    <CoverContainer id='home'>
       <CoverBg>
         <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
       </CoverBg>
       <CoverContent>
-        <CoverH1>Summer Storage?</CoverH1>
-        <CoverP>HopBox is here to help connect you with those who have free space to rent out. Sign up to get more info</CoverP>
-        <CoverBtnWrapper>
-          <Button to="signup" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true'>
-            Get started {hover ? <ArrowForward /> : <ArrowRight />}
-          </Button>
-        </CoverBtnWrapper>
+        <CoverH1>
+        <ImgLogo src={text}/>
+        </CoverH1>
+        <CoverH1>
+        Together we store
+        </CoverH1>
+        <CoverP>
+        building a <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>community</mark> that <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>shares</mark> the load
+        </CoverP>
+        <Button to='services' style={{marginTop: '35px'}} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >Get Started</Button>
       </CoverContent>
     </CoverContainer>
   );
 };
 
 export default CoverSection;
+
+

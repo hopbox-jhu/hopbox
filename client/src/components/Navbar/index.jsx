@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
-import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink } from './NavbarElements';
+import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2, ImgLogo } from './NavbarElements';
 
-import logo from "../../assets/hoplogo.png";
+import logo from "../../assets/logo.png";
 
 const index = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
@@ -30,28 +30,26 @@ const index = ({ toggle }) => {
       <IconContext.Provider value={{ color: '#fff' }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-              <NavLogo to='/'>
-                <img src={logo} alt={"logo"} width="100vw" />
+              <NavLogo onClick={toggleHome}>
+                <ImgLogo src={logo}/>
               </NavLogo>
               <MenuIcon onClick={toggle}>
               <FaBars />
             </MenuIcon>
             <NavMenu>
               <NavItem>
-                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >About</NavLink>
+                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >Renter</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Discover</NavLink>
+                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Host</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Services</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to='signup' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign Up</NavLink>
+                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign Up</NavLink>
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/signin">Sign In</NavBtnLink>
+              <NavBtnLink2 to="/signin">Sign In</NavBtnLink2>
+              <NavBtnLink to="/signup">Register</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

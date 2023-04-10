@@ -3,9 +3,10 @@ import { Button, TextField } from "@mui/material";
 import Navbar from "../../components/Navbar";
 import Sidebar from '../../components/Sidebar';
 import CoverSection from '../../components/CoverSection';
-import image1 from "../../assets/background.png";
-import image2 from "../../assets/empty.png";
-import image3 from "../../assets/full.png";
+import InfoSection from "../../components/InfoSection";
+import { aboutObj, discoverObj, signupObj } from '../../components/InfoSection/Data';
+import Footer from "../../components/Footer"; 
+import Services from "../../components/Services"
 
 function Landing() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,10 @@ function Landing() {
     <Sidebar isOpen={isOpen} toggle={toggle} />
     <Navbar toggle={toggle} />
     <CoverSection />
+    <InfoSection {...aboutObj} />
+    <InfoSection {...discoverObj} />
+    <Services/>
+    <Footer/>    
     </>
   );
 }
