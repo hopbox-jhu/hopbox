@@ -79,3 +79,50 @@ export async function getAllListings() {
     throw err;
   }
 }
+
+
+///APPLICAITON:
+export async function createApplication(application) {
+  try {
+    const response = await axiosInstance.post("/application", application);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+  
+export async function getAllApplications() {
+  try {
+    const response = await axiosInstance.get("/applications");
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getApplicationById(applicationId) {
+  try {
+    const response = await axiosInstance.get(`/application/${applicationId}`);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function updateApplicationById(applicationId, application) {
+  try {
+    const response = await axiosInstance.patch(`/application/${applicationId}`, application);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function deleteApplicationById(applicationId) {
+  try {
+    const response = await axiosInstance.delete(`/application/${applicationId}`);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
