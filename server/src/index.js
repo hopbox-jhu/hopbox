@@ -6,6 +6,7 @@ import user from "./routes/user.js";
 import * as db from "./data/db.js";
 import bodyParser from "body-parser";
 import cors from "cors";
+import authRouter from "./routes/auth.js";
 
 db.connect();
 
@@ -23,6 +24,7 @@ app.use(host);
 app.use(renter);
 app.use(listing);
 app.use(user);
+app.use(authRouter);
 
 app.use((err, req, res, next) => {
   if (err) {

@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput } from './SignUpElements';
+import React, { useState } from "react";
+import * as postApi from "../../api/index";
+import { useNavigate } from "react-router-dom";
+import { notifications } from "@mantine/notifications";
 
 function SignUpPage() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  async function handleSubmit(event) {
-    event.preventDefault();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  
+  const handleSubmit = async (event) => {
     try {
-      await createUser({ name, email, password }); // Create user document in MongoDB
-      alert('Successfully signed up!');
-    } catch (error) {
-      alert('Error signing up');
+      event.preventDefault();
+      const user = await postApi.createUser(name, email, password);
+      if (user) {
+        alert("Successfully created user.");
+        setTimeout(() => {
+          navigate("/signin");
+        }, 100);
+        // notifications.show({
+        //   title: "Create new user successfully",
+        //   message: "Welcome to Out of the nest",
+        //   onClose: () => navigate("/signin"),
+        // });
+      }
+    } catch (err) {
+      alert("Failed to create user");
+      console.log(err);
     }
   }
 

@@ -3,6 +3,8 @@ import word from '../../assets/hopbox word.png';
 import demo from '../../assets/coverobject.jpeg';
 import object1 from '../../assets/object1.png';
 import TextField from '@material-ui/core/TextField';
+import { Button } from '../ButtonElements';
+import { ServicesContainer, ServicesH1, ServicesWrapper, ServicesCard, ServicesIcon, ServicesH2, ServicesP, Imgbg, Divider } from './ServicesElements';
 import { ServicesContainer, ServicesH1, ServicesWrapper, ServicesH2, ServicesP, Imgbg, Divider, Imgthingie, Imgword, ServicesBox, SubmitButton, ServicesH3, SignUpWrapper } from './ServicesElements';
 import * as smoketest from '../../api';
 
