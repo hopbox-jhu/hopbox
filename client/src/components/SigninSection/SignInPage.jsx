@@ -60,6 +60,7 @@ function SignInPage() {
 
       console.log(err)
     }
+  }
  // async function handleSubmit(event) {
  //   event.preventDefault();
     // const user = await findUserByEmail(email);

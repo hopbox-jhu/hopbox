@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import * as postApi from "../../api/index";
 import { useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
+import { Link } from 'react-router-dom';
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput } from './SignUpElements';
 
 function SignUpPage() {
   const [name, setName] = useState("");
