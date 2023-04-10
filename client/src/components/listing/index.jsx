@@ -10,6 +10,7 @@ export function Listing({ address, type, price, description, length, width, heig
     return (
         <div>
             <h3>{address}</h3>
+            <button>Book now!</button>
             <p>Type: {type.charAt(0).toUpperCase() + type.slice(1)}</p>
             <p>Price: ${price}</p>
             <p>{expanded ? `Dimensions: ${length}x${width}${height != null ? `x${height} ft` : ' ft'}` : ""}</p>
