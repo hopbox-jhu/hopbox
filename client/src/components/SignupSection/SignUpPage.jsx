@@ -3,7 +3,10 @@ import * as postApi from "../../api/index";
 import { useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
 import { Link } from 'react-router-dom';
-import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput } from './SignUpElements';
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content } from './SignUpElements';
+import Video from '../../videos/video.mp4';
+
+
 
 function SignUpPage() {
   const [name, setName] = useState("");
@@ -34,6 +37,10 @@ function SignUpPage() {
 
   return (
     <Container>
+      <CoverBg>
+        <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+      </CoverBg>
+    <Content>
     <Link to="/">
     <img src="/src/assets/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
     </Link>
@@ -50,6 +57,7 @@ function SignUpPage() {
         <Button type="submit">Sign Up</Button>
       </Form>
       <LinkText>Already have an account? <LinkStyled to="/signin">Sign in</LinkStyled>.</LinkText>
+    </Content>
     </Container>
   );
 }

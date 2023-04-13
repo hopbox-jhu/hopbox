@@ -6,7 +6,9 @@ import { useAuth } from '../../context/AuthContext';
 import * as postApi from "../../api/index";
 import { afterReceiveAuth } from "../../api/auth"
 import { notifications } from "@mantine/notifications";
-import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput } from './SignInElements';
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content} from './SignInElements';
+import Video from '../../videos/video.mp4';
+
 
 function SignInPage() {
   const [email, setEmail] = useState('');
@@ -74,6 +76,10 @@ function SignInPage() {
 
   return (
     <Container>
+      <CoverBg>
+        <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+      </CoverBg>
+    <Content>
     <Link to="/">
     <img src="/src/assets/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
     </Link>
@@ -87,6 +93,7 @@ function SignInPage() {
         <Button type="submit" style={{ height: '40px' }}>Sign In</Button>
       </Form>
       <LinkText>Don't have an account? <LinkStyled to="/signup">Create one</LinkStyled>.</LinkText>
+    </Content>
     </Container>
   );
 }
