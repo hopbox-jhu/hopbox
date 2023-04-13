@@ -21,13 +21,9 @@ function SignInPage() {
   const handleSubmit = async(event) => {
     try {
       event.preventDefault();
-      console.log("here 1");
       const response = await postApi.login(email, password);
-      console.log("here 2");
       if (response.status === 200) {
-        console.log("here 3");
         afterReceiveAuth(response.data.user_id, response.data.user_name, response.data.token);
-        console.log("here 4");
         //const url = location.state ? location.state.from.pathname : "/";
         //setAuth(true);
         alert("Login successfully");

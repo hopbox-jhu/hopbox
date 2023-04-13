@@ -63,20 +63,15 @@ authRouter.get("/isAuthorized", checkPermission, async (req, res, next) => {
 });
 
 authRouter.post("/login", async (req, res, next) => {0
-  console.log("here 11");
   try {
-    console.log("here 7");
     const { email, password } = req.body;
     if (!email || !password) {
-      console.log("here 8");
       throw new ApiError(
         400,
         "You must provide an email and a password to login."
       );
     }
-    console.log("here 9");
     const user = await userDao.findUserByEmail(email);
-    console.log("here 10");
     const token = createToken({
       user: {
         id: user._id,
