@@ -8,15 +8,18 @@ import { afterReceiveAuth } from "../../api/auth"
 import { notifications } from "@mantine/notifications";
 import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content} from './SignInElements';
 import Video from '../../videos/video.mp4';
+import { AuthContext } from '../../context/AuthContext';
+import React, { useContext } from 'react';
 
 
 function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { isAuth, setIsAuth } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
-  //const setAuth = useAuth().setIsAuth;
+  const setAuth = useAuth().setIsAuth;
 
   const handleSubmit = async(event) => {
     try {
@@ -25,10 +28,10 @@ function SignInPage() {
       if (response.status === 200) {
         afterReceiveAuth(response.data.user_id, response.data.user_name, response.data.token);
         //const url = location.state ? location.state.from.pathname : "/";
-        //setAuth(true);
+        setAuth(true);
         alert("Login successfully");
         setTimeout(() => {
-          navigate("/");
+          navigate("/"); //TODO: eventually navigate to a signed in page...
         }, 100);
         // navigate to logged in user??
         // const url = "http://localhost:5173/";

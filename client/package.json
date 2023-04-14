@@ -38,7 +38,7 @@
     "dayjs": "^1.11.7",
     "embla-carousel-react": "^7.1.0",
     "gl": "^6.0.2",
-    "mapbox-gl": "^2.13.0",
+    "mapbox-gl": "^2.14.0",
     "prettier": "^2.8.4",
     "prettier-plugin-import-sort": "^0.0.7",
     "react": "^18.2.0",
