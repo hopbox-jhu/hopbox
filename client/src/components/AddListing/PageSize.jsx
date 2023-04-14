@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Label, Input } from './AddListing';
+import { Form, Label, SizeLabel, Input } from './AddListing';
 
 function PageSize(props) {
     const length = props.length;
@@ -25,7 +25,9 @@ function PageSize(props) {
       <div>
         <Form>
           <Label htmlFor="length">Approximately how big is your space?</Label>
-              <Label htmlFor="length">Length (feet)</Label>
+              <div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <SizeLabel htmlFor="length">Length (ft)</SizeLabel>
               <Input
               id="length"
               type="text"
@@ -33,7 +35,9 @@ function PageSize(props) {
               value={length || ''}
               onChange={handleLengthChange}
               />
-              <Label htmlFor="width">Width (feet)</Label>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <SizeLabel htmlFor="width">Width (ft)</SizeLabel>
               <Input
               id="width"
               type="text"
@@ -41,7 +45,9 @@ function PageSize(props) {
               value={width || ''}
               onChange={handlethWidthChange}
               />
-              <Label htmlFor="height">Height (optional)</Label>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <SizeLabel htmlFor="height">Height (optional)</SizeLabel>
               <Input
               id="height"
               type="text"
@@ -49,6 +55,8 @@ function PageSize(props) {
               value={height || ''}
               onChange={handleHeightChange}
               />
+              </div>
+              </div>
         </Form>
       </div>
     )

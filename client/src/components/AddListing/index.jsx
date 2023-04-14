@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import * as api from "../../api";
-import PageType from './PageType';
+import PageType from './PageTypeAddress';
 import PageAddress from "./PageAddress";
+import PageTypeAddress from "./PageTypeAddress";
 import PageDescription from "./PageDescription";
 import PageSize from "./PageSize";
 import PagePrice from "./PagePrice";
 import PagePermission from "./PagePermission";
-import { Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer} from './AddListing';
+import { Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
 import logo from "/src/assets/logo.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
 
@@ -113,15 +114,15 @@ function AddListing() {
         <Heading>Tell us about your space</Heading>
         </LeftContainer>
         <RightContainer>
-        {currentPage === 1 && <PageType type={type} setType={setType}/>}
-        {currentPage === 2 && <PageAddress address={address} setAddress={setAddress} />}
-        {currentPage === 3 && <PageDescription description={description} setDescription={setDescription} />}
-        {currentPage === 4 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
-        {currentPage === 5 && <PagePrice pricing={pricing} setPricing={setPricing} />}
-        {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
+        {currentPage === 1 && <PageTypeAddress type={type} setType={setType} address={address} setAddress={setAddress} />}
+        {/* {currentPage === 2 && <PageAddress />} */}
+        {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
+        {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
+        {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
+        {currentPage === 5 && <PagePermission permission={permission} setPermission={setPermission}/>}
 
         <ButtonContainer>
-        <button onClick={handleBack} disabled={currentPage === 1} style={{ 
+        <BackButton onClick={handleBack} disabled={currentPage === 1} style={{ 
           backgroundColor: currentPage !== 1 ? 'white' : '#D8D8D8',
           color: currentPage !== 1 ? 'black' : 'white', 
           padding: '15px 28px',
@@ -132,9 +133,9 @@ function AddListing() {
           width: '90px'
           }}>
         Back
-        </button>
-        {currentPage !== 6 && (
-          <button onClick={handleNext} disabled={currentPage === 6} style={{
+        </BackButton>
+        {currentPage !== 5 && (
+          <NextButton onClick={handleNext} disabled={currentPage === 6} style={{
             backgroundColor: '#EB65A0',
             color: 'white',
             padding: '15px 28px',
@@ -149,11 +150,11 @@ function AddListing() {
             alignItems: 'center',
           }}>
           Next
-        </button>
+        </NextButton>
         )}
 
-        {currentPage === 6 && (
-          <button onClick={handleOnSubmit} disabled={currentPage === 6} style={{
+        {currentPage === 5 && (
+          <NextButton onClick={handleOnSubmit} disabled={currentPage === 6} style={{
             backgroundColor: '#EB65A0',
             color: 'white',
             padding: '15px 28px',
@@ -168,7 +169,7 @@ function AddListing() {
             alignItems: 'center',
           }}>
             Submit
-          </button>
+          </NextButton>
         )}
         </ButtonContainer>
       </RightContainer>

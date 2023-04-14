@@ -141,7 +141,12 @@ export const Form = styled.div`
 export const Label = styled.label`
   margin-top: 10px;
   margin-bottom: 15px;
-  font-size: 12px;
+`;
+
+export const SizeLabel = styled.span`
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 15px;
 `;
 
 export const Input = styled.input`
@@ -154,7 +159,7 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #ff99cc;
+    border-color: #EB65A0;
   }
 `;
 
@@ -168,7 +173,7 @@ export const GiantInput = styled.textarea`
 
   &:focus {
     outline: none;
-    border-color: #ff99cc;
+    border-color: #EB65A0;
   }
 `;
 
@@ -183,3 +188,61 @@ export const Button = styled.button`
   margin: 10px;
 
 `;
+
+export const TypeButton = styled.button`
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: black;
+  border: 2px solid ${props => props.clicked ? 'pink' : '#EB65A0'};
+
+  &:focus {
+    outline: none;
+    background-color: #EB65A0;
+    color: white;
+    border-color: white;
+  }
+
+  &.clicked {
+    background-color: #EB65A0;
+    color: white;
+    border: 'pink';
+  }
+`;
+
+export const BackButton = styled.button`
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+  background-color: ${props => props.isClicked ? 'white' : '#ccc'};
+  color: ${props => props.isClicked ? 'black' : 'white'};
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px #ccc;
+  }
+`;
+
+export const NextButton = styled.button`
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  margin-top: 5px;
+  cursor: pointer;
+  background-color: ${props => props.isClicked ? '#FFC0CB' : '#EB65A0'};
+  color: white;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0px 0px 4px ${props => props.isClicked ? '#FFC0CB' : '#EB65A0'};
+  }
+`;
+
