@@ -17,6 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 
 import Map from "./components/Map";
 import AddListing from "./components/AddListing";
+import Application from "./components/Application";
 
 import SignUpPage from "./components/SignUpSection/SignUpPage";
 import SignInPage from "./components/SigninSection/SignInPage";
@@ -30,7 +31,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/map" element={<Map />} />
       <Route path="/addlisting" element={<AddListing />} />
-      <Route path="/application" element={<AddListing />} />
+      <Route path="/application" element={<Application />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/signin" element={<SignInPage />} />
     </Routes>
