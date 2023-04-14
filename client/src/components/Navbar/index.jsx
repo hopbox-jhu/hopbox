@@ -13,7 +13,7 @@ const index = ({ toggle }) => {
     if (window.scrollY >= 80) {
       setScrollNav(true);
     } else {
-      setScrollNav(false);
+      setScrollNav(false); 
     }
   };
 

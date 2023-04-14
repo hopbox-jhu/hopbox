@@ -35,9 +35,7 @@ export async function createUser(name, email, password) {
 export async function login(email, password) {
   const userObj = {email: email, password: password};
   try {
-    console.log("here 5");
     const response = await axiosInstance.post("/login", userObj);
-    console.log("here 6");
     return response.data;
   } catch (err) {
     throw err;
