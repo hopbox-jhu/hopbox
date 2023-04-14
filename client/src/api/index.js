@@ -83,7 +83,7 @@ export async function getAllListings() {
 ///APPLICAITON:
 export async function createApplication(application) {
   try {
-    const response = await axiosInstance.post("/application", application);
+    const response = await axiosInstance.post("/applications", application);
     return response.data;
   } catch (err) {
     throw err;
@@ -101,7 +101,7 @@ export async function getAllApplications() {
 
 export async function getApplicationById(applicationId) {
   try {
-    const response = await axiosInstance.get(`/application/${applicationId}`);
+    const response = await axiosInstance.get(`/applications/${applicationId}`);
     return response.data;
   } catch (err) {
     throw err;
@@ -119,7 +119,7 @@ export async function updateApplicationById(applicationId, application) {
 
 export async function deleteApplicationById(applicationId) {
   try {
-    const response = await axiosInstance.delete(`/application/${applicationId}`);
+    const response = await axiosInstance.delete(`/applications/${applicationId}`);
     return response.data;
   } catch (err) {
     throw err;
