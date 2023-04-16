@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import Landing from "./pages/Landing/Landing";
 import { AuthContext } from "./context/AuthContext";
 import React, { useState } from 'react';
 
@@ -17,14 +16,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-
-import Map from "./components/Map";
-import AddListing from "./components/AddListing";
-import Application from "./components/Application";
-
-import SignUpPage from "./components/SignUpSection/SignUpPage";
-import SignInPage from "./components/SigninSection/SignInPage";
-import ProfilePage from "./components/Profile";
+import Landing from "./pages/Landing/Landing";
+import Homepage from "./pages/Homepage";
+import AddListing from "./pages/AddListing";
+import Application from "./pages/Application";
+import SignUpPage from "./pages/SignUpSection/SignUpPage";
+import SignInPage from "./pages/SigninSection/SignInPage";
+import ProfilePage from "./pages/Profile";
 
 
 function App() {
@@ -45,7 +43,7 @@ function App() {
       <GlobalStyle />
       <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="/map" element={<Map />} />
+      <Route path="/homepage" element={<Homepage />} />
       <Route path="/addlisting" element={<AddListing />} />
       <Route path="/application" element={<Application />} />
       <Route path="/signup" element={<SignUpPage />} />

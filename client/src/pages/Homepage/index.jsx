@@ -1,15 +1,16 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import { MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper } from "./Map";
+import { MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper } from "./Homepage";
 import * as api from "../../api";
-import { ListingList } from "../listingList";
-import { ListingSearchBar } from "../listingSearch";
+import { ListingList } from "../../components/listingList";
+import { ListingSearchBar } from "../../components/listingSearch";
+import MainNavBar from "../../components/MainNavbar";
 
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
 
-function Map() {
+function Homepage() {
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-76.620277);
@@ -159,6 +160,7 @@ function Map() {
 
     return (
         <Wrapper>
+            <MainNavBar/>
             <ListingSearchBar onSearch={handleSearch} />
             <ListingWrapper>
                 <Sidebar>
@@ -172,4 +174,4 @@ function Map() {
     );
 }
 
-export default Map;
+export default Homepage;
