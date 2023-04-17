@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AddressAutofill } from '@mapbox/search-js-react';
 
 export function ListingSearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,8 +17,10 @@ export function ListingSearchBar({ onSearch }) {
     <form onSubmit={handleSearchSubmit}>
       <label>
         Search:
-        <input type="text" value={searchTerm} onChange={handleSearchChange} />
       </label>
+      <AddressAutofill onRetrieve={handleSearchSubmit} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
+        <input type="text" placeholder="Address" value={searchTerm} onChange={handleSearchChange} autocomplete="street-address" />
+      </AddressAutofill>
       <button type="submit">Submit</button>
     </form>
   );

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import * as api from "../../api";
 import { Heading, Form, Label, Input, Button, GiantInput } from "./AddListing";
-import mapboxgl from 'mapbox-gl';
 
 function AddListing() {
   const [type, setType] = useState("room");
@@ -13,7 +12,7 @@ function AddListing() {
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
   const [pricing, setPricing] = useState();
-  const [permission, setPermission] = useState();
+  const [permission, setPermission] = useState(false);
 
 
   const handleSubmit = async (event) => {

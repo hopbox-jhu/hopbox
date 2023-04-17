@@ -14,6 +14,7 @@ export function ListingList({ listings }) {
             length={listing.length}
             width={listing.width}
             height={listing.height}
+            isRented={listing.isRented}
           />
         ))}
       </div>

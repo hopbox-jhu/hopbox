@@ -21,6 +21,7 @@ export const Sidebar = styled.div`
     margin: 12px;
     border-radius: 4px;
     width: 450px;
+    bottom: 10px;
 `;
 
 export const Wrapper = styled.div`
