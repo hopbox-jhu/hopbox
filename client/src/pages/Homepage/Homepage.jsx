@@ -24,10 +24,11 @@ export const MapContainerStyle = styled.div`
     position: absolute;
     right: 2vw;
     width: 60vw;
-    height: 78vh;
+    height: 84vh;
     right: 2vw;
-    top: 16vh;
+    top: 14vh;
     bottom: 10vh;
+    /* box-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.5); */
 `;
 
 export const Heading = styled.div`
@@ -38,9 +39,9 @@ export const Heading = styled.div`
     position: absolute;
     border-radius: 4px;
     width: 33vw;
-    height: 10vh;
+    height: 15vh;
     align-items: flex-start;
-    flex-direction: column;
+    flex-direction: row;
 `;
 
 export const Sidebar = styled.div`
@@ -50,12 +51,13 @@ export const Sidebar = styled.div`
     z-index: 1;
     border-radius: 2px;
     width: 34vw;
-    height: 79vh;
-    bottom: 10px;
+    height: 75vh;
+    margin-top: 20px;
+    bottom: auto;
 `;
 
 export const Wrapper = styled.div`
-    margin-top: 15vh;
+    margin-top: 12vh;
     margin-left: 2vw;
     display: flex;
 `;
@@ -102,7 +104,10 @@ export const Text2 = styled.p`
 
 export const Filter = styled.div`
   display: flex;
-  background: #black;
+  background-color: ##5d2626;
   height: 5vh;
-  width: 10vw;
+  width: auto;
+  margin-top: -20px;
+  align-items: flex-end;
+  flex-direction: column;
 `
