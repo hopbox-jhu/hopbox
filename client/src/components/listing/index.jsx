@@ -25,7 +25,7 @@ export function Listing({ listingId, address, type, price, description, length, 
             </Badge>
         </Group>
         <Text align="left" size="sm" color="dimmed">
-                {description}
+        {description.length > 180 ? description.slice(0, 180) + "..." : description}
         </Text>
         <Link to="/application/${listingId}">
         <Button align="left" variant="light" color="#ff0090da" fullWidth radius="md">

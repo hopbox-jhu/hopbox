@@ -37,13 +37,10 @@ const index = ({ onSearch }) => {
               </NavLogo>
               <NavSearch>
                 <ListingSearchBar onSearch={onSearch} />
-    
               </NavSearch>
-              
-
             <NavBtn>
-              <NavBtnLink to="/signup">List Your Space</NavBtnLink>
-              <span style={{ display: 'flex', alignItems: 'center', margin: '0 15px' }}><RxDividerVertical/></span>
+              <NavBtnLink to="/addlisting">List Your Space</NavBtnLink>
+              <span style={{ display: 'flex', alignItems: 'center' }}><RxDividerVertical style={{color:'black', fontSize :'3.5rem'}} /></span>
               <NavBtnLink2 to="/signin">Sign In</NavBtnLink2>
               <NavBtnLink to="/signup">Register</NavBtnLink>
             </NavBtn>
