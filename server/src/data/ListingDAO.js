@@ -1,8 +1,8 @@
 import Listing from "../model/Listing.js";
 
 class ListingDAO {
-  async createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, renterID }) {
-    const listing = await Listing.create({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, renterID });
+  async createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented }) {
+    const listing = await Listing.create({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented });
     return listing;
   }
   async getAllListings() {

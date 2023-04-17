@@ -1,14 +1,71 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import { Divider, MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper, Heading, Text1, Text2 } from "./Homepage";
+import { Divider, MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper, Heading, Text1, Text2, Filter } from "./Homepage";
 import * as api from "../../api";
 import { ListingList } from "../../components/listingList";
-import { ListingSearchBar } from "../../components/listingSearch";
 import MainNavBar from "../../components/MainNavbar";
 import marker from "../../assets/mymarker.png";
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
+
+function sortListingsByDistance(listings, lng, lat) {
+  return listings.sort((a, b) => {
+    const distanceA = distance(lng, lat, a.longitude, a.latitude);
+    const distanceB = distance(lng, lat, b.longitude, b.latitude);
+    return distanceA - distanceB;
+  });
+}
+
+function distance(lng1, lat1, lng2, lat2) {
+  const earthRadius = 3958.8;
+  const latDiff = (lat2 - lat1) * (Math.PI / 180);
+  const lonDiff = (lng2 - lng1) * (Math.PI / 180);
+  const a =
+      Math.sin(latDiff / 2) * Math.sin(latDiff / 2) +
+      Math.cos(lat1 * (Math.PI / 180)) *
+      Math.cos(lat2 * (Math.PI / 180)) *
+      Math.sin(lonDiff / 2) *
+      Math.sin(lonDiff / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = earthRadius * c;
+  return distance;
+}
+
+function sortListingsByPrice(listings) {
+  return listings.sort((a, b) => {
+      return a.pricing - b.pricing;
+  });
+}
+
+function sortListingsByPriceReverse(listings) {
+  return listings.sort((a, b) => {
+      return b.pricing - a.pricing;
+  });
+}
+
+function sortListingsBySize(listings) {
+  return listings.sort((a, b) => {
+      return a.length * a.width - b.length * b.width;
+  });
+}
+
+function sortListingsBySizeReverse(listings) {
+  return listings.sort((a, b) => {
+      return b.length * b.width - a.length * a.width;
+  });
+}
+
+function handleAvailableChange(checked, setAvailableOnly, filtered, setFilteredListings) {
+  setAvailableOnly(checked);
+  if (checked) {
+      filtered = filtered.filter(
+          (listing) => listing.isRented == false
+      );
+  }
+  setFilteredListings(filtered);
+}
+
 function Homepage() {
     const mapContainer = useRef(null);
     const map = useRef(null);
@@ -20,11 +77,43 @@ function Homepage() {
     const [filteredListings, setFilteredListings] = useState(listings);
     const [searchLng, setSearchLng] = useState();
     const [searchLat, setSearchLat] = useState();
+    const [availableOnly, setAvailableOnly] = useState(true);
+    const [sorting, setSorting] = useState("Distance");
   
-    const handleSearch = (query) => {
-      const filtered = listings.filter((listing) => {
-        return listing.address.toLowerCase().includes(query.toLowerCase());
-      });
+    const handleSearch = async (query) => {
+      const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
+        const data = await response.json();
+        const features = data.features;
+        if (features.length > 0) {
+            const feature = features[0];
+            setSearchLng(feature.center[0]);
+            setSearchLat(feature.center[1]);
+        }
+        if (searchLng && searchLat) {
+            setLng(searchLng);
+            setLat(searchLat);
+            setZoom(14);
+            map.current.setCenter([searchLng, searchLat]);
+        }
+        if (sorting === "Distance") {
+            sortListingsByDistance(listings, searchLng, searchLat);
+        } else if (sorting === "Lowest Price") {
+            sortListingsByPrice(listings);
+        } else if (sorting === "Highest Price") {
+            sortListingsByPriceReverse(listings);
+        } else if (sorting === "Smallest Space") {
+            sortListingsBySize(listings);
+        } else if (sorting === "Largest Space") {
+            sortListingsBySizeReverse(listings);
+        }
+        var filtered = listings.filter(
+            (listing) => distance(listing.longitude, listing.latitude, searchLng, searchLat) <= 10
+        );
+        if (availableOnly) {
+            filtered = filtered.filter(
+                (listing) => listing.isRented == false
+            );
+        }
       setFilteredListings(filtered);
     };
     useEffect(() => {
@@ -52,12 +141,7 @@ function Homepage() {
               center: [lng, lat],
               zoom: zoom,
               attributionControl: false
-            }).addControl(
-              new MapboxGeocoder({
-                accessToken: mapboxgl.accessToken,
-                mapboxgl: mapboxgl,
-              })
-            );
+            });
           }
       
           map.current.on('load', () => {
@@ -120,10 +204,30 @@ function Homepage() {
                     <Text2>
                         50 + Spaces
                     </Text2>
+
+                    <Filter>
+                  <text>Sort by:</text>
+                  <select id="type" value={sorting} onChange={(event) => setSorting(event.target.value)}>
+                      <option value="Distance">Distance</option>
+                      <option value="Lowest Price">Lowest Price</option>
+                      <option value="Highest Price">Highest Price</option>
+                      <option value="Smallest Space">Smallest Space</option>
+                      <option value="Largest Space">Largest Space</option>
+                  </select>
+                  <input
+                  id="available"
+                  type="checkbox"
+                  checked={availableOnly}
+                  onChange={(event) => setAvailableOnly(event.target.checked)}
+                  />
+                  <span>Only show currently available listings</span>
+                  </Filter>
                 </Heading>
+              
+
                 <ListingWrapper>
                     <Sidebar>
-                        <ListingList listings={listings} />
+                        <ListingList listings={filteredListings} />
                     </Sidebar>
                 </ListingWrapper>
                 <MapWrapper>
