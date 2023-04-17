@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@mantine/core": "^6.0.7",
+    "@mantine/dates": "^6.0.7",
+    "@mantine/notifications": "^6.0.7",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "@mapbox/search-js-react": "^1.0.0-beta.15",
+    "react-credit-card-input": "^1.1.5"
+  }
+}

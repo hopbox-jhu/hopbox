@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import * as api from "../../api";
-import PageType from './PageTypeAddress';
-import PageAddress from "./PageAddress";
 import PageTypeAddress from "./PageTypeAddress";
 import PageDescription from "./PageDescription";
 import PageSize from "./PageSize";
@@ -115,7 +113,7 @@ function AddListing() {
         </LeftContainer>
         <RightContainer>
         {currentPage === 1 && <PageTypeAddress type={type} setType={setType} address={address} setAddress={setAddress} />}
-        {/* {currentPage === 2 && <PageAddress />} */}
+
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
