@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import {Divider, Wrapper} from './listingComponents';
+import { Link } from "react-router-dom";
 
 
-export function Listing({ address, type, price, description, length, width, height }) {
-    const [expanded, setExpanded] = useState(false);
-    
-    function toggleExpanded() {
-        setExpanded(!expanded);
-    }
+export function Listing({ listingId, address, type, price, description, length, width, height }) {
 
     return (
         <Card style={{marginBottom:"15px", height:"24vh"}} shadow="lg" padding="lg" radius="lg" withBorder>
@@ -31,12 +27,13 @@ export function Listing({ address, type, price, description, length, width, heig
         <Text align="left" size="sm" color="dimmed">
                 {description}
         </Text>
+        <Link to="/application/${listingId}">
         <Button align="left" variant="light" color="#ff0090da" fullWidth radius="md">
                 Book Now
         </Button>
+        </Link>
         </Wrapper>
         </Divider>
         </Card>
-
     );
 }

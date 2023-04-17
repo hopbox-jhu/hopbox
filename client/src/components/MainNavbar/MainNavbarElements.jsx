@@ -28,7 +28,6 @@ export const NavbarContainer = styled.div`
   height: 80px;
   z-index: 1;
   width: 100%;
-  padding: 0 -60px;
 
 `;
 
@@ -88,40 +87,45 @@ export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
   margin-right: 3vw;
+  justify-content: space-between;
   @media screen and (max-width: 768px) {
     display: none;
   }
 `;
 
 export const NavBtnLink = styled(LinkR)`
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
   background: #EB65A0;
   white-space: nowrap;
   padding: 10px 15px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 25px;
   outline: none;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  height:75%;
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #f7d7e060;
   }
 `;
 export const NavBtnLink2 = styled(LinkR)`
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
   background: #ffffff00;
-  white-space: nowrap;
   padding: 10px 15px;
   color: #000000;
-  font-size: 16px;
-  outline: none;
-  border: none;
+  font-size: 25px;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
+  height:75%;
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #f7d7e060;
@@ -132,6 +136,8 @@ export const NavSearch = styled(LinkR)`
   white-space: nowrap;
   padding: 10px 15px;
   text-decoration: none;
+  justify-self: flex-start;
+
 `;
 
 

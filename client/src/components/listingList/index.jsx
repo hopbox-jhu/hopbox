@@ -5,9 +5,9 @@ import {Wrapper} from './listingListElements'
 export function ListingList({ listings }) {
     return (
       <Wrapper>
-        {listings.map((listing) => (
+        {listings.map((listing, index) => (
           <Listing
-            key={listing._id}
+            listingId={listing._id}
             address={listing.address}
             type={listing.type}
             price={listing.pricing}

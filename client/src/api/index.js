@@ -80,10 +80,10 @@ export async function getAllListings() {
 }
 
 
-///APPLICAITON:
+///APPLICATION:
 export async function createApplication(application) {
   try {
-    const response = await axiosInstance.post("/applications", application);
+    const response = await axiosInstance.post("/applications/:listingid", application);
     return response.data;
   } catch (err) {
     throw err;

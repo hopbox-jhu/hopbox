@@ -45,7 +45,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/homepage" element={<Homepage />} />
       <Route path="/addlisting" element={<AddListing />} />
-      <Route path="/application" element={<Application />} />
+      <Route path="/application/:listingid" element={<Application />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/profile" element={<ProfilePage user={user}/>} />

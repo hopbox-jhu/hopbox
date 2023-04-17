@@ -84,7 +84,7 @@ export const CoverP = styled.p`
 
 export const ImgLogo = styled.img`
   margin-top: 10%;
-  width: 26vw;
+  width: 23vw;
   height: 16vh;
 
   @media screen and (max-width: 480px) {

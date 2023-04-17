@@ -5,11 +5,11 @@ const router = express.Router();
 export const applicationDAO = new ApplicationDAO();
 
 // Create an application
-router.post("/applications", async (req, res) => {
+router.post("/applications/:listingid", async (req, res) => {
   try {
-    console.log("Hello");
-    const { hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard } = req.body;
-    const application = await applicationDAO.createApplication({ hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard });
+    const { listingid } = req.params;
+    const { hostID, renterID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard } = req.body;
+    const application = await applicationDAO.createApplication({ hostID, renterID, listingid, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard });
     res.json({
       status: 201,
       message: "Successfully created application!",
@@ -23,6 +23,7 @@ router.post("/applications", async (req, res) => {
 // Get all applications
 router.get("/applications", async (req, res) => {
   try {
+
     const applications = await applicationDAO.getAllApplications();
     res.json({
       status: 200,
