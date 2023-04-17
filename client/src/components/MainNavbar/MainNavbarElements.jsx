@@ -4,21 +4,23 @@ import { Link as LinkS } from 'react-scroll';
 
 
 export const Nav = styled.nav`
-  background: ${({ scrollNav }) => (scrollNav ? '#e3e2e3ff' : 'transparent')};;
-  height: 80px;
+  background: #f4f0f4ff;
+  height: 120px;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  position: sticky;
+  position: fixed;
   top: 0;
   z-index: 10;
-  transition: background 0.5s ease-in-out;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
     height:50px;
   }
 `;
+
 
 export const NavbarContainer = styled.div`
   display: flex;
@@ -36,7 +38,7 @@ export const NavLogo = styled(LinkR)`
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-left: 7vw;
+  margin-left: 3vw;
 
 `;
 
@@ -66,7 +68,7 @@ export const NavMenu = styled.ul`
 `;
 
 export const NavItem = styled.li`
-  height: 80px;
+  
 `;
 
 export const NavLink = styled(LinkS)`
@@ -85,7 +87,7 @@ export const NavLink = styled(LinkS)`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 7vw;
+  margin-right: 3vw;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -125,6 +127,13 @@ export const NavBtnLink2 = styled(LinkR)`
     background: #f7d7e060;
   }
 `;
+
+export const NavSearch = styled(LinkR)`
+  white-space: nowrap;
+  padding: 10px 15px;
+  text-decoration: none;
+`;
+
 
 export const ImgLogo = styled.img`
   width: 130px;

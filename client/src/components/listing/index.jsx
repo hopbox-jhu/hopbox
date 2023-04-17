@@ -1,25 +1,42 @@
 import React, { useState } from "react";
+import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import {Divider, Wrapper} from './listingComponents';
+
 
 export function Listing({ address, type, price, description, length, width, height }) {
     const [expanded, setExpanded] = useState(false);
-
+    
     function toggleExpanded() {
         setExpanded(!expanded);
     }
 
     return (
-        <div>
-            <h3>{address}</h3>
-            <button>Book now!</button>
-            <p>Type: {type.charAt(0).toUpperCase() + type.slice(1)}</p>
-            <p>Price: ${price}</p>
-            <p>{expanded ? `Dimensions: ${length}x${width}${height != null ? `x${height} ft` : ' ft'}` : ""}</p>
-            <p>
-                {expanded ? `Description: ${description}` : ""}
-            </p>
-            <p onClick={toggleExpanded} style={{ cursor: "pointer" }}>
-                {expanded ? "{-}" : "{+}"}
-            </p>
-        </div>
+        <Card style={{marginBottom:"15px", height:"24vh"}} shadow="lg" padding="lg" radius="lg" withBorder>
+        <Divider>
+            <Image src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=720&amp;q=80" 
+                height={200} width={180} radius="lg"  />
+        <Wrapper>
+        <Text align="left" weight={500} size="lg">{address}</Text>
+        <Group position="left" mt="md" mb="xs">
+            <Badge size="lg" color="pink" variant="light">
+                {type.charAt(0).toUpperCase() + type.slice(1)}
+            </Badge>
+            <Badge size="lg" color="pink" variant="light">
+                {`${length} . ${width}${height != null ? ` . ${height} ft` : ' ft'}`}
+            </Badge>
+            <Badge size="lg" color="pink" variant="light">
+                ${price}
+            </Badge>
+        </Group>
+        <Text align="left" size="sm" color="dimmed">
+                {description}
+        </Text>
+        <Button align="left" variant="light" color="#ff0090da" fullWidth radius="md">
+                Book Now
+        </Button>
+        </Wrapper>
+        </Divider>
+        </Card>
+
     );
 }

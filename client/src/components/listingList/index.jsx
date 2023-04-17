@@ -1,12 +1,13 @@
 import React from "react";
 import { Listing } from "../listing"
+import {Wrapper} from './listingListElements'
 
 export function ListingList({ listings }) {
     return (
-      <div>
+      <Wrapper>
         {listings.map((listing) => (
           <Listing
-            key={listing.id}
+            key={listing._id}
             address={listing.address}
             type={listing.type}
             price={listing.pricing}
@@ -16,6 +17,6 @@ export function ListingList({ listings }) {
             height={listing.height}
           />
         ))}
-      </div>
+      </Wrapper>
     );
   }

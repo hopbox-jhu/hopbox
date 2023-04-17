@@ -19,12 +19,14 @@ function Landing() {
     <>
     <Sidebar isOpen={isOpen} toggle={toggle} />
     <Navbar toggle={toggle} />
-    <CoverSection />
-    <InfoSection {...aboutObj} />
-    <InfoSection {...discoverObj} />
-    <Services/>
-    <Footer/>    
-    </>
+    <div style={{ overflowX: 'hidden' }}>
+      <CoverSection />
+      <InfoSection {...aboutObj} />
+      <InfoSection {...discoverObj} />
+      <Services/>
+      <Footer/>    
+    </div>
+  </>
   );
 }
 
