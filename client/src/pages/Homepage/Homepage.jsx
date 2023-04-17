@@ -51,6 +51,7 @@ export const Sidebar = styled.div`
     border-radius: 2px;
     width: 34vw;
     height: 79vh;
+    bottom: 10px;
 `;
 
 export const Wrapper = styled.div`
@@ -98,3 +99,10 @@ export const Text2 = styled.p`
     font-size: 3.5vw;
   }
 `;
+
+export const Filter = styled.div`
+  display: flex;
+  background: #black;
+  height: 5vh;
+  width: 10vw;
+`

@@ -13,7 +13,8 @@ const ListingSchema = new mongoose.Schema({
     height: { type: Number },
     pricing: { type: Number },
     calendar: { type: [Date] },
-    renterID: { type: String}
+    applicationIDs: { type: [String]},
+    isRented: { type: Boolean }
 });
 
 const Listing = mongoose.model("Listing", ListingSchema);

@@ -3,6 +3,7 @@ import { Input } from '@mantine/core';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useNavigate, useLocation } from "react-router-dom";
+import { AddressAutofill } from '@mapbox/search-js-react';
 
 export function ListingSearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -36,21 +37,26 @@ export function ListingSearchBar({ onSearch }) {
 
   return (
     <form onSubmit={handleSearchSubmit}>
-      <Input
+      <AddressAutofill onRetrieve={handleSearchSubmit} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
+        <Input
         style={{ width: '31vw'  }}
         radius='md'
         size='xl'
         className='inputfield'
         icon={<SearchIcon />}
-        placeholder="Insert location to look for nearby storage"
+        type="text"
+        placeholder="Insert address to look for nearby storage"
         value={searchTerm}
+        autocomplete="street-address"
         onChange={handleSearchChange}
         rightSection={
           showClearIcon && (
               <ClearIcon onClick={handleClearSearch} />
           )
         }
-      />
+        />
+      </AddressAutofill>
+      
     </form>
   );
 }
