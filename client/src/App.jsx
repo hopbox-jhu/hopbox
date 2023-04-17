@@ -32,7 +32,7 @@ function App() {
     profilePicture: 'https://via.placeholder.com/100',
     name: 'John Doe',
     email: 'john.doe@example.com',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat velit ut tortor consectetur, id tincidunt mauris volutpat. Sed ut mollis ex.',
+    bio: 'I am a student at JHU with extra storage space!',
     address: "3400 Charles St Baltimore MD, 21218"
   };
 
