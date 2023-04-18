@@ -6,9 +6,14 @@ import HelpIcon from '@material-ui/icons/Help';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 
-
 const ProfilePage = ({ user }) => {
-  const { profilePicture, name, email, bio, address } = user;
+  let { profilePicture, name, email, bio, address } = user;
+  name = localStorage.getItem("user_name");
+  email = localStorage.getItem("email");
+  bio = localStorage.getItem("bio");
+  console.log("her1: " + bio);
+  address = localStorage.getItem("address");
+  
   const [selectedOption, setSelectedOption] = useState('Profile'); // State to keep track of selected option
 
   const handleOptionClick = (option) => {

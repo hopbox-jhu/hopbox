@@ -90,6 +90,9 @@ authRouter.post("/login", async (req, res, next) => {0
         user_id: user._id,
         email: user.email,
         token: token,
+        bio: user.bio,
+        address: user.address,
+        profilePicture: user.profilePicture,
       },
     });
   } catch (err) {
