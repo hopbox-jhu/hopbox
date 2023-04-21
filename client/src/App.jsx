@@ -27,13 +27,12 @@ import ProfilePage from "./pages/Profile";
 
 function App() {
   const [isAuth, setIsAuth] = useState(false);
-
   const user = {
-    profilePicture: 'https://via.placeholder.com/100',
+    profilePicture: 'https://www.gravatar.com/avatar/?d=mp',
     name: 'John Doe',
     email: 'john.doe@example.com',
-    bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla consequat velit ut tortor consectetur, id tincidunt mauris volutpat. Sed ut mollis ex.',
-    address: "3400 Charles St Baltimore MD, 21218"
+    bio: 'No bio',
+    address: "No address"
   };
 
   return (

@@ -33,7 +33,7 @@ const CoverSection = () => {
         <CoverP>
         building a <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>community</mark> that <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>shares</mark> the load
         </CoverP>
-        <Button to='services' style={{marginTop: '35px'}} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >Get Started</Button>
+        <Button to='/homepage' style={{marginTop: '35px'}} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >Get Started</Button>
       </CoverContent>
     </CoverContainer>
   );

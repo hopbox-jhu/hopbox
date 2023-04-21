@@ -74,7 +74,7 @@ function AddListing() {
           setLatitude(feature.center[1]);
           
           const listing = {
-            hostID: "jyu132",
+            hostID: localStorage.getItem("email"),
             address: address,
             longitude: longitude,
             latitude: latitude,

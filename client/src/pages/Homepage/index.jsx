@@ -6,7 +6,7 @@ import * as api from "../../api";
 import { ListingList } from "../../components/listingList";
 import MainNavBar from "../../components/MainNavbar";
 import marker from "../../assets/mymarker.png";
-
+import { Select, Switch } from "@mantine/core";
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
 
 function sortListingsByDistance(listings, lng, lat) {
@@ -114,8 +114,10 @@ function Homepage() {
                 (listing) => listing.isRented == false
             );
         }
-      setFilteredListings(filtered);
+      setFilteredListings(filtered)
     };
+
+
     useEffect(() => {
         const fetchData = async () => {
           const data = await api.getAllListings();
@@ -204,30 +206,44 @@ function Homepage() {
                     <Text2>
                         50 + Spaces
                     </Text2>
+                  <Filter className="filter" >
+                  <Select
+                    style = {{width:"20%"}}
+                    radius="md"
+                    size ="sm"
+                    placeholder="Sort by:"
+                    onChange={(event) => setSorting(event.target.value)}
+                    data={[
+                      { value: 'Distance', label: 'Distance' },
+                      { value: 'Lowest Price', label: 'Lowest Price' },
+                      { value: 'Highest Price', label: 'Highest Price' },
+                      { value: 'Smallest Space', label: 'Smallest Space' },
+                      { value: 'Largest Space', label: 'Largest Space' },
+                    ]}
+                  />
+                    <Switch
+                      labelPosition="left"
+                      style = {{marginTop:"5px"}}
+                      label="Only show currently available listings"
+                      checked={availableOnly}
+                      onChange={(event) => setAvailableOnly(event.target.checked)}
+                    />
 
-                    <Filter>
-                  <text>Sort by:</text>
-                  <select id="type" value={sorting} onChange={(event) => setSorting(event.target.value)}>
-                      <option value="Distance">Distance</option>
-                      <option value="Lowest Price">Lowest Price</option>
-                      <option value="Highest Price">Highest Price</option>
-                      <option value="Smallest Space">Smallest Space</option>
-                      <option value="Largest Space">Largest Space</option>
-                  </select>
-                  <input
+                  {/* <input
                   id="available"
                   type="checkbox"
                   checked={availableOnly}
                   onChange={(event) => setAvailableOnly(event.target.checked)}
                   />
-                  <span>Only show currently available listings</span>
+                  <Text2>Only show currently available listings</Text2> */}
+
                   </Filter>
                 </Heading>
               
 
                 <ListingWrapper>
                     <Sidebar>
-                        <ListingList listings={filteredListings} />
+                        <ListingList listings={listings} />
                     </Sidebar>
                 </ListingWrapper>
                 <MapWrapper>

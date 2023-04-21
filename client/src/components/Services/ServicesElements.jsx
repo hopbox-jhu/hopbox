@@ -223,8 +223,7 @@ export const SubmitButton = styled.div`
   transition: all 0.1s ease-in-out;
   border-style: solid;
   align-self: flex-end;
-  margin-left: auto;
-  margin-right: 5%;
+  margin-left: 70%;
 
 
   &:hover {
