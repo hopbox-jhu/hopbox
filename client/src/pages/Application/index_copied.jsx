@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import * as api from "../../api";
-import PageTypeAddress from "./PageTypeAddress";
-import PageDescription from "./PageDescription";
-import PageSize from "./PageSize";
-import PagePrice from "./PagePrice";
-import PagePermission from "./PagePermission";
 import { Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
 import logo from "/src/assets/logo.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
-
-
+import React, { useState } from "react";
+import mapboxgl from 'mapbox-gl';
+import { Group, Checkbox, Anchor } from '@mantine/core';
+import { DatePicker } from '@mantine/dates';
+import CreditCardInput from 'react-credit-card-input';
+import PageType from './PageTypeAddress';
 
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,7 +73,7 @@ function AddListing() {
           setLatitude(feature.center[1]);
           
           const listing = {
-            hostID: localStorage.getItem("email"),
+            hostID: "jyu132",
             address: address,
             longitude: longitude,
             latitude: latitude,
@@ -113,7 +112,7 @@ function AddListing() {
         </LeftContainer>
         <RightContainer>
         {currentPage === 1 && <PageTypeAddress type={type} setType={setType} address={address} setAddress={setAddress} />}
-
+        {/* {currentPage === 2 && <PageAddress />} */}
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
