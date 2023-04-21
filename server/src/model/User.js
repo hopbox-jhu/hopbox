@@ -8,7 +8,9 @@ const UserSchema = new mongoose.Schema({
   school: { type: String },
   address: { type: String },
   bio: { type: String },
-  profilePicture: { type: String }
+  profilePicture: { type: String },
+  school: { type: String},
+  occupation: { type: String},
 });
 
 const User = mongoose.model("User", UserSchema);
