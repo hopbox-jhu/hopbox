@@ -7,7 +7,7 @@ export const userDAO = new UserDAO();
 
 router.post("/user/create", async (req, res) => {
   try {
-    const { name, email, password, bio, address, profilePicture } = req.body;
+    const { name, email, password, bio, address, profilePicture, school, occupation } = req.body;
     const existingUser = await userDAO.findUserByEmail(email);
     if (existingUser) {
       // Email is already in use
@@ -15,7 +15,7 @@ router.post("/user/create", async (req, res) => {
         message: `Email ${email} is already in use`,
       });
     }
-    const user = await userDAO.createUser({ name, email, password: hashPassword(password), bio, address, profilePicture });
+    const user = await userDAO.createUser({ name, email, password: hashPassword(password), bio, address, profilePicture, school, occupation });
     res.json({
       status: 201,
       message: `Successfully created user!`,
