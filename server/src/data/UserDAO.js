@@ -7,7 +7,7 @@ class UserDAO {
     address = "No address added";
     school = "No school added";
     occupation = "No occupation added";
-    const user = await User.create({ name, email, password, bio, address, profilePicture, school, occupation})
+    const user = await User.create({ name, email, password, bio, address, profilePicture, school, occupation});
     return user;
   }
   async findUserByEmail(email) {

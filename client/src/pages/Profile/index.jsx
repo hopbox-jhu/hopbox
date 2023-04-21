@@ -9,6 +9,7 @@ import { clearAuth } from '../../api/auth';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuth } from '../../context/AuthContext';
 
+
 const ProfilePage = ({ user }) => {
   let { profilePicture, name, email, bio, address, school, occupation } = user;
   name = localStorage.getItem("user_name");
@@ -24,6 +25,7 @@ const ProfilePage = ({ user }) => {
   const navigate = useNavigate();
   const { isAuth, setIsAuth } = useContext(AuthContext);
   const setAuth = useAuth().setIsAuth;
+
 
   const handleOptionClick = (option) => {
     setSelectedOption(option); // Update selected option state
@@ -41,6 +43,7 @@ const ProfilePage = ({ user }) => {
   const handleEditProfileClick = () => {
     // Edit Profile stuff
   }
+
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
@@ -94,7 +97,7 @@ const ProfilePage = ({ user }) => {
               <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '2rem', backgroundColor: '#FFFFFF' }}>
                 <img style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem', border: '4px solid #E91E63' }} src={profilePicture} alt="Profile Picture" />
                 <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#E91E63', marginBottom: '0.5rem' }}>Full Name: {name}</div>
+                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#E91E63', marginBottom: '0.5rem' }}>Full Name: {name}</div>
                   <div style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>Current Email: {email}</div>
                   <div style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#757575' }}>Bio: {bio}</div>
                   <div style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#757575' }}>Address: {address}</div>

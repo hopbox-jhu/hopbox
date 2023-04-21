@@ -29,6 +29,7 @@ function SignInPage() {
         afterReceiveAuth(response.data.user_id, response.data.user_name, response.data.token, response.data.email, response.data.bio, response.data.address, response.data.profilePicture, response.data.school, response.data.occupation );
         //const url = location.state ? location.state.from.pathname : "/";
         setAuth(true);
+        localStorage.setItem("isSignedIn", "true");
         alert("Login successfully");
         setTimeout(() => {
           navigate("/homepage");

@@ -24,6 +24,7 @@ const clearAuth = () => {
   localStorage.removeItem("profilePicture");
   localStorage.removeItem("school");
   localStorage.removeItem("occupation");
+  localStorage.setItem("isSignedIn", "false");
   postApi.axiosInstance.defaults.headers["Authorization"] = "";
 };
 export { afterReceiveAuth, clearAuth };
