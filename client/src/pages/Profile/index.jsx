@@ -19,6 +19,7 @@ const ProfilePage = ({ user }) => {
   address = localStorage.getItem("address");
   school = localStorage.getItem("school");
   occupation = localStorage.getItem("occupation");
+
   
   const [selectedOption, setSelectedOption] = useState('Profile'); // State to keep track of selected option
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ const ProfilePage = ({ user }) => {
     </li>
   </ul>
 </div>
+
       <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '2rem', backgroundColor: '#FFFFFF' }}>
         {selectedOption === 'Today' && (
           // Render Today information

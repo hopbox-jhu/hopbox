@@ -1,14 +1,19 @@
 import React, { useState } from "react";
 import * as api from "../../api";
-import { Heading, Form, Label, Input, Button, GiantInput } from "./Application";
-import mapboxgl from 'mapbox-gl';
-import { Group, Checkbox, Anchor } from '@mantine/core';
-import { DatePicker } from '@mantine/dates';
-import CreditCardInput from 'react-credit-card-input';
+import { Header, Heading, Form, Image, Label, Input, Button, GiantInput, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from "./Application";
+import { Checkbox, Anchor } from '@mantine/core';
+import logo from "/src/assets/logo.png";
+import boximg from "/src/assets/Box.png";
+import PageDate from "./PageDate";
+import PageHazardCheck from "./PageHazardCheck";
+import PageItems from "./PageItems";
+import PageNeeds from "./PageNeeds";
+import PageInsurance from "./PageInsurance";
+import PageCreditCard from "./PageCreditCard";
 
 function Application() {
-  const [daterange, setDateRange] = useState([null, null]);
-  const [hazardcheck, setHazardCheck] = useState(false);
+  const [dateRange, setDateRange] = useState([null, null]);
+  const [hazardCheck, setHazardCheck] = useState(false);
   const [items, setItems] = useState("");
   const [needs, setNeeds] = useState("");
   const [protection, setProtection] = useState(true);
@@ -20,14 +25,15 @@ function Application() {
     address: ""
   });
   const [agreement, setAgreement] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const applicationData = {
     hostID: "ha",
     renterID: "he",
     listingID: "listing",
-    startDate: daterange[0],
-    endDate: daterange[1],
-    hazardCheck: hazardcheck,
+    startDate: dateRange[0],
+    endDate: dateRange[1],
+    hazardCheck: hazardCheck,
     items: items,
     needs: needs,
     protectionPlan: protection,
@@ -43,7 +49,7 @@ function Application() {
   };
     
   const handleSubmit = async (event) => {
-    if (!daterange) {
+    if (!dateRange) {
       alert("You need to select a duration of your storage")
     }
     if (agreement){
@@ -56,90 +62,87 @@ function Application() {
     }
   };
 
+  const handleBack = () => {
+    setCurrentPage(currentPage - 1);
+  };
+
+  const handleNext = () => {
+    setCurrentPage(currentPage + 1);
+  };
+
 
 
 
   return (
     <div>
-        <Heading>Application</Heading>
-        <Form onSubmit={handleSubmit}>
-        <Label htmlFor="type">Fill out the Application for this space?</Label>
+      <Header>
+        <img src={logo} alt="Logo" />
+      </Header>
+      <Container>
+        <LeftContainer>
+        <Image src={boximg} alt="Box" />
+        <Heading>Fill out the Application for this space</Heading>
+        </LeftContainer>
+        <RightContainer>
+          {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange}/>}
+          {currentPage === 2 && <PageHazardCheck hazardCheck={hazardCheck} setHazardCheck={setHazardCheck} />}
+          {currentPage === 3 && <PageItems items={items} setItems={setItems} />}
+          {currentPage === 4 && <PageNeeds needs={needs} setNeeds={setNeeds} />}
+          {currentPage === 5 && <PageInsurance protection={protection} setProtection={setProtection} />}
+          {currentPage === 6 && <PageCreditCard creditCard={creditCard} setCreditCard={setCreditCard} agreement={agreement} setAgreement={setAgreement} />}
 
-          <Label htmlFor="date">When do you need Storage?</Label>
-          <Group position="center">
-            <DatePicker type="range" value={daterange} onChange={setDateRange} />
-          </Group>
-            
-          <Label htmlFor="hazardcheck">Before providing further information about your belongings, please ensure that you select 'No' for all the items listed below. </Label>
-          <select id="type" value={hazardcheck} onChange={(event) => setHazardCheck(event.target.value === 'true')}>
-            <option value={true}>Yes</option>
-            <option value={false}>No</option>
-          </select>
-
-            <Label htmlFor="items">What are you storing?</Label>
-            <Input
-            id="address"
-            type="text"
-            placeholder="Items"
-            value={items}
-            onChange={(event) => setItems(event.target.value)}
-            />
-
-            <Label htmlFor="description">Describe your needs. A summary helps host know what to expect.</Label>
-            <GiantInput
-            id="description"
-            type="text"
-            placeholder="I need good storage near campus."
-            value={needs}
-            onChange={(event) => setNeeds(event.target.value)}
-            />
-
-            <Label htmlFor="insurance">Choose A Protection Plan</Label>
-            <Checkbox checked={protection} onChange={(event) => setProtection(event.currentTarget.checked)} label = "Standard Protection PLan" />
-            <Checkbox checked={!protection} onChange={(event) => setProtection(event.currentTarget.checked)} label = "No Protection PLan" />
-
-            <Label htmlFor="creditcard">Credit Card Information</Label>
-            <Input
-              id="name"
-              type="text"
-              placeholder="Name on Card"
-              value={creditCard.name}
-              onChange={handleInputChange}
-            />
-            <Input
-              id="address"
-              type="text"
-              placeholder="Address"
-              value={creditCard.address}
-              onChange={handleInputChange}
-            />
-            <CreditCardInput
-              cardNumberInputProps={{
-                value: creditCard.cardNumber,
-                onChange: handleInputChange,
-                id: "cardNumber",
-              }}
-              cardExpiryInputProps={{
-                value: creditCard.expiry,
-                onChange: handleInputChange,
-                id: "expiry",
-              }}
-              cardCVCInputProps={{
-                value: creditCard.cvc,
-                onChange: handleInputChange,
-                id: "cvc",
-              }}
-              fieldClassName="input"
-            />
-
-            <Checkbox checked={agreement} onChange={(event) => setAgreement(event.currentTarget.checked)} label = {<>
-                I accept{' '}
-                <Anchor href="https://mantine.dev" target="_blank">
-                  terms and conditions
-                </Anchor>
-            </>} />
-            <Button type="submit" onClick={handleSubmit}>Submit</Button>
-        </Form>
+        <ButtonContainer>
+        <BackButton onClick={handleBack} disabled={currentPage === 1} style={{ 
+          backgroundColor: currentPage !== 1 ? 'white' : '#D8D8D8',
+          color: currentPage !== 1 ? 'black' : 'white', 
+          padding: '15px 28px',
+          borderRadius: '15px',
+          border: 'none',
+          fontSize: '15px',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          width: '90px'
+          }}>
+        Back
+        </BackButton>
+        {currentPage !== 6 && (
+          <NextButton onClick={handleNext} disabled={currentPage === 6} style={{
+            backgroundColor: '#EB65A0',
+            color: 'white',
+            padding: '15px 28px',
+            borderRadius: '15px',
+            border: 'none',
+            fontSize: '15px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            width: '90px',
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          Next
+        </NextButton>
+        )}
+        {currentPage === 6 && (
+          <NextButton onClick={handleSubmit} disabled={currentPage === 6} style={{
+            backgroundColor: '#EB65A0',
+            color: 'white',
+            padding: '15px 28px',
+            borderRadius: '15px',
+            border: 'none',
+            fontSize: '15px',
+            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+            width: '90px',
+            textAlign: 'center',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            Submit
+          </NextButton>
+        )}
+        </ButtonContainer>
+        </RightContainer>
+      </Container>
     </div>
   );
 }
