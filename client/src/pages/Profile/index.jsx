@@ -31,6 +31,10 @@ const ProfilePage = ({ user }) => {
     setIsPopupOpen(false);
   };
 
+  const handleOptionClick = (option) => {
+    setSelectedOption(option); // Update selected option state
+  };
+
   const [selectedOption, setSelectedOption] = useState('Profile'); // State to keep track of selected option
   const navigate = useNavigate();
   const { isAuth, setIsAuth } = useContext(AuthContext);
