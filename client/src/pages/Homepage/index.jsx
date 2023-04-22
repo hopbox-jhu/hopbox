@@ -56,16 +56,6 @@ function sortListingsBySizeReverse(listings) {
   });
 }
 
-function handleAvailableChange(checked, setAvailableOnly, filtered, setFilteredListings) {
-  setAvailableOnly(checked);
-  if (checked) {
-      filtered = filtered.filter(
-          (listing) => listing.isRented == false
-      );
-  }
-  setFilteredListings(filtered);
-}
-
 function Homepage() {
     const mapContainer = useRef(null);
     const map = useRef(null);
@@ -83,9 +73,9 @@ function Homepage() {
     const handleSearch = async (query) => {
       const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
         const data = await response.json();
-        const features = data.features;
-        if (features.length > 0) {
-            const feature = features[0];
+        const dataFeatures = data.features;
+        if (dataFeatures.length > 0) {
+            const feature = dataFeatures[0];
             setSearchLng(feature.center[0]);
             setSearchLat(feature.center[1]);
         }
@@ -137,7 +127,7 @@ function Homepage() {
           if (!map.current) {
             map.current = new mapboxgl.Map({
               container: mapContainer.current,
-              style: 'mapbox://styles/mapbox/light-v11',
+              style: 'mapbox://styles/mapbox/streets-v12',
               center: [lng, lat],
               zoom: zoom,
               attributionControl: false
@@ -145,6 +135,7 @@ function Homepage() {
           }
       
           map.current.on('load', () => {
+            map.current.removeImage();
             map.current.loadImage(
               'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
               (error, image) => {
@@ -161,7 +152,7 @@ function Homepage() {
                     features: features,
                   },
                 });
-      
+
                 map.current.addLayer({
                   id: 'points',
                   type: 'symbol',
