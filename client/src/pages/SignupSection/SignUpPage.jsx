@@ -12,12 +12,17 @@ function SignUpPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [bio] = useState("");
+  const [address] = useState("");
+  const [school] = useState("");
+  const [occupation] = useState("");
+
   const navigate = useNavigate();
   
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const user = await postApi.createUser(name, email, password);
+      const user = await postApi.createUser(name, email, password, bio, address, school, occupation );
       if (user) {
         alert("Successfully created user.");
         setTimeout(() => {
@@ -30,8 +35,13 @@ function SignUpPage() {
         // });
       }
     } catch (err) {
-      alert("Failed to create user");
       console.log(err);
+      console.log(err.message);
+      if (err.message === "Request failed with status code 409") {
+        alert("Email is already in use. Please try a different one.");
+      } else {
+        alert("Failed to create user");
+      }
     }
   }
 
