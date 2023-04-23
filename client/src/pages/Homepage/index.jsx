@@ -243,7 +243,7 @@ function Homepage() {
 
                 <ListingWrapper>
                     <Sidebar>
-                        <ListingList listings={listings} />
+                        <ListingList listings={filteredListings} />
                     </Sidebar>
                 </ListingWrapper>
                 <MapWrapper>

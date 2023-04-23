@@ -28,7 +28,9 @@ function SignInPage() {
       if (response.status === 200) {
         afterReceiveAuth(response.data.user_id, response.data.user_name, response.data.token);
         //const url = location.state ? location.state.from.pathname : "/";
-        setAuth(true);
+        setAuth(true); //this isn't working so...i will just store a boolean in localstorage
+        localStorage.setItem("isSignedIn", "true");
+
         alert("Login successfully");
         setTimeout(() => {
           navigate("/"); //TODO: eventually navigate to a signed in page...
