@@ -26,6 +26,27 @@ router.post("/user/create", async (req, res) => {
   }
 });
 
+router.post("/user/update", async (req, res) => {
+  try {
+    const { email, bio, address, school, occupation } = req.body;
+    const existingUser = await userDAO.findUserByEmail(email);
+    if (!existingUser) {
+      return res.status(404).json({
+        message: `User with email ${email} not found`,
+      });
+    }
+    const updatedUser = await userDAO.updateUserByEmail(email, { bio, address, school, occupation });
+    res.json({
+      status: 200,
+      message: "Successfully updated user!",
+      data: updatedUser,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
 //NOTE: no longer needed because getting user occurs in auth
 // router.get("/getUser", async (req, res) => {
 //   try {

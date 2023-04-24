@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Group, Button, Input } from '@mantine/core';
 import axios from "axios";
+import * as postApi from "../../api/index";
 
 function PopupForm() {
     const [opened, { open, close }] = useDisclosure(false);
@@ -14,19 +15,28 @@ function PopupForm() {
     });
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-        // Handle form submission logic here
-        const { bio, address, school, occupation } = values;
+        try {
+            event.preventDefault();
+            // Handle form submission logic here
+            const { bio, address, school, occupation } = values;
+            localStorage.setItem("bio", bio);
+            localStorage.setItem("address", address);
+            localStorage.setItem("school", school);
+            localStorage.setItem("occupation", occupation);
+            // Make API call to update user data in MongoDB
+            //TODO: need to post to mongodb right here
+            const email = localStorage.getItem("email");
+            const user = await postApi.updateUser(email, bio, address, school, occupation);
+            if (user) {
+                alert("Successfully edited profile.");
+            }
+            close();
+            window.location.reload();
+        } catch (err) {
+            console.log(err);
+            console.log(err.message);
+        }
 
-        localStorage.setItem("bio", bio);
-        localStorage.setItem("address", address);
-        localStorage.setItem("school", school);
-        localStorage.setItem("occupation", occupation);
-        // Make API call to update user data in MongoDB
-        //TODO: need to post to mongodb right here
-
-        close();
-        window.location.reload();
     };
 
     const handleChange = (event) => {

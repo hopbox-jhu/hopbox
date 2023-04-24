@@ -14,6 +14,18 @@ class UserDAO {
     const user = await User.findOne({ email: email });
     return user;
   }
+  async updateUserByEmail(email, { bio, address, school, occupation }) {
+    const user = await this.findUserByEmail(email);
+    if (!user) {
+      throw new Error(`User with email ${email} not found`);
+    }
+    user.bio = bio || user.bio;
+    user.address = address || user.address;
+    user.school = school || user.school;
+    user.occupation = occupation || user.occupation;
+    await user.save();
+    return user;
+  }
 }
 
 export default UserDAO;
