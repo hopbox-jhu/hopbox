@@ -11,11 +11,10 @@ import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
 
 
-
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
   const [type, setType] = useState("room");
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState();
   const [description, setDescription] = useState("");
   const [length, setLength] = useState();
   const [width, setWidth] = useState();
