@@ -6,22 +6,20 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { AddressAutofill } from '@mapbox/search-js-react';
 
 export function ListingSearchBar({ onSearch }) {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState();
   const [showClearIcon, setShowClearIcon] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
-    const newSearchTerm = event.target.value;
-    setSearchTerm(newSearchTerm);
-    setShowClearIcon(newSearchTerm.length > 0);
+      const newSearchTerm = event.target.value;
+      setSearchTerm(newSearchTerm);
+      setShowClearIcon(newSearchTerm.length > 0);
   };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     
-    // Check if current URL is not "/homepage" and navigate to it
-    console.log(location.pathname);
     if (location.pathname !== "/homepage") {
       navigate("/homepage");
     }
@@ -39,21 +37,21 @@ export function ListingSearchBar({ onSearch }) {
     <form onSubmit={handleSearchSubmit}>
       <AddressAutofill onRetrieve={handleSearchSubmit} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
         <Input
-        style={{ width: '31vw'  }}
-        radius='md'
-        size='xl'
-        className='inputfield'
-        icon={<SearchIcon />}
-        type="text"
-        placeholder="Insert address to look for nearby storage"
-        value={searchTerm}
-        autocomplete="street-address"
-        onChange={handleSearchChange}
-        rightSection={
-          showClearIcon && (
-              <ClearIcon onClick={handleClearSearch} />
-          )
-        }
+          style={{ width: '31vw'  }}
+          radius='md'
+          size='xl'
+          className='inputfield'
+          icon={<SearchIcon />}
+          type="text"
+          placeholder="Insert address to look for nearby storage"
+          value={searchTerm}
+          autocomplete="street-address"
+          onChange={handleSearchChange}
+          rightSection={
+            showClearIcon && (
+                <ClearIcon onClick={handleClearSearch} />
+            )
+          }
         />
       </AddressAutofill>
       

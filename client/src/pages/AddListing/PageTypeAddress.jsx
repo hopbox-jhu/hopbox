@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import { Form, Label, Input} from './AddListing';
 import { Grid, Button, ButtonGroup, TextField } from '@material-ui/core';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
@@ -6,6 +6,8 @@ import SpaceBarIcon from '@mui/icons-material/SpaceBar';
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import StairsIcon from '@mui/icons-material/Stairs';
 import styled from 'styled-components';
+import { AddressAutofill } from '@mapbox/search-js-react';
+
 
 const TypeButton = styled(Button)`
   padding: 10px;
@@ -38,10 +40,14 @@ const TypeButton = styled(Button)`
 
 function PageTypeAddress(props) {
   const { type, setType, address, setAddress } = props;
+  const [searchTerm, setSearchTerm] = useState();
 
-  const handleAddressChange = (event) => {
-    setAddress(event.target.value);
-  };
+  const handleSearchChange = (event) => {
+
+    if (event.features) {
+      setSearchTerm(event.features[0].properties.full_address);
+    }
+  }
 
   const handleTypeChange = (event) => {
     setType(event.target.id);
@@ -66,13 +72,20 @@ function PageTypeAddress(props) {
           </TypeButton>
         </div>
         <Label htmlFor="address">Where is your space located?</Label>
-        <Input
-          id="address"
-          type="text"
-          placeholder="Address"
-          value={address}
-          onChange={handleAddressChange}>
-        </Input>
+        <AddressAutofill onRetrieve={handleSearchChange} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
+          <Input
+            id="address"
+            style={{ width: '31vw'  }}
+            radius='md'
+            size='xl'
+            className='inputfield'
+            type="text"
+            placeholder="Address"
+            value={searchTerm}
+            autocomplete="street-address"
+            onChange={handleSearchChange}
+          />
+        </AddressAutofill>
       </Form>
     </div>
   );
