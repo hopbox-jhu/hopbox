@@ -12,7 +12,7 @@ function PagePrice(props) {
     return (
       <div>
         <Form>
-          <Label htmlFor="pricing">How much would you like to charge renters on a monthly bases? A good recommendation for pricing would be to charge $1 per square foot. (in USD)</Label>
+          <Label htmlFor="pricing">How much would you like to charge renters on a monthly basis? A good recommendation for pricing would be to charge $1 per square foot. (in USD)</Label>
             <Input
             id="pricing"
             type="text"
