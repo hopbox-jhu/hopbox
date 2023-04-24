@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import { Divider, Wrapper } from "../../components/listing/listingComponents";
 import { Link, useParams } from "react-router-dom";
@@ -8,15 +8,16 @@ function ListingPage() {
     const { id } = useParams();
     const [data, setData] = useState(null);
 
-    async function fetchData() {
-        const result = await api.getListingById(id);
-        setData(result);
-    }
-    fetchData();
+    useEffect(() => {
+        async function fetchData() {
+            const result = await api.getListingById(id);
+            setData(result);
+        }
+        fetchData();
+    }, []);
 
     if (data) {
         return (
-            <Card style={{marginBottom:"15px", height:"24vh"}} shadow="lg" padding="lg" radius="lg" withBorder>
             <Divider>
                 <Image src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=720&amp;q=80" 
                     height="18vh" width="10vw" radius="lg"  />
@@ -44,7 +45,6 @@ function ListingPage() {
             </Link>
             </Wrapper>
             </Divider>
-            </Card>
         );
     }
 }

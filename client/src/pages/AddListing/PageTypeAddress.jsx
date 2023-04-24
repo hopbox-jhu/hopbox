@@ -92,7 +92,7 @@ function PageTypeAddress(props) {
             type="text"
             placeholder="Address"
             value={address}
-            autocomplete="street-address"
+            autoComplete="street-address"
             onChange={handleAddressChange}
           />
         </AddressAutofill> */}
