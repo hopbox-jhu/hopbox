@@ -32,6 +32,15 @@ export async function createUser(name, email, password) {
   }
 }
 
+export async function updateUser(email, bio, address, school, occupation) {
+  try {
+    const response = await axiosInstance.post("/user/update", {email: email, bio: bio, address: address, school: school, occupation: occupation });
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function login(email, password) {
   const userObj = {email: email, password: password};
   try {
