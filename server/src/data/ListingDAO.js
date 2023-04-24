@@ -9,6 +9,11 @@ class ListingDAO {
     const listings = await Listing.find();
     return listings;
   }
+  async getListingById(id) {
+    console.log("hello");
+    const listing = await Listing.findById(id);
+    return listing;
+  }
 }
 
 export default ListingDAO;

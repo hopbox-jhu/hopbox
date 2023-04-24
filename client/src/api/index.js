@@ -88,6 +88,15 @@ export async function getAllListings() {
   }
 }
 
+export async function getListingById(listingId) {
+  try {
+    console.log("hello");
+    const response = await axiosInstance.get(`/listing/${listingId}`);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
 
 ///APPLICATION:
 export async function createApplication(application) {

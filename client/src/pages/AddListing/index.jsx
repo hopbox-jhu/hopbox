@@ -8,6 +8,7 @@ import PagePermission from "./PagePermission";
 import { Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
 import logo from "/src/assets/logo.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
+import PageImage from "./PageImage";
 
 
 
@@ -23,6 +24,7 @@ function AddListing() {
   const [permission, setPermission] = useState(false);
   const [longitude, setLongitude] = useState();
   const [latitude, setLatitude] = useState();
+  const [images, setImages] = useState([]);
 
 
   const handleBack = () => {
@@ -40,11 +42,6 @@ function AddListing() {
     const lengthAsNumber = Number(length);
     const widthAsNumber = Number(width);
     const heightAsNumber = Number(height);
-    
-    console.log(pricingAsNumber);
-    console.log(lengthAsNumber);
-    console.log(widthAsNumber);
-    console.log(heightAsNumber);
 
     if (!permission) {
         alert("You must certify that you have the rights/permission to rent out this space.");
@@ -80,13 +77,14 @@ function AddListing() {
             latitude: latitude,
             type: type,
             description: description,
-            images: [],
+            images: images,
             length: lengthAsNumber,
             width: widthAsNumber,
             height: heightAsNumber,
             pricing: pricingAsNumber,
             calendar: [],
-            renterID: "",
+            applicationIDs: [],
+            isRented: false
           };
           try {
             const response = await api.createListing(listing);
@@ -117,7 +115,8 @@ function AddListing() {
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
-        {currentPage === 5 && <PagePermission permission={permission} setPermission={setPermission}/>}
+        {currentPage === 5 && <PageImage images={images} setImages={setImages}/>}
+        {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
 
         <ButtonContainer>
         <BackButton onClick={handleBack} disabled={currentPage === 1} style={{ 
@@ -132,8 +131,8 @@ function AddListing() {
           }}>
         Back
         </BackButton>
-        {currentPage !== 5 && (
-          <NextButton onClick={handleNext} disabled={currentPage === 6} style={{
+        {currentPage !== 6 && (
+          <NextButton onClick={handleNext} disabled={currentPage === 7} style={{
             backgroundColor: '#EB65A0',
             color: 'white',
             padding: '15px 28px',
@@ -151,8 +150,8 @@ function AddListing() {
         </NextButton>
         )}
 
-        {currentPage === 5 && (
-          <NextButton onClick={handleOnSubmit} disabled={currentPage === 6} style={{
+        {currentPage === 6 && (
+          <NextButton onClick={handleOnSubmit} disabled={currentPage === 7} style={{
             backgroundColor: '#EB65A0',
             color: 'white',
             padding: '15px 28px',

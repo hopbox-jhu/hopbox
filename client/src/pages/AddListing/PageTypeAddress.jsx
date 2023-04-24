@@ -39,15 +39,18 @@ const TypeButton = styled(Button)`
 `;
 
 function PageTypeAddress(props) {
-  const { type, setType, address, setAddress } = props;
-  const [searchTerm, setSearchTerm] = useState();
+  const {type, setType, address, setAddress} = props;
 
-  const handleSearchChange = (event) => {
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
 
-    if (event.features) {
-      setSearchTerm(event.features[0].properties.full_address);
-    }
-  }
+  // const handleAddressChange = (event) => {
+
+  //   if (event.features) {
+  //     setAddress(event.features[0].properties.full_address);
+  //   }
+  // }
 
   const handleTypeChange = (event) => {
     setType(event.target.id);
@@ -72,7 +75,14 @@ function PageTypeAddress(props) {
           </TypeButton>
         </div>
         <Label htmlFor="address">Where is your space located?</Label>
-        <AddressAutofill onRetrieve={handleSearchChange} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
+        <Input
+          id="address"
+          type="text"
+          placeholder="Address"
+          value={address}
+          onChange={handleAddressChange}>
+        </Input>
+        {/* <AddressAutofill onRetrieve={handleAddressChange} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
           <Input
             id="address"
             style={{ width: '31vw'  }}
@@ -81,11 +91,11 @@ function PageTypeAddress(props) {
             className='inputfield'
             type="text"
             placeholder="Address"
-            value={searchTerm}
+            value={address}
             autocomplete="street-address"
-            onChange={handleSearchChange}
+            onChange={handleAddressChange}
           />
-        </AddressAutofill>
+        </AddressAutofill> */}
       </Form>
     </div>
   );

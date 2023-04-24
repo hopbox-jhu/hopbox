@@ -31,4 +31,22 @@ router.get("/listings", async (req, res) => {
     }
   });
 
+router.get("/listing/:id", async (req, res) => {
+    try {
+      console.log("hello");
+      const listing = await listingDAO.getListingById(req.params.id);
+      if (!listing) {
+        res.status(404).json({ message: "Listing not found" });
+        return;
+      }
+      res.json({
+        status: 200,
+        message: "Successfully retrieved listing!",
+        data: listing,
+      });
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  });
+
 export default router;
