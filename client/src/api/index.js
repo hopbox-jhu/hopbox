@@ -90,9 +90,8 @@ export async function getAllListings() {
 
 export async function getListingById(listingId) {
   try {
-    console.log("hello");
     const response = await axiosInstance.get(`/listing/${listingId}`);
-    return response.data;
+    return response.data.data;
   } catch (err) {
     throw err;
   }

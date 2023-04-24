@@ -88,7 +88,6 @@ function AddListing() {
           };
           try {
             const response = await api.createListing(listing);
-            console.log(response);
             alert("Successfully added listing!");
           } catch (error) {
             alert("Error adding listing");
