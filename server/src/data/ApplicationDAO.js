@@ -19,7 +19,7 @@ class ApplicationDAO {
   async updateApplication(applicationID, updatedApplication) {
     const application = await Application.findByIdAndUpdate(applicationID, updatedApplication, { new: true });
     return application;
-  }
+  } 
   
   async deleteApplication(applicationID) {
     await Application.findByIdAndDelete(applicationID);

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useParams } from "react";
 import * as api from "../../api";
 import { Header, Heading, Form, Image, Label, Input, Button, GiantInput, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from "./Application";
 import { Checkbox, Anchor } from '@mantine/core';
@@ -27,10 +27,12 @@ function Application() {
   const [agreement, setAgreement] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const applicationData = {
-    hostID: "ha",
-    renterID: "he",
-    listingID: "listing",
+  const {listingID} = useParams();
+ 
+  let applicationData = {
+    hostID: "",
+    renterID: localStorage.getItem("email"),
+    listingID: listingID,
     startDate: dateRange[0],
     endDate: dateRange[1],
     hazardCheck: hazardCheck,
@@ -123,7 +125,7 @@ function Application() {
         </NextButton>
         )}
         {currentPage === 6 && (
-          <NextButton onClick={handleSubmit} disabled={currentPage === 6} style={{
+          <NextButton onClick={handleSubmit} disabled={currentPage !== 6} style={{
             backgroundColor: '#EB65A0',
             color: 'white',
             padding: '15px 28px',

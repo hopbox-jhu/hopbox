@@ -29,6 +29,8 @@ const ProfilePage = ({ user }) => {
 
   const [listings, setListings] = useState([]);
   const [filteredListings, setFilteredListings] = useState(listings);
+  const [applications, setApplications] = useState([]);
+  const [filteredApplications, setFilteredApplications] = useState(applications);
 
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
@@ -65,6 +67,17 @@ const ProfilePage = ({ user }) => {
       (listing) => listing.hostID === localStorage.getItem("email")
     );
     setFilteredListings(filtered);
+  }
+
+  const getApplications = async (query) => {
+    const data = await api.getAllApplications();
+    setApplications(data.data);
+    console.log(data);
+    var filteredApplications = applications.filter(
+      //The filtering should be controlled here, always get all applications but narrow it down with a filter HERE.
+      (application) => application.hostID === localStorage.getItem("email")
+    );
+    setFilteredApplications(filteredApplications);
   }
 
   useEffect( () => {
