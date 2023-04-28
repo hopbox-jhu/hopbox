@@ -21,8 +21,6 @@ function AddListing() {
   const [height, setHeight] = useState();
   const [pricing, setPricing] = useState();
   const [permission, setPermission] = useState(false);
-  const [longitude, setLongitude] = useState();
-  const [latitude, setLatitude] = useState();
   const [images, setImages] = useState([]);
 
 
@@ -66,30 +64,38 @@ function AddListing() {
         const features = data.features;
         if (features.length > 0) {
           const feature = features[0];
-          setLongitude(feature.center[0]);
-          setLatitude(feature.center[1]);
-          
-          const listing = {
-            hostID: localStorage.getItem("email"),
-            address: address,
-            longitude: longitude,
-            latitude: latitude,
-            type: type,
-            description: description,
-            images: images,
-            length: lengthAsNumber,
-            width: widthAsNumber,
-            height: heightAsNumber,
-            pricing: pricingAsNumber,
-            calendar: [],
-            applicationIDs: [],
-            isRented: false
-          };
-          try {
-            const response = await api.createListing(listing);
-            alert("Successfully added listing!");
-          } catch (error) {
-            alert("Error adding listing");
+          const longitude = feature.center[0];
+          const latitude = feature.center[1];
+
+          if (longitude && latitude) {
+            const listing = {
+              hostID: localStorage.getItem("email"),
+              address: address,
+              longitude: longitude,
+              latitude: latitude,
+              type: type,
+              description: description,
+              images: images,
+              length: lengthAsNumber,
+              width: widthAsNumber,
+              height: heightAsNumber,
+              pricing: pricingAsNumber,
+              calendar: [],
+              applicationIDs: [],
+              isRented: false
+            };
+
+            try {
+              await Promise.all([
+                fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`),
+                api.createListing(listing)
+              ]);
+              alert("Successfully added listing!");
+            } catch (error) {
+              alert("Error adding listing");
+            }
+          } else {
+            alert("Error: Longitude or Latitude is blank!");
           }
         } else {
           alert("Address not found!");

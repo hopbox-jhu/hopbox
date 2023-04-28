@@ -65,8 +65,6 @@ function Homepage() {
     const [listings, setListings] = useState([]);
     const [features, setFeatures] = useState([]);
     const [filteredListings, setFilteredListings] = useState(listings);
-    const [searchLng, setSearchLng] = useState();
-    const [searchLat, setSearchLat] = useState();
     const [availableOnly, setAvailableOnly] = useState(true);
     const [sorting, setSorting] = useState("Distance");
   
@@ -74,10 +72,12 @@ function Homepage() {
       const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
         const data = await response.json();
         const dataFeatures = data.features;
+        var searchLng = 0;
+        var searchLat = 0;
         if (dataFeatures.length > 0) {
             const feature = dataFeatures[0];
-            setSearchLng(feature.center[0]);
-            setSearchLat(feature.center[1]);
+            searchLng = feature.center[0];
+            searchLat = feature.center[1];
         }
         if (searchLng && searchLat) {
             setLng(searchLng);
@@ -104,9 +104,8 @@ function Homepage() {
                 (listing) => listing.isRented == false
             );
         }
-      setFilteredListings(filtered)
+        setFilteredListings(filtered);
     };
-
 
     useEffect(() => {
         const fetchData = async () => {
