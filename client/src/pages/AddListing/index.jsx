@@ -43,7 +43,7 @@ function AddListing() {
     if (!permission) {
         alert("You must certify that you have the rights/permission to rent out this space.");
       } else if (!address) {
-        alert("Please enter an address for you space.");
+        alert("Please enter and select a valid address for you space.");
         setCurrentPage(1);
       } else if (!description) {
         alert("Please enter a description for your space.");

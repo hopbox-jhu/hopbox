@@ -85,7 +85,8 @@ function PageTypeAddress(props) {
             className='inputfield'
             type="text"
             placeholder="Address"
-            autoComplete="street-address"
+            autoComplete="off"
+            name="no-autofill"
             onChange={handleInputChange}
             value={inputValue}
           />
