@@ -9,6 +9,7 @@ import { Heading, Header, Container, Image, LeftContainer, RightContainer, Butto
 import logo from "/src/assets/logo.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
+import { v4 as uuidv4 } from 'uuid';
 
 
 function AddListing() {
@@ -122,7 +123,7 @@ function AddListing() {
         <Heading>Tell us about your space</Heading>
         </LeftContainer>
         <RightContainer>
-        {currentPage === 1 && <PageTypeAddress type={type} setType={setType} address={address} setAddress={setAddress} />}
+        {currentPage === 1 && <PageTypeAddress key={uuidv4()} type={type} setType={setType} address={address} setAddress={setAddress} />}
 
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
