@@ -8,21 +8,20 @@ import PagePermission from "./PagePermission";
 import { Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
 import logo from "/src/assets/logo.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
-
+import PageImage from "./PageImage";
 
 
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
   const [type, setType] = useState("room");
-  const [address, setAddress] = useState("");
+  const [address, setAddress] = useState();
   const [description, setDescription] = useState("");
   const [length, setLength] = useState();
   const [width, setWidth] = useState();
   const [height, setHeight] = useState();
   const [pricing, setPricing] = useState();
   const [permission, setPermission] = useState(false);
-  const [longitude, setLongitude] = useState();
-  const [latitude, setLatitude] = useState();
+  const [images, setImages] = useState([]);
 
 
   const handleBack = () => {
@@ -40,11 +39,6 @@ function AddListing() {
     const lengthAsNumber = Number(length);
     const widthAsNumber = Number(width);
     const heightAsNumber = Number(height);
-    
-    console.log(pricingAsNumber);
-    console.log(lengthAsNumber);
-    console.log(widthAsNumber);
-    console.log(heightAsNumber);
 
     if (!permission) {
         alert("You must certify that you have the rights/permission to rent out this space.");
@@ -78,30 +72,38 @@ function AddListing() {
         const features = data.features;
         if (features.length > 0) {
           const feature = features[0];
-          setLongitude(feature.center[0]);
-          setLatitude(feature.center[1]);
-          
-          const listing = {
-            hostID: localStorage.getItem("email"),
-            address: address,
-            longitude: longitude,
-            latitude: latitude,
-            type: type,
-            description: description,
-            images: [],
-            length: lengthAsNumber,
-            width: widthAsNumber,
-            height: heightAsNumber,
-            pricing: pricingAsNumber,
-            calendar: [],
-            renterID: "",
-          };
-          try {
-            const response = await api.createListing(listing);
-            console.log(response);
-            alert("Successfully added listing!");
-          } catch (error) {
-            alert("Error adding listing");
+          const longitude = feature.center[0];
+          const latitude = feature.center[1];
+
+          if (longitude && latitude) {
+            const listing = {
+              hostID: localStorage.getItem("email"),
+              address: address,
+              longitude: longitude,
+              latitude: latitude,
+              type: type,
+              description: description,
+              images: images,
+              length: lengthAsNumber,
+              width: widthAsNumber,
+              height: heightAsNumber,
+              pricing: pricingAsNumber,
+              calendar: [],
+              applicationIDs: [],
+              isRented: false
+            };
+
+            try {
+              await Promise.all([
+                fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`),
+                api.createListing(listing)
+              ]);
+              alert("Successfully added listing!");
+            } catch (error) {
+              alert("Error adding listing");
+            }
+          } else {
+            alert("Error: Longitude or Latitude is blank!");
           }
         } else {
           alert("Address not found!");
@@ -125,7 +127,8 @@ function AddListing() {
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
-        {currentPage === 5 && <PagePermission permission={permission} setPermission={setPermission}/>}
+        {currentPage === 5 && <PageImage images={images} setImages={setImages}/>}
+        {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
 
         <ButtonContainer>
         <BackButton onClick={handleBack} disabled={currentPage === 1} style={{ 
@@ -140,8 +143,8 @@ function AddListing() {
           }}>
         Back
         </BackButton>
-        {currentPage !== 5 && (
-          <NextButton onClick={handleNext} disabled={currentPage === 6} style={{
+        {currentPage !== 6 && (
+          <NextButton onClick={handleNext} disabled={currentPage === 7} style={{
             backgroundColor: '#EB65A0',
             color: 'white',
             padding: '15px 28px',
@@ -159,8 +162,8 @@ function AddListing() {
         </NextButton>
         )}
 
-        {currentPage === 5 && (
-          <NextButton onClick={handleOnSubmit} disabled={currentPage === 6} style={{
+        {currentPage === 6 && (
+          <NextButton onClick={handleOnSubmit} disabled={currentPage === 7} style={{
             backgroundColor: '#EB65A0',
             color: 'white',
             padding: '15px 28px',

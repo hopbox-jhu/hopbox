@@ -23,6 +23,7 @@ import Application from "./pages/Application";
 import SignUpPage from "./pages/SignUpSection/SignUpPage";
 import SignInPage from "./pages/SigninSection/SignInPage";
 import ProfilePage from "./pages/Profile";
+import ListingPage from "./pages/ListingPage/Index";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/signin" element={<SignInPage />} />
       <Route path="/profile" element={<ProfilePage user={user}/>} />
+      <Route path="/listing/:id" element={<ListingPage />} />
       </Routes>
     </>
   </AuthContext.Provider>

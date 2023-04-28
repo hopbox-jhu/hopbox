@@ -65,8 +65,6 @@ function Homepage() {
     const [listings, setListings] = useState([]);
     const [features, setFeatures] = useState([]);
     const [filteredListings, setFilteredListings] = useState(listings);
-    const [searchLng, setSearchLng] = useState();
-    const [searchLat, setSearchLat] = useState();
     const [availableOnly, setAvailableOnly] = useState(true);
     const [sorting, setSorting] = useState("Distance");
   
@@ -74,10 +72,12 @@ function Homepage() {
       const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
         const data = await response.json();
         const dataFeatures = data.features;
+        var searchLng = 0;
+        var searchLat = 0;
         if (dataFeatures.length > 0) {
             const feature = dataFeatures[0];
-            setSearchLng(feature.center[0]);
-            setSearchLat(feature.center[1]);
+            searchLng = feature.center[0];
+            searchLat = feature.center[1];
         }
         if (searchLng && searchLat) {
             setLng(searchLng);
@@ -104,9 +104,8 @@ function Homepage() {
                 (listing) => listing.isRented == false
             );
         }
-      setFilteredListings(filtered)
+        setFilteredListings(filtered);
     };
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -118,7 +117,13 @@ function Homepage() {
               coordinates: [listing.longitude, listing.latitude],
             },
             properties: {
-              title: `$${listing.pricing}`,
+              listingId: `${listing._id}`,
+              address: `${listing.address}`,
+              type: `${listing.type}`,
+              length: `${listing.length}`,
+              width: `${listing.width}`,
+              height: `${listing.height}`,
+              pricing: `$${listing.pricing}`
             },
           }));
       
@@ -161,11 +166,50 @@ function Homepage() {
                   source: 'points',
                   layout: {
                     'icon-image': 'custom-marker',
-                    'text-field': ['get', 'title'],
+                    'text-field': ['get', 'pricing'],
                     'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
                     'text-offset': [0, 1.25],
                     'text-anchor': 'top',
                   },
+                });
+
+                map.current.on('click', (event) => {
+                  const features = map.current.queryRenderedFeatures(event.point, {
+                    layers: ['points']
+                  });
+                  if (!features.length) {
+                    return;
+                  }
+                  const feature = features[0];
+                
+                  new mapboxgl.Popup({ offset: [0, -15] })
+                    .setLngLat(feature.geometry.coordinates)
+                    .setHTML(
+                      `
+                      <a href="/listing/${feature.properties.listingId}">
+                      <div style="margin-bottom:15px; height:24vh; box-shadow:0px 0px 10px rgba(0,0,0,0.2); padding:24px; border-radius:10px; border:1px solid #ccc;">
+                      <div>
+                          <div style="display:inline-block; margin-left:24px;">
+                              <h3 style="font-weight:500; font-size:24px;">${feature.properties.address}</h3>
+                              <div style="margin-top:8px; margin-bottom:4px;">
+                                  <span style="display:inline-block; background-color:pink; color:#fff; border-radius:8px; padding:6px 12px; font-size:18px; font-weight:bold; text-transform:capitalize;">
+                                      ${feature.properties.type.charAt(0).toUpperCase() + feature.properties.type.slice(1)}
+                                  </span>
+                                  <span style="display:inline-block; background-color:pink; color:#fff; border-radius:8px; padding:6px 12px; font-size:18px; font-weight:bold; margin-left:8px;">
+                                      ${feature.properties.length} . ${feature.properties.width}${feature.properties.height != null ? ` . ${feature.properties.height} ft` : ' ft'}
+                                  </span>
+                                  <span style="display:inline-block; background-color:pink; color:#fff; border-radius:8px; padding:6px 12px; font-size:18px; font-weight:bold; margin-left:8px;">
+                                      ${feature.properties.pricing}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  </a>
+                  
+                      `
+                    )
+                    .addTo(map.current);
                 });
               }
             );

@@ -7,6 +7,7 @@ import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import StairsIcon from '@mui/icons-material/Stairs';
 import styled from 'styled-components';
 import { AddressAutofill } from '@mapbox/search-js-react';
+import { FormControl, RadioGroup, FormControlLabel, Radio } from "@material-ui/core";
 
 
 const TypeButton = styled(Button)`
@@ -40,39 +41,42 @@ const TypeButton = styled(Button)`
 
 function PageTypeAddress(props) {
   const { type, setType, address, setAddress } = props;
-  const [searchTerm, setSearchTerm] = useState();
+  const [inputValue, setInputValue] = useState(address);
 
-  const handleSearchChange = (event) => {
-
+  const handleAddressChange = (event) => {
     if (event.features) {
-      setSearchTerm(event.features[0].properties.full_address);
+      setAddress(event.features[0].properties.full_address);
+      setInputValue(event.features[0].properties.full_address);
     }
   }
 
   const handleTypeChange = (event) => {
-    setType(event.target.id);
+    setType(event.target.defaultValue);
   };
+
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value);
+  }
 
   return (
     <div>
       <Form>
         <Label htmlFor="type">What type of space best describes your listing?</Label>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gridGap: '10px', justifyContent: 'center', marginBottom: '50px' }}>
-          <TypeButton id="room" clicked={type === 'room' ? "true" : "false"} onClick={handleTypeChange} startIcon={<MeetingRoomIcon />}>
-            Room
-          </TypeButton>
-          <TypeButton id="closet" clicked={type === 'closet' ? "true" : "false"} onClick={handleTypeChange} startIcon={<CheckroomIcon />}>
-            Closet
-          </TypeButton>
-          <TypeButton id="basement" clicked={type === 'basement' ? "true" : "false"} onClick={handleTypeChange} startIcon={<StairsIcon />}>
-            Basement
-          </TypeButton>
-          <TypeButton id="other" clicked={type === 'other' ? "true" : "false"} onClick={handleTypeChange} startIcon={<SpaceBarIcon />}>
-            Other
-          </TypeButton>
-        </div>
+        <FormControl>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            defaultValue="room"
+            value={type}
+            name="radio-buttons-group"
+          >
+            <FormControlLabel value="Room" onClick={handleTypeChange} control={<Radio />} label="Room" />
+            <FormControlLabel value="Closet" onClick={handleTypeChange} control={<Radio />} label="Closet" />
+            <FormControlLabel value="Basement" onClick={handleTypeChange} control={<Radio />} label="Basement" />
+            <FormControlLabel value="Other" onClick={handleTypeChange} control={<Radio />} label="Other" />
+          </RadioGroup>
+        </FormControl>
         <Label htmlFor="address">Where is your space located?</Label>
-        <AddressAutofill onRetrieve={handleSearchChange} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
+        <AddressAutofill onRetrieve={handleAddressChange} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
           <Input
             id="address"
             style={{ width: '31vw'  }}
@@ -81,9 +85,9 @@ function PageTypeAddress(props) {
             className='inputfield'
             type="text"
             placeholder="Address"
-            value={searchTerm}
-            autocomplete="street-address"
-            onChange={handleSearchChange}
+            autoComplete="street-address"
+            onChange={handleInputChange}
+            value={inputValue}
           />
         </AddressAutofill>
       </Form>

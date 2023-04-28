@@ -88,6 +88,14 @@ export async function getAllListings() {
   }
 }
 
+export async function getListingById(listingId) {
+  try {
+    const response = await axiosInstance.get(`/listing/${listingId}`);
+    return response.data.data;
+  } catch (err) {
+    throw err;
+  }
+}
 
 ///APPLICATION:
 export async function createApplication(application) {
