@@ -50,20 +50,28 @@ function AddListing() {
         alert("You must certify that you have the rights/permission to rent out this space.");
       } else if (!address) {
         alert("Please enter an address for you space.");
+        setCurrentPage(1);
       } else if (!description) {
         alert("Please enter a description for your space.");
+        setCurrentPage(2);
       } else if (!length || !width) {
         alert("Please enter an approximation for the dimensions of your space.");
+        setCurrentPage(3);
       } else if (isNaN(lengthAsNumber)) {
         alert("Please enter a number value for the length field.");
+        setCurrentPage(3);
       } else if (isNaN(widthAsNumber)) {
         alert("Please enter a number value for the width field.");
+        setCurrentPage(3);
       } else if (height != null && isNaN(heightAsNumber)) {
         alert("Please enter a number value for the height field.");
+        setCurrentPage(3);
       } else if (!pricing) {
         alert("Please enter a pricing for your space.");
+        setCurrentPage(4);
       } else if (isNaN(pricingAsNumber)) {
         alert("Please enter a number value for the pricing field.");
+        setCurrentPage(4);
       } else {
         const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
         const data = await response.json();

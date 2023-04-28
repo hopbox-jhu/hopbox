@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import HomeIcon from '@material-ui/icons/Home';
 import WorkIcon from '@material-ui/icons/Work';
@@ -9,6 +9,10 @@ import { clearAuth } from '../../api/auth';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuth } from '../../context/AuthContext';
 import PopupForm from './EditProfile';
+import { ListingWrapper, Sidebar } from '../Homepage/Homepage';
+import { ListingList } from '../../components/listingList';
+import { baseApiUrl } from 'mapbox-gl';
+import * as api from "../../api";
 
 
 const ProfilePage = ({ user }) => {
@@ -22,6 +26,11 @@ const ProfilePage = ({ user }) => {
   occupation = localStorage.getItem("occupation");
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const [listings, setListings] = useState([]);
+  const [filteredListings, setFilteredListings] = useState(listings);
+  const [applications, setApplications] = useState([]);
+  const [filteredApplications, setFilteredApplications] = useState(applications);
 
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
@@ -50,6 +59,31 @@ const ProfilePage = ({ user }) => {
     window.location.reload();
   }
 
+  const getListing = async (query) => {
+    const data = await api.getAllListings();
+    setListings(data.data);
+    console.log(data);
+    var filtered = listings.filter(
+      (listing) => listing.hostID === localStorage.getItem("email")
+    );
+    setFilteredListings(filtered);
+  }
+
+  const getApplications = async (query) => {
+    const data = await api.getAllApplications();
+    setApplications(data.data);
+    console.log(data);
+    var filteredApplications = applications.filter(
+      //The filtering should be controlled here, always get all applications but narrow it down with a filter HERE.
+      (application) => application.hostID === localStorage.getItem("email")
+    );
+    setFilteredApplications(filteredApplications);
+  }
+
+  useEffect( () => {
+    getListing();
+  })
+
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
       <div style={{ flex: '0 0 20%', backgroundColor: '#F8EAF4', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -73,18 +107,15 @@ const ProfilePage = ({ user }) => {
       </div>
 
       <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '2rem', backgroundColor: '#FFFFFF' }}>
-        {selectedOption === 'Today' && (
-          // Render Today information
-          <div>
-            <h1>Today Information</h1>
-            {/* Add content for Today information */}
-          </div>
-        )}
         {selectedOption === 'My Listings' && (
           // Render My Listings information
           <div>
             <h1>My Listings Information</h1>
-            {/* Add content for My Listings information */}
+            <ListingWrapper>
+                    <Sidebar>
+                        <ListingList listings={filteredListings} />
+                    </Sidebar>
+            </ListingWrapper>
           </div>
         )}
         {selectedOption === 'My Rentals' && (
