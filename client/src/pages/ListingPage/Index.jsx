@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
-import { Divider, Wrapper } from "../../components/listing/listingComponents";
+// import { Wrapper, Header, LeftContainer, RightContainer, Container } from "../../components/listing/listingComponents";
+import { Header, Container, LeftContainer, RightContainer } from './ListingPage';
 import { Link, useParams } from "react-router-dom";
 import * as api from "../../api";
+import logo from "/src/assets/logo.png";
+
 
 function ListingPage() {
     const { id } = useParams();
@@ -18,11 +21,25 @@ function ListingPage() {
 
     if (data) {
         return (
-            <Divider>
+            <div>
+            <Header>
+            <img src={logo} alt="Logo" />
+            </Header>
+
+            <Container>
+                <LeftContainer>
                 <Image src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=720&amp;q=80" 
-                    height="18vh" width="10vw" radius="lg"  />
-            <Wrapper>
-            <Text align="left" weight={500} size="lg">{data.address}</Text>
+                    height="36vh" width="20vw" radius="lg"  />
+                <Text align="left" weight={500} size="lg">{data.address}</Text>
+                </LeftContainer>
+                <RightContainer>
+
+                </RightContainer>
+            </Container>
+
+
+            <div>
+
             <Group position="left" mt="md" mb="xs">
                 <Badge size="lg" color="pink" variant="light">
                     {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
@@ -41,10 +58,11 @@ function ListingPage() {
             <Button align="left" variant="light" color="pink" fullWidth radius="md">
                 Book Now
             </Button>
-    
             </Link>
-            </Wrapper>
-            </Divider>
+            </div>
+            </div>
+
+
         );
     }
 }
