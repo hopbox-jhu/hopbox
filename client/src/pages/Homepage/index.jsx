@@ -142,7 +142,6 @@ function Homepage() {
           }
       
           map.current.on('load', () => {
-            map.current.removeImage();
             map.current.loadImage(
               'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
               (error, image) => {

@@ -9,6 +9,7 @@ import { Heading, Header, Container, Image, LeftContainer, RightContainer, Butto
 import logo from "/src/assets/logo.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
+import { uploadImage } from "../../api/image";
 
 
 function AddListing() {
@@ -21,7 +22,8 @@ function AddListing() {
   const [height, setHeight] = useState();
   const [pricing, setPricing] = useState();
   const [permission, setPermission] = useState(false);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState('');
+  const [file, setFile] = useState(null);
 
 
   const handleBack = () => {
@@ -34,6 +36,12 @@ function AddListing() {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
+
+    const fd = new FormData()
+    if (file) {
+        fd.append('image', file, file.name)
+        uploadImage(fd);
+    }
     
     const pricingAsNumber = Number(pricing);
     const lengthAsNumber = Number(length);
@@ -127,7 +135,7 @@ function AddListing() {
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
-        {currentPage === 5 && <PageImage images={images} setImages={setImages}/>}
+        {currentPage === 5 && <PageImage images={images} setImages={setImages} file={file} setFile={setFile} />}
         {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
 
         <ButtonContainer>
