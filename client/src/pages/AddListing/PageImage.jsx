@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Label, SizeLabel, Input } from './AddListing';
-import { Avatar } from '@mantine/core'
+import { Avatar } from '@mantine/core';
 
 function PageImage(props) {
     const images = props.images;
@@ -20,10 +20,10 @@ function PageImage(props) {
                             type="file"
                             className="Upload__Input"
                             onChange={(event) => {
-                                const file = event.target.files[0]
-                                const url = URL.createObjectURL(file)
-                                setFile(file)
-                                setImages(url)
+                                const file = event.target.files[0];
+                                const url = URL.createObjectURL(file);
+                                setFile(file);
+                                setImages(url);
                             }}
                         />
                     </div>

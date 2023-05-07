@@ -1,9 +1,10 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const { GridFsStorage } = require('multer-gridfs-storage');
-const crypto = require('crypto');
-const multer = require('multer');
-const path = require('path');
+import express from "express";
+import mongoose from "mongoose";
+import { GridFsStorage } from "multer-gridfs-storage";
+import crypto from "crypto";
+import multer from "multer";
+import path from "path";
+
 const router = express.Router();
 
 let gfs, store;
@@ -15,7 +16,7 @@ if ("mongodb+srv://hopboxjhu:0zVKfI2dGKAwvSQH@hopbox.amtsmfx.mongodb.net/?retryW
 
     conn.once('open', () => {
         gfs = new mongoose.mongo.GridFSBucket(conn.db, {
-            bucketName: 'ProfilePictures',
+          bucketName: 'ProfilePictures',
         });
     });
 
@@ -79,12 +80,13 @@ const uploadMiddleware = (req, res, next) => {
             if (err === 'filetype') return res.status(400).send('Image files only');
                 // An unknown error occurred when uploading.
                 return res.sendStatus(500);
-            }
-            // all good, proceed
-            next();
-        });
-    };
-    router.post('/image/upload/', uploadMiddleware, async (req, res) => {
+        }
+        // all good, proceed
+        next();
+    });
+};
+
+router.post('/image/upload/', uploadMiddleware, async (req, res) => {
     // get the .file property from req that was added by the upload middleware
     const { file } = req;
     // and the id of that new image file
@@ -126,4 +128,4 @@ router.get('/image/:id', ({ params: { id } }, res) => {
 });
 
 
-module.exports = router;
+export default router;

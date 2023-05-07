@@ -11,6 +11,7 @@ export function ListingList({ listings }) {
             address={listing.address}
             type={listing.type}
             price={listing.pricing}
+            images={listing.images}
             description={listing.description}
             length={listing.length}
             width={listing.width}

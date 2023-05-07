@@ -37,12 +37,15 @@ function AddListing() {
   const handleOnSubmit = async (event) => {
     event.preventDefault();
 
-    const fd = new FormData()
+    const fd = new FormData();
     if (file) {
         fd.append('image', file, file.name)
-        uploadImage(fd);
+        const { data } = await uploadImage(fd);
+        handleOnSubmitCreateListing(data);
     }
-    
+  };
+
+  const handleOnSubmitCreateListing = async (imageId) => {
     const pricingAsNumber = Number(pricing);
     const lengthAsNumber = Number(length);
     const widthAsNumber = Number(width);
@@ -91,7 +94,7 @@ function AddListing() {
               latitude: latitude,
               type: type,
               description: description,
-              images: images,
+              images: imageId,
               length: lengthAsNumber,
               width: widthAsNumber,
               height: heightAsNumber,
