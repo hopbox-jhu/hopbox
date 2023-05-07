@@ -9,6 +9,7 @@ import { Heading, Header, Container, Image, LeftContainer, RightContainer, Butto
 import logo from "/src/assets/logo.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
+import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -22,7 +23,8 @@ function AddListing() {
   const [height, setHeight] = useState();
   const [pricing, setPricing] = useState();
   const [permission, setPermission] = useState(false);
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState('');
+  const [file, setFile] = useState(null);
 
 
   const handleBack = () => {
@@ -35,7 +37,16 @@ function AddListing() {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-    
+
+    const fd = new FormData();
+    if (file) {
+        fd.append('image', file, file.name)
+        const { data } = await uploadImage(fd);
+        handleOnSubmitCreateListing(data);
+    }
+  };
+
+  const handleOnSubmitCreateListing = async (imageId) => {
     const pricingAsNumber = Number(pricing);
     const lengthAsNumber = Number(length);
     const widthAsNumber = Number(width);
@@ -44,7 +55,7 @@ function AddListing() {
     if (!permission) {
         alert("You must certify that you have the rights/permission to rent out this space.");
       } else if (!address) {
-        alert("Please enter an address for you space.");
+        alert("Please enter and select a valid address for you space.");
         setCurrentPage(1);
       } else if (!description) {
         alert("Please enter a description for your space.");
@@ -84,7 +95,7 @@ function AddListing() {
               latitude: latitude,
               type: type,
               description: description,
-              images: images,
+              images: imageId,
               length: lengthAsNumber,
               width: widthAsNumber,
               height: heightAsNumber,
@@ -128,7 +139,7 @@ function AddListing() {
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
-        {currentPage === 5 && <PageImage images={images} setImages={setImages}/>}
+        {currentPage === 5 && <PageImage images={images} setImages={setImages} file={file} setFile={setFile} />}
         {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
 
         <ButtonContainer>

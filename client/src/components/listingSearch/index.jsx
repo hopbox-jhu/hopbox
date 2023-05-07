@@ -46,6 +46,7 @@ export function ListingSearchBar({ onSearch }) {
           placeholder="Insert address to look for nearby storage"
           value={searchTerm}
           autoComplete="street-address"
+          name="no-autofill"
           onChange={handleSearchChange}
           rightSection={
             showClearIcon && (

@@ -19,7 +19,7 @@ function ListingPage() {
     if (data) {
         return (
             <Divider>
-                <Image src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=720&amp;q=80" 
+                <Image src={"http://localhost:5050/image/" + data.images[0]}
                     height="18vh" width="10vw" radius="lg"  />
             <Wrapper>
             <Text align="left" weight={500} size="lg">{data.address}</Text>
