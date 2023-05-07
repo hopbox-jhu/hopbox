@@ -4,34 +4,32 @@ import { Link as LinkS } from 'react-scroll';
 
 export const Divider = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-
-  @media screen and (max-width: 768px) {
-    height: 200vh;
-    flex-direction: column;
-  }
-  @media screen and (max-width: 480px) {
-    height: 200vh;
-    flex-direction: column;
-  }
+  height: 100%;
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  margin-left: 1vw;
   justify-content: flex-start;
   width: 70%;
-  height: 80%;
+  height: 100%;
+`;
 
-  
-  @media screen and (max-width: 768px) {
-    height: 200vh;
-    flex-direction: column;
+export const Heading = styled.h1`
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 600;
+
+  @media screen and (max-width: 1500px) {
+    font-size: 0.8rem;
   }
-  @media screen and (max-width: 480px) {
-    height: 200vh;
-    flex-direction: column;
-  }
+`;
+
+export const Subtitle = styled.p`
+  font-size: 0.85rem;
+  line-height: 1.8;
+  font-weight: 200;
 `;

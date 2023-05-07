@@ -271,7 +271,6 @@ function Homepage() {
                   onChange={(event) => setAvailableOnly(event.target.checked)}
                   />
                   <Text2>Only show currently available listings</Text2> */}
-
                   </Filter>
                 </Heading>
               
