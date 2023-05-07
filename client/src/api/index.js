@@ -73,7 +73,6 @@ export async function testAuthorize(postData) {
 export async function createListing(listing) {
   try {
     const response = await axiosInstance.post("/listing", listing);
-    console.log(response.data);
     return response.data;
   } catch (err) {
     throw err;
