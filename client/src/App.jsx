@@ -6,7 +6,10 @@ import React, { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.cdnfonts.com/css/fivo-sans-modern');
+  @font-face {
+    font-family: 'Fivo Sans Modern';
+    src: url('https://fonts.cdnfonts.com/css/fivo-sans-modern');
+  }
 
   * {
     box-sizing: border-box;
