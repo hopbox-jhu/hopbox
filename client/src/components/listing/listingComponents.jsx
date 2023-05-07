@@ -58,8 +58,6 @@ width: 50vw;
 display: flex;
 flex-direction: column;
 background-color: #FFF1F6;
-justify-content: center;
-align-items: center;
 
 @media screen and (max-width: 768px) {
   height: auto;
