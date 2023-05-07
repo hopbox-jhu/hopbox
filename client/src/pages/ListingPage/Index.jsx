@@ -54,7 +54,6 @@ function ListingPage() {
                 </Form>
                 <Form>
                 <label>Pricing</label>
-                <div style={{ alignContent: "center" }}>
                 <PricingBox>
                     <div className="subtotal">Subtotal</div>
                     <div className="price-per-month">${data.pricing}</div>
@@ -68,21 +67,10 @@ function ListingPage() {
                         Book Now
                         </Button>
                     </Link>
-                </div>
                 </Form>
                 </RightContainer>
             </Container>
-
-
-            <div>
-
-
-
-
             </div>
-            </div>
-
-
         );
     }
 }
