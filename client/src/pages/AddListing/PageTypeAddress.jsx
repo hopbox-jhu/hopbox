@@ -68,10 +68,11 @@ function PageTypeAddress(props) {
             defaultValue="room"
             value={type}
             name="radio-buttons-group"
+            color="EB65A0"
           >
             <FormControlLabel value="Room" onClick={handleTypeChange} control={<Radio />} label="Room" />
             <FormControlLabel value="Closet" onClick={handleTypeChange} control={<Radio />} label="Closet" />
-            <FormControlLabel value="Basement" onClick={handleTypeChange} control={<Radio />} label="Basement" />
+            <FormControlLabel value="Basement" onClick={handleTypeChange} control={<Radio />} label="Basement"  />
             <FormControlLabel value="Other" onClick={handleTypeChange} control={<Radio />} label="Other" />
           </RadioGroup>
         </FormControl>

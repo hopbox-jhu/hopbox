@@ -76,6 +76,7 @@ export const Text1 = styled.p`
   color: #000000;
   font-weight: 400;
   line-height:1.3;
+  margin-top: 20px;
 
   @media screen and (max-width: 480px) {
     font-size: 3.5vw;
