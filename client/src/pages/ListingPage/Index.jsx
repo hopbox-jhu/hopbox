@@ -3,10 +3,12 @@ import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import { Divider, Wrapper } from "../../components/listing/listingComponents";
 import { Link, useParams } from "react-router-dom";
 import * as api from "../../api";
+import { useNavigate } from 'react-router-dom';
 
 function ListingPage() {
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -15,6 +17,12 @@ function ListingPage() {
         }
         fetchData();
     }, []);
+
+
+    const handleSubmit = () => {
+        navigate("/application/${id}");
+        window.location.reload();
+    };
 
     if (data) {
         return (
@@ -37,12 +45,9 @@ function ListingPage() {
             <Text align="left" size="sm" color="dimmed">
             {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
             </Text>
-            <Link to={`/application/${id}`}>
-            <Button align="left" variant="light" color="pink" fullWidth radius="md">
+            <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="md">
                 Book Now
             </Button>
-    
-            </Link>
             </Wrapper>
             </Divider>
         );

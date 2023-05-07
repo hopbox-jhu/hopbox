@@ -11,7 +11,7 @@ import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
 import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';
-
+import { useNavigate } from 'react-router-dom';
 
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,6 +25,7 @@ function AddListing() {
   const [permission, setPermission] = useState(false);
   const [images, setImages] = useState('');
   const [file, setFile] = useState(null);
+  const navigate = useNavigate();
 
 
   const handleBack = () => {
@@ -110,6 +111,7 @@ function AddListing() {
                 fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`),
                 api.createListing(listing)
               ]);
+              navigate("/homepage");
               alert("Successfully added listing!");
             } catch (error) {
               alert("Error adding listing");
