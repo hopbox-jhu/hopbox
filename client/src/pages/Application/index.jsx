@@ -27,8 +27,11 @@ function Application() {
   const [agreement, setAgreement] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const {listingID} = useParams();
- 
+  const pathSegments = window.location.pathname.split('/');
+  const listingID = pathSegments[pathSegments.length - 1];  
+
+  
+  
   let applicationData = {
     hostID: "",
     renterID: localStorage.getItem("email"),
@@ -57,7 +60,7 @@ function Application() {
     if (agreement){
       console.log(applicationData);
       event.preventDefault();
-      const response = await api.createApplication(applicationData);
+      const response = await api.createApplication(applicationData, listingID);
       alert("Successfully Submit Application")
     } else {
       alert("Please Read the Terms and Conditions")

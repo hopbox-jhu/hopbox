@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 import { Divider, Wrapper, Heading, Subtitle} from './listingComponents';
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 export function Listing({ listingId, address, type, price, description, length, width, height }) {
+    
+    const navigate = useNavigate();
+
+    const handleNavigate = (event) => {
+        navigate(`/listing/${listingId}`);
+      }
 
     return (
-        <Link to={`/listing/${listingId}`}>
-        <Card style={{marginBottom:"3vh", height:"30vh", alignItem:"center", justifyContent:"center"}} shadow="lg"  radius="lg" withBorder>
+
+        <Card onClick = {handleNavigate} style={{marginBottom:"3vh", height:"30vh", alignItem:"center", justifyContent:"center"}} shadow="lg"  radius="lg" withBorder>
         <Divider>
             <Image styles={{}} src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=720&amp;q=80" 
                 height="25vh" width="15vw" radius="lg" style={{ maxWidth: "100%" }}  />
@@ -30,6 +37,5 @@ export function Listing({ listingId, address, type, price, description, length, 
         </Wrapper>
         </Divider>
         </Card>
-        </Link>
     );
 }

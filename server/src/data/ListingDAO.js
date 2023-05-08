@@ -13,6 +13,15 @@ class ListingDAO {
     const listing = await Listing.findById(id);
     return listing;
   }
+  async addApplication(listingId, applicationId) {
+    const listing = await Listing.findById(listingId);
+    listing.applicationIDs.push(applicationId);
+    try {
+      await listing.save();
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
 
 export default ListingDAO;

@@ -25,6 +25,7 @@ export const MapContainerStyle = styled.div`
     right: 2vw;
     width: 60vw;
     height: 84vh;
+    max-height: 84vh;
     right: 2vw;
     top: 14vh;
     bottom: 10vh;
@@ -63,7 +64,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ListingWrapper = styled.div`
-    margin-top: 10vh;
+    margin-top: 15vh;
     overflow: scroll;
 
 `;
@@ -72,7 +73,7 @@ export const MapWrapper = styled.div`
 `;
 
 export const Text1 = styled.p`
-  font-size: 1.8vw;
+  font-size: 2rem;
   color: #000000;
   font-weight: 400;
   line-height:1.3;

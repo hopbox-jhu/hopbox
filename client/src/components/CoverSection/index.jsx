@@ -4,6 +4,8 @@ import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, ImgLog
 import { makeStyles } from '@material-ui/core/styles';
 import text from "../../assets/logo.png";
 import { Button } from '../ButtonElements';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,6 +19,11 @@ const useStyles = makeStyles((theme) => ({
 
 const CoverSection = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
+
+  const handleNavigate = (event) => {
+    navigate("/homepage");
+  }
 
   return (
     <CoverContainer id='home'>
@@ -33,7 +40,7 @@ const CoverSection = () => {
         <CoverP>
         building a <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>community</mark> that <mark style={{ backgroundColor: '#EB65A0', color: '#ffffff' }}>shares</mark> the load
         </CoverP>
-        <Button to='/homepage' style={{marginTop: '35px'}} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >Get Started</Button>
+        <Button onClick={handleNavigate} style={{marginTop: '35px'}} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >Get Started</Button>
       </CoverContent>
     </CoverContainer>
   );

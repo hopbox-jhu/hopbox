@@ -1,8 +1,14 @@
 import React from 'react';
 import { Button } from '../ButtonElements';
 import { InfoContainer, InfoWrapper, InfoRow, Column1, Column2, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, Img, ImgWrap } from './InfoElements';
+import { useNavigate } from 'react-router-dom';
 
 const InfoSection = ({ lightBg, id, imgStart, topLine, lightText, headline, darkText, description, buttonLabel, img, alt, primary, dark, dark2 }) => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (event) => {
+    navigate("/homepage");
+  }
   return (
     <>
       <InfoContainer lightBg={lightBg} id={id}>
@@ -14,7 +20,7 @@ const InfoSection = ({ lightBg, id, imgStart, topLine, lightText, headline, dark
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
-                  <Button to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1}>{buttonLabel}</Button>
+                  <Button onClick = {handleNavigate} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1}>{buttonLabel}</Button>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
