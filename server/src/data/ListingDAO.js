@@ -13,6 +13,15 @@ class ListingDAO {
     const listing = await Listing.findById(id);
     return listing;
   }
+  async setRenter(id, renterID) {
+    const listing = await Listing.findById(id);
+    if (!listing) {
+      throw new Error("Listing not found");
+    }
+    listing.renterID = renterID;
+    const updatedListing = await listing.save();
+    return updatedListing;
+  }
 }
 
 export default ListingDAO;

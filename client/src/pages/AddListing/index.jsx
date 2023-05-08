@@ -103,7 +103,8 @@ function AddListing() {
               pricing: pricingAsNumber,
               calendar: [],
               applicationIDs: [],
-              isRented: false
+              isRented: false,
+              renterID: null
             };
 
             try {

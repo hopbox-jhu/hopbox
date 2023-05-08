@@ -90,4 +90,22 @@ router.delete("/applications/:id", async (req, res) => {
   }
 });
 
+// Get applications by renterID
+router.get("/applications/renter/:id", async (req, res) => {
+  try {
+    const application = await applicationDAO.getApplicationByRenterId(req.params.id);
+    if (!application) {
+      res.status(404).json({ message: "Application not found" });
+      return;
+    }
+    res.json({
+      status: 200,
+      message: "Successfully retrieved the application!",
+      data: application,
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
 export default router;

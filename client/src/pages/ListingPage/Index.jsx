@@ -18,7 +18,6 @@ function ListingPage() {
         fetchData();
     }, []);
 
-
     const handleSubmit = () => {
         navigate("/application/${id}");
         window.location.reload();
@@ -28,27 +27,29 @@ function ListingPage() {
         return (
             <Divider>
                 <Image src={"http://localhost:5050/image/" + data.images[0]}
-                    height="18vh" width="10vw" radius="lg"  />
-            <Wrapper>
-            <Text align="left" weight={500} size="lg">{data.address}</Text>
-            <Group position="left" mt="md" mb="xs">
-                <Badge size="lg" color="pink" variant="light">
-                    {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
-                </Badge>
-                <Badge size="lg" color="pink" variant="light">
-                    {`${data.length} . ${data.width}${data.height != null ? ` . ${data.height} ft` : ' ft'}`}
-                </Badge>
-                <Badge size="lg" color="pink" variant="light">
-                    ${data.pricing}
-                </Badge>
-            </Group>
-            <Text align="left" size="sm" color="dimmed">
-            {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
-            </Text>
-            <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="md">
-                Book Now
-            </Button>
-            </Wrapper>
+                    height="18vh" width="10vw" radius="lg" />
+                <Wrapper>
+                    <Text align="left" weight={500} size="lg">{data.address}</Text>
+                    <Group position="left" mt="md" mb="xs">
+                        <Badge size="lg" color="pink" variant="light">
+                            {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
+                        </Badge>
+                        <Badge size="lg" color="pink" variant="light">
+                            {`${data.length} . ${data.width}${data.height != null ? ` . ${data.height} ft` : ' ft'}`}
+                        </Badge>
+                        <Badge size="lg" color="pink" variant="light">
+                            ${data.pricing}
+                        </Badge>
+                    </Group>
+                    <Text align="left" size="sm" color="dimmed">
+                        {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
+                    </Text>
+                    {data.hostID !== localStorage.getItem("email") && (
+                        <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="md">
+                            Book Now
+                        </Button>
+                    )}
+                </Wrapper>
             </Divider>
         );
     }
