@@ -5,11 +5,12 @@ import { Header, Container, LeftContainer, RightContainer, Form, PricingBox } fr
 import { Link, useParams } from "react-router-dom";
 import * as api from "../../api";
 import logo from "/src/assets/logo.png";
-
+import { useNavigate } from 'react-router-dom';
 
 function ListingPage() {
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -18,6 +19,11 @@ function ListingPage() {
         }
         fetchData();
     }, []);
+
+    const handleSubmit = () => {
+        navigate("/application/${id}");
+        window.location.reload();
+    };
 
     if (data) {
         return (
@@ -28,7 +34,7 @@ function ListingPage() {
 
             <Container>
                 <LeftContainer>
-                <Image src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=720&amp;q=80" 
+                <Image src={"http://localhost:5050/image/" + data.images[0]}
                     height="60vh" width="40vw" radius="lg"  />
                 <div style={{ marginTop: 30 }}>
                     <label>{data.address}</label>
@@ -62,11 +68,11 @@ function ListingPage() {
                     <div className="total">Total</div>
                     <div className="total-amount">${data.pricing * 1.2 }</div>
                 </PricingBox>
-                <Link to={`/application/${id}`}>
-                        <Button align="left" variant="light" color="pink" fullWidth radius="lg">
-                        Book Now
+                    {data.hostID !== localStorage.getItem("email") && (
+                        <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="lg">
+                            Book Now
                         </Button>
-                    </Link>
+                    )}
                 </Form>
                 </RightContainer>
             </Container>

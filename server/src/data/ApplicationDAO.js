@@ -2,6 +2,7 @@ import Application from "../model/Application.js";
 
 class ApplicationDAO {
   async createApplication({ hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard }) {
+    console.log("this is " + listingID );
     const application = await Application.create({ hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard });
     return application;
   }
@@ -23,6 +24,16 @@ class ApplicationDAO {
   
   async deleteApplication(applicationID) {
     await Application.findByIdAndDelete(applicationID);
+  }
+
+  async getApplicationByListingId(listingID) {
+    const applications = await Application.find({ listingID: listingID });
+    return applications;
+  }
+  
+  async getApplicationByRenterId(renterID) {
+    const applications = await Application.find({ renterID: renterID });
+    return application;
   }
 }
 

@@ -5,11 +5,11 @@ const router = express.Router();
 export const applicationDAO = new ApplicationDAO();
 
 // Create an application
-router.post("/applications/:listingid", async (req, res) => {
+router.post("/applications", async (req, res) => {
   try {
-    const { listingid } = req.params;
-    const { hostID, renterID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard } = req.body;
-    const application = await applicationDAO.createApplication({ hostID, renterID, listingid, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard });
+    const { hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard } = req.body;
+    const application = await applicationDAO.createApplication({ hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard });
+
     res.json({
       status: 201,
       message: "Successfully created application!",
@@ -89,5 +89,40 @@ router.delete("/applications/:id", async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 });
+
+
+// Get Application by Listing ID
+router.get('/applications/:listingId', async (req, res) => {
+  try {
+    const listingId = req.params.listingId;
+    const applications = await applicationDAO.getApplicationByListingId(listingId);
+    res.json({
+      status: 200,
+      message: `Successfully retrieved all applications for listing ${listingId}!`,
+      data: applications
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+// Get applications by renterID
+router.get("/applications/renter/:id", async (req, res) => {
+  try {
+    const application = await applicationDAO.getApplicationByRenterId(req.params.id);
+    if (!application) {
+      res.status(404).json({ message: "Application not found" });
+      return;
+    }
+    res.json({
+      status: 200,
+      message: "Successfully retrieved the application!",
+      data: application,
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
 
 export default router;

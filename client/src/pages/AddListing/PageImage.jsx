@@ -1,21 +1,12 @@
 import React from 'react';
 import { Form, Label, SizeLabel, Input } from './AddListing';
-import axios from 'axios';
+import { Avatar } from '@mantine/core';
 
 function PageImage(props) {
-    // const images = props.images;
-    // const setImages = props.setImages;
-
-    // const handleImagesChange = (event) => {
-    //     const file = event.target.files[0];
-    //     const formData = new FormData();
-    //     formData.append('image', file);
-    //     axios.post('http://localhost:5050/api/upload', formData).then((response) => {
-    //       const imageUrl = response.data.imageUrl;
-    //       setImages(imageUrl);
-    //       console.log(images);
-    //     });
-    // };
+    const images = props.images;
+    const setImages = props.setImages;
+    const file = props.file;
+    const setFile = props.setFile;
 
     return (
         <div>
@@ -24,11 +15,16 @@ function PageImage(props) {
                 <div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                         <SizeLabel htmlFor="length">Images</SizeLabel>
-                        <Input
-                            id="images"
+                        <Avatar radius="md" size={160} src={images} />
+                        <input
                             type="file"
-                            accept="image/*"
-                            //onChange={handleImagesChange}
+                            className="Upload__Input"
+                            onChange={(event) => {
+                                const file = event.target.files[0];
+                                const url = URL.createObjectURL(file);
+                                setFile(file);
+                                setImages(url);
+                            }}
                         />
                     </div>
                 </div>
