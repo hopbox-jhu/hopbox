@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const axiosInstance = axios.create({
-  baseURL: "http://localhost:5050",
+  baseURL: "https://hopbox-web-service.onrender.com",
 });
 
 export async function postRenterEmail(email) {

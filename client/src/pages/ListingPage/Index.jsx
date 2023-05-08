@@ -35,7 +35,7 @@ function ListingPage() {
 
             <Container>
                 <LeftContainer>
-                <Image src={"http://localhost:5050/image/" + data.images[0]}
+                <Image src={"https://hopbox-web-service.onrender.com/image/" + data.images[0]}
                     height="60vh" width="40vw" radius="lg"  />
                 <div style={{ marginTop: 30 }}>
                     <label>{data.address}</label>

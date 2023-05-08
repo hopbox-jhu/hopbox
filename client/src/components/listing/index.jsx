@@ -16,7 +16,7 @@ export function Listing({ listingId, address, type, price, images, description, 
 
         <Card onClick = {handleNavigate} style={{marginBottom:"3vh", height:"30vh", alignItem:"center", justifyContent:"center"}} shadow="lg"  radius="lg" withBorder>
         <Divider>
-            <Image src={"http://localhost:5050/image/" + images[0]}
+            <Image src={"https://hopbox-web-service.onrender.com/image/" + images[0]}
                 height="25vh" width="15vw" radius="lg" style={{ maxWidth: "100%" }}  />
         <Wrapper>
         <Heading align="left" weight={500} size="lg">{address}</Heading>
