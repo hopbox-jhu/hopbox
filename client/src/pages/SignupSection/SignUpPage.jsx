@@ -3,7 +3,7 @@ import * as postApi from "../../api/index";
 import { useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
 import { Link } from 'react-router-dom';
-import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content } from './SignUpElements';
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content } from './SignupElements';
 import Video from '../../videos/video.mp4';
 
 
