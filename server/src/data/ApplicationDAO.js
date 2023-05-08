@@ -24,6 +24,11 @@ class ApplicationDAO {
   async deleteApplication(applicationID) {
     await Application.findByIdAndDelete(applicationID);
   }
+
+  async getApplicationByRenterId(renterID) {
+    const applications = await Application.find({ renterID: renterID });
+    return application;
+  }
 }
 
 export default ApplicationDAO;

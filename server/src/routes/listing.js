@@ -48,4 +48,28 @@ router.get("/listing/:id", async (req, res) => {
     }
   });
 
+  router.patch("/listing/:id", async (req, res) => {
+    try {
+      const listing = await listingDAO.getListingById(req.params.id);
+      if (!listing) {
+        res.status(404).json({ message: "Listing not found" });
+        return;
+      }
+      // update the desired field with the new value
+      listing.renterID = req.body.renterID;
+  
+      // save the updated listing to the database
+      const updatedListing = await listing.save();
+  
+      res.json({
+        status: 200,
+        message: "Successfully updated listing!",
+        data: updatedListing,
+      });
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  });
+  
+
 export default router;
