@@ -6,17 +6,18 @@ import React, { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  @font-face {
-    font-family: 'Fivo Sans Modern';
-    src: url('https://fonts.cdnfonts.com/css/fivo-sans-modern');
-  }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Fivo Sans Modern', sans-serif;
-  }
+  @font-face {
+    font-family: 'Fivo Sans Modern';
+    src: url('https://fonts.cdnfonts.com/css/fivo-sans-modern');
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Fivo Sans Modern', sans-serif;
+  }
 `;
 
 import Landing from "./pages/Landing/Landing";
@@ -56,21 +57,6 @@ function App() {
       </Routes>
     </>
   </AuthContext.Provider>
-
-    // <>
-    // <GlobalStyle/>
-    // <Routes>
-    //   <Route path="/" element={<Landing />} />
-    //   <Route path="/map" element={<Map />} />
-    //   <Route path="/addlisting" element={<AddListing />} />
-    //   <Route path="/application" element={<AddListing />} />
-    //   <Route path="/signup" element={<SignUpPage />} />
-    //   <Route path="/signin" element={<SignInPage />} />
-    // </Routes>
-    // <AuthContext.Provider value={{ isAuth, setIsAuth }}>
-    //   {/* Your component tree */}
-    // </AuthContext.Provider>
-    // </>
   );
 } 
 

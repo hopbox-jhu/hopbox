@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
-import { Divider, Wrapper } from "../../components/listing/listingComponents";
+// import { Wrapper, Header, LeftContainer, RightContainer, Container } from "../../components/listing/listingComponents";
+import { Header, Container, LeftContainer, RightContainer, Form, PricingBox } from './ListingPage';
 import { Link, useParams } from "react-router-dom";
 import * as api from "../../api";
+import logo from "/src/assets/logo.png";
 import { useNavigate } from 'react-router-dom';
 
 function ListingPage() {
@@ -25,32 +27,56 @@ function ListingPage() {
 
     if (data) {
         return (
-            <Divider>
+            <div>
+            <Header>
+            <img src={logo} alt="Logo" />
+            </Header>
+
+            <Container>
+                <LeftContainer>
                 <Image src={"http://localhost:5050/image/" + data.images[0]}
-                    height="18vh" width="10vw" radius="lg" />
-                <Wrapper>
-                    <Text align="left" weight={500} size="lg">{data.address}</Text>
+                    height="60vh" width="40vw" radius="lg"  />
+                <div style={{ marginTop: 30 }}>
+                    <label>{data.address}</label>
+                </div>
+                </LeftContainer>
+                <RightContainer>
+                <Form>
+                <label>About</label>
                     <Group position="left" mt="md" mb="xs">
                         <Badge size="lg" color="pink" variant="light">
                             {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
                         </Badge>
                         <Badge size="lg" color="pink" variant="light">
-                            {`${data.length} . ${data.width}${data.height != null ? ` . ${data.height} ft` : ' ft'}`}
-                        </Badge>
-                        <Badge size="lg" color="pink" variant="light">
-                            ${data.pricing}
+                            {`${data.length} * ${data.width}${data.height != null ? ` * ${data.height} ft` : ' ft'}`}
                         </Badge>
                     </Group>
-                    <Text align="left" size="sm" color="dimmed">
-                        {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
+                
+                    <div style={{ marginTop: 30 }}>
+                    <Text align="left" size="sm" color="dimmed" >
+                    {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
                     </Text>
+                    </div>
+                </Form>
+                <Form>
+                <label>Pricing</label>
+                <PricingBox>
+                    <div className="subtotal">Subtotal</div>
+                    <div className="price-per-month">${data.pricing}</div>
+                    <div className="service-fee">Service Fee (20%)</div>
+                    <div className="service-fee-amount">${data.pricing * 0.2}</div>
+                    <div className="total">Total</div>
+                    <div className="total-amount">${data.pricing * 1.2 }</div>
+                </PricingBox>
                     {data.hostID !== localStorage.getItem("email") && (
-                        <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="md">
+                        <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="lg">
                             Book Now
                         </Button>
                     )}
-                </Wrapper>
-            </Divider>
+                </Form>
+                </RightContainer>
+            </Container>
+            </div>
         );
     }
 }
