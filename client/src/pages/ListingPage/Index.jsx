@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import * as api from "../../api";
 import logo from "/src/assets/logo.png";
 import { useNavigate } from 'react-router-dom';
+import { List } from "@material-ui/core";
 
 function ListingPage() {
     const { id } = useParams();
@@ -68,11 +69,15 @@ function ListingPage() {
                     <div className="total">Total</div>
                     <div className="total-amount">${data.pricing * 1.2 }</div>
                 </PricingBox>
-                    {data.hostID !== localStorage.getItem("email") && (
+                    {data.hostID !== localStorage.getItem("email") ? (
                         <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="lg">
                             Book Now
                         </Button>
-                    )}
+                    ):
+                    <List>
+                        TODO: list of applications get by userID (which is hostID)
+                    </List>
+                    }
                 </Form>
                 </RightContainer>
             </Container>
