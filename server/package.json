@@ -21,6 +21,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.7.2",
     "mongoose-findorcreate": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-local": "^1.0.0",
@@ -38,4 +39,3 @@
     "vitest": "^0.25.2"
   }
 }
-

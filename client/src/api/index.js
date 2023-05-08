@@ -109,7 +109,7 @@ export async function setRenter(id, renterID) {
 ///APPLICATION:
 export async function createApplication(application) {
   try {
-    const response = await axiosInstance.post("/applications/:listingid", application);
+    const response = await axiosInstance.post(`/applications`, application);
     return response.data;
   } catch (err) {
     throw err;
@@ -129,6 +129,16 @@ export async function getApplicationById(applicationId) {
   try {
     const response = await axiosInstance.get(`/applications/${applicationId}`);
     return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+
+export async function getApplicationsByListingId(listingid) {
+  try {
+    const response = await axiosInstance.get(`/applications/${listingid}`);
+    return response.data.data;
   } catch (err) {
     throw err;
   }

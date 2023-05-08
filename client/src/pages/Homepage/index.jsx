@@ -184,7 +184,7 @@ function Homepage() {
                   const feature = features[0];
                   map.current.flyTo({center:[feature.geometry.coordinates[0], feature.geometry.coordinates[1]]});
                 
-                  new mapboxgl.Popup({ offset: [0, -15] })
+                  new mapboxgl.Popup({ offset: [0, -35] })
                     .setLngLat(feature.geometry.coordinates)
                     .setHTML(
                       `
@@ -212,6 +212,15 @@ function Homepage() {
                       `
                     )
                     .addTo(map.current);
+                      // Ensure popup remains within the map bounds even when zooming out
+                    const mapBounds = map.current.getBounds();
+                    const popupBounds = popup.getBounds();
+                    if (!mapBounds.contains(popupBounds)) {
+                      const newLng = Math.max(Math.min(feature.geometry.coordinates[0], mapBounds.getEast()), mapBounds.getWest());
+                      const newLat = Math.max(Math.min(feature.geometry.coordinates[1], mapBounds.getNorth()), mapBounds.getSouth());
+                      popup.setLngLat([newLng, newLat]);
+                    }
+                 
                 });
               }
             );
@@ -265,15 +274,6 @@ function Homepage() {
                       checked={availableOnly}
                       onChange={(event) => setAvailableOnly(event.target.checked)}
                     />
-
-                  {/* <input
-                  id="available"
-                  type="checkbox"
-                  checked={availableOnly}
-                  onChange={(event) => setAvailableOnly(event.target.checked)}
-                  />
-                  <Text2>Only show currently available listings</Text2> */}
-
                   </Filter>
                 </Heading>
               

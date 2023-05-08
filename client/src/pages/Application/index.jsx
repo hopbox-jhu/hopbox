@@ -29,7 +29,11 @@ function Application() {
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
+  const pathSegments = window.location.pathname.split('/');
+  const listingID = pathSegments[pathSegments.length - 1];  
+  
   //const {listingID} = useParams();
+
   let applicationData = {
     hostID: "",
     renterID: localStorage.getItem("email"),
@@ -58,7 +62,7 @@ function Application() {
     if (agreement){
       console.log(applicationData);
       event.preventDefault();
-      const response = await api.createApplication(applicationData);
+      const response = await api.createApplication(applicationData, listingID);
       alert("Successfully Submit Application")
       navigate("/homepage");
     } else {

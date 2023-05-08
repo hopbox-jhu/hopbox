@@ -6,7 +6,10 @@ import React, { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.cdnfonts.com/css/fivo-sans-modern');
+  @font-face {
+    font-family: 'Fivo Sans Modern';
+    src: url('https://fonts.cdnfonts.com/css/fivo-sans-modern');
+  }
 
   * {
     box-sizing: border-box;
@@ -42,14 +45,14 @@ function App() {
     <>
       <GlobalStyle />
       <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/homepage" element={<Homepage />} />
-      <Route path="/addlisting" element={<AddListing />} />
-      <Route path="/application/:listingid" element={<Application />} />
-      <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/signin" element={<SignInPage />} />
-      <Route path="/profile" element={<ProfilePage user={user}/>} />
-      <Route path="/listing/:id" element={<ListingPage />} />
+        <Route path="/" element={<Landing />} />
+        <Route path="/homepage" element={<Homepage />} />
+        <Route path="/addlisting" element={<AddListing />} />
+        <Route path="/application/:listingid" element={<Application />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/profile" element={<ProfilePage user={user}/>} />
+        <Route path="/listing/:id" element={<ListingPage />} />
       </Routes>
     </>
   </AuthContext.Provider>
