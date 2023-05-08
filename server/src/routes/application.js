@@ -92,13 +92,13 @@ router.delete("/applications/:id", async (req, res) => {
 
 
 // Get Application by Listing ID
-router.get('/applications/:listingId', async (req, res) => {
+router.get('/applications/listing/:listingID', async (req, res) => {
   try {
-    const listingId = req.params.listingId;
-    const applications = await applicationDAO.getApplicationByListingId(listingId);
+    const listingID = req.params.listingID;
+    const applications = await applicationDAO.getApplicationByListingId(listingID);
     res.json({
       status: 200,
-      message: `Successfully retrieved all applications for listing ${listingId}!`,
+      message: `Successfully retrieved all applications for listing ${listingID}!`,
       data: applications
     });
   } catch (error) {

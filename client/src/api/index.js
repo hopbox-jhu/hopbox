@@ -135,9 +135,11 @@ export async function getApplicationById(applicationId) {
 }
 
 
-export async function getApplicationsByListingId(listingid) {
+export async function getApplicationsByListingId(listingID) {
   try {
-    const response = await axiosInstance.get(`/applications/${listingid}`);
+    console.log("HELLO " + listingID);
+    const response = await axiosInstance.get(`/applications/listing/${listingID}`);
+    console.log(response);
     return response.data.data;
   } catch (err) {
     throw err;
