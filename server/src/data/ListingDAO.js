@@ -13,6 +13,7 @@ class ListingDAO {
     const listing = await Listing.findById(id);
     return listing;
   }
+  
   async addApplication(listingId, applicationId) {
     const listing = await Listing.findById(listingId);
     listing.applicationIDs.push(applicationId);
@@ -21,6 +22,16 @@ class ListingDAO {
     } catch (err) {
       console.error(err);
     }
+  }
+  
+  async setRenter(id, renterID) {
+    const listing = await Listing.findById(id);
+    if (!listing) {
+      throw new Error("Listing not found");
+    }
+    listing.renterID = renterID;
+    const updatedListing = await listing.save();
+    return updatedListing;
   }
 }
 

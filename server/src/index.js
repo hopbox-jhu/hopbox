@@ -4,6 +4,7 @@ import renter from "./routes/renter.js";
 import listing from "./routes/listing.js";
 import application from "./routes/application.js";
 import user from "./routes/user.js";
+import image from "./routes/images.js";
 import * as db from "./data/db.js";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -21,12 +22,17 @@ app.get("/", (req, res) => {
   res.send("Welcome to the HopBox API!");
 });
 
+app.get("/image/upload/", (req, res) => {
+  res.send("Image upload");
+});
+
 app.use(host);
 app.use(renter);
 app.use(listing);
 app.use(application);
 app.use(user);
 app.use(authRouter);
+app.use(image);
 
 app.use((err, req, res, next) => {
   if (err) {

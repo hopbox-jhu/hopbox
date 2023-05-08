@@ -97,6 +97,15 @@ export async function getListingById(listingId) {
   }
 }
 
+export async function setRenter(id, renterID) {
+  try {
+    const response = await axiosInstance.patch(`/listing/${id}`, { renterID });
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
 ///APPLICATION:
 export async function createApplication(application) {
   try {
@@ -125,10 +134,20 @@ export async function getApplicationById(applicationId) {
   }
 }
 
+
 export async function getApplicationsByListingId(listingid) {
   try {
     const response = await axiosInstance.get(`/applications/${listingid}`);
     return response.data.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getApplicationsByRenterId(renterID) {
+  try {
+    const response = await axiosInstance.get(`/applications/renter/${renterID}`);
+    return response.data;
   } catch (err) {
     throw err;
   }

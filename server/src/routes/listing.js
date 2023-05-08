@@ -4,29 +4,6 @@ import ListingDAO from "../data/ListingDAO.js";
 const router = express.Router();
 export const listingDAO = new ListingDAO();
 
-import multer from "multer";
-
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, 'public/uploads');
-  },
-  filename: (req, file, cb) => {
-    const ext = file.mimetype.split('/')[1];
-    cb(null, `image-${Date.now()}.${ext}`);
-  }
-});
-
-const upload = multer({ storage: storage });
-
-router.post('/upload', upload.single('image'), (req, res) => {
-  const file = req.file;
-  if (!file) {
-    return res.status(400).json({ message: 'No file uploaded' });
-  }
-  const imageUrl = `http://localhost:5050/images/${file.filename}`;
-  res.json({ imageUrl: imageUrl });
-});
-
 router.post("/listing", async (req, res) => {
   try {
     const { hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented } = req.body;
@@ -70,5 +47,29 @@ router.get("/listing/:id", async (req, res) => {
       res.status(404).json({ message: error.message });
     }
   });
+
+  router.patch("/listing/:id", async (req, res) => {
+    try {
+      const listing = await listingDAO.getListingById(req.params.id);
+      if (!listing) {
+        res.status(404).json({ message: "Listing not found" });
+        return;
+      }
+      // update the desired field with the new value
+      listing.renterID = req.body.renterID;
+  
+      // save the updated listing to the database
+      const updatedListing = await listing.save();
+  
+      res.json({
+        status: 200,
+        message: "Successfully updated listing!",
+        data: updatedListing,
+      });
+    } catch (error) {
+      res.status(404).json({ message: error.message });
+    }
+  });
+  
 
 export default router;

@@ -30,6 +30,11 @@ class ApplicationDAO {
     const applications = await Application.find({ listingID: listingID });
     return applications;
   }
+  
+  async getApplicationByRenterId(renterID) {
+    const applications = await Application.find({ renterID: renterID });
+    return application;
+  }
 }
 
 export default ApplicationDAO;

@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-//dotenv.config();
+dotenv.config();
 
-//const URI = process.env.DB_URI;
+const URI = process.env.DB_URI;
 
 //above not working so temporarily hardcoded
-const URI = "mongodb+srv://hopboxjhu:0zVKfI2dGKAwvSQH@hopbox.amtsmfx.mongodb.net/?retryWrites=true&w=majority"
+//const URI = "mongodb+srv://hopboxjhu:0zVKfI2dGKAwvSQH@hopbox.amtsmfx.mongodb.net/?retryWrites=true&w=majority"
 
 const option = {
   useNewUrlParser: true,

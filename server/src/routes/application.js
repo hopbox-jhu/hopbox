@@ -90,6 +90,7 @@ router.delete("/applications/:id", async (req, res) => {
   }
 });
 
+
 // Get Application by Listing ID
 router.get('/applications/:listingId', async (req, res) => {
   try {
@@ -99,6 +100,24 @@ router.get('/applications/:listingId', async (req, res) => {
       status: 200,
       message: `Successfully retrieved all applications for listing ${listingId}!`,
       data: applications
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+// Get applications by renterID
+router.get("/applications/renter/:id", async (req, res) => {
+  try {
+    const application = await applicationDAO.getApplicationByRenterId(req.params.id);
+    if (!application) {
+      res.status(404).json({ message: "Application not found" });
+      return;
+    }
+    res.json({
+      status: 200,
+      message: "Successfully retrieved the application!",
+      data: application,
     });
   } catch (error) {
     res.status(404).json({ message: error.message });

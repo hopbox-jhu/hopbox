@@ -1,4 +1,4 @@
-import React, { useState, useParams } from "react";
+import React, { useState, useParams, useEffect } from "react";
 import * as api from "../../api";
 import { Header, Heading, Form, Image, Label, Input, Button, GiantInput, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from "./Application";
 import { Checkbox, Anchor } from '@mantine/core';
@@ -10,6 +10,7 @@ import PageItems from "./PageItems";
 import PageNeeds from "./PageNeeds";
 import PageInsurance from "./PageInsurance";
 import PageCreditCard from "./PageCreditCard";
+import { useNavigate } from 'react-router-dom';
 
 function Application() {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -26,16 +27,17 @@ function Application() {
   });
   const [agreement, setAgreement] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
 
   const pathSegments = window.location.pathname.split('/');
   const listingID = pathSegments[pathSegments.length - 1];  
+  
+  //const {listingID} = useParams();
 
-  
-  
   let applicationData = {
     hostID: "",
     renterID: localStorage.getItem("email"),
-    listingID: listingID,
+    listingID: "",
     startDate: dateRange[0],
     endDate: dateRange[1],
     hazardCheck: hazardCheck,
@@ -62,6 +64,7 @@ function Application() {
       event.preventDefault();
       const response = await api.createApplication(applicationData, listingID);
       alert("Successfully Submit Application")
+      navigate("/homepage");
     } else {
       alert("Please Read the Terms and Conditions")
     }
@@ -74,9 +77,6 @@ function Application() {
   const handleNext = () => {
     setCurrentPage(currentPage + 1);
   };
-
-
-
 
   return (
     <div>
