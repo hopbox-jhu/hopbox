@@ -107,6 +107,8 @@ function Homepage() {
         setFilteredListings(filtered);
     };
 
+    handleSearch("3700 North Charles Street Baltimore, Maryland 21218, United States");
+
     useEffect(() => {
         const fetchData = async () => {
           const data = await api.getAllListings();
@@ -180,6 +182,7 @@ function Homepage() {
                     return;
                   }
                   const feature = features[0];
+                  map.current.flyTo({center:[feature.geometry.coordinates[0], feature.geometry.coordinates[1]]});
                 
                   new mapboxgl.Popup({ offset: [0, -15] })
                     .setLngLat(feature.geometry.coordinates)

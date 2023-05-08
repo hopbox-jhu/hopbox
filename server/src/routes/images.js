@@ -8,8 +8,8 @@ import path from "path";
 const router = express.Router();
 
 let gfs, store;
-if ("mongodb+srv://hopboxjhu:0zVKfI2dGKAwvSQH@hopbox.amtsmfx.mongodb.net/?retryWrites=true&w=majority") {
-    const conn = mongoose.createConnection("mongodb+srv://hopboxjhu:0zVKfI2dGKAwvSQH@hopbox.amtsmfx.mongodb.net/?retryWrites=true&w=majority", {
+if (process.env.DB_URI) {
+    const conn = mongoose.createConnection(process.env.DB_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
@@ -21,7 +21,7 @@ if ("mongodb+srv://hopboxjhu:0zVKfI2dGKAwvSQH@hopbox.amtsmfx.mongodb.net/?retryW
     });
 
     const storage = new GridFsStorage({
-        url: "mongodb+srv://hopboxjhu:0zVKfI2dGKAwvSQH@hopbox.amtsmfx.mongodb.net/?retryWrites=true&w=majority",
+        url: process.env.DB_URI,
         options: { useUnifiedTopology: true },
         file: (req, file) => {
             // this function runs every time a new file is created
