@@ -155,7 +155,7 @@ export async function getApplicationsByRenterId(renterID) {
 
 export async function updateApplicationById(applicationId, application) {
   try {
-    const response = await axiosInstance.patch(`/application/${applicationId}`, application);
+    const response = await axiosInstance.patch(`/applications/${applicationId}`, application);
     return response.data;
   } catch (err) {
     throw err;
