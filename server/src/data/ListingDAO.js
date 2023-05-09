@@ -1,5 +1,5 @@
 import Listing from "../model/Listing.js";
-import Application from "../mode/Listing.js";
+import Application from "../model/Application.js";
 
 class ListingDAO {
   async createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID }) {
@@ -25,26 +25,28 @@ class ListingDAO {
     }
   }
 
-  async acceptApplication(listingID, renterID) {
+  async acceptApplication(listingID, applicationID) {
     const listing = await Listing.findById(listingID);
-    const applications = await Application.find({ renterID: renterID });
+    const applications = await Application.findById(applicationID);
     if (!listing) {
       throw new Error("Listing not found");
     }
-    listing.renterID = renterID;
+    listing.renterID = applications.renterID;
     listing.isRented = true;
     applications.accepted = "true";
-    const updatedListing = await listing.save();
+    await listing.save();
     await applications.save();
-    return updatedListing;
+    return listing;
   }
 
-  async rejectApplication(renterID) {
-    const applications = await Application.find({ renterID: renterID });
-    applications.accepted = "false";
-    const updatedApplication = await applications.save();
-    return updatedApplication;
+  async rejectApplication(applicationID) {
+    const application = await Application.findById(applicationID);
+    application.accepted = "false";
+    await application.save();
+    return application;
   }
+  
+
 }
 
 export default ListingDAO;

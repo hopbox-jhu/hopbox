@@ -49,10 +49,11 @@ router.get("/listing/:id", async (req, res) => {
     }
   });
 
-  router.patch("/acceptlisting", async (req, res) => {
-    const {listingID, renterID} = req.body;
+  router.patch("/acceptapplication", async (req, res) => {
+    const {listingID, applicationID} = req.body;
+    console.log(applicationID);
     try {
-      const listing = await listingDAO.acceptApplication(listingID, renterID);
+      const listing = await listingDAO.acceptApplication(listingID, applicationID);
       if (!listing) {
         res.status(404).json({ message: "Listing not found" });
         return;
@@ -60,7 +61,7 @@ router.get("/listing/:id", async (req, res) => {
       res.json({
         status: 200,
         message: "Successfully updated listing!",
-        data: updatedListing,
+        data: listing,
       });
     } catch (error) {
       res.status(404).json({ message: error.message });
@@ -68,9 +69,9 @@ router.get("/listing/:id", async (req, res) => {
   });
 
   router.patch("/rejectapplication", async (req, res) => {
-    const renterID = req.body.renterID;
+    const applicationID = req.body.applicationID;
     try {
-      const updatedApplication = await listingDAO.rejectApplication(renterID);
+      const updatedApplication = await listingDAO.rejectApplication(applicationID);
       res.json({
         status: 200,
         message: "Successfully rejected application!",
