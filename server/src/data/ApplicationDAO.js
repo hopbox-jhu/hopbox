@@ -33,7 +33,7 @@ class ApplicationDAO {
   
   async getApplicationByRenterId(renterID) {
     const applications = await Application.find({ renterID: renterID });
-    return application;
+    return applications;
   }
 }
 

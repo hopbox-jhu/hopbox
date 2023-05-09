@@ -170,3 +170,24 @@ export async function deleteApplicationById(applicationId) {
     throw err;
   }
 }
+
+// Accept application by listing ID and application ID
+export async function acceptApplication(listingID, applicationID) {
+  try {
+    const response = await axiosInstance.patch('/acceptapplication', { listingID, applicationID });
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
+// Reject application by application ID
+export async function rejectApplication(applicationID) {
+  try {
+    const response = await axiosInstance.patch('/rejectapplication', { applicationID });
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
