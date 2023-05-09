@@ -14,7 +14,8 @@ const ListingSchema = new mongoose.Schema({
     pricing: { type: Number },
     calendar: { type: [Date] },
     applicationIDs: { type: [mongoose.Schema.Types.ObjectId], ref: 'Application'},
-    isRented: { type: Boolean, default: false }
+    isRented: { type: Boolean, default: false },
+    renterID: { type: String, default: null }
 });
 
 const Listing = mongoose.model("Listing", ListingSchema);
