@@ -35,7 +35,7 @@ function ListingPage() {
 
     const handleSubmit = () => {
         navigate(`/application/${listingID}`);
-        window.location.reload();
+        //window.location.reload();
     };
 
     if (data) {
