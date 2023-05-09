@@ -106,3 +106,22 @@ export const Subtitle = styled.p`
   line-height: 1.8;
   font-weight: 200;
 `;
+
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+  margin-right: 20px;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 60px;
+  border-radius: 10px;
+
+
+`;

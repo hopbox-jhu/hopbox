@@ -33,7 +33,7 @@ function ListingPage() {
     }, []);
 
     const handleSubmit = () => {
-        navigate(`/application/${id}`);
+        navigate("/application/${id}");
         window.location.reload();
     };
 
@@ -86,22 +86,29 @@ function ListingPage() {
                         </Button>
                     ): <></>
                     }
+                <label>Application</label>
+
+                {data.hostID == localStorage.getItem("email") ? (
+                <List>
+                    {applications.map((application, index) => (
+                        <Application
+                            key={application._id}
+                            applicationId={application._id}
+                            startDate={new Date(application.startDate).toLocaleDateString('en-US')}
+                            endDate={new Date(application.endDate).toLocaleDateString('en-US')}
+                            items={application.items}
+                            needs={application.needs}
+                        >
+                            <div>{index + 1}. </div>
+                        </Application>
+                    ))}
+                </List>
+                ): <></>}
+
                 </Form>
                 </RightContainer>
             </Container>
-            {data.hostID == localStorage.getItem("email") ? (
-                    <List>
-                        {applications.map((application, index) => (
-                            <Application
-                                applicationId={application._id}
-                                startDate={application.startDate}
-                                endDate={application.endDate}
-                                items={application.items}
-                                needs={application.needs}
-                            />
-                            ))}
-                    </List>
-                ): <></>}
+
             </div>
         );
     }
