@@ -10,7 +10,7 @@ const ApplicationSchema = new mongoose.Schema({
     items: String,
     needs: String,
     protectionPlan: Boolean,
-    accepted: {type: Boolean, default: false},
+    accepted: {type: String, default: null},
     creditCard: {
         cardNumber: String,
         cvc: String,
