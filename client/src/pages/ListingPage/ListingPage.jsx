@@ -123,7 +123,7 @@ export const Form = styled.div`
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 700px;
+  height: auto;
   margin-bottom: 20px;
   margin-right: 20px;
 
