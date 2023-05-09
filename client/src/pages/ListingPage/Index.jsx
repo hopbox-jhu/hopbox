@@ -7,10 +7,12 @@ import * as api from "../../api";
 import logo from "/src/assets/logo.png";
 import { useNavigate } from 'react-router-dom';
 import { List } from "@material-ui/core";
+import { Application } from "../../components/application"
 
 function ListingPage() {
     const { id } = useParams();
     const [data, setData] = useState(null);
+    const [applications, setApplications] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,6 +21,15 @@ function ListingPage() {
             setData(result);
         }
         fetchData();
+        async function fetchApplications() {
+            try {
+              const data = await api.getApplicationsByListingId(id);
+              setApplications(data);
+            } catch (error) {
+              console.error(error);
+            }
+        }
+        fetchApplications();
     }, []);
 
     const handleSubmit = () => {
@@ -73,14 +84,24 @@ function ListingPage() {
                         <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="lg">
                             Book Now
                         </Button>
-                    ):
-                    <List>
-                        TODO: list of applications get by userID (which is hostID)
-                    </List>
+                    ): <></>
                     }
                 </Form>
                 </RightContainer>
             </Container>
+            {data.hostID == localStorage.getItem("email") ? (
+                    <List>
+                        {applications.map((application, index) => (
+                            <Application
+                                applicationId={application._id}
+                                startDate={application.startDate}
+                                endDate={application.endDate}
+                                items={application.items}
+                                needs={application.needs}
+                            />
+                            ))}
+                    </List>
+                ): <></>}
             </div>
         );
     }
