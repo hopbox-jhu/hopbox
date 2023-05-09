@@ -33,7 +33,7 @@ function ListingPage() {
     }, []);
 
     const handleSubmit = () => {
-        navigate("/application/${id}");
+        navigate(`/application/${id}`);
         window.location.reload();
     };
 
