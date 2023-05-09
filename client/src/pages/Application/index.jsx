@@ -37,7 +37,7 @@ function Application() {
   let applicationData = {
     hostID: "",
     renterID: localStorage.getItem("email"),
-    listingID: "",
+    listingID: listingID,
     startDate: dateRange[0],
     endDate: dateRange[1],
     hazardCheck: hazardCheck,
@@ -62,7 +62,7 @@ function Application() {
     if (agreement){
       console.log(applicationData);
       event.preventDefault();
-      const response = await api.createApplication(applicationData, listingID);
+      const response = await api.createApplication(applicationData);
       alert("Successfully Submit Application")
       navigate("/homepage");
     } else {
