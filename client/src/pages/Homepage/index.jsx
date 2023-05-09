@@ -107,8 +107,6 @@ function Homepage() {
         setFilteredListings(filtered);
     };
 
-    handleSearch("3700 North Charles Street Baltimore, Maryland 21218, United States");
-
     useEffect(() => {
         const fetchData = async () => {
           const data = await api.getAllListings();
@@ -141,6 +139,17 @@ function Homepage() {
               zoom: zoom,
               attributionControl: false
             });
+            var initialListings = data.data;
+            sortListingsByDistance(initialListings, lng, lat);
+            var filtered = initialListings.filter(
+              (listing) => distance(listing.longitude, listing.latitude, lng, lat) <= 10
+            );
+            if (availableOnly) {
+              filtered = filtered.filter(
+                  (listing) => listing.isRented == false
+              );
+            }
+            setFilteredListings(filtered);
           }
       
           map.current.on('load', () => {
