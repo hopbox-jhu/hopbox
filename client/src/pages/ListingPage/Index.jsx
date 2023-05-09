@@ -14,16 +14,17 @@ function ListingPage() {
     const [data, setData] = useState(null);
     const [applications, setApplications] = useState([]);
     const navigate = useNavigate();
+    const listingID = id;
 
     useEffect(() => {
         async function fetchData() {
-            const result = await api.getListingById(id);
+            const result = await api.getListingById(listingID);
             setData(result);
         }
         fetchData();
         async function fetchApplications() {
             try {
-              const data = await api.getApplicationsByListingId(id);
+              const data = await api.getApplicationsByListingId(listingID);
               setApplications(data);
             } catch (error) {
               console.error(error);
@@ -33,7 +34,7 @@ function ListingPage() {
     }, []);
 
     const handleSubmit = () => {
-        navigate("/application/${id}");
+        navigate(`/application/${listingID}`);
         window.location.reload();
     };
 
@@ -93,7 +94,8 @@ function ListingPage() {
                     {applications.map((application, index) => (
                         <Application
                             key={application._id}
-                            applicationId={application._id}
+                            applicationID={application._id}
+                            listingID={listingID}
                             startDate={new Date(application.startDate).toLocaleDateString('en-US')}
                             endDate={new Date(application.endDate).toLocaleDateString('en-US')}
                             items={application.items}

@@ -88,9 +88,9 @@ export async function getAllListings() {
   }
 }
 
-export async function getListingById(listingId) {
+export async function getListingById(listingID) {
   try {
-    const response = await axiosInstance.get(`/listing/${listingId}`);
+    const response = await axiosInstance.get(`/listing/${listingID}`);
     return response.data.data;
   } catch (err) {
     throw err;
@@ -135,9 +135,9 @@ export async function getApplicationById(applicationId) {
 }
 
 
-export async function getApplicationsByListingId(listingId) {
+export async function getApplicationsByListingId(listingID) {
   try {
-    const response = await axiosInstance.get(`/applications/listing/${listingId}`);
+    const response = await axiosInstance.get(`/applications/listing/${listingID}`);
     return response.data.data;
   } catch (err) {
     throw err;

@@ -3,6 +3,7 @@ import { Image, Text, Badge, Button, Group } from '@mantine/core';
 import { Card as StyledCard, Subtitle } from './applicationComponents';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import * as api from "../../api";
 
 // Define a style component for each badge with a label
 const LabeledBadge = ({ label, value, ...props }) => (
@@ -60,7 +61,16 @@ export function Card({ children }) {
   );
 }
 
-export function Application({ applicationId, startDate, endDate, items, needs }) {
+export function Application({ applicationID, listingID, startDate, endDate, items, needs }) {
+
+  const handleAccept = async (event) => {
+    await api.acceptApplication(listingID, applicationID);
+  }
+  
+  const handleReject = async (event) => {
+    await api.rejectApplication(applicationID);
+  }
+
   return (
     <Card>
       <Group position="left" mt="md" mb="xs">
@@ -69,8 +79,8 @@ export function Application({ applicationId, startDate, endDate, items, needs })
         <LabeledBadge label="Items" value={`${items}`} />
         <LabeledSubtitle label="Needs" value={needs} />
         <div style={{ display: "flex", justifyContent: "space-between", gap: "5px", width: "70%"}}>
-          <Button style={{ backgroundColor: "#EB65A0" }}>Accept</Button>
-          <Button style={{ backgroundColor: "#fff", color: "#EB65A0", border: "2px solid #EB65A0" }}>Decline</Button>
+          <Button onClick={handleAccept} style={{ backgroundColor: "#EB65A0" }}>Accept</Button>
+          <Button onClick={handleReject} style={{ backgroundColor: "#fff", color: "#EB65A0", border: "2px solid #EB65A0" }}>Decline</Button>
         </div>
       </Group>
     </Card>
