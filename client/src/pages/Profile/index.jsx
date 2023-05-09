@@ -56,7 +56,7 @@ const ProfilePage = ({ user }) => {
       setAuth(false);
       navigate("/signin");
     }
-    window.location.reload();
+    //window.location.reload();
   }
 
   const getListing = async (query) => {
