@@ -1,20 +1,26 @@
 import React, { useState, useContext, useEffect } from 'react';
-import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import HomeIcon from '@material-ui/icons/Home';
-import WorkIcon from '@material-ui/icons/Work';
-import HelpIcon from '@material-ui/icons/Help';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useNavigate } from 'react-router-dom';
 import { clearAuth } from '../../api/auth';
 import { AuthContext } from '../../context/AuthContext';
 import { useAuth } from '../../context/AuthContext';
 import PopupForm from './EditProfile';
-import { ListingWrapper, Sidebar } from '../Homepage/Homepage';
 import { ListingList } from '../../components/listingList';
-import { baseApiUrl } from 'mapbox-gl';
 import * as api from "../../api";
 import { List } from "@material-ui/core";
 import { Application } from '../../components/application';
+import {
+  ProfileListItem,
+  ListingsListItem,
+  RentalsListItem,
+  ApplicationsListItem,
+  LogoutListItem,
+  Container, 
+  Content, 
+  ProfilePicture,
+  Name,
+  Info
+
+} from './ProfilePage';
 
 
 const ProfilePage = ({ user }) => {
@@ -43,7 +49,7 @@ const ProfilePage = ({ user }) => {
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option); // Update selected option state
+    setSelectedOption(option === selectedOption ? null : option);
   };
 
   const [selectedOption, setSelectedOption] = useState('Profile'); // State to keep track of selected option
@@ -97,49 +103,35 @@ const ProfilePage = ({ user }) => {
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
       <div style={{ flex: '0 0 20%', backgroundColor: '#F8EAF4', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <ul style={{ listStyle: 'none', padding: '0', margin: '0', textAlign: 'center' }}>
-          <li onClick={() => handleOptionClick('Profile')} style={{ marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold', border: selectedOption === 'Profile' ? '1px solid #E91E63' : 'none', borderRadius: '4px', padding: '0.5rem 1rem', cursor: 'pointer' }}>
-            <AccountCircleIcon style={{ marginRight: '0.5rem' }} /> Profile
-          </li>
-          <li onClick={() => handleOptionClick('My Listings')} style={{ marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold', border: selectedOption === 'My Listings' ? '1px solid #E91E63' : 'none', borderRadius: '4px', padding: '0.5rem 1rem', cursor: 'pointer' }}>
-            <HomeIcon style={{ marginRight: '0.5rem' }} /> My Listings
-          </li>
-          <li onClick={() => handleOptionClick('My Rentals')} style={{ marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold', border: selectedOption === 'My Rentals' ? '1px solid #E91E63' : 'none', borderRadius: '4px', padding: '0.5rem 1rem', cursor: 'pointer' }}>
-            <WorkIcon style={{ marginRight: '0.5rem' }} /> My Rentals
-          </li>
-          <li onClick={() => handleOptionClick('My Applications')} style={{ marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold', border: selectedOption === 'My Applications' ? '1px solid #E91E63' : 'none', borderRadius: '4px', padding: '0.5rem 1rem', cursor: 'pointer' }}>
-            <HelpIcon style={{ marginRight: '0.5rem' }} /> My Applications
-          </li>
-          <li onClick={() => handleLogoutClick()} style={{ marginBottom: '1rem', fontSize: '1.2rem', fontWeight: 'bold', color: 'red', borderRadius: '4px', padding: '0.5rem 1rem', cursor: 'pointer' }}>
-            <ExitToAppIcon style={{ marginRight: '0.5rem' }} /> Logout
-          </li>
+        <ul style={{ listStyle: 'none', padding: '0', margin: '0', textAlign: 'center', textAlign: 'left' }}>
+          <ProfileListItem onClick={() => handleOptionClick('Profile')} selected={selectedOption === 'Profile'} />
+          <ListingsListItem onClick={() => handleOptionClick('My Listings')} selected={selectedOption === 'My Listings'} />
+          <RentalsListItem onClick={() => handleOptionClick('My Rentals')} selected={selectedOption === 'My Rentals'} />
+          <ApplicationsListItem onClick={() => handleOptionClick('My Applications')} selected={selectedOption === 'My Applications'} />
+          <LogoutListItem onClick={() => handleLogoutClick()} />
         </ul>
       </div>
 
       <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '2rem', backgroundColor: '#FFFFFF' }}>
         {selectedOption === 'My Listings' && (
           <div>
-            <h1>My Listings Information</h1>
-            <ListingWrapper>
-                    <Sidebar>
-                        <ListingList listings={filteredListings} />
-                    </Sidebar>
-            </ListingWrapper>
+            <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '25rem', paddingTop: '2rem' }}>My Listings Information</h1>
+            <List>
+              <ListingList listings={filteredListings} />
+            </List>
           </div>
         )}
         {selectedOption === 'My Rentals' && (
           <div>
-            <h1>My Rentals Information</h1>
-            <ListingWrapper>
-                    <Sidebar>
-                        <ListingList listings={rentals} />
-                    </Sidebar>
-            </ListingWrapper>
+            <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '25rem', paddingTop: '2rem' }}>My Rentals Information</h1>
+            <List>                       
+              <ListingList listings={rentals} />
+            </List> 
           </div>
         )}
         {selectedOption === 'My Applications' && (
           <div>
-            <h1>My Applications Information</h1>
+            <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '25rem', paddingTop: '2rem' }}>My Applications Information</h1>
             <List>
                     {filteredApplications.map((application, index) => (
                         <Application
@@ -162,21 +154,21 @@ const ProfilePage = ({ user }) => {
         {selectedOption === 'Profile' && (
           // Render Profile information
           <div>
-            <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '20rem', paddingTop: '2rem' }}>Profile Information</h1>
-            <div style={{ display: 'flex', minHeight: '100vh', paddingTop: '5rem' }}>
-              <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '2rem', backgroundColor: '#FFFFFF' }}>
-                <img style={{ width: '150px', height: '150px', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem', border: '4px solid #E91E63' }} src={profilePicture} alt="Profile Picture" />
-                <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
-                  <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#E91E63', marginBottom: '0.5rem' }}>{name}</div>
-                  <div style={{ fontSize: '1.2rem', marginBottom: '0.5rem' }}>{email}</div>
-                  <div style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#757575' }}>Bio: {bio}</div>
-                  <div style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#757575' }}>Address: {address}</div>
-                  <div style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#757575' }}>School/College: {school}</div>
-                  <div style={{ fontSize: '1rem', marginBottom: '0.5rem', color: '#757575' }}>Occupation: {occupation}</div>
-                </div>
-                <PopupForm isOpen={isPopupOpen} onClose={handleClosePopup}/>
+            <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '25rem', paddingTop: '2rem' }}>Profile Information</h1>
+            <Container>
+            <Content>
+              <ProfilePicture src={profilePicture} alt="Profile Picture" />
+              <div>
+                <Name>{name}</Name>
+                <Info>{email}</Info>
+                <Info>Bio: {bio}</Info>
+                <Info>Address: {address}</Info>
+                <Info>School/College: {school}</Info>
+                <Info>Occupation: {occupation}</Info>
               </div>
-            </div>
+              <PopupForm isOpen={isPopupOpen} onClose={handleClosePopup}/>
+            </Content>
+          </Container>
           </div>
         )}
         {selectedOption === 'Logout' && (
