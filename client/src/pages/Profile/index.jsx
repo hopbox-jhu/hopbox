@@ -13,6 +13,8 @@ import { ListingWrapper, Sidebar } from '../Homepage/Homepage';
 import { ListingList } from '../../components/listingList';
 import { baseApiUrl } from 'mapbox-gl';
 import * as api from "../../api";
+import { List } from "@material-ui/core";
+import { Application } from '../../components/application';
 
 
 const ProfilePage = ({ user }) => {
@@ -20,7 +22,6 @@ const ProfilePage = ({ user }) => {
   name = localStorage.getItem("user_name");
   email = localStorage.getItem("email");
   bio = localStorage.getItem("bio");
-  console.log("her1: " + bio);
   address = localStorage.getItem("address");
   school = localStorage.getItem("school");
   occupation = localStorage.getItem("occupation");
@@ -81,10 +82,8 @@ const ProfilePage = ({ user }) => {
   const getApplications = async (query) => {
     const data = await api.getAllApplications();
     setApplications(data.data);
-    console.log(data);
     var filteredApplications = applications.filter(
-      //The filtering should be controlled here, always get all applications but narrow it down with a filter HERE.
-      (application) => application.hostID === localStorage.getItem("email")
+      (application) => application.renterID === localStorage.getItem("email")
     );
     setFilteredApplications(filteredApplications);
   }
@@ -92,6 +91,7 @@ const ProfilePage = ({ user }) => {
   useEffect( () => {
     getListing();
     getRentals();
+    getApplications();
   })
 
   return (
@@ -135,6 +135,26 @@ const ProfilePage = ({ user }) => {
                         <ListingList listings={rentals} />
                     </Sidebar>
             </ListingWrapper>
+          </div>
+        )}
+        {selectedOption === 'My Applications' && (
+          <div>
+            <h1>My Applications Information</h1>
+            <List>
+                    {filteredApplications.map((application, index) => (
+                        <Application
+                            key={application._id}
+                            applicationID={application._id}
+                            listingID={application.listingID}
+                            startDate={new Date(application.startDate).toLocaleDateString('en-US')}
+                            endDate={new Date(application.endDate).toLocaleDateString('en-US')}
+                            items={application.items}
+                            needs={application.needs}
+                        >
+                            <div>{index + 1}. </div>
+                        </Application>
+                    ))}
+                </List>
           </div>
         )}
         {selectedOption === 'Profile' && (
