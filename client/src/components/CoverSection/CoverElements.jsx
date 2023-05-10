@@ -84,16 +84,21 @@ export const CoverP = styled.p`
 
 export const ImgLogo = styled.img`
   margin-top: 10%;
-  width: 23vw;
-  height: 16vh;
+  width: 535px;
+  height: 200px;
 
   @media screen and (max-width: 480px) {
-    width: 70vw;
-    height: 14vh;
+    width: 214px;
+    height: 80px;
   }
 
   @media screen and (max-width: 768px) {
-    width: 70vw;
-    height: 14vh;
+    width: 214px;
+    height: 80px;
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 321px;
+    height: 120px;
   }
 `;

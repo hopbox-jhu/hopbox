@@ -39,6 +39,7 @@ export const NavLogo = styled(LinkR)`
   align-items: center;
   margin-left: 7vw;
 
+
 `;
 
 export const MenuIcon = styled.div`
@@ -128,10 +129,10 @@ export const NavBtnLink2 = styled(LinkR)`
 `;
 
 export const ImgLogo = styled.img`
-  width: 130px;
-  height: 5vh;
-  @media screen and (max-width: 768px) {
-    width: 15vw;
-    height: 3vh;
+  width: 107px;
+  height: 40px;
+  @media screen and (max-width: 900px) {
+    width: 71px;
+    height: 27px;
   }
 `;
