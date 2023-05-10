@@ -41,7 +41,6 @@ function App() {
   };
 
   return (
-    <BrowserRouter>
       <AuthContext.Provider value={{ isAuth, setIsAuth }}>
         <>
           <GlobalStyle />
@@ -57,7 +56,6 @@ function App() {
           </Routes>
         </>
       </AuthContext.Provider>
-    </BrowserRouter>
   );
 }
 
