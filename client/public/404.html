@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page not found</title>
   <script>
-    window.location.replace("/");
+    // Get the URL path of the current page
+    var currentUrlPath = window.location.pathname;
+
+    // Redirect to the original URL path after a short delay
+    setTimeout(function() {
+      window.location.href = currentUrlPath;
+    }, 1000);
   </script>
 </head>
 <body>
   <h1>Page not found</h1>
-  <p>Redirecting to the homepage...</p>
+  <p>Redirecting to the original page...</p>
 </body>
 </html>
