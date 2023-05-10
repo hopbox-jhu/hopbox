@@ -41,11 +41,10 @@ function App() {
   };
 
   return (
-
-    <AuthContext.Provider value={{ isAuth, setIsAuth }}>
-      <>
-        <GlobalStyle />
-        <BrowserRouter>
+    <BrowserRouter>
+      <AuthContext.Provider value={{ isAuth, setIsAuth }}>
+        <>
+          <GlobalStyle />
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/homepage" element={<Homepage />} />
@@ -56,10 +55,9 @@ function App() {
             <Route path="/profile" element={<ProfilePage user={user} />} />
             <Route path="/listing/:id" element={<ListingPage />} />
           </Routes>
-        </BrowserRouter>
-
-      </>
-    </AuthContext.Provider>
+        </>
+      </AuthContext.Provider>
+    </BrowserRouter>
   );
 }
 
