@@ -95,11 +95,13 @@ function ListingPage() {
                         <Application
                             key={application._id}
                             applicationID={application._id}
+                            renterID={application.renterID}
                             listingID={listingID}
                             startDate={new Date(application.startDate).toLocaleDateString('en-US')}
                             endDate={new Date(application.endDate).toLocaleDateString('en-US')}
                             items={application.items}
                             needs={application.needs}
+                            accepted={application.accepted}
                         >
                             <div>{index + 1}. </div>
                         </Application>
