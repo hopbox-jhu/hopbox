@@ -31,6 +31,7 @@ const ProfilePage = ({ user }) => {
   const [filteredListings, setFilteredListings] = useState(listings);
   const [applications, setApplications] = useState([]);
   const [filteredApplications, setFilteredApplications] = useState(applications);
+  const [rentals, setRentals] = useState([]);
 
   const handleOpenPopup = () => {
     setIsPopupOpen(true);
@@ -62,11 +63,19 @@ const ProfilePage = ({ user }) => {
   const getListing = async (query) => {
     const data = await api.getAllListings();
     setListings(data.data);
-    console.log(data);
     var filtered = listings.filter(
       (listing) => listing.hostID === localStorage.getItem("email")
     );
     setFilteredListings(filtered);
+  }
+
+  const getRentals = async (query) => {
+    const data = await api.getAllListings();
+    setListings(data.data);
+    var filtered = listings.filter(
+      (listing) => listing.renterID === localStorage.getItem("email")
+    )
+    setRentals(filtered);
   }
 
   const getApplications = async (query) => {
@@ -82,6 +91,7 @@ const ProfilePage = ({ user }) => {
 
   useEffect( () => {
     getListing();
+    getRentals();
   })
 
   return (
@@ -108,7 +118,6 @@ const ProfilePage = ({ user }) => {
 
       <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '2rem', backgroundColor: '#FFFFFF' }}>
         {selectedOption === 'My Listings' && (
-          // Render My Listings information
           <div>
             <h1>My Listings Information</h1>
             <ListingWrapper>
@@ -119,10 +128,13 @@ const ProfilePage = ({ user }) => {
           </div>
         )}
         {selectedOption === 'My Rentals' && (
-          // Render My Rentals information
           <div>
             <h1>My Rentals Information</h1>
-            {/* Add content for My Rentals information */}
+            <ListingWrapper>
+                    <Sidebar>
+                        <ListingList listings={rentals} />
+                    </Sidebar>
+            </ListingWrapper>
           </div>
         )}
         {selectedOption === 'Profile' && (
