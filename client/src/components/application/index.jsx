@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, Text, Badge, Button, Group } from '@mantine/core';
 import { Card as StyledCard, Subtitle } from './applicationComponents';
 import { Link } from "react-router-dom";
@@ -61,13 +61,17 @@ export function Card({ children }) {
   );
 }
 
-export function Application({ applicationID, listingID, startDate, endDate, items, needs }) {
+export function Application({ applicationID, renterID, listingID, startDate, endDate, items, needs, accepted }) {
+
+  const [acceptedData, setAcceptedData] = useState(accepted);
 
   const handleAccept = async (event) => {
+    setAcceptedData("true");
     await api.acceptApplication(listingID, applicationID);
   }
   
   const handleReject = async (event) => {
+    setAcceptedData("false");
     await api.rejectApplication(applicationID);
   }
 
@@ -79,8 +83,26 @@ export function Application({ applicationID, listingID, startDate, endDate, item
         <LabeledBadge label="Items" value={`${items}`} />
         <LabeledSubtitle label="Needs" value={needs} />
         <div style={{ display: "flex", justifyContent: "space-between", gap: "5px", width: "70%"}}>
-          <Button onClick={handleAccept} style={{ backgroundColor: "#EB65A0" }}>Accept</Button>
-          <Button onClick={handleReject} style={{ backgroundColor: "#fff", color: "#EB65A0", border: "2px solid #EB65A0" }}>Decline</Button>
+          {renterID == localStorage.getItem("email") ? 
+            <>
+              {acceptedData == null ? 
+                <Text>Pending</Text> //style this
+              : 
+                <Text>{acceptedData == "true" ? "Accepted" : "Declined"}</Text> //style this
+              } 
+            </> 
+          : 
+            <>
+              {acceptedData == null ? 
+                <>
+                  <Button onClick={handleAccept} style={{ backgroundColor: "#EB65A0" }}>Accept</Button>
+                  <Button onClick={handleReject} style={{ backgroundColor: "#fff", color: "#EB65A0", border: "2px solid #EB65A0" }}>Decline</Button>
+                </> 
+              : 
+                <Text>{acceptedData == "true" ? "Accepted" : "Declined"}</Text> //style this
+              }
+            </>
+          }
         </div>
       </Group>
     </Card>
