@@ -2,7 +2,6 @@ import Application from "../model/Application.js";
 
 class ApplicationDAO {
   async createApplication({ hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard }) {
-    console.log("this is " + listingID );
     const application = await Application.create({ hostID, renterID, listingID, startDate, endDate, hazardCheck, items, needs, protectionPlan, creditCard });
     return application;
   }
