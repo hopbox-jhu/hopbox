@@ -9,6 +9,8 @@ import * as db from "./data/db.js";
 import bodyParser from "body-parser";
 import cors from "cors";
 import authRouter from "./routes/auth.js";
+import path from 'path';
+
 
 db.connect();
 
