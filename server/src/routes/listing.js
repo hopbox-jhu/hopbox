@@ -51,7 +51,6 @@ router.get("/listing/:id", async (req, res) => {
 
   router.patch("/acceptapplication", async (req, res) => {
     const {listingID, applicationID} = req.body;
-    console.log(applicationID);
     try {
       const listing = await listingDAO.acceptApplication(listingID, applicationID);
       if (!listing) {
