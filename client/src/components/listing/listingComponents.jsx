@@ -92,7 +92,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Heading = styled.h1`
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 600;
 

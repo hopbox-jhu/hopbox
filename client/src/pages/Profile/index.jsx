@@ -125,17 +125,15 @@ const ProfilePage = ({ user }) => {
           </div>
         )}
         {selectedOption === 'My Rentals' && (
-          <div>
+          <>
             <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '25rem', paddingTop: '2rem' }}>My Rentals Information</h1>
-            <ListingWrapper>
-                    <Sidebar>
-                        <RentalList listings={rentals} />
-                    </Sidebar>
-            </ListingWrapper>
-          </div>
+            <List>                       
+              <RentalList listings={rentals} />
+            </List> 
+          </>
         )}
         {selectedOption === 'My Applications' && (
-          <div>
+          <>
             <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '25rem', paddingTop: '2rem' }}>My Applications Information</h1>
             <List>
                     {filteredApplications.map((application, index) => (
@@ -150,11 +148,11 @@ const ProfilePage = ({ user }) => {
                             needs={application.needs}
                             accepted={application.accepted}
                         >
-                            <div>{index + 1}. </div>
+                            <span>{index + 1}. </span>
                         </Application>
                     ))}
                 </List>
-          </div>
+          </>
         )}
         {selectedOption === 'Profile' && (
           // Render Profile information
