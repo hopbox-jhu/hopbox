@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
-import { Divider, Wrapper, Heading, Subtitle} from './listingComponents';
+import { Divider, Wrapper, Heading, Subtitle} from './rentalComponents';
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
-export function Listing({ listingId, address, type, price, images, description, length, width, height }) {
+export function Rental({ listingId, address, type, price, images, description, length, width, height, rentalStart, rentalEnd }) {
     
     const navigate = useNavigate();
 
@@ -21,13 +21,19 @@ export function Listing({ listingId, address, type, price, images, description, 
         <Wrapper>
         <Heading align="left" weight={500} size="lg">{address}</Heading>
         <Group position="left" mt="md" mb="xs">
-            <Badge size="lg" color="pink" variant="light">
+            <Badge size="sm" color="pink" variant="light">
                 {type.charAt(0).toUpperCase() + type.slice(1)}
             </Badge>
-            <Badge size="lg" color="pink" variant="light">
+            <Badge size="sm" color="pink" variant="light">
+             Start date : {rentalStart}    
+            </Badge>
+            <Badge size="sm" color="pink" variant="light"> 
+             End date : {rentalEnd}
+            </Badge>
+            <Badge size="sm" color="pink" variant="light">
                 {`${length} * ${width}${height != null ? ` * ${height} ft` : ' ft'}`}
             </Badge>
-            <Badge size="lg" color="pink" variant="light">
+            <Badge size="sm" color="pink" variant="light">
                 ${price}
             </Badge>
         </Group>

@@ -2,8 +2,8 @@ import Listing from "../model/Listing.js";
 import Application from "../model/Application.js";
 
 class ListingDAO {
-  async createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID }) {
-    const listing = await Listing.create({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID });
+  async createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd }) {
+    const listing = await Listing.create({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd });
     return listing;
   }
   async getAllListings() {
@@ -33,6 +33,8 @@ class ListingDAO {
     }
     listing.renterID = applications.renterID;
     listing.isRented = true;
+    listing.rentalStart = applications.startDate;
+    listing.rentalEnd = applications.endDate;
     applications.accepted = "true";
     await listing.save();
     await applications.save();

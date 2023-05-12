@@ -7,8 +7,8 @@ export const listingDAO = new ListingDAO();
 
 router.post("/listing", async (req, res) => {
   try {
-    const { hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID } = req.body;
-    const listing = await listingDAO.createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID });
+    const { hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd } = req.body;
+    const listing = await listingDAO.createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd });
     res.json({
       status: 201,
       message: `Successfully created listing!`,
@@ -51,7 +51,6 @@ router.get("/listing/:id", async (req, res) => {
 
   router.patch("/acceptapplication", async (req, res) => {
     const {listingID, applicationID} = req.body;
-    console.log(applicationID);
     try {
       const listing = await listingDAO.acceptApplication(listingID, applicationID);
       if (!listing) {

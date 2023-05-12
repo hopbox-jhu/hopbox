@@ -104,7 +104,9 @@ function AddListing() {
               calendar: [],
               applicationIDs: [],
               isRented: false,
-              renterID: null
+              renterID: null,
+              rentalStart: null,
+              rentalEnd: null
             };
 
             try {

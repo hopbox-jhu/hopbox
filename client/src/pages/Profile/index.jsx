@@ -5,6 +5,9 @@ import { AuthContext } from '../../context/AuthContext';
 import { useAuth } from '../../context/AuthContext';
 import PopupForm from './EditProfile';
 import { ListingList } from '../../components/listingList';
+import { RentalList } from '../../components/rentalList';
+import { baseApiUrl } from 'mapbox-gl';
+
 import * as api from "../../api";
 import { List } from "@material-ui/core";
 import { Application } from '../../components/application';
@@ -124,9 +127,11 @@ const ProfilePage = ({ user }) => {
         {selectedOption === 'My Rentals' && (
           <div>
             <h1 style={{ position: 'fixed', top: '0', left: '0', paddingLeft: '25rem', paddingTop: '2rem' }}>My Rentals Information</h1>
-            <List>                       
-              <ListingList listings={rentals} />
-            </List> 
+            <ListingWrapper>
+                    <Sidebar>
+                        <RentalList listings={rentals} />
+                    </Sidebar>
+            </ListingWrapper>
           </div>
         )}
         {selectedOption === 'My Applications' && (
