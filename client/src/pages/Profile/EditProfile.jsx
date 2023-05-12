@@ -49,9 +49,9 @@ function PopupForm() {
 
     return (
         <>
-            <Modal opened={opened} onClose={close} title="Edit Profile" centered>
+            <Modal opened={opened} onClose={close} title="Edit Profile" centered padding="10px">
                 <form onSubmit={handleSubmit}>
-                    <label>
+                    <label style={{ marginBottom: '1rem !important' }}>
                         Bio
                         <Input
                             name="bio"
@@ -71,7 +71,7 @@ function PopupForm() {
                         />
                     </label>
 
-                    <label>
+                    <label style={{ marginBottom: '1rem' }}>
                         Address
                         <Input
                             name="address"
@@ -130,16 +130,17 @@ function PopupForm() {
                             onChange={handleChange}
                         />
                     </label>
-
-                    <Button style={{ backgroundColor: '#E91E63', color: '#fff' }} type="submit">Submit</Button>
+                    <Group padding="5px">
+                    <Button style={{ backgroundColor: '#EB65A0', color: '#fff'}} type="submit">Submit</Button>
+                    </Group>
                 </form>
 
 
 
             </Modal>
 
-            <Group position="center">
-                <Button onClick={open} style={{ padding: '0.5rem 1rem', fontSize: '1rem', fontWeight: 'bold', backgroundColor: '#E91E63', color: '#fff', borderRadius: '4px', cursor: 'pointer', border: 'none', marginTop: '1rem' }}>Edit Profile</Button>
+            <Group position="center" padding="5px">
+                <Button onClick={open} style={{ padding: '0.5rem 1rem', fontSize: '1rem', fontWeight: 'bold', backgroundColor: '#EB65A0', color: '#fff', borderRadius: '4px', cursor: 'pointer', border: 'none', marginTop: '1rem' }}>Edit Profile</Button>
             </Group>
         </>
     );

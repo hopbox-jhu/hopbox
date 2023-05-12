@@ -86,9 +86,9 @@ export function Application({ applicationID, renterID, listingID, startDate, end
           {renterID == localStorage.getItem("email") ? 
             <>
               {acceptedData == null ? 
-                <Text>Pending</Text> //style this
+                <Text style={{ backgroundColor: "#EB65A0", color: "white", border: "2px solid #EB65A0", borderRadius: "10px", padding: "7px" }}>Pending</Text> 
               : 
-                <Text>{acceptedData == "true" ? "Accepted" : "Declined"}</Text> //style this
+                <Text style={{ backgroundColor: "#EB65A0", color: "white", border: "2px solid #EB65A0", borderRadius: "10px", padding: "7px" }}>{acceptedData == "true" ? "Accepted" : "Declined"}</Text> 
               } 
             </> 
           : 
@@ -99,7 +99,7 @@ export function Application({ applicationID, renterID, listingID, startDate, end
                   <Button onClick={handleReject} style={{ backgroundColor: "#fff", color: "#EB65A0", border: "2px solid #EB65A0" }}>Decline</Button>
                 </> 
               : 
-                <Text>{acceptedData == "true" ? "Accepted" : "Declined"}</Text> //style this
+                <Text style={{ backgroundColor: "#EB65A0", color: "white", border: "2px solid #EB65A0", borderRadius: "10px", padding: "7px" }}>{acceptedData == "true" ? "Accepted" : "Declined"}</Text> //style this
               }
             </>
           }
