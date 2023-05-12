@@ -103,7 +103,7 @@ const ProfilePage = ({ user }) => {
   return (
     <div style={{ display: 'flex', minHeight: '100vh' }}>
       <div style={{ flex: '0 0 20%', backgroundColor: '#F8EAF4', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <ul style={{ listStyle: 'none', padding: '0', margin: '0', textAlign: 'center', textAlign: 'left' }}>
+        <ul style={{ listStyle: 'none', padding: '0', margin: '0', textAlign: 'left' }}>
           <ProfileListItem onClick={() => handleOptionClick('Profile')} selected={selectedOption === 'Profile'} />
           <ListingsListItem onClick={() => handleOptionClick('My Listings')} selected={selectedOption === 'My Listings'} />
           <RentalsListItem onClick={() => handleOptionClick('My Rentals')} selected={selectedOption === 'My Rentals'} />
