@@ -52,7 +52,8 @@ const ProfilePage = ({ user }) => {
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option === selectedOption ? null : option);
+    //setSelectedOption(option === selectedOption ? null : option);
+    setSelectedOption(option);
   };
 
   const [selectedOption, setSelectedOption] = useState('Profile'); // State to keep track of selected option
