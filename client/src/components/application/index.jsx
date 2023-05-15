@@ -65,6 +65,8 @@ export function Application({ applicationID, renterID, listingID, startDate, end
 
   const [acceptedData, setAcceptedData] = useState(accepted);
   const [renter, setRenter] = useState(null);
+  const [data, setData] = useState(null);
+  const [host, setHost] = useState(null);
 
   useEffect(() => {
     async function fetchRenter() {
@@ -76,6 +78,16 @@ export function Application({ applicationID, renterID, listingID, startDate, end
         }
     }
     fetchRenter();
+    async function fetchData() {
+      const result = await api.getListingById(listingID);
+      setData(result);
+      async function fetchHost() {
+          const host = await api.getUser(result.hostID);
+          setHost(host.data);
+      }
+      fetchHost();
+  }
+  fetchData();
 }, []);
 
   const handleAccept = async (event) => {
@@ -88,12 +100,22 @@ export function Application({ applicationID, renterID, listingID, startDate, end
     await api.rejectApplication(applicationID);
   }
 
-  if (renter) {
+  if (renter && data && host) {
     return (
       <Card>
         <Group position="left" mt="md" mb="xs">
-          <LabeledBadge label="Renter" value={renterID} />
-          <LabeledBadge label="Renter Phone Number" value={renter.phone} />
+          {renterID == localStorage.getItem("email") ? 
+            <>
+              <LabeledBadge label="Host" value={host.email} />
+              <LabeledBadge label="Host Phone Number" value={host.phone} />
+            </>
+            : 
+            <>
+              <LabeledBadge label="Renter" value={renterID} />
+              <LabeledBadge label="Renter Phone Number" value={renter.phone} />
+            </> 
+          }
+          
           <LabeledBadge label="Start date" value={startDate} />
           <LabeledBadge label="End date" value={endDate} />
           <LabeledBadge label="Items" value={`${items}`} />
