@@ -13,6 +13,7 @@ function ListingPage() {
     const { id } = useParams();
     const [data, setData] = useState(null);
     const [applications, setApplications] = useState([]);
+    const [host, setHost] = useState(null);
     const navigate = useNavigate();
     const listingID = id;
 
@@ -20,6 +21,11 @@ function ListingPage() {
         async function fetchData() {
             const result = await api.getListingById(listingID);
             setData(result);
+            async function fetchHost() {
+                const host = await api.getUser(result.hostID);
+                setHost(host.data);
+            }
+            fetchHost();
         }
         fetchData();
         async function fetchApplications() {
@@ -38,7 +44,7 @@ function ListingPage() {
         //window.location.reload();
     };
 
-    if (data) {
+    if (data && host) {
         return (
             <div>
             <Header>
@@ -47,7 +53,7 @@ function ListingPage() {
 
             <Container>
                 <LeftContainer>
-                <Image src={"https://hopbox-web-service.onrender.com/image/" + data.images[0]}
+                <Image src={"http://localhost:5050/image/" + data.images[0]}
                     height="60vh" width="40vw" radius="lg"  />
                 <div style={{ marginTop: 30 }}>
                     <label>{data.address}</label>
@@ -67,19 +73,26 @@ function ListingPage() {
                 
                     <div style={{ marginTop: 30 }}>
                     <Text align="left" size="sm" color="dimmed" >
-                    {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
+                        Host: {data.hostID}
+                    </Text>
+                    <Text align="left" size="sm" color="dimmed" >
+                        Host Phone Number: {host.phone}
+                    </Text>
+                    <br></br>
+                    <Text align="left" size="sm" color="dimmed" >
+                    Description: {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
                     </Text>
                     </div>
                 </Form>
                 <Form>
-                <label>Pricing</label>
+                <label>Pricing per month</label>
                 <PricingBox>
                     <div className="subtotal">Subtotal</div>
-                    <div className="price-per-month">${data.pricing}</div>
+                    <div className="price-per-month">${data.pricing.toFixed(2)}</div>
                     <div className="service-fee">Service Fee (20%)</div>
-                    <div className="service-fee-amount">${data.pricing * 0.2}</div>
+                    <div className="service-fee-amount">${(data.pricing * 0.2).toFixed(2)}</div>
                     <div className="total">Total</div>
-                    <div className="total-amount">${data.pricing * 1.2 }</div>
+                    <div className="total-amount">${(data.pricing * 1.2).toFixed(2)}</div>
                 </PricingBox>
                     {data.hostID !== localStorage.getItem("email") ? (
                         <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="lg">

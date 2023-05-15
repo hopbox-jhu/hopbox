@@ -7,7 +7,7 @@ export const userDAO = new UserDAO();
 
 router.post("/user/create", async (req, res) => {
   try {
-    const { name, email, password, bio, address, profilePicture, school, occupation } = req.body;
+    const { name, email, password, bio, address, profilePicture, school, occupation, phone } = req.body;
     const existingUser = await userDAO.findUserByEmail(email);
     if (existingUser) {
       // Email is already in use
@@ -15,7 +15,7 @@ router.post("/user/create", async (req, res) => {
         message: `Email ${email} is already in use`,
       });
     }
-    const user = await userDAO.createUser({ name, email, password: hashPassword(password), bio, address, profilePicture, school, occupation });
+    const user = await userDAO.createUser({ name, email, password: hashPassword(password), bio, address, profilePicture, school, occupation, phone });
     res.json({
       status: 201,
       message: `Successfully created user!`,
@@ -28,14 +28,14 @@ router.post("/user/create", async (req, res) => {
 
 router.post("/user/update", async (req, res) => {
   try {
-    const { email, bio, address, school, occupation } = req.body;
+    const { email, bio, address, school, occupation, phone } = req.body;
     const existingUser = await userDAO.findUserByEmail(email);
     if (!existingUser) {
       return res.status(404).json({
         message: `User with email ${email} not found`,
       });
     }
-    const updatedUser = await userDAO.updateUserByEmail(email, { bio, address, school, occupation });
+    const updatedUser = await userDAO.updateUserByEmail(email, { bio, address, school, occupation, phone });
     res.json({
       status: 200,
       message: "Successfully updated user!",
@@ -43,6 +43,19 @@ router.post("/user/update", async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/user/:email", async (req, res) => {
+  try {
+    const user = await userDAO.findUserByEmail(req.params.email);
+    res.json({
+      status: 200,
+      message: "Successfully retrieved user!",
+      data: user,
+    });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 });
 

@@ -31,8 +31,18 @@ function Application() {
 
   const pathSegments = window.location.pathname.split('/');
   const listingID = pathSegments[pathSegments.length - 1];  
+
+  const [data, setData] = useState(null);
   
   //const {listingID} = useParams();
+
+  useEffect(() => {
+    async function fetchData() {
+        const result = await api.getListingById(listingID);
+        setData(result);
+    }
+    fetchData();
+  }, []);
 
   let applicationData = {
     hostID: "",
@@ -94,7 +104,7 @@ function Application() {
           {currentPage === 3 && <PageItems items={items} setItems={setItems} />}
           {currentPage === 4 && <PageNeeds needs={needs} setNeeds={setNeeds} />}
           {currentPage === 5 && <PageInsurance protection={protection} setProtection={setProtection} />}
-          {currentPage === 6 && <PageCreditCard creditCard={creditCard} setCreditCard={setCreditCard} agreement={agreement} setAgreement={setAgreement} />}
+          {currentPage === 6 && <PageCreditCard creditCard={creditCard} setCreditCard={setCreditCard} agreement={agreement} setAgreement={setAgreement} dateRange={dateRange} pricing={data.pricing} />}
 
         <ButtonContainer>
         <BackButton onClick={handleBack} disabled={currentPage === 1} style={{ 

@@ -27,13 +27,14 @@ import {
 
 
 const ProfilePage = ({ user }) => {
-  let { profilePicture, name, email, bio, address, school, occupation } = user;
+  let { profilePicture, name, email, bio, address, school, occupation, phone } = user;
   name = localStorage.getItem("user_name");
   email = localStorage.getItem("email");
   bio = localStorage.getItem("bio");
   address = localStorage.getItem("address");
   school = localStorage.getItem("school");
   occupation = localStorage.getItem("occupation");
+  phone = localStorage.getItem("phone");
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -168,6 +169,7 @@ const ProfilePage = ({ user }) => {
                 <Info>Address: {address}</Info>
                 <Info>School/College: {school}</Info>
                 <Info>Occupation: {occupation}</Info>
+                <Info>Phone number: {phone}</Info>
               </div>
               <PopupForm isOpen={isPopupOpen} onClose={handleClosePopup}/>
             </Content>

@@ -67,6 +67,8 @@ function Homepage() {
     const [filteredListings, setFilteredListings] = useState(listings);
     const [availableOnly, setAvailableOnly] = useState(true);
     const [sorting, setSorting] = useState("Distance");
+    const [priceFilter, setPriceFilter] = useState("");
+    const [typeFilter, setTypeFilter] = useState("");
   
     const handleSearch = async (query) => {
       const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
@@ -87,13 +89,13 @@ function Homepage() {
         }
         if (sorting === "Distance") {
             sortListingsByDistance(listings, searchLng, searchLat);
-        } else if (sorting === "Lowest Price") {
+        } else if (sorting === "Low Price") {
             sortListingsByPrice(listings);
-        } else if (sorting === "Highest Price") {
+        } else if (sorting === "High Price") {
             sortListingsByPriceReverse(listings);
-        } else if (sorting === "Smallest Space") {
+        } else if (sorting === "Smallest") {
             sortListingsBySize(listings);
-        } else if (sorting === "Largest Space") {
+        } else if (sorting === "Largest") {
             sortListingsBySizeReverse(listings);
         }
         var filtered = listings.filter(
@@ -102,6 +104,26 @@ function Homepage() {
         if (availableOnly) {
             filtered = filtered.filter(
                 (listing) => listing.isRented == false
+            );
+        }
+        if (priceFilter) {
+          if (priceFilter == "Low") {
+            filtered = filtered.filter(
+                (listing) => listing.pricing >= 0 && listing.pricing <= 20
+            );
+          } else if (priceFilter == "Medium") {
+            filtered = filtered.filter(
+                (listing) => listing.pricing >= 20 && listing.pricing <= 50
+            );
+          } else if (priceFilter == "High") {
+            filtered = filtered.filter(
+                (listing) => listing.pricing > 50
+            );
+          } 
+        }
+        if (typeFilter) {
+            filtered = filtered.filter(
+                (listing) => listing.type === typeFilter
             );
         }
         setFilteredListings(filtered);
@@ -262,20 +284,48 @@ function Homepage() {
                         50 + Spaces
                     </Text2>
                   <Filter className="filter" >
-                  <Select
-                    style = {{width:"20%"}}
-                    radius="md"
-                    size ="sm"
-                    placeholder="Sort by:"
-                    onChange={(event) => setSorting(event.target.value)}
-                    data={[
-                      { value: 'Distance', label: 'Distance' },
-                      { value: 'Lowest Price', label: 'Lowest Price' },
-                      { value: 'Highest Price', label: 'Highest Price' },
-                      { value: 'Smallest Space', label: 'Smallest Space' },
-                      { value: 'Largest Space', label: 'Largest Space' },
-                    ]}
-                  />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <Select
+                        style={{ width: '30%' }}
+                        radius="md"
+                        size="sm"
+                        placeholder="Sort by:"
+                        onChange={(event) => setSorting(event)}
+                        data={[
+                          { value: 'Distance', label: 'Distance' },
+                          { value: 'Low Price', label: 'Low Price' },
+                          { value: 'High Price', label: 'High Price' },
+                          { value: 'Smallest', label: 'Smallest' },
+                          { value: 'Largest', label: 'Largest' },
+                        ]}
+                      />
+                      <Select
+                        style={{ width: '30%' }}
+                        radius="md"
+                        size="sm"
+                        placeholder="Filter by price"
+                        onChange={(event) => setPriceFilter(event)}
+                        data={[
+                          { value: '', label: 'All' },
+                          { value: 'Low', label: '$0-$20' },
+                          { value: 'Medium', label: '$20-$50' },
+                          { value: 'High', label: '$50+' },
+                        ]}
+                      />
+                      <Select
+                        style={{ width: '30%' }}
+                        radius="md"
+                        size="sm"
+                        placeholder="Filter by type"
+                        onChange={(event) => setTypeFilter(event)}
+                        data={[
+                          { value: '', label: 'All' },
+                          { value: 'Room', label: 'Room' },
+                          { value: 'Closet', label: 'Closet' },
+                          { value: 'Basement', label: 'Basement' },
+                        ]}
+                      />
+                    </div>
                     <Switch
                       labelPosition="left"
                       style = {{marginTop:"5px"}}

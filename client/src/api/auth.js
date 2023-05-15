@@ -9,6 +9,7 @@ const afterReceiveAuth = (user_id,user_name, token, email, bio, address, profile
   localStorage.setItem("profilePicture", profilePicture);
   localStorage.setItem("school", school);
   localStorage.setItem("occupation", occupation);
+  // localStorage.setItem("phone", phone); //implement phone number
   postApi.axiosInstance.defaults.headers[
     "Authorization"
   ] = `Bearer ${localStorage.getItem("token")}`;
@@ -24,6 +25,7 @@ const clearAuth = () => {
   localStorage.removeItem("profilePicture");
   localStorage.removeItem("school");
   localStorage.removeItem("occupation");
+  //localStorage.removeItem("phone"); //implement phone number
   localStorage.setItem("isSignedIn", "false");
   postApi.axiosInstance.defaults.headers["Authorization"] = "";
 };

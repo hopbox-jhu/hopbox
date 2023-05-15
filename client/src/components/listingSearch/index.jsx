@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input } from '@mantine/core';
+import { Input, Button } from '@mantine/core';
 import SearchIcon from '@mui/icons-material/Search';
 import ClearIcon from '@mui/icons-material/Clear';
 import { useNavigate, useLocation } from "react-router-dom";
@@ -55,7 +55,6 @@ export function ListingSearchBar({ onSearch }) {
           }
         />
       </AddressAutofill>
-      
     </form>
   );
 }
