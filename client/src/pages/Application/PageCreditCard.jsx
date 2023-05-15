@@ -2,12 +2,15 @@ import React from 'react';
 import { Form, Label, Input } from './Application';
 import CreditCardInput from 'react-credit-card-input';
 import { Checkbox, Anchor } from '@mantine/core';
+import { PricingBox } from "../ListingPage/ListingPage";
 
 function PageCreditCard(props) {
     const creditCard = props.creditCard;
     const setCreditCard = props.setCreditCard;
     const agreement = props.agreement;
     const setAgreement = props.setAgreement;
+    const dateRange = props.dateRange;
+    const pricing = props.pricing;
   
     const handleInputChange = (event) => {
         const { id, value } = event.target;
@@ -25,6 +28,14 @@ function PageCreditCard(props) {
       <div>
         <Form>
         <Label htmlFor="creditcard">Credit Card Information</Label>
+        <PricingBox>
+                    <div className="subtotal">Subtotal</div>
+                    <div className="price-per-month">${(pricing * (dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1).toFixed(2)}</div>
+                    <div className="service-fee">Service Fee (20%)</div>
+                    <div className="service-fee-amount">${((pricing * (dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1) * 0.2).toFixed(2)}</div>
+                    <div className="total">Total</div>
+                    <div className="total-amount">${((pricing * (dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1) * 1.2).toFixed(2)}</div>
+        </PricingBox>
             <Input
               id="name"
               type="text"
@@ -45,16 +56,19 @@ function PageCreditCard(props) {
                 value: creditCard.cardNumber,
                 onChange: handleInputChange,
                 id: "cardNumber",
+                style: { marginTop: '40px' },
               }}
               cardExpiryInputProps={{
                 value: creditCard.expiry,
                 onChange: handleInputChange,
                 id: "expiry",
+                style: { marginTop: '40px' },
               }}
               cardCVCInputProps={{
                 value: creditCard.cvc,
                 onChange: handleInputChange,
                 id: "cvc",
+                style: { marginTop: '40px' },
               }}
               fieldClassName="input"
             />

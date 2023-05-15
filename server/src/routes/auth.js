@@ -95,6 +95,7 @@ authRouter.post("/login", async (req, res, next) => {0
         profilePicture: user.profilePicture,
         school: user.school,
         occupation: user.occupation,
+        phone: user.phone,
       },
     });
   } catch (err) {

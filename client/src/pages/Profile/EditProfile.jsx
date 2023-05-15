@@ -11,22 +11,24 @@ function PopupForm() {
         bio: localStorage.getItem("bio"),
         address: localStorage.getItem("address"),
         school: localStorage.getItem("school"),
-        occupation: localStorage.getItem("occupation")
+        occupation: localStorage.getItem("occupation"),
+        phone: localStorage.getItem("phone")
     });
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
             // Handle form submission logic here
-            const { bio, address, school, occupation } = values;
+            const { bio, address, school, occupation, phone } = values;
             localStorage.setItem("bio", bio);
             localStorage.setItem("address", address);
             localStorage.setItem("school", school);
             localStorage.setItem("occupation", occupation);
+            localStorage.setItem("phone", phone);
             // Make API call to update user data in MongoDB
             //TODO: need to post to mongodb right here
             const email = localStorage.getItem("email");
-            const user = await postApi.updateUser(email, bio, address, school, occupation);
+            const user = await postApi.updateUser(email, bio, address, school, occupation, phone);
             if (user) {
                 alert("Successfully edited profile.");
             }
@@ -130,6 +132,27 @@ function PopupForm() {
                             onChange={handleChange}
                         />
                     </label>
+
+                    <label>
+                        Phone number
+                        <Input
+                            name="phone"
+                            defaultValue={values.phone}
+                            required
+                            requiredErrorMessage="Phone number is required"
+                            variant="unstyled"
+                            style={{
+                                display: "block",
+                                border: "1px solid #ccc",
+                                padding: "5px",
+                                borderRadius: "5px",
+                                width: "100%",
+                                boxSizing: "border-box"
+                            }}
+                            onChange={handleChange}
+                        />
+                    </label>
+
                     <Group padding="5px">
                     <Button style={{ backgroundColor: '#EB65A0', color: '#fff'}} type="submit">Submit</Button>
                     </Group>

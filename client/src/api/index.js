@@ -2,8 +2,8 @@ import axios from "axios";
 
 
 export const axiosInstance = axios.create({
-  baseURL: "https://hopbox-web-service.onrender.com",
-  //baseURL: "http://localhost:5050",
+  //baseURL: "https://hopbox-web-service.onrender.com",
+  baseURL: "http://localhost:5050",
 });
 
 export async function postRenterEmail(email) {
@@ -33,9 +33,9 @@ export async function createUser(name, email, password) {
   }
 }
 
-export async function updateUser(email, bio, address, school, occupation) {
+export async function updateUser(email, bio, address, school, occupation, phone) {
   try {
-    const response = await axiosInstance.post("/user/update", {email: email, bio: bio, address: address, school: school, occupation: occupation });
+    const response = await axiosInstance.post("/user/update", {email: email, bio: bio, address: address, school: school, occupation: occupation, phone: phone });
     return response.data;
   } catch (err) {
     throw err;
@@ -192,3 +192,12 @@ export async function rejectApplication(applicationID) {
   }
 }
 
+
+export async function getUser(email) {
+  try {
+    const response = await axiosInstance.get(`/user/${email}`, { email });
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}

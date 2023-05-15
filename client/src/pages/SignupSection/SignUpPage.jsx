@@ -16,13 +16,14 @@ function SignUpPage() {
   const [address] = useState("");
   const [school] = useState("");
   const [occupation] = useState("");
+  const [phone] = useState("");
 
   const navigate = useNavigate();
   
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const user = await postApi.createUser(name, email, password, bio, address, school, occupation );
+      const user = await postApi.createUser(name, email, password, bio, address, school, occupation, phone );
       if (user) {
         alert("Successfully created user.");
         setTimeout(() => {
