@@ -26,7 +26,7 @@ function SignInPage() {
       event.preventDefault();
       const response = await postApi.login(email, password);
       if (response.status === 200) {
-        afterReceiveAuth(response.data.user_id, response.data.user_name, response.data.token, response.data.email, response.data.bio, response.data.address, response.data.profilePicture, response.data.school, response.data.occupation/*, response.data.phone*/ ); //implement phone number
+        afterReceiveAuth(response.data.user_id, response.data.user_name, response.data.token, response.data.email, response.data.bio, response.data.address, response.data.profilePicture, response.data.school, response.data.occupation, response.data.phone );
         //const url = location.state ? location.state.from.pathname : "/";
         setAuth(true);
         localStorage.setItem("isSignedIn", "true");
