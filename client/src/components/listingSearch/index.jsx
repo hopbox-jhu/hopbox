@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import { Input, Button } from '@mantine/core';
+import { Input } from '@mantine/core';
 import SearchIcon from '@mui/icons-material/Search';
-import ClearIcon from '@mui/icons-material/Clear';
+import Warehouse from '@mui/icons-material/Warehouse';
 import { useNavigate, useLocation } from "react-router-dom";
 import { AddressAutofill } from '@mapbox/search-js-react';
 
 export function ListingSearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState();
-  const [showClearIcon, setShowClearIcon] = useState(false);
+  const [showSearchIcon, setShowSearchIcon] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
       const newSearchTerm = event.target.value;
       setSearchTerm(newSearchTerm);
-      setShowClearIcon(newSearchTerm.length > 0);
+      setShowSearchIcon(newSearchTerm.length > 0);
   };
 
   const handleSearchSubmit = (event) => {
@@ -28,11 +28,6 @@ export function ListingSearchBar({ onSearch }) {
     onSearch(searchTerm);
   };
 
-  const handleClearSearch = () => {
-    setSearchTerm("");
-    setShowClearIcon(false);
-  };
-
   return (
     <form onSubmit={handleSearchSubmit}>
       <AddressAutofill onRetrieve={handleSearchSubmit} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
@@ -41,7 +36,7 @@ export function ListingSearchBar({ onSearch }) {
           radius='md'
           size='xl'
           className='inputfield'
-          icon={<SearchIcon />}
+          icon={<Warehouse />}
           type="text"
           placeholder="Insert address to look for nearby storage"
           value={searchTerm}
@@ -49,8 +44,8 @@ export function ListingSearchBar({ onSearch }) {
           name="no-autofill"
           onChange={handleSearchChange}
           rightSection={
-            showClearIcon && (
-                <ClearIcon onClick={handleClearSearch} />
+            showSearchIcon && (
+                <SearchIcon onClick={handleSearchSubmit} />
             )
           }
         />
