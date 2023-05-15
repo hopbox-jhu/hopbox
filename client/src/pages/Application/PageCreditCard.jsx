@@ -30,11 +30,11 @@ function PageCreditCard(props) {
         <Label htmlFor="creditcard">Credit Card Information</Label>
         <PricingBox>
                     <div className="subtotal">Subtotal</div>
-                    <div className="price-per-month">${(pricing * (dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1).toFixed(2)}</div>
+                    <div className="price-per-month">${(pricing / 30 * ((dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1)).toFixed(2)}</div>
                     <div className="service-fee">Service Fee (20%)</div>
-                    <div className="service-fee-amount">${((pricing * (dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1) * 0.2).toFixed(2)}</div>
+                    <div className="service-fee-amount">${((pricing / 30 * ((dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1)) * 0.2).toFixed(2)}</div>
                     <div className="total">Total</div>
-                    <div className="total-amount">${((pricing * (dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1) * 1.2).toFixed(2)}</div>
+                    <div className="total-amount">${((pricing /30 * ((dateRange[1] - dateRange[0]) / (1000 * 60 * 60 * 24) + 1)) * 1.2).toFixed(2)}</div>
         </PricingBox>
             <Input
               id="name"
