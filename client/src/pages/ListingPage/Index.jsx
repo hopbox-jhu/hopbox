@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 // import { Wrapper, Header, LeftContainer, RightContainer, Container } from "../../components/listing/listingComponents";
-import { Header, Container, LeftContainer, RightContainer, Form, PricingBox } from './ListingPage';
+import { Header, Container, LeftContainer, RightContainer, Form, PricingBox, MainContent, Address } from './ListingPage';
 import { Link, useParams } from "react-router-dom";
 import * as api from "../../api";
-import logo from "/src/assets/logo.png";
+import logo from "/src/assets/hopbox_letter.png";
 import { useNavigate } from 'react-router-dom';
 import { List } from "@material-ui/core";
 import { Application } from "../../components/application"
@@ -50,18 +50,18 @@ function ListingPage() {
             <Header>
             <img src={logo} alt="Logo" />
             </Header>
-
+            <MainContent>
             <Container>
                 <LeftContainer>
                 <Image src={"http://localhost:5050/image/" + data.images[0]}
                     height="60vh" width="40vw" radius="lg"  />
                 <div style={{ marginTop: 30 }}>
-                    <label>{data.address}</label>
+                    <Address>{data.address}</Address>
                 </div>
                 </LeftContainer>
                 <RightContainer>
                 <Form>
-                <label>About</label>
+                <label>ABOUT</label>
                     <Group position="left" mt="md" mb="xs">
                         <Badge size="lg" color="pink" variant="light">
                             {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
@@ -72,20 +72,20 @@ function ListingPage() {
                     </Group>
                 
                     <div style={{ marginTop: 30 }}>
-                    <Text align="left" size="sm" color="dimmed" >
+                    <Text align="left" size="xl" color="dimmed" >
                         Host: {data.hostID}
                     </Text>
-                    <Text align="left" size="sm" color="dimmed" >
+                    <Text align="left" size="xl" color="dimmed" >
                         Host Phone Number: {host.phone}
                     </Text>
                     <br></br>
-                    <Text align="left" size="sm" color="dimmed" >
+                    <Text align="left" size="xl" color="dimmed" >
                     Description: {data.description.length > 180 ? data.description.slice(0, 180) + "..." : data.description}
                     </Text>
                     </div>
                 </Form>
                 <Form>
-                <label>Pricing per month</label>
+                <label>PRICING PER MONTH</label>
                 <PricingBox>
                     <div className="subtotal">Subtotal</div>
                     <div className="price-per-month">${data.pricing.toFixed(2)}</div>
@@ -96,7 +96,7 @@ function ListingPage() {
                 </PricingBox>
                     {data.hostID !== localStorage.getItem("email") ? (
                         <Button onClick={handleSubmit} align="left" variant="light" color="pink" fullWidth radius="lg">
-                            Book Now
+                            BOOK NOW
                         </Button>
                     ): <></>
                     }
@@ -125,6 +125,7 @@ function ListingPage() {
                 </Form>
                 </RightContainer>
             </Container>
+            </MainContent>
 
             </div>
         );
