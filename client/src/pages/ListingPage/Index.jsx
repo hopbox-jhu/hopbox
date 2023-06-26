@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 // import { Wrapper, Header, LeftContainer, RightContainer, Container } from "../../components/listing/listingComponents";
 import { Header, Container, LeftContainer, RightContainer, Form, PricingBox, MainContent, Address } from './ListingPage';
-import { Link, useParams } from "react-router-dom";
 import * as api from "../../api";
 import logo from "/src/assets/hopbox_letter.png";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import { List } from "@material-ui/core";
 import { Application } from "../../components/application"
 
@@ -48,7 +47,11 @@ function ListingPage() {
         return (
             <div>
             <Header>
-            <img src={logo} alt="Logo" />
+                <div>
+                    <Link to="/homepage">
+                    <img src={logo} alt="Logo" />
+                    </Link>
+                </div>
             </Header>
             <MainContent>
             <Container>

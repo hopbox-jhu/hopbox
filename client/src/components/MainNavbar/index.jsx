@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
-import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2, ImgLogo, NavSearch } from './MainNavbarElements';
+import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2, ImgLogo, NavSearch, NavSearchAndButton } from './MainNavbarElements';
 import { ListingSearchBar } from "../../components/listingSearch";
 import {RxDividerVertical} from "react-icons/rx";
 import { AuthContext  } from '../../context/AuthContext';
 import { useAuth } from '../../context/AuthContext';
 import { useContext } from 'react';
 
-import logo from "../../assets/logo.png";
+import logo from "/src/assets/hopbox_letter.png";
 
 const index = ({ onSearch }) => {
   const [scrollNav, setScrollNav] = useState(false);
@@ -52,16 +52,22 @@ const index = ({ onSearch }) => {
               <NavLogo onClick={toggleHome}>
                 <ImgLogo src={logo}/>
               </NavLogo>
+              <NavSearchAndButton>
               <NavSearch>
                 <ListingSearchBar onSearch={onSearch} />
-              </NavSearch>
-            <NavBtn>
-              <NavBtnLink to="/addlisting">List Your Space</NavBtnLink>
-              <span style={{ display: 'flex', alignItems: 'center' }}><RxDividerVertical style={{color:'black', fontSize :'3.5rem'}} /></span>
-              <NavBtnLink2 id="signInBtn" to="/signin">Sign In</NavBtnLink2>
-              <NavBtnLink id="registerBtn" to="/signup">Register</NavBtnLink>
-              <NavBtnLink id="profileBtn" to="/profile">Profile</NavBtnLink>
-            </NavBtn>
+                </NavSearch>
+                <NavBtn>
+                  <NavBtnLink to="/addlisting">LIST YOUR SPACE</NavBtnLink>
+                  <span style={{ display: 'flex', alignItems: 'center' }}>
+                    <RxDividerVertical style={{ color: 'black', fontSize: '3.0rem', fontWeight: '0.5rem' }} />
+                  </span>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <NavBtnLink2 id="signInBtn" to="/signin">SIGN IN</NavBtnLink2>
+                    <NavBtnLink2 id="registerBtn" to="/signup">REGISTER</NavBtnLink2>
+                    <NavBtnLink2 id="profileBtn" to="/profile">PROFILE</NavBtnLink2>
+                  </div>
+                </NavBtn>
+            </NavSearchAndButton>
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>

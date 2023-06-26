@@ -32,7 +32,7 @@ export function ListingSearchBar({ onSearch }) {
     <form onSubmit={handleSearchSubmit}>
       <AddressAutofill onRetrieve={handleSearchSubmit} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
         <Input
-          style={{ width: '31vw'  }}
+          style={{ width: '31vw', marginLeft: '20px' }}
           radius='md'
           size='xl'
           className='inputfield'

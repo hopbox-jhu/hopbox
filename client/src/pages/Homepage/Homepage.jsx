@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Divider = styled.div`
   display: flex;
-  background: #f8f4f4;
+  background: white;
   height: 100vh;
   width: 100vw;
   flex-direction: column;
@@ -64,7 +64,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ListingWrapper = styled.div`
-    margin-top: 15vh;
+    margin-top: 21vh;
     overflow: scroll;
 
 `;
@@ -93,6 +93,7 @@ export const Text2 = styled.p`
   color: #000000;
   font-weight: 100;
   line-height:1.3;
+  padding-top: 10px;
   
 
   @media screen and (max-width: 480px) {

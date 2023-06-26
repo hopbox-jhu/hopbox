@@ -4,8 +4,8 @@ import { Link as LinkS } from 'react-scroll';
 
 
 export const Nav = styled.nav`
-  background: #f4f0f4ff;
-  height: 110px;
+  background: #FFF1F6;
+  height: 100px;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -14,7 +14,16 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   z-index: 10;
-  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
+    z-index: 1;
+  }
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;
     height:50px;
@@ -36,8 +45,10 @@ export const NavLogo = styled(LinkR)`
   justify-self: flex-start;
   cursor: pointer;
   display: flex;
+  flex: 0 0 5%;
   align-items: center;
   margin-left: 3vw;
+
 
 `;
 
@@ -70,13 +81,27 @@ export const NavItem = styled.li`
   
 `;
 
+export const NavSearchAndButton = styled.div`
+padding: 10px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 90%;
+margin-right: auto;
+margin-left: auto;
+
+@media screen and (max-width: 768px) {
+  flex-wrap: wrap;
+}
+
+`;
+
 export const NavLink = styled(LinkS)`
   color: #0b0a0a;
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 0 1rem;
-  height: 100%;
   cursor: pointer;
   &.active {
     border-bottom: 3px solid #01bf71;
@@ -86,8 +111,8 @@ export const NavLink = styled(LinkS)`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 3vw;
   justify-content: space-between;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -97,38 +122,36 @@ export const NavBtnLink = styled(LinkR)`
   display: flex;
   align-items: center;
   border-radius: 10px;
-  background: #EB65A0;
   white-space: nowrap;
-  padding: 10px 15px;
-  color: #ffffff;
-  font-size: 25px;
+  padding: 10px 20px;
+  color: #EB65A0;
+  font-size: 20px;
   outline: none;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  height:67%;
-  width: 10%
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: #f7d7e060;
+    background: #F78BBF;
+    color: white;
   }
 `;
 export const NavBtnLink2 = styled(LinkR)`
   display: flex;
   align-items: center;
   border-radius: 10px;
-  background: #ffffff00;
-  padding: 10px 15px;
-  color: #000000;
-  font-size: 25px;
-  font-weight: 400;
+  white-space: nowrap;
+  padding: 10px 20px;
+  color: Black;
+  font-size: 20px;
+  outline: none;
+  border: none;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
   text-decoration: none;
-  height:67%;
-  width: 10%
+
   &:hover {
     transition: all 0.2s ease-in-out;
     background: #f7d7e060;
@@ -137,16 +160,17 @@ export const NavBtnLink2 = styled(LinkR)`
 
 export const NavSearch = styled(LinkR)`
   white-space: nowrap;
-  padding: 10px 15px;
+  padding: 10px;
   text-decoration: none;
   justify-self: flex-start;
+  
 
 `;
 
 
 export const ImgLogo = styled.img`
-  width: 130px;
-  height: 5vh;
+  width: auto;
+  height: 27px;
   @media screen and (max-width: 768px) {
     width: 15vw;
     height: 3vh;

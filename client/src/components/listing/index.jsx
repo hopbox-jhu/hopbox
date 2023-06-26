@@ -14,7 +14,7 @@ export function Listing({ listingId, address, type, price, images, description, 
       
     return (
 
-        <Card onClick = {handleNavigate} style={{marginBottom:"3vh", height:"30vh", alignItem:"center", justifyContent:"center"}} shadow="lg"  radius="lg" withBorder>
+        <Card onClick = {handleNavigate} style={{ marginBottom:"3vh", height:"30vh", alignItem:"center", justifyContent:"center"}} shadow="lg"  radius="lg" withBorder>
         <Divider>
             <Image src={"http://localhost:5050/image/" + images[0]}
                 height="25vh" width="15vw" radius="lg" style={{ maxWidth: "100%" }}  />
@@ -32,7 +32,7 @@ export function Listing({ listingId, address, type, price, images, description, 
             </Badge>
         </Group>
         <Subtitle align="left" size="sm" color="dimmed">
-        {description.length > 180 ? description.slice(0, 180) + "..." : description}
+        {description.length > 100 ? description.slice(0, 100) + "..." : description}
         </Subtitle>
         </Wrapper>
         </Divider>
