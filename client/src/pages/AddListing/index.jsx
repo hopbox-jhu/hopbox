@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
 import * as api from "../../api";
 import PageTypeAddress from "./PageTypeAddress";
 import PageDescription from "./PageDescription";
@@ -12,7 +11,7 @@ import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
 import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -134,14 +133,14 @@ function AddListing() {
       <Header>
         <div>
           <Link to="/homepage">
-        <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" />
           </Link>
         </div>
       </Header>
       <MainContent>
       <Container>
         <LeftContainer>
-        <Heading>WE WANT TO KNOW ABOUT YOUR SPACE</Heading>
+        <Heading>We Want to Know About Your Space</Heading>
         </LeftContainer>
         <RightContainer>
         {currentPage === 1 && <PageTypeAddress key={uuidv4()} type={type} setType={setType} address={address} setAddress={setAddress} />}
