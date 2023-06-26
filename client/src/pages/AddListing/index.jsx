@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import * as api from "../../api";
 import PageTypeAddress from "./PageTypeAddress";
 import PageDescription from "./PageDescription";
 import PageSize from "./PageSize";
 import PagePrice from "./PagePrice";
 import PagePermission from "./PagePermission";
-import { MainContent, Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
+import { MainContent, Heading, Header, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
 import logo from "/src/assets/hopbox_letter.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
@@ -132,7 +133,9 @@ function AddListing() {
     <div>
       <Header>
         <div>
+          <Link to="/homepage">
         <img src={logo} alt="Logo" />
+          </Link>
         </div>
       </Header>
       <MainContent>
