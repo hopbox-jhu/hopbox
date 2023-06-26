@@ -77,11 +77,11 @@ function SignInPage() {
   return (
     <Container>
       <CoverBg>
-        <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+
       </CoverBg>
     <Content>
     <Link to="/">
-    <img src="/src/assets/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
+    <img src="/src/assets/hopbox_letter.png" alt="Logo" style={{ height: '70px' , paddingBottom: '30px'}} />
     </Link>
       <Form onSubmit={handleSubmit}>
         <Label>

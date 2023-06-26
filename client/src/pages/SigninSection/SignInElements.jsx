@@ -142,6 +142,7 @@ export const CoverBg = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  background-color: #FFFFFF;
 `;
 
 export const VideoBg = styled.video`
