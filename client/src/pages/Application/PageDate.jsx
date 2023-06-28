@@ -6,6 +6,7 @@ import { Group } from '@mantine/core';
 function PageDate(props) {
     const dateRange = props.dateRange;
     const setDateRange = props.setDateRange;
+    const currentDate = new Date();
 
     return (
         <div>
@@ -15,7 +16,7 @@ function PageDate(props) {
                 style={{
                     marginTop:'40px'
                   }}>
-                    <DatePicker type="range" value={dateRange} onChange={setDateRange} />
+                    <DatePicker type="range" value={dateRange} onChange={setDateRange} minDate={currentDate} />
                 </Group>
             </Form>
         </div>

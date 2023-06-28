@@ -56,8 +56,31 @@ function ListingPage() {
             <MainContent>
             <Container>
                 <LeftContainer>
-                <Image src={"http://localhost:5050/image/" + data.images[0]}
-                    height="60vh" width="40vw" radius="lg"  />
+                <Group position="center" style={{ flexDirection: "row" }}>
+          {data.images.length >= 2 && (
+            <div style={{ display: "flex", flexWrap: "wrap" }}>
+              {data.images.slice(0, 4).map((image, index) => (
+                <Image
+                  key={index}
+                  src={"http://localhost:5050/image/" + image}
+                  height="25vh"
+                  width="15vw"
+                  radius="lg"
+                  style={{ maxWidth: "100%", marginRight: "1rem", marginBottom: "1rem" }}
+                />
+              ))}
+            </div>
+          )}
+          {data.images.length === 1 && (
+            <Image
+              src={"http://localhost:5050/image/" + data.images[0]}
+              height="25vh"
+              width="15vw"
+              radius="lg"
+              style={{ maxWidth: "100%" }}
+            />
+          )}
+        </Group>
                 <div style={{ marginTop: 30 }}>
                     <Address>{data.address}</Address>
                 </div>

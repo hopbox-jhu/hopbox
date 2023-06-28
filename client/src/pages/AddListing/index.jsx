@@ -23,7 +23,7 @@ function AddListing() {
   const [height, setHeight] = useState();
   const [pricing, setPricing] = useState();
   const [permission, setPermission] = useState(false);
-  const [images, setImages] = useState('');
+  const [images, setImages] = useState([]);
   const [file, setFile] = useState(null);
   const navigate = useNavigate();
 
@@ -38,14 +38,19 @@ function AddListing() {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-
-    const fd = new FormData();
-    if (file) {
-        fd.append('image', file, file.name)
+  
+    const imageIDs = [];
+    for (let i = 0; i < file.length; i++) {
+      const fd = new FormData();
+      if (file[i]) {
+        fd.append('image', file[i], file[i].name);
         const { data } = await uploadImage(fd);
-        handleOnSubmitCreateListing(data);
+        imageIDs.push(data);
+      }
     }
+    handleOnSubmitCreateListing(imageIDs);
   };
+  
 
   const handleOnSubmitCreateListing = async (imageId) => {
     const pricingAsNumber = Number(pricing);
