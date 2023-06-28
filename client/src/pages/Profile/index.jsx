@@ -105,6 +105,7 @@ const ProfilePage = ({ user }) => {
   })
 
   return (
+    // THIS IS A COMPONENT 
     <div style={{ display: 'flex', minHeight: '100vh' }}>
       <div style={{ flex: '0 0 20%', backgroundColor: '#F8EAF4', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <ul style={{ listStyle: 'none', padding: '0', margin: '0', textAlign: 'left' }}>
@@ -116,6 +117,8 @@ const ProfilePage = ({ user }) => {
         </ul>
       </div>
 
+
+    
       <div style={{ flex: '1', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', padding: '2rem', backgroundColor: '#FFFFFF' }}>
         {selectedOption === 'My Listings' && (
           <div>

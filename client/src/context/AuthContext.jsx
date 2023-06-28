@@ -16,34 +16,3 @@ export function AuthProvider({ children }) {
   );
 }
 
-// function RequireAuth({ children }) {
-//   const navigate = useNavigate();
-//   const location = useLocation();
-//   const { isAuth, setIsAuth } = useContext(AuthContext);
-//   console.log(isAuth);
-//   useEffect(() => {
-//     if (!localStorage.getItem("token")) {
-//       postApi.getAuth().then((res) => {
-//         console.log(res);
-//         if (res.status === 200) {
-//           setIsAuth(true);
-//         } else {
-//           setIsAuth(false);
-//           setTimeout(() => {
-//             navigate("/login", { state: { from: location } });
-//           }, 1000);
-//         }
-//       });
-//     } else {
-//       setIsAuth(true);
-//     }
-//   });
-  
-//   if (isAuth) {
-//     return <div>{children}</div>;
-//   } else {
-//     return <Notification title="Login required" loading message="Please login to continue" color="red" />;
-//   }
-// }
-
-//export { AuthProvider, useAuth };
