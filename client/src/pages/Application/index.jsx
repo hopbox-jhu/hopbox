@@ -1,8 +1,8 @@
-import React, { useState, useParams, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import * as api from "../../api";
-import { Header, Heading, Form, Image, Label, Input, Button, GiantInput, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from "./Application";
+import { Header, Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
 import { Checkbox, Anchor } from '@mantine/core';
-import logo from "/src/assets/logo.png";
+import logo from "/src/assets/hopbox_letter.png";
 import boximg from "/src/assets/Box.png";
 import PageDate from "./PageDate";
 import PageHazardCheck from "./PageHazardCheck";
@@ -10,7 +10,7 @@ import PageItems from "./PageItems";
 import PageNeeds from "./PageNeeds";
 import PageInsurance from "./PageInsurance";
 import PageCreditCard from "./PageCreditCard";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Application() {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -91,12 +91,17 @@ function Application() {
   return (
     <div>
       <Header>
-        <img src={logo} alt="Logo" />
+         <div>
+            <Link to="/homepage">
+            <img src={logo} alt="Logo" />
+            </Link>
+        </div>
       </Header>
+      <MainContent>
       <Container>
         <LeftContainer>
-        <Image src={boximg} alt="Box" />
-        <Heading>Fill out the Application for this space</Heading>
+        {/* <Image src={boximg} alt="Box" /> */}
+        <Heading>Fill Out the Application for this Space</Heading>
         </LeftContainer>
         <RightContainer>
           {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange}/>}
@@ -158,6 +163,7 @@ function Application() {
         </ButtonContainer>
         </RightContainer>
       </Container>
+      </MainContent>
     </div>
   );
 }

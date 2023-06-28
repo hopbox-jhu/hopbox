@@ -176,7 +176,7 @@ function Homepage() {
       
           map.current.on('load', () => {
             map.current.loadImage(
-              'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+              '/src/assets/marker.png',
               (error, image) => {
                 if (error) throw error;
                 if (map.current.hasImage('custom-marker', image)) {
@@ -198,10 +198,14 @@ function Homepage() {
                   source: 'points',
                   layout: {
                     'icon-image': 'custom-marker',
+                    'icon-size': 0.3, // Adjust the size of the marker
                     'text-field': ['get', 'pricing'],
                     'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
                     'text-offset': [0, 1.25],
                     'text-anchor': 'top',
+                  },
+                  paint: {
+                    'icon-color': 'pink', // Change the color of the marker to pink
                   },
                 });
 
@@ -284,7 +288,7 @@ function Homepage() {
                         50 + Spaces
                     </Text2>
                   <Filter className="filter" >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '30px', paddingTop: '40px' }}>
                       <Select
                         style={{ width: '30%' }}
                         radius="md"
@@ -328,8 +332,9 @@ function Homepage() {
                     </div>
                     <Switch
                       labelPosition="left"
-                      style = {{marginTop:"5px"}}
+                      style = {{ marginLeft: "20px", marginTop:"20px", paddingBottom: "20px", fontSize: "30px", fontWeight: "100", lineHeight: "1.3"}}
                       label="Only show currently available listings"
+                      color="pink"
                       checked={availableOnly}
                       onChange={(event) => setAvailableOnly(event.target.checked)}
                     />

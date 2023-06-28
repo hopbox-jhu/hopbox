@@ -51,10 +51,10 @@ export function Listing({ listingId, address, type, price, images, description, 
             <Badge size="lg" color="pink" variant="light">
               ${price}
             </Badge>
-          </Group>
-          <Subtitle align="left" size="sm" color="dimmed">
-            {description.length > 180 ? description.slice(0, 180) + "..." : description}
-          </Subtitle>
+        </Group>
+        <Subtitle align="left" size="sm" color="dimmed">
+        {description.length > 100 ? description.slice(0, 100) + "..." : description}
+        </Subtitle>
         </Wrapper>
       </Divider>
     </Card>

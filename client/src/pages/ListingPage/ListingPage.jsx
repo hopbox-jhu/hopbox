@@ -18,25 +18,66 @@ export const Divider = styled.div`
 `;
 
 export const Header = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
-  background-color: white;
-  height: 180px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #FFF1F6;
+  height: 100px;
+  width: 100%;
 
   img {
-    margin-right: 16px;
-    margin-left: 160px;
-    margin-top: 40px;
-    width: 160px;
-    height: 160px;
-    object-fit: contain; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 27px;
+    margin-left: 40px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
+    z-index: 1;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding: 80px;
+
+    img {
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    width: auto; /* Adjust to automatically adjust width based on content */
+
+    img {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; /* Set width to 100% to ensure it spans the available width */
+      height: auto; /* Allow height to adjust based on the image's aspect ratio */
+      margin: 0 auto; /* Center the image horizontally */
+    }
   }
 `;
 
 export const Container = styled.div`
 display: flex;
-background: #FFF1F6;
+background: white;
 height: 100vh;
 width: 100vw;
 
@@ -52,12 +93,19 @@ width: 100vw;
 }
 `;
 
+export const MainContent = styled.div`
+  margin-top: 180px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+`;
+
 export const LeftContainer = styled.div`
 height: 100vh;
 width: 50vw;
 display: flex;
 flex-direction: column;
-background-color: #FFF1F6;
+background-color: white;
 margin-top: 40px;
 align-items: center;
 
@@ -83,7 +131,7 @@ export const RightContainer = styled.div`
 height: 100vh;
 width: 50vw;
 display: flex;
-background-color: #FFF1F6;
+background-color: white;
 margin-top: 40px;
 margin-left: 15px;
 flex-direction: row;
@@ -198,5 +246,47 @@ export const PricingBox = styled.div`
 
   .total-amount {
     grid-column: 2;
+  }
+`;
+
+export const Address = styled.div`
+  font-size: 2.5vw;
+  color: black;
+  font-weight: 80;
+  line-height: 1.2;
+  margin-top: -50px;
+  margin-left: 50px;
+  overflow: hidden;
+  padding: 45px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 3.5vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 3.5vw;
+  }
+`;
+
+export const About = styled.div`
+  font-size: 1.5vw;
+  color: black;
+  font-weight: 80;
+  line-height: 1.2;
+  overflow: hidden;
+  padding: 45px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 1.5vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.5vw;
+  }
+  
+  /* Example usage of the hostID prop */
+  ::after {
+    content: "Host ID: ${props => props.hostID}";
+    color: red;
   }
 `;

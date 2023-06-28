@@ -5,13 +5,13 @@ import PageDescription from "./PageDescription";
 import PageSize from "./PageSize";
 import PagePrice from "./PagePrice";
 import PagePermission from "./PagePermission";
-import { Heading, Header, Container, Image, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
-import logo from "/src/assets/logo.png";
+import { MainContent, Heading, Header, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
+import logo from "/src/assets/hopbox_letter.png";
 import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
 import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -136,16 +136,19 @@ function AddListing() {
   return (
     <div>
       <Header>
-        <img src={logo} alt="Logo" />
+        <div>
+          <Link to="/homepage">
+          <img src={logo} alt="Logo" />
+          </Link>
+        </div>
       </Header>
+      <MainContent>
       <Container>
         <LeftContainer>
-        <Image src={spaceimg} alt="Space" />
-        <Heading>Tell us about your space</Heading>
+        <Heading>We Want to Know About Your Space</Heading>
         </LeftContainer>
         <RightContainer>
         {currentPage === 1 && <PageTypeAddress key={uuidv4()} type={type} setType={setType} address={address} setAddress={setAddress} />}
-
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
@@ -205,6 +208,7 @@ function AddListing() {
         </ButtonContainer>
       </RightContainer>
       </Container>
+      </MainContent>
     </div>
   );
 }

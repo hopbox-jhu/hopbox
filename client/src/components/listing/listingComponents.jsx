@@ -7,6 +7,7 @@ export const Divider = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  // padding: 10px;
 `;
 
 export const Header = styled.div`
@@ -87,14 +88,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   margin-left: 1vw;
   justify-content: flex-start;
+  padding: 0.5vw;
   width: 70%;
   height: 100%;
 `;
 
 export const Heading = styled.h1`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.5;
-  font-weight: 600;
+  font-weight: 350;
+
 
   @media screen and (max-width: 1500px) {
     font-size: 0.8rem;
@@ -105,4 +108,5 @@ export const Subtitle = styled.p`
   font-size: 0.85rem;
   line-height: 1.8;
   font-weight: 200;
+  word-wrap: break-word;
 `;
