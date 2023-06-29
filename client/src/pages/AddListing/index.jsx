@@ -7,7 +7,6 @@ import PagePrice from "./PagePrice";
 import PagePermission from "./PagePermission";
 import { MainContent, Heading, Header, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
 import logo from "/src/assets/hopbox_letter.png";
-import spaceimg from "/src/assets/spacewithquestionmark.png";
 import PageImage from "./PageImage";
 import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';

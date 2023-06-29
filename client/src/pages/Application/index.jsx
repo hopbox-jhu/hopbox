@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api";
 import { Header, Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
-import { Checkbox, Anchor } from '@mantine/core';
 import logo from "/src/assets/hopbox_letter.png";
-import boximg from "/src/assets/Box.png";
 import PageDate from "./PageDate";
 import PageHazardCheck from "./PageHazardCheck";
 import PageItems from "./PageItems";
@@ -121,20 +119,7 @@ function Application() {
         </NextButton>
         )}
         {currentPage === 6 && (
-          <NextButton onClick={handleSubmit} disabled={currentPage !== 6} style={{
-            backgroundColor: '#EB65A0',
-            color: 'white',
-            padding: '15px 28px',
-            borderRadius: '15px',
-            border: 'none',
-            fontSize: '15px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-            width: '90px',
-            textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+          <NextButton onClick={handleSubmit} disabled={currentPage !== 6}>
             Submit
           </NextButton>
         )}
