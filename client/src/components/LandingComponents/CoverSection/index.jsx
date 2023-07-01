@@ -1,8 +1,8 @@
 import React from 'react';
-import Video from '../../videos/main.mp4';
+import Video from '../../../assets/videos/main.mp4';
 import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, ImgLogo } from './CoverElements';
 import { makeStyles } from '@material-ui/core/styles';
-import text from "../../assets/logo.png";
+import text from "../../../assets/images/logo.png";
 import { Button } from '../ButtonElements';
 import { useNavigate } from 'react-router-dom';
 

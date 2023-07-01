@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Button, TextField } from "@mui/material";
-import Navbar from "../../components/Navbar";
-import Sidebar from '../../components/Sidebar';
-import CoverSection from '../../components/CoverSection';
-import InfoSection from "../../components/InfoSection";
-import { aboutObj, discoverObj, signupObj } from '../../components/InfoSection/Data';
-import Footer from "../../components/Footer"; 
-import Services from "../../components/Services"
+import Navbar from "../../components/LandingComponents/Navbar";
+import Sidebar from '../../components/LandingComponents/Sidebar';
+import CoverSection from '../../components/LandingComponents/CoverSection';
+import InfoSection from "../../components/LandingComponents/InfoSection";
+import { aboutObj, discoverObj, signupObj } from '../../components/LandingComponents/InfoSection/Data';
+import Footer from "../../components/footer"; 
+import Services from "../../components/LandingComponents/Services"
 
 function Landing() {
   const [isOpen, setIsOpen] = useState(false);

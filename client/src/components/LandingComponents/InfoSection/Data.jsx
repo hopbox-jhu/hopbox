@@ -1,5 +1,5 @@
-import renter from '../../assets/renter.png';
-import host from '../../assets/host.png';
+import renter from '../../../assets/images/renter.png';
+import host from '../../../assets/images/host.png';
 
 export const aboutObj = {
   id: 'about',

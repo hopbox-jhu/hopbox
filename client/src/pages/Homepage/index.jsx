@@ -4,8 +4,8 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import { Divider, MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper, Heading, Text1, Text2, Filter } from "./Homepage";
 import * as api from "../../api";
 import { ListingList } from "../../components/listingList";
-import MainNavBar from "../../components/MainNavbar";
-import marker from "../../assets/mymarker.png";
+import MainNavBar from "../../components/mainNavbar";
+import marker from "../../assets/images/mymarker.png";
 import { Select, Switch } from "@mantine/core";
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
 
@@ -176,7 +176,7 @@ function Homepage() {
       
           map.current.on('load', () => {
             map.current.loadImage(
-              '/src/assets/marker.png',
+              '/src/assets/images/marker.png',
               (error, image) => {
                 if (error) throw error;
                 if (map.current.hasImage('custom-marker', image)) {

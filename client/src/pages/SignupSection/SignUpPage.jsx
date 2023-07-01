@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { notifications } from "@mantine/notifications";
 import { Link } from 'react-router-dom';
 import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content } from './SignupElements';
-import Video from '../../videos/video.mp4';
+import Video from '../../assets/videos/video.mp4';
 
 
 
@@ -53,7 +53,7 @@ function SignUpPage() {
       </CoverBg>
     <Content>
     <Link to="/">
-    <img src="/src/assets/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
+    <img src="/src/assets/images/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
     </Link>
       <Form onSubmit={handleSubmit}>
         <Label>

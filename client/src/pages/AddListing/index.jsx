@@ -6,12 +6,14 @@ import PageSize from "./PageSize";
 import PagePrice from "./PagePrice";
 import PagePermission from "./PagePermission";
 import { MainContent, Heading, Header, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
-import logo from "/src/assets/hopbox_letter.png";
-import spaceimg from "/src/assets/spacewithquestionmark.png";
+import logo from "/src/assets/images/hopbox_letter.png";
+import spaceimg from "/src/assets/images/spacewithquestionmark.png";
 import PageImage from "./PageImage";
 import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, Link } from 'react-router-dom';
+import MainNavBar from "../../components/mainNavbar";
+
 
 function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -135,13 +137,14 @@ function AddListing() {
 
   return (
     <div>
-      <Header>
+      {/* <Header>
         <div>
           <Link to="/homepage">
           <img src={logo} alt="Logo" />
           </Link>
         </div>
-      </Header>
+      </Header> */}
+      <MainNavBar/>
       <MainContent>
       <Container>
         <LeftContainer>

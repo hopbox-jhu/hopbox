@@ -3,10 +3,12 @@ import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
 // import { Wrapper, Header, LeftContainer, RightContainer, Container } from "../../components/listing/listingComponents";
 import { Header, Container, LeftContainer, RightContainer, Form, PricingBox, MainContent, Address } from './ListingPage';
 import * as api from "../../api";
-import logo from "/src/assets/hopbox_letter.png";
+import logo from "/src/assets/images/hopbox_letter.png";
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import { List } from "@material-ui/core";
 import { Application } from "../../components/application"
+import MainNavBar from "../../components/mainNavbar";
+
 
 function ListingPage() {
     const { id } = useParams();
@@ -46,13 +48,15 @@ function ListingPage() {
     if (data && host) {
         return (
             <div>
-            <Header>
+            {/* <Header>
                 <div>
                     <Link to="/homepage">
                     <img src={logo} alt="Logo" />
                     </Link>
                 </div>
-            </Header>
+            </Header> */}
+            <MainNavBar/>
+            
             <MainContent>
             <Container>
                 <LeftContainer>
