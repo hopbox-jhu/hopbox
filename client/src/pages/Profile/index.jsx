@@ -7,6 +7,8 @@ import PopupForm from './EditProfile';
 import { ListingList } from '../../components/listingList';
 import { RentalList } from '../../components/rentalList';
 import { baseApiUrl } from 'mapbox-gl';
+import MainNavBar from "../../components/mainNavbar";
+
 
 import * as api from "../../api";
 import { List } from "@material-ui/core";
@@ -107,6 +109,7 @@ const ProfilePage = ({ user }) => {
   return (
     // THIS IS A COMPONENT 
     <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <MainNavBar/>
       <div style={{ flex: '0 0 20%', backgroundColor: '#F8EAF4', padding: '2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <ul style={{ listStyle: 'none', padding: '0', margin: '0', textAlign: 'left' }}>
           <ProfileListItem onClick={() => handleOptionClick('Profile')} selected={selectedOption === 'Profile'} />

@@ -7,7 +7,7 @@ import * as postApi from "../../api/index";
 import { afterReceiveAuth } from "../../api/auth"
 import { notifications } from "@mantine/notifications";
 import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content} from './SignInElements';
-import Video from '../../videos/video.mp4';
+import Video from '../../assets/videos/video.mp4';
 import { AuthContext } from '../../context/AuthContext';
 import React, { useContext } from 'react';
 
@@ -81,7 +81,7 @@ function SignInPage() {
       </CoverBg>
     <Content>
     <Link to="/">
-    <img src="/src/assets/hopbox_letter.png" alt="Logo" style={{ height: '70px' , paddingBottom: '30px'}} />
+    <img src="/src/assets/images/hopbox_letter.png" alt="Logo" style={{ height: '70px' , paddingBottom: '30px'}} />
     </Link>
       <Form onSubmit={handleSubmit}>
         <Label>
