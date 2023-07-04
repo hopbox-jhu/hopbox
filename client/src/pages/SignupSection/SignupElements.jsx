@@ -162,7 +162,7 @@ export const Content = styled.div `
   backgroundColor: Black;
 `
 
-export const Image = styled.img`
-  height: '120px';
-  paddingBottom: '20px';
+export const LogoImage = styled.img`
+  height: 120px;
+  paddingBottom: 20px;
 `;

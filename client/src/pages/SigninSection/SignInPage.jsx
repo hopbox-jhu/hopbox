@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
 import * as postApi from "../../api/index";
 import { afterReceiveAuth } from "../../api/auth"
-import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, Content, Image } from './SignInElements';
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, Content, HopBoxImage } from './SignInElements';
 import React from 'react';
 
 function SignInPage() {
@@ -36,7 +36,7 @@ function SignInPage() {
       <CoverBg />
       <Content>
         <Link to="/">
-          <Image src="/src/assets/images/hopbox_letter.png" alt="Logo" />
+          <HopBoxImage src="/src/assets/images/hopbox_letter.png" alt="Logo" />
         </Link>
         <Form onSubmit={handleSubmit}>
           <Label>

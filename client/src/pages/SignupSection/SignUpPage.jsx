@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as postApi from "../../api/index";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content, Image } from './SignupElements';
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content, LogoImage } from './SignupElements';
 import Video from '../../assets/videos/video.mp4';
 
 function SignUpPage() {
@@ -44,7 +44,7 @@ function SignUpPage() {
       </CoverBg>
       <Content>
         <Link to="/">
-          <Image src="/src/assets/images/logo.png" alt="Logo" />
+          <LogoImage src="/src/assets/images/logo.png" alt="Logo" />
         </Link>
         <Form onSubmit={handleSubmit}>
           <Label>

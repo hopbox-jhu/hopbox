@@ -162,7 +162,7 @@ export const Content = styled.div `
   height: 100%;
 `
 
-export const Image = styled.img`
-  height: '70px';
-  paddingBottom: '30px';
+export const HopBoxImage = styled.img`
+  height: 70px;
+  paddingBottom: 30px;
 `;
