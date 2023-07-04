@@ -161,3 +161,8 @@ export const Content = styled.div `
   justify-content: center;
   height: 100%;
 `
+
+export const Image = styled.img`
+  height: '70px';
+  paddingBottom: '30px';
+`;
