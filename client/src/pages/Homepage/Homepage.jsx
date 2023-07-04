@@ -5,7 +5,7 @@ export const Divider = styled.div`
   background: white;
   height: 100vh;
   width: 100vw;
-  flex-direction: column;
+  flex-direction: column; 
   overflow: hidden;
 
   @media screen and (max-width: 768px) {

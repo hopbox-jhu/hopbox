@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Group, Button, Input } from '@mantine/core';
-import axios from "axios";
 import * as postApi from "../../api/index";
 
 function PopupForm() {
@@ -18,15 +17,12 @@ function PopupForm() {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            // Handle form submission logic here
             const { bio, address, school, occupation, phone } = values;
             localStorage.setItem("bio", bio);
             localStorage.setItem("address", address);
             localStorage.setItem("school", school);
             localStorage.setItem("occupation", occupation);
             localStorage.setItem("phone", phone);
-            // Make API call to update user data in MongoDB
-            //TODO: need to post to mongodb right here
             const email = localStorage.getItem("email");
             const user = await postApi.updateUser(email, bio, address, school, occupation, phone);
             if (user) {
