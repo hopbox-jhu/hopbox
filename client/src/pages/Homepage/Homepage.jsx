@@ -5,7 +5,7 @@ export const Divider = styled.div`
   background: white;
   height: 100vh;
   width: 100vw;
-  flex-direction: column; 
+  flex-direction: column;
   overflow: hidden;
 
   @media screen and (max-width: 768px) {
@@ -113,4 +113,11 @@ export const Filter = styled.div`
   margin-top: -20px;
   align-items: flex-end;
   flex-direction: column;
+`
+
+export const FilterBar = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-top: 40px;
 `
