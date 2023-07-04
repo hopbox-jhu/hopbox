@@ -12,6 +12,7 @@ export const Container = styled.div`
   overflow: hidden;
   position: relative;
 `;
+
 export const Title = styled.h1`
   margin-bottom: 30px;
   color: #EB65A0;
