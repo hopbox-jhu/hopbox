@@ -326,5 +326,3 @@ export const NextButton = styled.button`
     font-size: 14px;
   }
 `;
-
-

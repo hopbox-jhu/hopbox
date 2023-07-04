@@ -12,6 +12,7 @@ export const Container = styled.div`
   overflow: hidden;
   position: relative;
 `;
+
 export const Title = styled.h1`
   margin-bottom: 30px;
   color: #EB65A0;
@@ -161,3 +162,8 @@ export const Content = styled.div `
   justify-content: center;
   height: 100%;
 `
+
+export const HopBoxImage = styled.img`
+  height: 70px;
+  paddingBottom: 30px;
+`;

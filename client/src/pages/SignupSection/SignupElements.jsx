@@ -161,3 +161,8 @@ export const Content = styled.div `
   height: 100%;
   backgroundColor: Black;
 `
+
+export const LogoImage = styled.img`
+  height: 120px;
+  paddingBottom: 20px;
+`;
