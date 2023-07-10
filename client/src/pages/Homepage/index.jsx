@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
-import mapboxgl from 'mapbox-gl';
-import { Divider, MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper, Heading, Text1, Text2, Filter, FilterBar } from "./Homepage";
 import * as api from "../../api";
+import { Divider, MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper, Heading, Text1, Text2, Filter, FilterBar } from "./Homepage";
 import { ListingList } from "../../components/listingList";
 import MainNavBar from "../../components/MainNavbar";
 import { Select, Switch } from "@mantine/core";
+import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
 
 function sortListingsByDistance(listings, lng, lat) {
