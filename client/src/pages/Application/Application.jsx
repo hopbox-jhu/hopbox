@@ -286,35 +286,41 @@ export const TypeButton = styled.button`
 `;
 
 export const BackButton = styled.button`
-  padding: 10px;
-  font-size: 16px;
+  padding: 15px 28px;
   border: none;
-  border-radius: 4px;
-  margin-top: 5px;
-  cursor: pointer;
-  background-color: ${props => props.isClicked ? 'white' : '#ccc'};
+  border-radius: 15px;
+  font-size: 15px;
+  background-color: ${props => props.isClicked ? 'white' : '#D8D8D8'};
   color: ${props => props.isClicked ? 'black' : 'white'};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 90px;
+  cursor: pointer;
 
   &:focus {
     outline: none;
-    box-shadow: 0px 0px 4px #ccc;
+    box-shadow: 0px 0px 4px ${props => props.isClicked ? 'white' : '#ccc'};
   }
 
   @media screen and (max-width: 480px) {
-    padding: 8px;
+    padding: 10px;
     font-size: 14px;
   }
 `;
 
 export const NextButton = styled.button`
-  padding: 10px;
-  font-size: 16px;
+  padding: 15px 28px;
   border: none;
-  border-radius: 4px;
-  margin-top: 5px;
-  cursor: pointer;
+  border-radius: 15px;
+  font-size: 15px;
   background-color: ${props => props.isClicked ? '#FFC0CB' : '#EB65A0'};
   color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  width: 90px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 
   &:focus {
     outline: none;
@@ -322,7 +328,7 @@ export const NextButton = styled.button`
   }
 
   @media screen and (max-width: 480px) {
-    padding: 8px;
+    padding: 10px;
     font-size: 14px;
   }
 `;

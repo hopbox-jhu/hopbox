@@ -159,52 +159,17 @@ function AddListing() {
         {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
 
         <ButtonContainer>
-        <BackButton onClick={handleBack} disabled={currentPage === 1} style={{ 
-          backgroundColor: currentPage !== 1 ? 'white' : '#D8D8D8',
-          color: currentPage !== 1 ? 'black' : 'white', 
-          padding: '15px 28px',
-          borderRadius: '15px',
-          border: 'none',
-          fontSize: '15px',
-          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-          width: '90px'
-          }}>
+        <BackButton onClick={handleBack} disabled={currentPage === 1}>
         Back
         </BackButton>
         {currentPage !== 6 && (
-          <NextButton onClick={handleNext} disabled={currentPage === 7} style={{
-            backgroundColor: '#EB65A0',
-            color: 'white',
-            padding: '15px 28px',
-            borderRadius: '15px',
-            border: 'none',
-            fontSize: '15px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-            width: '90px',
-            textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+          <NextButton onClick={handleNext} disabled={currentPage === 7}>
           Next
         </NextButton>
         )}
 
         {currentPage === 6 && (
-          <NextButton onClick={handleOnSubmit} disabled={currentPage === 7} style={{
-            backgroundColor: '#EB65A0',
-            color: 'white',
-            padding: '15px 28px',
-            borderRadius: '15px',
-            border: 'none',
-            fontSize: '15px',
-            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-            width: '90px',
-            textAlign: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}>
+          <NextButton onClick={handleOnSubmit} disabled={currentPage === 7}>
             Submit
           </NextButton>
         )}
