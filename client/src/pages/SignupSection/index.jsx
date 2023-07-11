@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Video from '../../videos/video.mp4';
+import Video from '../../assets/videos/video.mp4';
 import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, CoverBtnWrapper, ArrowForward, ArrowRight } from './SignupElements';
 import { Button } from '../ButtonElements';
 

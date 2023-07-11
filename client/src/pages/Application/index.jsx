@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api";
 import { Header, Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
-import logo from "/src/assets/hopbox_letter.png";
+import { Checkbox, Anchor } from '@mantine/core';
+import logo from "/src/assets/images/hopbox_letter.png";
+import boximg from "/src/assets/images/Box.png";
 import PageDate from "./PageDate";
 import PageHazardCheck from "./PageHazardCheck";
 import PageItems from "./PageItems";
@@ -9,6 +11,8 @@ import PageNeeds from "./PageNeeds";
 import PageInsurance from "./PageInsurance";
 import PageCreditCard from "./PageCreditCard";
 import { useNavigate, Link } from 'react-router-dom';
+import MainNavBar from "../../components/mainNavbar";
+
 
 function Application() {
   const [dateRange, setDateRange] = useState([null, null]);
@@ -88,13 +92,14 @@ function Application() {
 
   return (
     <div>
-      <Header>
+      {/* <Header>
          <div>
             <Link to="/homepage">
             <img src={logo} alt="Logo" />
             </Link>
         </div>
-      </Header>
+      </Header> */}
+      <MainNavBar/>
       <MainContent>
       <Container>
         <LeftContainer>

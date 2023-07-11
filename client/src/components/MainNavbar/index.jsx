@@ -3,13 +3,13 @@ import { FaBars } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
 import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2, ImgLogo, NavSearch, NavSearchAndButton } from './MainNavbarElements';
-import { ListingSearchBar } from "../../components/listingSearch";
+import { ListingSearchBar } from "../listingSearch";
 import {RxDividerVertical} from "react-icons/rx";
 import { AuthContext  } from '../../context/AuthContext';
 import { useAuth } from '../../context/AuthContext';
 import { useContext } from 'react';
 
-import logo from "/src/assets/hopbox_letter.png";
+import logo from "/src/assets/images/hopbox_letter.png";
 
 const index = ({ onSearch }) => {
   const [scrollNav, setScrollNav] = useState(false);

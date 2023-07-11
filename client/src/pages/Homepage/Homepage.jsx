@@ -114,3 +114,10 @@ export const Filter = styled.div`
   align-items: flex-end;
   flex-direction: column;
 `
+
+export const FilterBar = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-top: 40px;
+`

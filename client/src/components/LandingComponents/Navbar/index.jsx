@@ -4,7 +4,7 @@ import { IconContext } from 'react-icons/lib';
 import { animateScroll as scroll } from 'react-scroll';
 import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, NavBtn, NavBtnLink, NavBtnLink2, ImgLogo } from './NavbarElements';
 
-import logo from "../../assets/logo.png";
+import logo from "../../../assets/images/logo.png";
 
 const index = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);

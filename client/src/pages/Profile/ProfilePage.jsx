@@ -5,8 +5,6 @@ import WorkIcon from '@material-ui/icons/Work';
 import HelpIcon from '@material-ui/icons/Help';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import styled from 'styled-components';
-import PopupForm from './EditProfile';
-
 
 const ListItem = ({ onClick, selected, children }) => (
   <li
@@ -48,7 +46,7 @@ const RentalsListItem = ({ onClick, selected }) => (
     <WorkIcon style={{ marginRight: '0.5rem' }} />
     My Rentals
   </ListItem>
-);
+); 
 
 const ApplicationsListItem = ({ onClick, selected }) => (
   <ListItem onClick={onClick} selected={selected}>
@@ -120,6 +118,71 @@ export const Info = styled.div`
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: #757575;
+`;
+
+
+export const ContentTitle = styled.div`
+  font-size: 2rem;
+  font-weight: bold;
+  position: 'fixed';
+  top: '0';
+  left: '0';
+  paddingLeft: '25rem';
+  paddingTop: '2rem';
+
+`;
+
+
+export const Wrapper = styled.div`
+    margin-top: 12vh;
+    margin-left: 2vw;
+    display: flex;
+`;
+
+
+export const Divider = styled.div`
+  display: flex;
+  background: white;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  overflow: hidden;
+
+  @media screen and (max-width: 768px) {
+    height: 200vh;
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 480px) {
+    height: 200vh;
+    flex-direction: column;
+  }
+`;
+
+export const OptionList = styled.div`
+  flex: '0 0 20%';
+  backgroundColor: '#F8EAF4';
+  padding: '2rem';
+  display: 'flex';
+  flexDirection: 'column';
+  alignItems: 'center';
+`;
+
+export const List = styled.ul`
+  listStyle: 'none';
+  padding: '0';
+  margin: '0';
+  textAlign: 'left';
+`;
+
+export const MainContent = styled.div`
+  flex: '1';
+  display: 'flex';
+  alignItems: 'center';
+  justifyContent: 'center';
+  flexDirection: 'column';
+  padding: '2rem';
+  backgroundColor: '#FFFFFF';
 `;
 
 export {

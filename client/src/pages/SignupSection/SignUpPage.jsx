@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import * as postApi from "../../api/index";
 import { useNavigate } from "react-router-dom";
-import { notifications } from "@mantine/notifications";
 import { Link } from 'react-router-dom';
-import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content } from './SignupElements';
-import Video from '../../videos/video.mp4';
-
-
+import { Container, Form, Label, Button, LinkText, LinkStyled, IconInput, CoverBg, VideoBg, Content, LogoImage } from './SignupElements';
+import Video from '../../assets/videos/video.mp4';
 
 function SignUpPage() {
   const [name, setName] = useState("");
@@ -17,23 +14,17 @@ function SignUpPage() {
   const [school] = useState("");
   const [occupation] = useState("");
   const [phone] = useState("");
-
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (event) => {
     try {
       event.preventDefault();
-      const user = await postApi.createUser(name, email, password, bio, address, school, occupation, phone );
+      const user = await postApi.createUser(name, email, password, bio, address, school, occupation, phone);
       if (user) {
         alert("Successfully created user.");
         setTimeout(() => {
           navigate("/signin");
         }, 100);
-        // notifications.show({
-        //   title: "Create new user successfully",
-        //   message: "Welcome to Out of the nest",
-        //   onClose: () => navigate("/signin"),
-        // });
       }
     } catch (err) {
       console.log(err);
@@ -51,24 +42,24 @@ function SignUpPage() {
       <CoverBg>
         <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
       </CoverBg>
-    <Content>
-    <Link to="/">
-    <img src="/src/assets/logo.png" alt="Logo" style={{ height: '120px' , padding: '20px'}} />
-    </Link>
-      <Form onSubmit={handleSubmit}>
-        <Label>
-          <IconInput type="text" value={name} onChange={(event) => setName(event.target.value)} placeholder="Name" icon="name" />
-        </Label>
-        <Label>
-          <IconInput type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Email" icon="email" />
-        </Label>
-        <Label>
-          <IconInput type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Password" icon="password"/>
-        </Label>
-        <Button type="submit">Sign Up</Button>
-      </Form>
-      <LinkText>Already have an account? <LinkStyled to="/signin">Sign in</LinkStyled>.</LinkText>
-    </Content>
+      <Content>
+        <Link to="/">
+          <LogoImage src="/src/assets/images/logo.png" alt="Logo" />
+        </Link>
+        <Form onSubmit={handleSubmit}>
+          <Label>
+            <IconInput type="text" value={name} onChange={(event) => setName(event.target.value)} placeholder="Name" icon="name" />
+          </Label>
+          <Label>
+            <IconInput type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Email" icon="email" />
+          </Label>
+          <Label>
+            <IconInput type="password" value={password} onChange={(event) => setPassword(event.target.value)} placeholder="Password" icon="password" />
+          </Label>
+          <Button type="submit">Sign Up</Button>
+        </Form>
+        <LinkText>Already have an account? <LinkStyled to="/signin">Sign in</LinkStyled>.</LinkText>
+      </Content>
     </Container>
   );
 }
