@@ -1,5 +1,5 @@
 import React from 'react';
-import Video from '../../../assets/videos/Main.mp4';
+import Video from '../../../assets/videos/Main(ver2).mp4';
 import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, ImgLogo } from './CoverElements';
 import { makeStyles } from '@material-ui/core/styles';
 import text from "../../../assets/images/logo.png";
