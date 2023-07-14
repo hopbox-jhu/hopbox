@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Divider = styled.div`
   display: flex;
-  background: #EB65A0;
+  background: rgba(235, 101, 160, 0.6);
   height: 100vh;
   width: 100vw;
 
@@ -110,9 +110,8 @@ export const ServicesH1 = styled.span`
 
 export const ServicesH2 = styled.h2`
   font-size: 1.3vw;
-  font-style: italic;
   color:white;
-  font-weight:500;
+  font-weight:300;
   
   @media screen and (max-width: 480px) {
     font-size: 4vw;
@@ -142,10 +141,11 @@ export const ServicesH3 = styled.span`
 `;
 export const ServicesP = styled.p`
   font-size: 1.5vw;
+  font-weight: 300;
   text-align: right;
   margin-right: 40px;
   font-style: italic;
-  margin-bottom: -30px;
+  margin-bottom: -10px;
   @media screen and (max-width: 1580px) {
     margin-bottom: 10px;
   }

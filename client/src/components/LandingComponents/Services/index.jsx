@@ -42,22 +42,18 @@ const Services = () => {
 
   return (
     <Divider id='services'>
-      <Imgbg src={demo}/>
     <ServicesContainer>
-      <Imgword src ={word}/>
       <ServicesH1> We connect students who need storage with those who have extra space, solving the issues of mismatched housing dates, high costs of public storage options, and the need for secure and convenient storage.</ServicesH1>
-
       <SignUpWrapper> 
-        <Imgthingie src={object1}/>
         <ServicesP>
-          Sign up to your interested role to <br/> receive our latest update!
+          SiIGN UP TO YOUR INTERESTED ROLE TO <br/> RECEIVE OUR LATEST UPDATE 💖
         </ServicesP>
         <ServicesWrapper style={{marginBottom: "1rem", marginTop: "1rem"}} >
           <ServicesBox onClick={handleRenterButtonClick} style={{background: isRenter=== true ?"#000000":"#ffffff00"}}>
-            <ServicesH2>Renter</ServicesH2>
+            <ServicesH2>RENTER</ServicesH2>
           </ServicesBox>
           <ServicesBox onClick={handleHostButtonClick} style={{background: isRenter=== false ?"#000000":"#ffffff00"}}>
-            <ServicesH2>Host</ServicesH2>
+            <ServicesH2>HOST</ServicesH2>
           </ServicesBox>
         </ServicesWrapper>
         <form onSubmit={handleSubmit} style = {{
@@ -87,12 +83,11 @@ const Services = () => {
           }}}
         />
             <SubmitButton type="submit" onClick={handleSubmit}>
-            <ServicesH2>Submit</ServicesH2>
+            <ServicesH2>SUBMIT</ServicesH2>
             </SubmitButton>
         </form>
       </SignUpWrapper>
           <ServicesH3>
-            Hassle-Free Storage Solution <br/> for College Students
           </ServicesH3>
     </ServicesContainer>
     </Divider>

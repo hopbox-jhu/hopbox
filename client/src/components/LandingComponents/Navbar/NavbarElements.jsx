@@ -4,9 +4,8 @@ import { Link as LinkS } from 'react-scroll';
 
 
 export const Nav = styled.nav`
-  background: ${({ scrollNav }) => (scrollNav ? '#e3e2e3ff' : 'transparent')};;
+  background: ${({ scrollNav }) => (scrollNav ? 'white' : 'transparent')};;
   height: 80px;
-  margin-top: -80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +36,7 @@ export const NavLogo = styled(LinkR)`
   cursor: pointer;
   display: flex;
   align-items: center;
-  margin-left: 7vw;
+  margin-left: 2vw;
 
 
 `;
@@ -60,7 +59,7 @@ export const NavMenu = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
-  text-align: center;
+  margin-left: 9vw;
   /* margin-right: -22px; */
   @media screen and (max-width: 768px) {
     display: none;
@@ -69,6 +68,7 @@ export const NavMenu = styled.ul`
 
 export const NavItem = styled.li`
   height: 80px;
+  
 `;
 
 export const NavLink = styled(LinkS)`
@@ -76,18 +76,18 @@ export const NavLink = styled(LinkS)`
   display: flex;
   align-items: center;
   text-decoration: none;
-  padding: 0 1rem;
+  padding: 0 4.3rem;
   height: 100%;
   cursor: pointer;
   &.active {
-    border-bottom: 3px solid #01bf71;
+    border-bottom: 3px solid #EB65A0;
   }
 `;
 
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  margin-right: 7vw;
+  margin-right: 3vw;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -99,7 +99,7 @@ export const NavBtnLink = styled(LinkR)`
   white-space: nowrap;
   padding: 10px 15px;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 1.2rem;
   outline: none;
   border: none;
   cursor: pointer;
@@ -116,7 +116,7 @@ export const NavBtnLink2 = styled(LinkR)`
   white-space: nowrap;
   padding: 10px 15px;
   color: #000000;
-  font-size: 16px;
+  font-size: 1.2rem;
   outline: none;
   border: none;
   cursor: pointer;
@@ -129,10 +129,10 @@ export const NavBtnLink2 = styled(LinkR)`
 `;
 
 export const ImgLogo = styled.img`
-  width: 107px;
-  height: 40px;
+  width: 120px;
+  height: 25px;
   @media screen and (max-width: 900px) {
-    width: 71px;
+    width: 105px;
     height: 27px;
   }
 `;

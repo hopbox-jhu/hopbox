@@ -27,7 +27,7 @@ const index = ({ toggle }) => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
+      <IconContext.Provider value={{ color: '#fff', style: { marginTop: '1vw' }  }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
               <NavLogo onClick={toggleHome}>
@@ -38,18 +38,18 @@ const index = ({ toggle }) => {
             </MenuIcon>
             <NavMenu>
               <NavItem>
-                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >Renter</NavLink>
+                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >RENTER</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Host</NavLink>
+                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>HOST</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign Up</NavLink>
+                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>SIGN UP</NavLink>
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink2 to="/signin">Sign In</NavBtnLink2>
-              <NavBtnLink to="/signup">Register</NavBtnLink>
+              <NavBtnLink2 to="/signin">SIGN IN</NavBtnLink2>
+              <NavBtnLink to="/signup">REGISTER</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>
