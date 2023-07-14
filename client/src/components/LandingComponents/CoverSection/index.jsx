@@ -28,19 +28,8 @@ const CoverSection = () => {
   return (
     <CoverContainer id='home'>
       <CoverBg>
-        <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+        <VideoBg autoPlay loop muted src={Video} type='video/mp4' playsInline />
       </CoverBg>
-      {/* <CoverContent>
-        <CoverH1>
-        </CoverH1>
-        <CoverH1>
-        TOGETHER WE STORE
-        </CoverH1>
-        <CoverP>
-        BUIlDING A COMMUNITY THAT SHARES THE LOAD
-        </CoverP>
-        <Button onClick={handleNavigate} style={{marginTop: '35px'}} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >SIGN UP</Button>
-      </CoverContent> */}
     </CoverContainer>
   );
 };

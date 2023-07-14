@@ -7,7 +7,7 @@ export const CoverContainer = styled.div`
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100 vw;
+  width: 100vw;
   position: relative;
   z-index: 1;
 
@@ -31,7 +31,7 @@ export const CoverBg = styled.div`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 95vh;
+  height: 90%;
   overflow: hidden;
   background: rgba(235, 101, 160, 0.6);
 `;
@@ -40,9 +40,9 @@ export const VideoBg = styled.video`
   background: white;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-  object-fit: cover;
+  object-fit: contain;
 `;
+
 
 export const CoverContent = styled.div`
   z-index: 3;
