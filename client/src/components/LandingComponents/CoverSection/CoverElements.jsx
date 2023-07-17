@@ -4,8 +4,8 @@ import { MdArrowForward, MdKeyboardArrowRight } from 'react-icons/md';
 export const CoverContainer = styled.div`
   background: white;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   height: 100vh;
   width: 100vw;
   position: relative;
@@ -46,12 +46,13 @@ export const VideoBg = styled.video`
 
 export const CoverContent = styled.div`
   z-index: 3;
+  margin-top: 60vh;
+  margin-left: 10.5vw;
   max-width: 1200px;
   position: absolute;
   padding: 8px 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const CoverH1 = styled.h1`
