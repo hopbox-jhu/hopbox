@@ -121,7 +121,7 @@ const ProfilePage = ({ user }) => {
             <div>
               <ContentTitle>My Listings Information</ContentTitle>
               <List>
-                <ListingList listings={filteredListings} />
+                <ListingList listings={filteredListings} distances={null} />
               </List>
             </div>
           )}

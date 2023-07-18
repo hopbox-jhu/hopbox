@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import * as api from "../../api";
 
-export function Rental({ listingId, address, type, price, images, description, length, width, height, rentalStart, rentalEnd }) {
+export function Rental({ listingId, name, address, type, price, images, description, length, width, height, rentalStart, rentalEnd }) {
     
     const [data, setData] = useState(null);
     const [host, setHost] = useState(null);
@@ -36,6 +36,7 @@ export function Rental({ listingId, address, type, price, images, description, l
                 <Image src={"https://hopbox-web-service.onrender.com/image/" + images[0]}
                     height="25vh" width="15vw" radius="lg" style={{ maxWidth: "100%" }}  />
             <Wrapper>
+            <Heading align="left" weight={500} size="lg">{name}</Heading>
             <Heading align="left" weight={500} size="lg">{address}</Heading>
             <Group position="left" mt="md" mb="xs">
                 <Badge size="sm" color="pink" variant="light">

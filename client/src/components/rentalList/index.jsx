@@ -8,6 +8,7 @@ export function RentalList({ listings }) {
         {listings.map((listing, index) => (
           <Rental
             listingId={listing._id}
+            name={listing.name}
             address={listing.address}
             type={listing.type}
             price={listing.pricing}

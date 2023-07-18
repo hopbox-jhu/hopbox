@@ -1,14 +1,13 @@
 import express from "express";
 import ListingDAO from "../data/ListingDAO.js";
-import ApplicationDAO from "../data/ApplicationDAO.js";
 
 const router = express.Router();
 export const listingDAO = new ListingDAO();
 
 router.post("/listing", async (req, res) => {
   try {
-    const { hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd } = req.body;
-    const listing = await listingDAO.createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd });
+    const { hostID, name, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd } = req.body;
+    const listing = await listingDAO.createListing({ hostID, name, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd });
     res.json({
       status: 201,
       message: `Successfully created listing!`,

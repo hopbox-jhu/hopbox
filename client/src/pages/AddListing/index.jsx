@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import * as api from "../../api";
 import PageTypeAddress from "./PageTypeAddress";
+import PageName from "./PageName";
 import PageDescription from "./PageDescription";
 import PageSize from "./PageSize";
 import PagePrice from "./PagePrice";
@@ -17,6 +18,7 @@ function AddListing() {
   const [currentPage, setCurrentPage] = useState(1);
   const [type, setType] = useState("room");
   const [address, setAddress] = useState();
+  const [name, setName] = useState();
   const [description, setDescription] = useState("");
   const [length, setLength] = useState();
   const [width, setWidth] = useState();
@@ -84,6 +86,9 @@ function AddListing() {
       } else if (isNaN(pricingAsNumber)) {
         alert("Please enter a number value for the pricing field.");
         setCurrentPage(4);
+      } else if (!name) {
+        alert("Please enter and select a valid name for you space.");
+        setCurrentPage(5);
       } else {
         const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
         const data = await response.json();
@@ -97,6 +102,7 @@ function AddListing() {
             const listing = {
               hostID: localStorage.getItem("email"),
               address: address,
+              name: name,
               longitude: longitude,
               latitude: latitude,
               type: type,
@@ -145,20 +151,21 @@ function AddListing() {
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
         {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
         {currentPage === 5 && <PageImage images={images} setImages={setImages} file={file} setFile={setFile} />}
-        {currentPage === 6 && <PagePermission permission={permission} setPermission={setPermission}/>}
+        {currentPage === 6 && <PageName name={name} setName={setName}/>}
+        {currentPage === 7 && <PagePermission permission={permission} setPermission={setPermission}/>}
 
         <ButtonContainer>
         <BackButton onClick={handleBack} disabled={currentPage === 1}>
         Back
         </BackButton>
-        {currentPage !== 6 && (
-          <NextButton onClick={handleNext} disabled={currentPage === 7}>
+        {currentPage !== 7 && (
+          <NextButton onClick={handleNext} disabled={currentPage === 8}>
           Next
         </NextButton>
         )}
 
-        {currentPage === 6 && (
-          <NextButton onClick={handleOnSubmit} disabled={currentPage === 7}>
+        {currentPage === 7 && (
+          <NextButton onClick={handleOnSubmit} disabled={currentPage === 8}>
             Submit
           </NextButton>
         )}
