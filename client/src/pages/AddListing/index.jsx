@@ -5,13 +5,11 @@ import PageDescription from "./PageDescription";
 import PageSize from "./PageSize";
 import PagePrice from "./PagePrice";
 import PagePermission from "./PagePermission";
-import { MainContent, Heading, Header, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
-import logo from "/src/assets/images/hopbox_letter.png";
-import spaceimg from "/src/assets/images/spacewithquestionmark.png";
+import { Heading, MainContent, Container, RightContainer, ButtonContainer, BackButton, NextButton } from './AddListing';
 import PageImage from "./PageImage";
 import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import MainNavBar from "../../components/mainNavbar";
 
 
@@ -137,20 +135,11 @@ function AddListing() {
 
   return (
     <div>
-      {/* <Header>
-        <div>
-          <Link to="/homepage">
-          <img src={logo} alt="Logo" />
-          </Link>
-        </div>
-      </Header> */}
       <MainNavBar/>
       <MainContent>
       <Container>
-        <LeftContainer>
-        <Heading>We Want to Know About Your Space</Heading>
-        </LeftContainer>
         <RightContainer>
+        We Want to Know About Your Space
         {currentPage === 1 && <PageTypeAddress key={uuidv4()} type={type} setType={setType} address={address} setAddress={setAddress} />}
         {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
         {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}

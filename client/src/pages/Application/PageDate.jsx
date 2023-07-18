@@ -12,10 +12,7 @@ function PageDate(props) {
         <div>
             <Form>
                 <Label htmlFor="date">When do you need Storage?</Label>
-                <Group position="center"
-                style={{
-                    marginTop:'40px'
-                  }}>
+                <Group position="center">
                     <DatePicker type="range" value={dateRange} onChange={setDateRange} minDate={currentDate} />
                 </Group>
             </Form>

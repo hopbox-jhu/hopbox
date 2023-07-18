@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api";
-import { Header, Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
-import { Checkbox, Anchor } from '@mantine/core';
-import logo from "/src/assets/images/hopbox_letter.png";
-import boximg from "/src/assets/images/Box.png";
+import { Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
 import PageDate from "./PageDate";
 import PageHazardCheck from "./PageHazardCheck";
 import PageItems from "./PageItems";
@@ -35,8 +32,6 @@ function Application() {
   const listingID = pathSegments[pathSegments.length - 1];  
 
   const [data, setData] = useState(null);
-  
-  //const {listingID} = useParams();
 
   useEffect(() => {
     async function fetchData() {
@@ -92,21 +87,11 @@ function Application() {
 
   return (
     <div>
-      {/* <Header>
-         <div>
-            <Link to="/homepage">
-            <img src={logo} alt="Logo" />
-            </Link>
-        </div>
-      </Header> */}
       <MainNavBar/>
       <MainContent>
       <Container>
-        <LeftContainer>
-        {/* <Image src={boximg} alt="Box" /> */}
-        <Heading>Fill Out the Application for this Space</Heading>
-        </LeftContainer>
         <RightContainer>
+        Fill Out the Application for this Space
           {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange}/>}
           {currentPage === 2 && <PageHazardCheck hazardCheck={hazardCheck} setHazardCheck={setHazardCheck} />}
           {currentPage === 3 && <PageItems items={items} setItems={setItems} />}

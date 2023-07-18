@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Image, Text, Badge, Button, Group } from '@mantine/core';
+import { Text, Badge, Button, Group } from '@mantine/core';
 import { Card as StyledCard, Subtitle } from './applicationComponents';
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
 import * as api from "../../api";
 
 // Define a style component for each badge with a label
