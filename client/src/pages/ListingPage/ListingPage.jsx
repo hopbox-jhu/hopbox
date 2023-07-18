@@ -101,7 +101,7 @@ export const MainContent = styled.div`
 
 export const LeftContainer = styled.div`
 height: 100vh;
-width: 50vw;
+width: 40vw;
 display: flex;
 flex-direction: column;
 background-color: white;
@@ -128,7 +128,7 @@ label {
 
 export const RightContainer = styled.div`
 height: 100vh;
-width: 50vw;
+width: 60vw;
 display: flex;
 background-color: white;
 margin-top: 40px;
@@ -169,7 +169,7 @@ export const Wrapper = styled.div`
 export const Form = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 50vw;
   height: auto;
   margin-bottom: 20px;
   margin-right: 20px;
@@ -261,7 +261,7 @@ export const Address = styled.div`
   @media screen and (max-width: 480px) {
     font-size: 3.5vw;
   }
-
+  
   @media screen and (max-width: 768px) {
     font-size: 3.5vw;
   }

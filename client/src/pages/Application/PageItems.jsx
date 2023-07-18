@@ -1,28 +1,28 @@
 import React from 'react';
-import { Form, Label, Input} from './Application';
+import { Form, Label, Input } from './Application';
 
 function PageItems(props) {
-    const items = props.items;
-    const setItems = props.setItems;
-  
-    const handleItemsChange = (event) => {
-      setItems(event.target.value);
-    }
+  const items = props.items;
+  const setItems = props.setItems;
 
-    return (
-      <div>
-        <Form>
-        <Label htmlFor="items">What are you storing?</Label>
-            <Input
-            id="address"
-            type="text"
-            placeholder="Items"
-            value={items}
-            onChange={handleItemsChange}
-            />
-        </Form>
-      </div>
-    );
+  const handleItemsChange = (event) => {
+    setItems(event.target.value);
   }
-  
-  export default PageItems;
+
+  return (
+    <div>
+      <Form>
+        <Label htmlFor="items">What are you storing?</Label>
+        <Input
+          id="address"
+          type="text"
+          placeholder="Items"
+          value={items}
+          onChange={handleItemsChange}
+        />
+      </Form>
+    </div>
+  );
+}
+
+export default PageItems;

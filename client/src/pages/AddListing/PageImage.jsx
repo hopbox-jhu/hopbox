@@ -10,14 +10,14 @@ function PageImage(props) {
   const handleFileChange = (event) => {
     const selectedFiles = event.target.files;
     const imageCount = Math.min(selectedFiles.length, 4);
-    
+
     const newFiles = [];
     const newImages = [];
 
     for (let i = 0; i < imageCount; i++) {
       const file = selectedFiles[i];
       const imageUrl = URL.createObjectURL(file);
-      
+
       newFiles.push(file);
       newImages.push(imageUrl);
     }

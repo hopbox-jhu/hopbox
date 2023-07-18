@@ -23,7 +23,7 @@ export const Divider = styled.div`
 export const MapContainerStyle = styled.div`
     position: absolute;
     right: 2vw;
-    width: 60vw;
+    width: 55vw;
     height: 84vh;
     max-height: 84vh;
     right: 2vw;
@@ -51,7 +51,7 @@ export const Sidebar = styled.div`
     padding: 6px 12px;
     z-index: 1;
     border-radius: 2px;
-    width: 34vw;
+    width: 40vw;
     height: 75vh;
     margin-top: 20px;
     bottom: auto;

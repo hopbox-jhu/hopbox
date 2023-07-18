@@ -56,9 +56,9 @@ function PagePermission(props) {
           <Label htmlFor="permission">Do you have the rights/permission to rent out this space?</Label>
         </div>
         <div>
-        <PermissionButton classes={{ root: permission ? "clicked" : "" }} clicked={permission ? "true" : "false"} onClick={handleButtonClick}>
-        {permission ? "I have the rights/permission to rent out this space and understand that if not, I may be held financially and legally liable for any damage, loss, or fees incurred." : "Click to confirm that you have the rights/permission to rent out this space."}
-      </PermissionButton>
+          <PermissionButton classes={{ root: permission ? "clicked" : "" }} clicked={permission ? "true" : "false"} onClick={handleButtonClick}>
+            {permission ? "I have the rights/permission to rent out this space and understand that if not, I may be held financially and legally liable for any damage, loss, or fees incurred." : "Click to confirm that you have the rights/permission to rent out this space."}
+          </PermissionButton>
         </div>
       </Form>
     </div>

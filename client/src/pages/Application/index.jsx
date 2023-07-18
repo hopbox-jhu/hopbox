@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api";
-import { Header, Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
-import { Checkbox, Anchor } from '@mantine/core';
-import logo from "/src/assets/images/hopbox_letter.png";
-import boximg from "/src/assets/images/Box.png";
+import { Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
 import PageDate from "./PageDate";
 import PageHazardCheck from "./PageHazardCheck";
 import PageItems from "./PageItems";
@@ -32,16 +29,14 @@ function Application() {
   const navigate = useNavigate();
 
   const pathSegments = window.location.pathname.split('/');
-  const listingID = pathSegments[pathSegments.length - 1];  
+  const listingID = pathSegments[pathSegments.length - 1];
 
   const [data, setData] = useState(null);
-  
-  //const {listingID} = useParams();
 
   useEffect(() => {
     async function fetchData() {
-        const result = await api.getListingById(listingID);
-        setData(result);
+      const result = await api.getListingById(listingID);
+      setData(result);
     }
     fetchData();
   }, []);
@@ -66,12 +61,12 @@ function Application() {
       [id]: value,
     }));
   };
-    
+
   const handleSubmit = async (event) => {
     if (!dateRange) {
       alert("You need to select a duration of your storage")
     }
-    if (agreement){
+    if (agreement) {
       console.log(applicationData);
       event.preventDefault();
       const response = await api.createApplication(applicationData);
@@ -92,45 +87,35 @@ function Application() {
 
   return (
     <div>
-      {/* <Header>
-         <div>
-            <Link to="/homepage">
-            <img src={logo} alt="Logo" />
-            </Link>
-        </div>
-      </Header> */}
-      <MainNavBar/>
+      <MainNavBar />
       <MainContent>
-      <Container>
-        <LeftContainer>
-        {/* <Image src={boximg} alt="Box" /> */}
-        <Heading>Fill Out the Application for this Space</Heading>
-        </LeftContainer>
-        <RightContainer>
-          {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange}/>}
-          {currentPage === 2 && <PageHazardCheck hazardCheck={hazardCheck} setHazardCheck={setHazardCheck} />}
-          {currentPage === 3 && <PageItems items={items} setItems={setItems} />}
-          {currentPage === 4 && <PageNeeds needs={needs} setNeeds={setNeeds} />}
-          {currentPage === 5 && <PageInsurance protection={protection} setProtection={setProtection} />}
-          {currentPage === 6 && <PageCreditCard creditCard={creditCard} setCreditCard={setCreditCard} agreement={agreement} setAgreement={setAgreement} dateRange={dateRange} pricing={data.pricing} />}
+        <Container>
+          <RightContainer>
+            Fill Out the Application for this Space
+            {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange} />}
+            {currentPage === 2 && <PageHazardCheck hazardCheck={hazardCheck} setHazardCheck={setHazardCheck} />}
+            {currentPage === 3 && <PageItems items={items} setItems={setItems} />}
+            {currentPage === 4 && <PageNeeds needs={needs} setNeeds={setNeeds} />}
+            {currentPage === 5 && <PageInsurance protection={protection} setProtection={setProtection} />}
+            {currentPage === 6 && <PageCreditCard creditCard={creditCard} setCreditCard={setCreditCard} agreement={agreement} setAgreement={setAgreement} dateRange={dateRange} pricing={data.pricing} />}
 
-        <ButtonContainer>
-        <BackButton onClick={handleBack} disabled={currentPage === 1}>
-        Back
-        </BackButton>
-        {currentPage !== 6 && (
-          <NextButton onClick={handleNext} disabled={currentPage === 6}>
-          Next
-        </NextButton>
-        )}
-        {currentPage === 6 && (
-          <NextButton onClick={handleSubmit} disabled={currentPage !== 6}>
-            Submit
-          </NextButton>
-        )}
-        </ButtonContainer>
-        </RightContainer>
-      </Container>
+            <ButtonContainer>
+              <BackButton onClick={handleBack} disabled={currentPage === 1}>
+                Back
+              </BackButton>
+              {currentPage !== 6 && (
+                <NextButton onClick={handleNext} disabled={currentPage === 6}>
+                  Next
+                </NextButton>
+              )}
+              {currentPage === 6 && (
+                <NextButton onClick={handleSubmit} disabled={currentPage !== 6}>
+                  Submit
+                </NextButton>
+              )}
+            </ButtonContainer>
+          </RightContainer>
+        </Container>
       </MainContent>
     </div>
   );

@@ -2,8 +2,8 @@ import Listing from "../model/Listing.js";
 import Application from "../model/Application.js";
 
 class ListingDAO {
-  async createListing({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd }) {
-    const listing = await Listing.create({ hostID, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd });
+  async createListing({ hostID, name, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd }) {
+    const listing = await Listing.create({ hostID, name, address, longitude, latitude, type, description, images, length, width, height, pricing, calendar, applicationIDs, isRented, renterID, rentalStart, rentalEnd });
     return listing;
   }
   async getAllListings() {

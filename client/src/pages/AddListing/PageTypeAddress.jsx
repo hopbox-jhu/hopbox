@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Label, Input} from './AddListing';
+import { Form, Label, Input } from './AddListing';
 import { Grid, Button, ButtonGroup, TextField } from '@material-ui/core';
 import CheckroomIcon from '@mui/icons-material/Checkroom';
 import SpaceBarIcon from '@mui/icons-material/SpaceBar';
@@ -72,7 +72,7 @@ function PageTypeAddress(props) {
           >
             <FormControlLabel value="Room" onClick={handleTypeChange} control={<Radio />} label="Room" />
             <FormControlLabel value="Closet" onClick={handleTypeChange} control={<Radio />} label="Closet" />
-            <FormControlLabel value="Basement" onClick={handleTypeChange} control={<Radio />} label="Basement"  />
+            <FormControlLabel value="Basement" onClick={handleTypeChange} control={<Radio />} label="Basement" />
             <FormControlLabel value="Other" onClick={handleTypeChange} control={<Radio />} label="Other" />
           </RadioGroup>
         </FormControl>
@@ -80,7 +80,7 @@ function PageTypeAddress(props) {
         <AddressAutofill onRetrieve={handleAddressChange} accessToken='pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'>
           <Input
             id="address"
-            style={{ width: '31vw'  }}
+            style={{ width: '31vw' }}
             radius='md'
             size='xl'
             className='inputfield'

@@ -7,6 +7,8 @@ import { Select, Switch } from "@mantine/core";
 import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
 
+let distances = [];
+
 function sortListingsByDistance(listings, lng, lat) {
   return listings.sort((a, b) => {
     const distanceA = distance(lng, lat, a.longitude, a.latitude);
@@ -66,8 +68,10 @@ function Homepage() {
   const [sorting, setSorting] = useState("Distance");
   const [priceFilter, setPriceFilter] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
+  const [address, setAddress] = useState("Johns Hopkins University");
 
   const handleSearch = async (query) => {
+    setAddress(query);
     const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${query}.json?access_token=${mapboxgl.accessToken}`);
     const data = await response.json();
     const dataFeatures = data.features;
@@ -124,6 +128,9 @@ function Homepage() {
       );
     }
     setFilteredListings(filtered);
+    filteredListings.forEach((listing) => {
+      distances.push(distance(lng, lat, listing.longitude, listing.latitude));
+    });
   };
 
   useEffect(() => {
@@ -133,10 +140,11 @@ function Homepage() {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [listing.longitude, listing.latitude],
+          coordinates: [listing.longitude + Math.random() * 0.003 - 0.0015, listing.latitude + Math.random() * 0.003 - 0.0015],
         },
         properties: {
           listingId: `${listing._id}`,
+          name: `${listing.name}`,
           address: `${listing.address}`,
           type: `${listing.type}`,
           length: `${listing.length}`,
@@ -168,6 +176,9 @@ function Homepage() {
           );
         }
         setFilteredListings(filtered);
+        filteredListings.forEach((listing) => {
+          distances.push(distance(lng, lat, listing.longitude, listing.latitude));
+        });
       }
 
       map.current.on('load', () => {
@@ -213,7 +224,7 @@ function Homepage() {
                 return;
               }
               const feature = features[0];
-              map.current.flyTo({center:[feature.geometry.coordinates[0], feature.geometry.coordinates[1]]});
+              map.current.flyTo({ center: [feature.geometry.coordinates[0], feature.geometry.coordinates[1]] });
 
               new mapboxgl.Popup({ offset: [0, -35] })
                 .setLngLat(feature.geometry.coordinates)
@@ -223,7 +234,7 @@ function Homepage() {
                       <div style="margin-bottom:15px; height:24vh; box-shadow:0px 0px 10px rgba(0,0,0,0.2); padding:24px; border-radius:10px; border:1px solid #ccc;">
                       <div>
                           <div style="display:inline-block; margin-left:24px;">
-                              <h3 style="font-weight:500; font-size:24px;">${feature.properties.address}</h3>
+                              <h3 style="font-weight:500; font-size:24px;">${feature.properties.name}</h3>
                               <div style="margin-top:8px; margin-bottom:4px;">
                                   <span style="display:inline-block; background-color:pink; color:#fff; border-radius:8px; padding:6px 12px; font-size:18px; font-weight:bold; text-transform:capitalize;">
                                       ${feature.properties.type.charAt(0).toUpperCase() + feature.properties.type.slice(1)}
@@ -269,11 +280,11 @@ function Homepage() {
 
   return (
     <Divider>
-      <MainNavBar onSearch={handleSearch}/>
+      <MainNavBar onSearch={handleSearch} />
       <Wrapper>
         <Heading>
           <Text1>
-            Storage Near Johns Hopkins University
+            Storage Near {address}
           </Text1>
           <Text2>
             50 + Spaces
@@ -323,7 +334,7 @@ function Homepage() {
             </FilterBar>
             <Switch
               labelPosition="left"
-              style = {{ marginLeft: "20px", marginTop: "20px", paddingBottom: "20px", fontSize: "30px", fontWeight: "100", lineHeight: "1.3"}}
+              style={{ marginLeft: "20px", marginTop: "20px", paddingBottom: "20px", fontSize: "30px", fontWeight: "100", lineHeight: "1.3" }}
               label="Only show currently available listings"
               color="pink"
               checked={availableOnly}
@@ -333,7 +344,7 @@ function Homepage() {
         </Heading>
         <ListingWrapper>
           <Sidebar>
-            <ListingList listings={filteredListings} />
+            <ListingList listings={filteredListings} distances={distances} />
           </Sidebar>
         </ListingWrapper>
         <MapWrapper>
