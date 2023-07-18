@@ -14,11 +14,11 @@ function PageAddress(props) {
             <Form>
                 <Label htmlFor="address">Where is your space located?</Label>
                 <Input
-                id="address"
-                type="text"
-                placeholder="Address"
-                value={address}
-                onChange={handleAddressChange}
+                    id="address"
+                    type="text"
+                    placeholder="Address"
+                    value={address}
+                    onChange={handleAddressChange}
                 />
             </Form>
         </div>

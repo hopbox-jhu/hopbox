@@ -46,7 +46,7 @@ const RentalsListItem = ({ onClick, selected }) => (
     <WorkIcon style={{ marginRight: '0.5rem' }} />
     My Rentals
   </ListItem>
-); 
+);
 
 const ApplicationsListItem = ({ onClick, selected }) => (
   <ListItem onClick={onClick} selected={selected}>

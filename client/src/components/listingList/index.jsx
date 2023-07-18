@@ -1,6 +1,6 @@
 import React from "react";
 import { Listing } from "../listing"
-import {Wrapper} from './listingListElements'
+import { Wrapper } from './listingListElements'
 
 export function ListingList({ listings, distances }) {
   if (distances != null) {
@@ -46,6 +46,4 @@ export function ListingList({ listings, distances }) {
       </Wrapper>
     );
   }
-
-    
-  }
+}

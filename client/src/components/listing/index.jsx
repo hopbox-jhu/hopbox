@@ -61,14 +61,14 @@ export function Listing({ listingId, name, address, type, price, images, descrip
               :
               <></>
             }
-            
-        </Group>
-        <Subtitle align="left" size="sm" color="dimmed">
-        Located on {address.length > 100 ? address.slice(0, 100) + "..." : address}:
-        </Subtitle>
-        <Subtitle align="left" size="sm" color="dimmed">
-        {description.length > 100 ? description.slice(0, 100) + "..." : description}
-        </Subtitle>
+
+          </Group>
+          <Subtitle align="left" size="sm" color="dimmed">
+            Located on {address.length > 100 ? address.slice(0, 100) + "..." : address}:
+          </Subtitle>
+          <Subtitle align="left" size="sm" color="dimmed">
+            {description.length > 100 ? description.slice(0, 100) + "..." : description}
+          </Subtitle>
         </Wrapper>
       </Divider>
     </Card>

@@ -150,7 +150,7 @@ function PopupForm() {
                     </label>
 
                     <Group padding="5px">
-                    <Button style={{ backgroundColor: '#EB65A0', color: '#fff'}} type="submit">Submit</Button>
+                        <Button style={{ backgroundColor: '#EB65A0', color: '#fff' }} type="submit">Submit</Button>
                     </Group>
                 </form>
 

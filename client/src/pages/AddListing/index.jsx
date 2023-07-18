@@ -40,7 +40,7 @@ function AddListing() {
 
   const handleOnSubmit = async (event) => {
     event.preventDefault();
-  
+
     const imageIDs = [];
     for (let i = 0; i < file.length; i++) {
       const fd = new FormData();
@@ -52,7 +52,7 @@ function AddListing() {
     }
     handleOnSubmitCreateListing(imageIDs);
   };
-  
+
 
   const handleOnSubmitCreateListing = async (imageId) => {
     const pricingAsNumber = Number(pricing);
@@ -61,117 +61,117 @@ function AddListing() {
     const heightAsNumber = Number(height);
 
     if (!permission) {
-        alert("You must certify that you have the rights/permission to rent out this space.");
-      } else if (!address) {
-        alert("Please enter and select a valid address for you space.");
-        setCurrentPage(1);
-      } else if (!description) {
-        alert("Please enter a description for your space.");
-        setCurrentPage(2);
-      } else if (!length || !width) {
-        alert("Please enter an approximation for the dimensions of your space.");
-        setCurrentPage(3);
-      } else if (isNaN(lengthAsNumber)) {
-        alert("Please enter a number value for the length field.");
-        setCurrentPage(3);
-      } else if (isNaN(widthAsNumber)) {
-        alert("Please enter a number value for the width field.");
-        setCurrentPage(3);
-      } else if (height != null && isNaN(heightAsNumber)) {
-        alert("Please enter a number value for the height field.");
-        setCurrentPage(3);
-      } else if (!pricing) {
-        alert("Please enter a pricing for your space.");
-        setCurrentPage(4);
-      } else if (isNaN(pricingAsNumber)) {
-        alert("Please enter a number value for the pricing field.");
-        setCurrentPage(4);
-      } else if (!name) {
-        alert("Please enter and select a valid name for you space.");
-        setCurrentPage(5);
-      } else {
-        const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
-        const data = await response.json();
-        const features = data.features;
-        if (features.length > 0) {
-          const feature = features[0];
-          const longitude = feature.center[0];
-          const latitude = feature.center[1];
+      alert("You must certify that you have the rights/permission to rent out this space.");
+    } else if (!address) {
+      alert("Please enter and select a valid address for you space.");
+      setCurrentPage(1);
+    } else if (!description) {
+      alert("Please enter a description for your space.");
+      setCurrentPage(2);
+    } else if (!length || !width) {
+      alert("Please enter an approximation for the dimensions of your space.");
+      setCurrentPage(3);
+    } else if (isNaN(lengthAsNumber)) {
+      alert("Please enter a number value for the length field.");
+      setCurrentPage(3);
+    } else if (isNaN(widthAsNumber)) {
+      alert("Please enter a number value for the width field.");
+      setCurrentPage(3);
+    } else if (height != null && isNaN(heightAsNumber)) {
+      alert("Please enter a number value for the height field.");
+      setCurrentPage(3);
+    } else if (!pricing) {
+      alert("Please enter a pricing for your space.");
+      setCurrentPage(4);
+    } else if (isNaN(pricingAsNumber)) {
+      alert("Please enter a number value for the pricing field.");
+      setCurrentPage(4);
+    } else if (!name) {
+      alert("Please enter and select a valid name for you space.");
+      setCurrentPage(5);
+    } else {
+      const response = await fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`);
+      const data = await response.json();
+      const features = data.features;
+      if (features.length > 0) {
+        const feature = features[0];
+        const longitude = feature.center[0];
+        const latitude = feature.center[1];
 
-          if (longitude && latitude) {
-            const listing = {
-              hostID: localStorage.getItem("email"),
-              address: address,
-              name: name,
-              longitude: longitude,
-              latitude: latitude,
-              type: type,
-              description: description,
-              images: imageId,
-              length: lengthAsNumber,
-              width: widthAsNumber,
-              height: heightAsNumber,
-              pricing: pricingAsNumber,
-              calendar: [],
-              applicationIDs: [],
-              isRented: false,
-              renterID: null,
-              rentalStart: null,
-              rentalEnd: null
-            };
+        if (longitude && latitude) {
+          const listing = {
+            hostID: localStorage.getItem("email"),
+            address: address,
+            name: name,
+            longitude: longitude,
+            latitude: latitude,
+            type: type,
+            description: description,
+            images: imageId,
+            length: lengthAsNumber,
+            width: widthAsNumber,
+            height: heightAsNumber,
+            pricing: pricingAsNumber,
+            calendar: [],
+            applicationIDs: [],
+            isRented: false,
+            renterID: null,
+            rentalStart: null,
+            rentalEnd: null
+          };
 
-            try {
-              await Promise.all([
-                fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`),
-                api.createListing(listing)
-              ]);
-              navigate("/homepage");
-              alert("Successfully added listing!");
-            } catch (error) {
-              alert("Error adding listing");
-            }
-          } else {
-            alert("Error: Longitude or Latitude is blank!");
+          try {
+            await Promise.all([
+              fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?access_token=${'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw'}`),
+              api.createListing(listing)
+            ]);
+            navigate("/homepage");
+            alert("Successfully added listing!");
+          } catch (error) {
+            alert("Error adding listing");
           }
         } else {
-          alert("Address not found!");
+          alert("Error: Longitude or Latitude is blank!");
         }
+      } else {
+        alert("Address not found!");
       }
+    }
   };
 
   return (
     <div>
-      <MainNavBar/>
+      <MainNavBar />
       <MainContent>
-      <Container>
-        <RightContainer>
-        We Want to Know About Your Space
-        {currentPage === 1 && <PageTypeAddress key={uuidv4()} type={type} setType={setType} address={address} setAddress={setAddress} />}
-        {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
-        {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
-        {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
-        {currentPage === 5 && <PageImage images={images} setImages={setImages} file={file} setFile={setFile} />}
-        {currentPage === 6 && <PageName name={name} setName={setName}/>}
-        {currentPage === 7 && <PagePermission permission={permission} setPermission={setPermission}/>}
+        <Container>
+          <RightContainer>
+            We Want to Know About Your Space
+            {currentPage === 1 && <PageTypeAddress key={uuidv4()} type={type} setType={setType} address={address} setAddress={setAddress} />}
+            {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
+            {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}
+            {currentPage === 4 && <PagePrice pricing={pricing} setPricing={setPricing} />}
+            {currentPage === 5 && <PageImage images={images} setImages={setImages} file={file} setFile={setFile} />}
+            {currentPage === 6 && <PageName name={name} setName={setName} />}
+            {currentPage === 7 && <PagePermission permission={permission} setPermission={setPermission} />}
 
-        <ButtonContainer>
-        <BackButton onClick={handleBack} disabled={currentPage === 1}>
-        Back
-        </BackButton>
-        {currentPage !== 7 && (
-          <NextButton onClick={handleNext} disabled={currentPage === 8}>
-          Next
-        </NextButton>
-        )}
+            <ButtonContainer>
+              <BackButton onClick={handleBack} disabled={currentPage === 1}>
+                Back
+              </BackButton>
+              {currentPage !== 7 && (
+                <NextButton onClick={handleNext} disabled={currentPage === 8}>
+                  Next
+                </NextButton>
+              )}
 
-        {currentPage === 7 && (
-          <NextButton onClick={handleOnSubmit} disabled={currentPage === 8}>
-            Submit
-          </NextButton>
-        )}
-        </ButtonContainer>
-      </RightContainer>
-      </Container>
+              {currentPage === 7 && (
+                <NextButton onClick={handleOnSubmit} disabled={currentPage === 8}>
+                  Submit
+                </NextButton>
+              )}
+            </ButtonContainer>
+          </RightContainer>
+        </Container>
       </MainContent>
     </div>
   );

@@ -63,19 +63,19 @@ function PageInsurance(props) {
     <div>
       <Form>
         <div style={{ display: 'flex', alignItems: 'center' }}>
-            <Label htmlFor="insurance">Choose a protection plan.</Label>
+          <Label htmlFor="insurance">Choose a protection plan.</Label>
         </div>
         <div>
-        <ProtectionButton classes={{ root: protection ? "clicked" : "" }} clicked={protection.toString()} onClick={handleButtonClick}>
+          <ProtectionButton classes={{ root: protection ? "clicked" : "" }} clicked={protection.toString()} onClick={handleButtonClick}>
             Standard Protection Plan
-        </ProtectionButton>
-        <ProtectionButton classes={{ root: !protection ? "clicked" : "" }} clicked={!protection ? 'true' : undefined} onClick={handleButtonClick}>
+          </ProtectionButton>
+          <ProtectionButton classes={{ root: !protection ? "clicked" : "" }} clicked={!protection ? 'true' : undefined} onClick={handleButtonClick}>
             No Protection Plan
-        </ProtectionButton>
+          </ProtectionButton>
         </div>
       </Form>
     </div>
-    
+
   );
 }
 

@@ -224,7 +224,7 @@ function Homepage() {
                 return;
               }
               const feature = features[0];
-              map.current.flyTo({center:[feature.geometry.coordinates[0], feature.geometry.coordinates[1]]});
+              map.current.flyTo({ center: [feature.geometry.coordinates[0], feature.geometry.coordinates[1]] });
 
               new mapboxgl.Popup({ offset: [0, -35] })
                 .setLngLat(feature.geometry.coordinates)
@@ -280,7 +280,7 @@ function Homepage() {
 
   return (
     <Divider>
-      <MainNavBar onSearch={handleSearch}/>
+      <MainNavBar onSearch={handleSearch} />
       <Wrapper>
         <Heading>
           <Text1>
@@ -334,7 +334,7 @@ function Homepage() {
             </FilterBar>
             <Switch
               labelPosition="left"
-              style = {{ marginLeft: "20px", marginTop: "20px", paddingBottom: "20px", fontSize: "30px", fontWeight: "100", lineHeight: "1.3"}}
+              style={{ marginLeft: "20px", marginTop: "20px", paddingBottom: "20px", fontSize: "30px", fontWeight: "100", lineHeight: "1.3" }}
               label="Only show currently available listings"
               color="pink"
               checked={availableOnly}

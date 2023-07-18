@@ -29,14 +29,14 @@ function Application() {
   const navigate = useNavigate();
 
   const pathSegments = window.location.pathname.split('/');
-  const listingID = pathSegments[pathSegments.length - 1];  
+  const listingID = pathSegments[pathSegments.length - 1];
 
   const [data, setData] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
-        const result = await api.getListingById(listingID);
-        setData(result);
+      const result = await api.getListingById(listingID);
+      setData(result);
     }
     fetchData();
   }, []);
@@ -61,12 +61,12 @@ function Application() {
       [id]: value,
     }));
   };
-    
+
   const handleSubmit = async (event) => {
     if (!dateRange) {
       alert("You need to select a duration of your storage")
     }
-    if (agreement){
+    if (agreement) {
       console.log(applicationData);
       event.preventDefault();
       const response = await api.createApplication(applicationData);
@@ -87,35 +87,35 @@ function Application() {
 
   return (
     <div>
-      <MainNavBar/>
+      <MainNavBar />
       <MainContent>
-      <Container>
-        <RightContainer>
-        Fill Out the Application for this Space
-          {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange}/>}
-          {currentPage === 2 && <PageHazardCheck hazardCheck={hazardCheck} setHazardCheck={setHazardCheck} />}
-          {currentPage === 3 && <PageItems items={items} setItems={setItems} />}
-          {currentPage === 4 && <PageNeeds needs={needs} setNeeds={setNeeds} />}
-          {currentPage === 5 && <PageInsurance protection={protection} setProtection={setProtection} />}
-          {currentPage === 6 && <PageCreditCard creditCard={creditCard} setCreditCard={setCreditCard} agreement={agreement} setAgreement={setAgreement} dateRange={dateRange} pricing={data.pricing} />}
+        <Container>
+          <RightContainer>
+            Fill Out the Application for this Space
+            {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange} />}
+            {currentPage === 2 && <PageHazardCheck hazardCheck={hazardCheck} setHazardCheck={setHazardCheck} />}
+            {currentPage === 3 && <PageItems items={items} setItems={setItems} />}
+            {currentPage === 4 && <PageNeeds needs={needs} setNeeds={setNeeds} />}
+            {currentPage === 5 && <PageInsurance protection={protection} setProtection={setProtection} />}
+            {currentPage === 6 && <PageCreditCard creditCard={creditCard} setCreditCard={setCreditCard} agreement={agreement} setAgreement={setAgreement} dateRange={dateRange} pricing={data.pricing} />}
 
-        <ButtonContainer>
-        <BackButton onClick={handleBack} disabled={currentPage === 1}>
-        Back
-        </BackButton>
-        {currentPage !== 6 && (
-          <NextButton onClick={handleNext} disabled={currentPage === 6}>
-          Next
-        </NextButton>
-        )}
-        {currentPage === 6 && (
-          <NextButton onClick={handleSubmit} disabled={currentPage !== 6}>
-            Submit
-          </NextButton>
-        )}
-        </ButtonContainer>
-        </RightContainer>
-      </Container>
+            <ButtonContainer>
+              <BackButton onClick={handleBack} disabled={currentPage === 1}>
+                Back
+              </BackButton>
+              {currentPage !== 6 && (
+                <NextButton onClick={handleNext} disabled={currentPage === 6}>
+                  Next
+                </NextButton>
+              )}
+              {currentPage === 6 && (
+                <NextButton onClick={handleSubmit} disabled={currentPage !== 6}>
+                  Submit
+                </NextButton>
+              )}
+            </ButtonContainer>
+          </RightContainer>
+        </Container>
       </MainContent>
     </div>
   );

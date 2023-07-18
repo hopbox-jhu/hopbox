@@ -1,5 +1,5 @@
 import * as postApi from "./index";
-const afterReceiveAuth = (user_id,user_name, token, email, bio, address, profilePicture, school, occupation, phone ) => {
+const afterReceiveAuth = (user_id, user_name, token, email, bio, address, profilePicture, school, occupation, phone) => {
   localStorage.setItem("token", token);
   localStorage.setItem("user_id", user_id);
   localStorage.setItem("user_name", user_name);

@@ -27,10 +27,10 @@ function PageHazardCheck(props) {
                     <ListItem>Alcohol</ListItem>
                     <ListItem>Any item or substance prohibited by law</ListItem>
                 </List>
-                    <select id="type" value={hazardCheck} onChange={handleHazardCheckChange}>
-                        <option value={true}>Yes</option>
-                        <option value={false}>No</option>
-            </select>
+                <select id="type" value={hazardCheck} onChange={handleHazardCheckChange}>
+                    <option value={true}>Yes</option>
+                    <option value={false}>No</option>
+                </select>
             </Form>
         </div>
     );

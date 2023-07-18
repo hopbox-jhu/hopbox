@@ -8,7 +8,7 @@ export const axiosInstance = axios.create({
 
 export async function postRenterEmail(email) {
   try {
-    const response = await axiosInstance.post('/renter',{email: email});
+    const response = await axiosInstance.post('/renter', { email: email });
     return response.data;
   } catch (err) {
     throw err;
@@ -17,7 +17,7 @@ export async function postRenterEmail(email) {
 
 export async function postHostEmail(email) {
   try {
-    const response = await axiosInstance.post('/host',{email: email});
+    const response = await axiosInstance.post('/host', { email: email });
     return response.data;
   } catch (err) {
     throw err;
@@ -26,7 +26,7 @@ export async function postHostEmail(email) {
 
 export async function createUser(name, email, password) {
   try {
-    const response = await axiosInstance.post("/user/create", {name: name, email: email, password: password});
+    const response = await axiosInstance.post("/user/create", { name: name, email: email, password: password });
     return response.data;
   } catch (err) {
     throw err;
@@ -35,7 +35,7 @@ export async function createUser(name, email, password) {
 
 export async function updateUser(email, bio, address, school, occupation, phone) {
   try {
-    const response = await axiosInstance.post("/user/update", {email: email, bio: bio, address: address, school: school, occupation: occupation, phone: phone });
+    const response = await axiosInstance.post("/user/update", { email: email, bio: bio, address: address, school: school, occupation: occupation, phone: phone });
     return response.data;
   } catch (err) {
     throw err;
@@ -43,7 +43,7 @@ export async function updateUser(email, bio, address, school, occupation, phone)
 }
 
 export async function login(email, password) {
-  const userObj = {email: email, password: password};
+  const userObj = { email: email, password: password };
   try {
     const response = await axiosInstance.post("/login", userObj);
     return response.data;
@@ -79,7 +79,7 @@ export async function createListing(listing) {
     throw err;
   }
 }
-  
+
 export async function getAllListings() {
   try {
     const response = await axiosInstance.get("/listings");
@@ -116,7 +116,7 @@ export async function createApplication(application) {
     throw err;
   }
 }
-  
+
 export async function getAllApplications() {
   try {
     const response = await axiosInstance.get("/applications");

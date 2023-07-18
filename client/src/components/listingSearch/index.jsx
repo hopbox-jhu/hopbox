@@ -12,14 +12,14 @@ export function ListingSearchBar({ onSearch }) {
   const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
-      const newSearchTerm = event.target.value;
-      setSearchTerm(newSearchTerm);
-      setShowSearchIcon(newSearchTerm.length > 0);
+    const newSearchTerm = event.target.value;
+    setSearchTerm(newSearchTerm);
+    setShowSearchIcon(newSearchTerm.length > 0);
   };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    
+
     if (location.pathname !== "/homepage") {
       navigate("/homepage");
     }
@@ -45,7 +45,7 @@ export function ListingSearchBar({ onSearch }) {
           onChange={handleSearchChange}
           rightSection={
             showSearchIcon && (
-                <SearchIcon onClick={handleSearchSubmit} />
+              <SearchIcon onClick={handleSearchSubmit} />
             )
           }
         />
