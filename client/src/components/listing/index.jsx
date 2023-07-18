@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { Card, Image, Text, Badge, Button, Group } from '@mantine/core';
+import React from "react";
+import { Card, Image, Badge, Group } from '@mantine/core';
 import { Divider, Wrapper, Heading, Subtitle } from './listingComponents';
-import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
-export function Listing({ listingId, address, type, price, images, description, length, width, height }) {
+export function Listing({ listingId, address, type, price, images, description, length, width, height, distance }) {
   const navigate = useNavigate();
 
   const handleNavigate = (event) => {
     navigate(`/listing/${listingId}`);
   }
+
+  distance = Math.ceil(distance);
 
   return (
     <Card onClick={handleNavigate} style={{ marginBottom: "3vh", height: "30vh", alignItem: "center", justifyContent: "center" }} shadow="lg" radius="lg" withBorder>
@@ -51,6 +52,15 @@ export function Listing({ listingId, address, type, price, images, description, 
             <Badge size="lg" color="pink" variant="light">
               ${price}
             </Badge>
+            {!Number.isNaN(distance)
+              ?
+              <Badge size="lg" color="pink" variant="light">
+                Less than {distance} mile{distance > 1 ? "s" : ""} away
+              </Badge>
+              :
+              <></>
+            }
+            
         </Group>
         <Subtitle align="left" size="sm" color="dimmed">
         {description.length > 100 ? description.slice(0, 100) + "..." : description}

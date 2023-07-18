@@ -7,6 +7,8 @@ import { Select, Switch } from "@mantine/core";
 import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
 
+let distances = [];
+
 function sortListingsByDistance(listings, lng, lat) {
   return listings.sort((a, b) => {
     const distanceA = distance(lng, lat, a.longitude, a.latitude);
@@ -124,6 +126,9 @@ function Homepage() {
       );
     }
     setFilteredListings(filtered);
+    filteredListings.forEach((listing) => {
+      distances.push(distance(lng, lat, listing.longitude, listing.latitude));
+    });
   };
 
   useEffect(() => {
@@ -168,6 +173,9 @@ function Homepage() {
           );
         }
         setFilteredListings(filtered);
+        filteredListings.forEach((listing) => {
+          distances.push(distance(lng, lat, listing.longitude, listing.latitude));
+        });
       }
 
       map.current.on('load', () => {
@@ -333,7 +341,7 @@ function Homepage() {
         </Heading>
         <ListingWrapper>
           <Sidebar>
-            <ListingList listings={filteredListings} />
+            <ListingList listings={filteredListings} distances={distances} />
           </Sidebar>
         </ListingWrapper>
         <MapWrapper>
