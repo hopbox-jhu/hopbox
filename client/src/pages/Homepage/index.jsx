@@ -140,7 +140,7 @@ function Homepage() {
         type: 'Feature',
         geometry: {
           type: 'Point',
-          coordinates: [listing.longitude, listing.latitude],
+          coordinates: [listing.longitude + Math.random() * 0.003 - 0.0015, listing.latitude + Math.random() * 0.003 - 0.0015],
         },
         properties: {
           listingId: `${listing._id}`,
