@@ -34,9 +34,10 @@ function Landing() {
       <Navbar toggle={toggle} />
       <div style={{ overflowX: 'hidden' }}>
         <CoverSection />
+        <Services />
         <InfoSection {...aboutObj} />
         <InfoSection {...discoverObj} />
-        <Services />
+
         <Footer/>    
 
         <div

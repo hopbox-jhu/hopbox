@@ -38,13 +38,13 @@ const index = ({ toggle }) => {
             </MenuIcon>
             <NavMenu>
               <NavItem>
-                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >RENTER</NavLink>
+                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80} >SIGN UP</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>HOST</NavLink>
+                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80}>ABOUT US</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>SIGN UP</NavLink>
+                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>TIMELINE</NavLink>
               </NavItem>
             </NavMenu>
             <NavBtn>
