@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { clearAuth } from '../../api/auth';
-import { AuthContext } from '../../context/AuthContext';
 import { useAuth } from '../../context/AuthContext';
 import PopupForm from './EditProfile';
 import { ListingList } from '../../components/listingList';
@@ -58,7 +57,6 @@ const ProfilePage = ({ user }) => {
 
   const [selectedOption, setSelectedOption] = useState('Profile');
   const navigate = useNavigate();
-  //const { isAuth, setIsAuth } = useContext(AuthContext);
   const setAuth = useAuth().setIsAuth;
 
   const handleLogoutClick = () => {
