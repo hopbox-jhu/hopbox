@@ -24,7 +24,7 @@ import Landing from "./pages/Landing/Landing";
 import Homepage from "./pages/Homepage";
 import AddListing from "./pages/AddListing";
 import Application from "./pages/Application";
-import SignUpPage from "./pages/SignupSection/SignUpPage";
+import SignUpPage from "./pages/SignupSection/index";
 import SignInPage from "./pages/SigninSection/SignInPage";
 import ProfilePage from "./pages/Profile";
 import ListingPage from "./pages/ListingPage/Index";
