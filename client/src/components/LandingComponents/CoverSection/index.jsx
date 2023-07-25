@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Video from '../../../assets/videos/Main(ver2).mp4';
-import VideoMobile from '../../../assets/videos/MainMobile.mp4';
+import VideoMobile from '../../../assets/videos/MainMobile2.mp4';
 import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, ImgLogo } from './CoverElements';
 import { makeStyles } from '@material-ui/core/styles';
 import text from "../../../assets/images/logo.png";
