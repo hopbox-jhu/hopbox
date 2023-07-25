@@ -107,7 +107,7 @@ export const ServicesBox = styled.div`
 
 
 export const ServicesH1 = styled.span`
-  font-size: 6.5vw;
+  font-size: 5.5vw;
   color: #eb65a0;
   font-weight: 900;
   font-style: thick;

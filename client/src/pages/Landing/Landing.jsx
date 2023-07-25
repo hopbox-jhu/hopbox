@@ -49,7 +49,7 @@ function Landing() {
             pointerEvents: "none",
           }}
         >
-          <img src={icon} alt="Icon" style={{ width: "30px", height: "50px" }} />
+          <img src={icon} alt="Icon" style={{ width: "30px", height: "55px" }} />
         </div>
       </div>
     </>
