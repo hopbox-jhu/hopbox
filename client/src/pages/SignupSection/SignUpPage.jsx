@@ -40,7 +40,7 @@ function SignUpPage() {
   return (
     <Container>
       <CoverBg>
-        <VideoBg autoPlay loop muted src={Video} type='video/mp4' />
+        {/* <VideoBg autoPlay loop muted src={Video} type='video/mp4' /> */}
       </CoverBg>
       <Content>
         <Link to="/">

@@ -6,19 +6,33 @@ import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, Nav
 
 import logo from "../../../assets/images/logo.png";
 
-const index = ({ toggle }) => {
+const Index = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
-    if (window.scrollY >= 80) {
-      setScrollNav(true);
-    } else {
-      setScrollNav(false); 
+    const screenWidthThreshold = 845; // Adjust this threshold to your preferred value
+    if (window.innerWidth >= screenWidthThreshold) {
+      if (window.scrollY >= 80) {
+        setScrollNav(true);
+      } else {
+        setScrollNav(false);
+      }
     }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', changeNav);
+    changeNav(); // Call changeNav initially to set the initial state based on the screen size
+
+    const handleScroll = () => {
+      changeNav(); // Update scrollNav based on the screen size during scrolling
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleHome = () => {
@@ -27,13 +41,13 @@ const index = ({ toggle }) => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff', style: { marginTop: '1vw' }  }}>
+      <IconContext.Provider value={{ color: '#eb65a0', style: { marginTop: '1vw', }  }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-              <NavLogo onClick={toggleHome}>
-                <ImgLogo src={logo}/>
-              </NavLogo>
-              <MenuIcon onClick={toggle}>
+            <NavLogo onClick={toggleHome}>
+              <ImgLogo src={logo}/>
+            </NavLogo>
+            <MenuIcon onClick={toggle}>
               <FaBars />
             </MenuIcon>
             <NavMenu>
@@ -58,4 +72,4 @@ const index = ({ toggle }) => {
   );
 };
 
-export default index;
+export default Index;

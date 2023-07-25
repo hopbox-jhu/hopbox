@@ -132,7 +132,7 @@ export const ImgLogo = styled.img`
   width: 120px;
   height: 25px;
   @media screen and (max-width: 900px) {
-    width: 105px;
-    height: 27px;
+    width: 98px;
+    height: 22px;
   }
 `;

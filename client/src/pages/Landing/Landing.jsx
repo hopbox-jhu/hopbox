@@ -18,8 +18,12 @@ function Landing() {
   };
 
   const handleMouseMove = (event) => {
-    setMousePosition({ x: event.clientX, y: event.clientY });
+    const screenWidthThreshold = 768; // Adjust this threshold to your preferred value
+    if (window.innerWidth >= screenWidthThreshold) {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    }
   };
+
 
   useEffect(() => {
     document.addEventListener("mousemove", handleMouseMove);
@@ -27,6 +31,8 @@ function Landing() {
       document.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
+
+  const isMobileScreen = window.innerWidth < 768; 
 
   return (
     <>
@@ -40,6 +46,7 @@ function Landing() {
 
         <Footer/>    
 
+        {!isMobileScreen && (
         <div
           className="container"
           style={{
@@ -51,6 +58,7 @@ function Landing() {
         >
           <img src={icon} alt="Icon" style={{ width: "30px", height: "55px" }} />
         </div>
+      )}
       </div>
     </>
   );
