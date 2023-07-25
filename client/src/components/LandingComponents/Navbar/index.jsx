@@ -41,7 +41,7 @@ const Index = ({ toggle }) => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#eb65a0', style: { marginTop: '1vw', }  }}>
+      <IconContext.Provider value={{ color: '#eb65a0', style: { marginTop: '0vw', }  }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
             <NavLogo onClick={toggleHome}>

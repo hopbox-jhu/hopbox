@@ -4,10 +4,7 @@ import { MdArrowForward, MdKeyboardArrowRight } from 'react-icons/md';
 export const CoverContainer = styled.div`
   background: white;
   display: flex;
-  // justify-content: center;
-  // align-items: center;
   height: 100vh;
-  width: 100vw;
   position: relative;
   z-index: 1;
 
@@ -19,6 +16,11 @@ export const CoverContainer = styled.div`
     right: 0;
     bottom: 0;
     z-index: 2;
+  }
+
+  @media screen and (max-width: 784px) {
+    height: 100vh;
+  
   }
 `;
 
@@ -34,6 +36,10 @@ export const CoverBg = styled.div`
   height: 90%;
   overflow: hidden;
   background: rgba(235, 101, 160, 0.6);
+  @media screen and (max-width: 768px) {
+    height: 58%;
+    width: 100%;
+  }
 `;
 
 export const VideoBg = styled.video`

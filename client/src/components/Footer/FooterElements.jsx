@@ -9,9 +9,9 @@ export const FooterContainer = styled.footer`
 export const ImgLogo = styled.img`
   width: 120px;
   height: 25px;
-  @media screen and (max-width: 900px) {
-    width: 105px;
-    height: 27px;
+  @media screen and (max-width: 768px) {
+    width: 100px;
+    height: 22px;
   }
 `;
 
