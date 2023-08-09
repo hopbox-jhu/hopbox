@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as api from "../../api";
-import { Divider, MapContainerStyle, Sidebar, Wrapper, ListingWrapper, MapWrapper, Heading, Text1, Text2, Filter, FilterBar } from "./Homepage";
+import { Divider, MapContainerStyle, Sidebar, Wrapper, MapWrapper, Heading, Text1, Text2, Filter, FilterBar } from "./Homepage";
 import { ListingList } from "../../components/listingList";
 import MainNavBar from "../../components/MainNavbar";
 import { Select, Switch } from "@mantine/core";
@@ -342,11 +342,9 @@ function Homepage() {
             />
           </Filter>
         </Heading>
-        <ListingWrapper>
           <Sidebar>
             <ListingList listings={filteredListings} distances={distances} />
           </Sidebar>
-        </ListingWrapper>
         <MapWrapper>
           <MapContainerStyle ref={mapContainer} />
         </MapWrapper>

@@ -1,75 +1,61 @@
 import styled from 'styled-components';
 
 export const Divider = styled.div`
-  display: flex;
+  display: absolute;
   background: white;
-  height: 100vh;
-  width: 100vw;
   flex-direction: column;
-  overflow: hidden;
+  overflow-y: scroll;
 
   @media screen and (max-width: 768px) {
-    height: 200vh;
+
     flex-direction: column;
   }
 
   @media screen and (max-width: 480px) {
-    height: 200vh;
+
     flex-direction: column;
   }
 `;
 
 
 export const MapContainerStyle = styled.div`
-    position: absolute;
-    right: 2vw;
-    width: 55vw;
-    height: 84vh;
-    max-height: 84vh;
-    right: 2vw;
-    top: 14vh;
-    bottom: 10vh;
+    position: fixed;
+    left: 770px;
+    width: 60%;
+    height: 100vh;
+    max-height: 100%;
+    bottom: 1vh;
     /* box-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.5); */
 `;
 
 export const Heading = styled.div`
-    color: #fff;
-    padding: 6px 12px;
-    font-family: monospace;
-    z-index: 1;
-    position: absolute;
     border-radius: 4px;
-    width: 33vw;
-    height: 15vh;
+    width: 700px;
+    height: 250px;
     align-items: flex-start;
     flex-direction: row;
 `;
 
 export const Sidebar = styled.div`
-    overflow: scroll;
-    color: #fff;
-    padding: 6px 12px;
-    z-index: 1;
+    overflow: hidden;
+    background:#d21c1ccafff;
     border-radius: 2px;
-    width: 40vw;
-    height: 75vh;
-    margin-top: 20px;
-    bottom: auto;
+    width: 800px;
+    height: 100%;
 `;
 
 export const Wrapper = styled.div`
-    margin-top: 12vh;
+    margin-top: 100px;
     margin-left: 2vw;
+    flex-direction: column;
     display: flex;
-`;
-
-export const ListingWrapper = styled.div`
-    margin-top: 21vh;
-    overflow: scroll;
+    overflow-y: scroll;
 
 `;
+
 
 export const MapWrapper = styled.div`
+    background: #bb8686;
 `;
 
 export const Text1 = styled.p`

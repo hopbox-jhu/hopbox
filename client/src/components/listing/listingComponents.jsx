@@ -1,13 +1,11 @@
 import styled from 'styled-components';
-import { Link as LinkR } from 'react-router-dom';
-import { Link as LinkS } from 'react-scroll';
+
 
 export const Divider = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  // padding: 10px;
 `;
 
 export const Header = styled.div`
@@ -30,56 +28,50 @@ export const Header = styled.div`
 export const Container = styled.div`
 display: flex;
 background: #FFF1F6;
-height: 100vh;
-width: 100vw;
 
 @media screen and (max-width: 768px) {
-  height: 200vh;
   flex-direction: column;
 }
 
 @media screen and (max-width: 480px) {
-  height: 200vh;
   flex-direction: column;
 
 }
 `;
 
 export const LeftContainer = styled.div`
-height: 100vh;
-width: 50vw;
+
 display: flex;
 flex-direction: column;
-background-color: #FFF1F6;
+background: #2a0e18;
 
 @media screen and (max-width: 768px) {
   height: auto;
-  width: 100vw;
+
 }
 
 @media screen and (max-width: 480px) {
   height: auto;
-  width: 100vw;
+
 }
 `;
 
 export const RightContainer = styled.div`
-height: 100vh;
-width: 50vw;
+
 display: flex;
-background-color: #FFF1F6;
+background: #e61860;
 justify-content: center;
 align-items: center;
 flex-direction: column;
 
 @media screen and (max-width: 768px) {
   height: auto;
-  width: 100vw;
+
 }
 
 @media screen and (max-width: 480px) {
   height: auto;
-  width: 100vw;
+
 }
 `;
 
@@ -94,19 +86,26 @@ export const Wrapper = styled.div`
 `;
 
 export const Heading = styled.h1`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 350;
 
 
   @media screen and (max-width: 1500px) {
-    font-size: 0.8rem;
   }
 `;
 
 export const Subtitle = styled.p`
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.8;
   font-weight: 200;
+  word-wrap: break-word;
+`;
+
+export const Subtitle2 = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color:#050557;
+  font-weight: 400;
   word-wrap: break-word;
 `;
