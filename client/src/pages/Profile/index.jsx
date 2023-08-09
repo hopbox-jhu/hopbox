@@ -10,6 +10,7 @@ import { ContentTitle, Wrapper, Divider, OptionList, MainContent } from "../Prof
 import * as api from "../../api";
 import { List } from "@material-ui/core";
 import { Application } from '../../components/application';
+import MenuIcon from '@material-ui/icons/Menu';
 import {
   ProfileListItem,
   ListingsListItem,
@@ -20,7 +21,9 @@ import {
   Content,
   ProfilePicture,
   Name,
-  Info
+  Info,
+  ListingContent,
+  ToggleButton,
 
 } from './ProfilePage';
 
@@ -95,6 +98,11 @@ const ProfilePage = ({ user }) => {
     setFilteredApplications(filteredApplications);
   }
 
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible);
+  };
+
   useEffect(() => {
     getListing();
     getRentals();
@@ -105,7 +113,7 @@ const ProfilePage = ({ user }) => {
     <Divider>
       <MainNavBar />
       <Wrapper>
-        <OptionList>
+        <OptionList visible={sidebarVisible}>
           <List>
             <ProfileListItem onClick={() => handleOptionClick('Profile')} selected={selectedOption === 'Profile'} />
             <ListingsListItem onClick={() => handleOptionClick('My Listings')} selected={selectedOption === 'My Listings'} />
@@ -114,25 +122,28 @@ const ProfilePage = ({ user }) => {
             <LogoutListItem onClick={() => handleLogoutClick()} />
           </List>
         </OptionList>
+        <ToggleButton onClick={toggleSidebar}>
+          <MenuIcon style={{ marginRight: '20px', cursor: 'pointer' }}/>
+        </ToggleButton>
         <MainContent>
           {selectedOption === 'My Listings' && (
-            <div>
+            <ListingContent>
               <ContentTitle>My Listings Information</ContentTitle>
               <List>
                 <ListingList listings={filteredListings} distances={null} />
               </List>
-            </div>
+            </ListingContent>
           )}
           {selectedOption === 'My Rentals' && (
-            <>
+            <ListingContent>
               <ContentTitle>My Rentals Information</ContentTitle>
               <List>
                 <RentalList listings={rentals} />
               </List>
-            </>
+            </ListingContent>
           )}
           {selectedOption === 'My Applications' && (
-            <>
+            <ListingContent>
               <ContentTitle>My Applications Information</ContentTitle>
               <List>
                 {filteredApplications.map((application, index) => (
@@ -151,10 +162,10 @@ const ProfilePage = ({ user }) => {
                   </Application>
                 ))}
               </List>
-            </>
+            </ListingContent>
           )}
           {selectedOption === 'Profile' && (
-            <div>
+            <ListingContent>
               <ContentTitle>Profile Information</ContentTitle>
               <Container>
                 <Content>
@@ -171,7 +182,7 @@ const ProfilePage = ({ user }) => {
                   <PopupForm isOpen={isPopupOpen} onClose={handleClosePopup} />
                 </Content>
               </Container>
-            </div>
+            </ListingContent>
           )}
         </MainContent>
       </Wrapper>
