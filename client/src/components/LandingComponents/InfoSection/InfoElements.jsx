@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { Link as LinkS } from 'react-scroll';
 
 export const InfoContainer = styled.div`
   color: #fff;
-  // background: ${({ lightBg }) => (lightBg ? '##651e1e' : '#e6ddddff')};
+  background-color: #EDEDED;
 
 
   @media screen and (max-width: 768px) {
@@ -15,10 +16,10 @@ export const InfoWrapper = styled.div`
   z-index: 1;
   height: 100vh;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1800px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 24px;
+  padding: 0 0px;
   justify-content: center;
 `;
 
@@ -52,8 +53,8 @@ export const TextWrapper = styled.div`
 `;
 
 export const TopLine = styled.p`
-  color: #706e6e;
-  font-size: 25px;
+  color: black;
+  font-size: 35px;
   line-height: 5vh;
   font-weight: 900;
   letter-spacing: 1.4px;
@@ -87,7 +88,7 @@ export const BtnWrap = styled.div`
 `;
 
 export const ImgWrap = styled.div`
-  max-width: 555px;
+  max-width: 100%;
   height: 100%;
 `;
 
@@ -95,4 +96,43 @@ export const Img = styled.img`
   width: 100%;
   margin: 0 0 10px 0;
   padding-right: 0;
+`;
+
+
+export const BulletList = styled.ul`
+  list-style: none;
+  padding: 20px;
+`;
+
+export const BulletPoint = styled.li`
+  color: #eb65a0; /* Change the color to your desired pink color */
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+`;
+
+export const BulletText = styled.p`
+  color: grey; /* Change the color to your desired grey color */
+  font-size: 16px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+`;
+
+
+export const NavLink = styled(LinkS)`
+  color: white;
+  background-color: #eb65a0;
+  border-radius: 40px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  text-decoration: none;
+  padding: 10px;
+  width: 100px;
+  height: 100%;
+  cursor: pointer;
+  &.active {
+    border-bottom: 3px solid #EB65A0;
+  }
 `;

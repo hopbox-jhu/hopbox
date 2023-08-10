@@ -4,7 +4,9 @@ import Navbar from "../../components/LandingComponents/Navbar";
 import Sidebar from '../../components/LandingComponents/Sidebar';
 import CoverSection from '../../components/LandingComponents/CoverSection';
 import InfoSection from "../../components/LandingComponents/InfoSection";
-import { aboutObj, discoverObj, signupObj } from '../../components/LandingComponents/InfoSection/Data';
+import FaqSection from "../../components/LandingComponents/FaqSection";
+import { aboutObj } from '../../components/LandingComponents/InfoSection/Data';
+import { FaqObj } from '../../components/LandingComponents/FaqSection/Data';
 import Footer from '../../components/Footer'; 
 import Services from "../../components/LandingComponents/Services"
 import icon from "/src/assets/images/Icon.png";
@@ -42,7 +44,7 @@ function Landing() {
         <CoverSection />
         <Services />
         <InfoSection {...aboutObj} />
-        <InfoSection {...discoverObj} />
+        <FaqSection {...FaqObj} />
 
         <Footer/>    
 

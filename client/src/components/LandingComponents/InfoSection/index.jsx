@@ -1,14 +1,16 @@
 import React from 'react';
 import { Button } from '../ButtonElements';
-import { InfoContainer, InfoWrapper, InfoRow, Column1, Column2, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, Img, ImgWrap } from './InfoElements';
+import { InfoContainer, InfoWrapper, InfoRow, Column1, Column2, TextWrapper, TopLine, Heading, Subtitle, BulletList, BulletPoint, BulletText, BtnWrap, Img, ImgWrap, NavLink } from './InfoElements'; // Make sure to import the necessary components and styles
 import { useNavigate } from 'react-router-dom';
 
-const InfoSection = ({ lightBg, id, imgStart, topLine, lightText, headline, darkText, description, buttonLabel, img, alt, primary, dark, dark2 }) => {
+
+const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
   const navigate = useNavigate();
 
   const handleNavigate = (event) => {
     navigate("/homepage");
   }
+
   return (
     <>
       <InfoContainer lightBg={lightBg} id={id}>
@@ -16,11 +18,21 @@ const InfoSection = ({ lightBg, id, imgStart, topLine, lightText, headline, dark
           <InfoRow imgStart={imgStart}>
             <Column1>
               <TextWrapper>
-                <TopLine>{topLine}</TopLine>
-                <Heading lightText={lightText}>{headline}</Heading>
-                <Subtitle darkText={darkText}>{description}</Subtitle>
+                <TopLine>Our Services</TopLine>
+                {/* <Heading>Discover Our Offerings</Heading>
+                <Subtitle>Explore our main services</Subtitle> */}
+                <BulletList>
+                  <BulletPoint>Find a good host for your belongings</BulletPoint>
+                  <BulletText>Effortlessly find the perfect space that satisfies all your needs near your place. It could be your friend’s place too!</BulletText>
+                  
+                  <BulletPoint>Your Second Service</BulletPoint>
+                  <BulletText>Description for the second service goes here.</BulletText>
+                  
+                  <BulletPoint>Your Third Service</BulletPoint>
+                  <BulletText>Description for the third service goes here.</BulletText>
+                </BulletList>
                 <BtnWrap>
-                  <Button onClick = {handleNavigate} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1}>{buttonLabel}</Button>
+                  <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1}>{buttonLabel}</NavLink>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
