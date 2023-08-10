@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Image, Badge, Group } from '@mantine/core';
-import { Divider, Wrapper, Heading, Subtitle, Subtitle2 } from './listingComponents';
+import { CardContainer, Divider, Wrapper, Heading, Subtitle, Subtitle2 } from './listingComponents';
 import { useNavigate } from 'react-router-dom';
 
 export function Listing({ listingId, name, address, type, price, images, description, length, width, height, distance }) {
@@ -14,7 +14,18 @@ export function Listing({ listingId, name, address, type, price, images, descrip
   distance = Math.ceil(distance);
 
   return (
-    <Card onClick={handleNavigate} style={{ marginBottom: "30px", height: "300px", width: "700px", alignItem: "center", justifyContent: "center" }} shadow="lg" radius="lg" withBorder>
+
+    <CardContainer>
+    <Card
+    onClick={handleNavigate} 
+    style={{ 
+      marginBottom: "30px", 
+      height: "300px", 
+      alignItem: "center", 
+      justifyContent: "center" }} 
+      shadow="lg" 
+      radius="lg"
+      withBorder>
       <Divider>
         <Group position="center" style={{ flexDirection: "row" }}>
           {images.length >= 2 && (
@@ -72,5 +83,6 @@ export function Listing({ listingId, name, address, type, price, images, descrip
         </Wrapper>
       </Divider>
     </Card>
+    </CardContainer>
   );
 }

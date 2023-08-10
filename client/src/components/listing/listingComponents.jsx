@@ -1,5 +1,24 @@
 import styled from 'styled-components';
 
+export const CardContainer = styled.div`
+  width: 700px;
+
+  @media screen and (max-width: 820px) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 600px; 
+}
+
+  @media screen and (max-width: 450px) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+}
+
+`;
 
 export const Divider = styled.div`
   display: flex;
