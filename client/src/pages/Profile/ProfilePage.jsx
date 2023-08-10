@@ -187,7 +187,6 @@ export const ContentTitle = styled.div`
   top: '0';
   left: '0';
   paddingLeft: '25rem';
-  paddingTop: '2rem';
 `;
 
 export const ListingContent = styled.div`
@@ -243,7 +242,7 @@ export const OptionList = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 1rem;
   width: 200px; /* Set the desired width */
-  height: 600px; /* Set the desired height */
+  height: 100%; /* Set the desired height */
 
   @media screen and (max-width: 768px) {
     position: ${props => (props.visible ? 'fixed' : 'initial')};
@@ -273,6 +272,9 @@ export const MainContent = styled.div`
   flexDirection: 'column';
   padding: '2rem';
   backgroundColor: '#FFFFFF';
+  overflow-y: scroll;
+  margin-top: 70px;
+  max-height: 100%;
 `;
 
 export const ToggleButton = styled.button`
