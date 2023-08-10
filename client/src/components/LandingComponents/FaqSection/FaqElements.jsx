@@ -1,121 +1,153 @@
-import React, { useState } from 'react';
-import {
-  InfoContainer,
-  InfoWrapper,
-  InfoRow,
-  Column1,
-  Column2,
-  TextWrapper,
-  TopLine,
-  Heading,
-  Subtitle,
-  BulletList,
-  BulletPoint,
-  BulletText,
-  BtnWrap,
-  Img,
-  ImgWrap,
-  NavLink
-} from './FaqElements'; // Make sure to import the necessary components and styles
-import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components'; // Import the styled-components library
+import styled from 'styled-components';
+import { Link as LinkS } from 'react-scroll';
 
-const FixedFaqContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: sticky;
-  top: 50px; /* Adjust the top position as needed */
-  max-height: calc(100vh - 100px); /* Adjust the max-height to allow scrolling within the FAQ section */
-  overflow: auto;
+export const InfoContainer = styled.div`
+  color: #fff;
+  background-color: white;
+
+
+  @media screen and (max-width: 768px) {
+    padding: 100px 0;
+  }
 `;
 
-const FaqTitle = styled.h2`
+export const InfoWrapper = styled.div`
+  display: grid;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  max-width: 1800px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 0px;
+  justify-content: center;
+`;
+
+export const InfoRow = styled.div`
+  display: grid;
+  grid-auto-columns: minmax(auto, 1fr);
+  align-items: center;
+  grid-template-areas: ${({ imgStart }) => (imgStart ? `'col2 col1'` : `'col1 col2'`)};
+
+  @media screen and (max-width: 768px) {
+    grid-template-areas: ${({ imgStart }) => (imgStart ? `'col1' 'col2'` : `'col1 col1' 'col2 col2'`)};
+  }
+`;
+
+export const Column1 = styled.div`
+  margin-bottom: 15px;
+  padding: 0 15px;
+  grid-area: col1;
+`;
+
+export const Column2 = styled.div`
+  margin-bottom: 15px;
+  padding: 0 15px;
+  grid-area: col2;
+`;
+
+export const TextWrapper = styled.div`
+  max-width: 540px;
+  padding-top: 0;
+  padding-bottom: 60px;
+`;
+
+export const TopLine = styled.p`
+  color: black;
+  font-size: 35px;
+  line-height: 5vh;
+  font-weight: 900;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+`;
+
+export const Heading = styled.h1`
+  margin-bottom: 24px;
+  font-size: 60px;
+  line-height: 1.1;
+  font-weight: 900;
+  color: ${({ lightText }) => (lightText ? '#f7f8fa' : '#010606')};
+
+  @media screen and (max-width: 480px) {
+    font-size: 32px;
+  }
+`;
+
+export const Subtitle = styled.p`
+  max-width: 440px;
+  margin-bottom: 35px;
+  font-size: 24px;
+  line-height: 35px;
+  color: ${({ darkText }) => (darkText ? '#010606' : '#fff')};
+`;
+
+export const BtnWrap = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
+
+export const ImgWrap = styled.div`
+  max-width: 100%;
+  height: 100%;
+`;
+
+export const Img = styled.img`
+  width: 100%;
+  margin: 0 0 10px 0;
+  padding-right: 0;
+`;
+
+
+export const BulletList = styled.ul`
+  list-style: none;
+  padding: 20px;
+`;
+
+export const BulletPoint = styled.li`
+  color: #eb65a0; /* Change the color to your desired pink color */
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+`;
+
+export const BulletText = styled.p`
+  color: grey; /* Change the color to your desired grey color */
+  font-size: 16px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+`;
+
+
+export const NavLink = styled(LinkS)`
+  color: white;
+  background-color: #eb65a0;
+  border-radius: 40px;
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  text-decoration: none;
+  padding: 10px;
+  width: 100px;
+  height: 100%;
+  cursor: pointer;
+  &.active {
+    border-bottom: 3px solid #EB65A0;
+  }
+`;
+
+export const FaqTitle = styled.h2`
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 `;
 
-const FaqQuestion = styled(BulletPoint)`
+export const FaqQuestion = styled(BulletPoint)`
   cursor: pointer;
-  font-weight: bold;
   margin-bottom: 5px;
 `;
 
-const FaqAnswerContainer = styled.div`
-  max-height: 150px; /* Set a fixed height for the answer container */
-  overflow: auto; /* Enable scrolling within the answer container */
+export const FaqAnswer = styled(BulletText)`
+  display: ${props => (props.show ? 'block' : 'none')};
 `;
-
-const FaqAnswer = styled(BulletText)``;
-
-const FaqSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
-  const navigate = useNavigate();
-
-  const faqData = [
-    {
-      question: 'Find a good host for your belongings',
-      answer: 'Effortlessly find the perfect space that satisfies all your needs near your place. It could be your friend’s place too!',
-    },
-    {
-      question: 'Your Second Service',
-      answer: 'Description for the second service goes here.',
-    },
-    {
-      question: 'Your Third Service',
-      answer: 'Description for the third service goes here.',
-    },
-    // Add more FAQ items as needed
-  ];
-
-  const [selectedQuestion, setSelectedQuestion] = useState(null);
-
-  const handleQuestionClick = (index) => {
-    setSelectedQuestion(index === selectedQuestion ? null : index);
-  };
-
-  return (
-    <InfoContainer lightBg={lightBg} id={id}>
-      <InfoWrapper>
-        <InfoRow>
-          <Column1>
-            <FixedFaqContainer>
-              <FaqTitle>FAQ</FaqTitle>
-              {faqData.map((item, index) => (
-                <div key={index}>
-                  <FaqQuestion onClick={() => handleQuestionClick(index)}>
-                    {item.question}
-                  </FaqQuestion>
-                  <FaqAnswerContainer>
-                    <FaqAnswer show={selectedQuestion === index}>
-                      {item.answer}
-                    </FaqAnswer>
-                  </FaqAnswerContainer>
-                </div>
-              ))}
-            </FixedFaqContainer>
-            <BtnWrap>
-              <NavLink
-                to='services'
-                smooth={true}
-                duration={500}
-                spy={true}
-                exact='true'
-                offset={-80}
-                primary={1}
-              >
-                {buttonLabel}
-              </NavLink>
-            </BtnWrap>
-          </Column1>
-          <Column2>
-            <ImgWrap>
-              <Img />
-            </ImgWrap>
-          </Column2>
-        </InfoRow>
-      </InfoWrapper>
-    </InfoContainer>
-  );
-};
-
-export default FaqSection;

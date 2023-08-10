@@ -15,42 +15,31 @@ import {
   BtnWrap,
   Img,
   ImgWrap,
-  NavLink
+  NavLink,
+  FaqTitle,
+  FaqQuestion,
+  FaqAnswer
 } from './FaqElements'; // Make sure to import the necessary components and styles
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'; // Import the styled-components library
 
-const FaqTitle = styled.h2`
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-`;
 
-const FaqQuestion = styled(BulletPoint)`
-  cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 5px;
-`;
-
-const FaqAnswer = styled(BulletText)`
-  display: ${props => (props.show ? 'block' : 'none')};
-`;
 
 const FaqSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
   const navigate = useNavigate();
 
   const faqData = [
     {
-      question: 'Find a good host for your belongings',
-      answer: 'Effortlessly find the perfect space that satisfies all your needs near your place. It could be your friend’s place too!',
+      question: 'first question',
+      answer: 'answer',
     },
     {
-      question: 'Your Second Service',
-      answer: 'Description for the second service goes here.',
+      question: '2nd question',
+      answer: 'answer',
     },
     {
-      question: 'Your Third Service',
-      answer: 'Description for the third service goes here.',
+      question: '3rd',
+      answer: 'answer',
     },
     // Add more FAQ items as needed
   ];
@@ -68,7 +57,7 @@ const FaqSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
           <Column1>
             <TextWrapper>
               <TopLine>FAQ</TopLine>
-              <FaqTitle>FAQ</FaqTitle>
+              <BulletList>
               {faqData.map((item, index) => (
                 <div key={index}>
                   <FaqQuestion onClick={() => handleQuestionClick(index)}>
@@ -92,6 +81,7 @@ const FaqSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
                   {buttonLabel}
                 </NavLink>
               </BtnWrap>
+              </BulletList>
             </TextWrapper>
           </Column1>
           <Column2>

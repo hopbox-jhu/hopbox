@@ -19,8 +19,6 @@ const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
             <Column1>
               <TextWrapper>
                 <TopLine>Our Services</TopLine>
-                {/* <Heading>Discover Our Offerings</Heading>
-                <Subtitle>Explore our main services</Subtitle> */}
                 <BulletList>
                   <BulletPoint>Find a good host for your belongings</BulletPoint>
                   <BulletText>Effortlessly find the perfect space that satisfies all your needs near your place. It could be your friend’s place too!</BulletText>
