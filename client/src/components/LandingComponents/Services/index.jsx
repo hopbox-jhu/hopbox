@@ -1,37 +1,81 @@
 import React, { useState } from 'react';
 import word from '../../../assets/images/hopbox word.png';
 import demo from '../../../assets/images/coverobject.jpeg';
-import object1 from '../../../assets/images/object1.png';
+import host from '../../../assets/images/host-button.png';
+import rent from '../../../assets/images/rent-button.png';
 import TextField from '@material-ui/core/TextField';
-import { ServicesContainer, ServicesH1, ServicesWrapper, ServicesH2, ServicesP, Imgbg, Divider } from './ServicesElements';
-import { Imgthingie, Imgword, ServicesBox, SubmitButton, ServicesH3, SignUpWrapper } from './ServicesElements';
+import { ServicesContainer, ServicesH1, ButtonsWrapper, ServicesH2, ServicesP, Divider, LeftContainer} from './ServicesElements';
+import { ServicesBox, SubmitButton, ServicesH3, ServicesH4, ServicesH5, RightContainer, Input, NameInputWrapper, ImageButton } from './ServicesElements';
 import * as smoketest from '../../../api';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  underline: {
+    '&:hover:not($disabled):before': {
+      borderBottom: '2px solid white',
+      width: '100%',
+    },
+    '&:before': {
+      borderBottom: '2px solid white',
+    },
+    '&:after': {
+      borderBottom: '2px solid white',
+    },
+  },
+  disabled: {},
+}));
 
 
 const Services = () => {
   const [email, setEmail] = useState('');
+  const[name, setName] = useState('');
   const [isRenter, setisRenter] = useState(true);
+  const classes = useStyles();
+  const [hostButtonClicked, setHostButtonClicked] = useState(false);
+  const [renterButtonClicked, setRenterButtonClicked] = useState(false);
+  const [submitButtonClicked, setSubmitButtonClicked] = useState(false);
+
 
   const handleHostButtonClick = () => {
     setisRenter(false);
+    setHostButtonClicked(true);
+    setRenterButtonClicked(false);
   };
 
   const handleRenterButtonClick = () => {
     setisRenter(true);
+    setHostButtonClicked(false);
+    setRenterButtonClicked(true);
   };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  }
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+      // Check if the name field and email field are filled
+      if (!name || !email) {
+        alert('Please fill in all required fields (Name and Email) before submitting.');
+        return; // Prevent form submission
+      }
+  
+      // Check if either of the image buttons is clicked
+      if (!hostButtonClicked && !renterButtonClicked) {
+        alert('Please select a role (Host or Renter) before submitting.');
+        return; // Prevent form submission
+      }
     try{
       if (isRenter === true) {
         await smoketest.postRenterEmail(email);
       } else {
         await smoketest.postHostEmail(email);
       }
+      setSubmitButtonClicked(true);
       alert('Email submitted successfully!');
       setEmail('');
     } catch (error) {
@@ -41,62 +85,102 @@ const Services = () => {
   };
 
   return (
-    <Divider id='services'>
-      <Imgbg src={demo}/>
-    <ServicesContainer>
-      <Imgword src ={word}/>
-      <ServicesH1> We connect students who need storage with those who have extra space, solving the issues of mismatched housing dates, high costs of public storage options, and the need for secure and convenient storage.</ServicesH1>
+    <Divider id="services">
+      <ServicesContainer>
+        <LeftContainer>
+          <ServicesH1>
+           SIGN UP<br></br>NOW
+          </ServicesH1>
+          <ServicesP>
+              Tell us your interested role, and we will<br></br>let you know when HopBox is ready for you
+            </ServicesP>
+          <ServicesH4>
+            Send us any questions
+          </ServicesH4>
+          <ServicesH5>
+            hopbox.jhu@gmail.com
+          </ServicesH5>
+        </LeftContainer>
+          <RightContainer>
+            <form onSubmit={handleSubmit}>
+              <NameInputWrapper>
+              <ServicesH2>Name</ServicesH2>
+              <TextField
+                type="text"
+                value={name}
+                onChange={handleNameChange}
+                placeholder="Your Name"
+                className={`my-custom-class ${classes.underline}`}
+                InputProps={{
+                  classes: {
+                    underline: classes.underline,
+                    disabled: classes.disabled,
+                  },
+                  style: {
+                    color: 'white',
+                  },
+                }}
+                InputLabelProps={{
+                  style: {
+                    color: 'white',
+                  },
+                }}
+              />
+              </NameInputWrapper>
+              <NameInputWrapper>
+              <ServicesH2>Email</ServicesH2>
+                <TextField
+                  type="text"
+                  value={email}
+                  onChange={handleEmailChange}
+                  placeholder="Your Email Address"
+                  className={`my-custom-class ${classes.underline}`}
+                  InputProps={{
+                    classes: {
+                      underline: classes.underline,
+                      disabled: classes.disabled,
+                    },
+                    style: {
+                      color: 'white',
+                    },
+                  }}
+                  InputLabelProps={{
+                    style: {
+                      color: 'white',
+                    },
+                  }}
+                />
+              </NameInputWrapper>
+              <ButtonsWrapper>
+              <ImageButton
+                type="button"
+                onClick={handleHostButtonClick}
+                image= {host}
+                clicked={hostButtonClicked}
 
-      <SignUpWrapper> 
-        <Imgthingie src={object1}/>
-        <ServicesP>
-          Sign up to your interested role to <br/> receive our latest update!
-        </ServicesP>
-        <ServicesWrapper style={{marginBottom: "1rem", marginTop: "1rem"}} >
-          <ServicesBox onClick={handleRenterButtonClick} style={{background: isRenter=== true ?"#000000":"#ffffff00"}}>
-            <ServicesH2>Renter</ServicesH2>
-          </ServicesBox>
-          <ServicesBox onClick={handleHostButtonClick} style={{background: isRenter=== false ?"#000000":"#ffffff00"}}>
-            <ServicesH2>Host</ServicesH2>
-          </ServicesBox>
-        </ServicesWrapper>
-        <form onSubmit={handleSubmit} style = {{
-          marginLeft:"20px"
-        }}>
-        <TextField
-          className="emailTextInput"
-          variant="outlined"
-          label="Email"
-          value={email}
-          style={{ marginBottom: "1rem", color: "white", width: "95%", height: "5%" }}
-          onChange={handleEmailChange}
-          InputProps={{
-            style: {
-              borderRadius: 40,
-              border: "4px solid white",
-              color: "white",
-            }
-          }}
-          InputLabelProps={{
-            style: {
-            fontWeight: '500',
-            fontSize: '1.75rem',
-            color:"black",
-            fontStyle: "italic",
-            marginLeft:'20px'
-          }}}
-        />
-            <SubmitButton type="submit" onClick={handleSubmit}>
-            <ServicesH2>Submit</ServicesH2>
-            </SubmitButton>
-        </form>
-      </SignUpWrapper>
-          <ServicesH3>
-            Hassle-Free Storage Solution <br/> for College Students
-          </ServicesH3>
-    </ServicesContainer>
+              />
+              <ImageButton
+                type="button"
+                onClick={handleRenterButtonClick}
+                image= {rent}
+                clicked={renterButtonClicked}
+              />
+              </ButtonsWrapper>
+
+              <ButtonsWrapper>  
+              <SubmitButton 
+              type="submit" 
+              onClick={handleSubmit}
+              clicked={submitButtonClicked} 
+              >
+                <ServicesH2>SUBMIT</ServicesH2>
+              </SubmitButton>
+              </ButtonsWrapper>
+            </form>
+          </RightContainer>
+      </ServicesContainer>
+      <ServicesH3></ServicesH3>
     </Divider>
-    
   );
 };
 

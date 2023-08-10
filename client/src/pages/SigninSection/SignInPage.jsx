@@ -36,7 +36,7 @@ function SignInPage() {
       <CoverBg />
       <Content>
         <Link to="/">
-          <HopBoxImage src="/src/assets/images/hopbox_letter.png" alt="Logo" />
+          <HopBoxImage src="/src/assets/images/logo.png" alt="Logo" />
         </Link>
         <Form onSubmit={handleSubmit}>
           <Label>

@@ -164,6 +164,6 @@ export const Content = styled.div `
 `
 
 export const HopBoxImage = styled.img`
-  height: 70px;
-  paddingBottom: 30px;
+  height: 50px;
+  margin-bottom: 50px;
 `;
