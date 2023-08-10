@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as api from "../../api";
-import { Heading, Container, LeftContainer, RightContainer, ButtonContainer, BackButton, NextButton, MainContent } from "./Application";
+import { Container, RightContainer, ButtonContainer, BackButton, NextButton, MainContent, Heading } from "./Application";
 import PageDate from "./PageDate";
 import PageHazardCheck from "./PageHazardCheck";
 import PageItems from "./PageItems";
@@ -9,6 +9,7 @@ import PageInsurance from "./PageInsurance";
 import PageCreditCard from "./PageCreditCard";
 import { useNavigate, Link } from 'react-router-dom';
 import MainNavBar from "../../components/mainNavbar";
+import { RxFontSize } from "react-icons/rx";
 
 
 function Application() {
@@ -91,7 +92,9 @@ function Application() {
       <MainContent>
         <Container>
           <RightContainer>
-            Fill Out the Application for this Space
+            <Heading>
+              Fill Out the Application for this Space
+            </Heading>
             {currentPage === 1 && <PageDate dateRange={dateRange} setDateRange={setDateRange} />}
             {currentPage === 2 && <PageHazardCheck hazardCheck={hazardCheck} setHazardCheck={setHazardCheck} />}
             {currentPage === 3 && <PageItems items={items} setItems={setItems} />}

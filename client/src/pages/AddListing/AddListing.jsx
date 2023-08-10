@@ -69,7 +69,7 @@ export const Container = styled.div`
 `;
 
 export const MainContent = styled.div`
-  margin-top: 180px;
+  margin-top: 100px;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -157,7 +157,6 @@ export const Heading = styled.div`
   color: black;
   font-weight: 80;
   line-height: 1.2;
-  margin-top: -650px;
   margin-left: 50px;
   overflow: hidden;
   padding: 45px;
