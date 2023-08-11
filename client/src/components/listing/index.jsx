@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Image, Badge, Group } from '@mantine/core';
-import { CardContainer, Divider, Wrapper, Heading, Subtitle, Subtitle2 } from './listingComponents';
+import { CardContainer, Divider, ImageContainer, Wrapper, Heading, Subtitle, Subtitle2 } from './listingComponents';
 import { useNavigate } from 'react-router-dom';
 
 export function Listing({ listingId, name, address, type, price, images, description, length, width, height, distance }) {
@@ -27,31 +27,25 @@ export function Listing({ listingId, name, address, type, price, images, descrip
       radius="lg"
       withBorder>
       <Divider>
-        <Group position="center" style={{ flexDirection: "row" }}>
-          {images.length >= 2 && (
-            <div style={{ display: "flex", flexWrap: "wrap" }}>
-              {images.slice(0, 4).map((image, index) => (
-                <Image
-                  key={index}
-                  src={"http://localhost:5050/image/" + image}
-                  height="200px"
-                  width="150px"
-                  radius="lg"
-                  style={{ maxWidth: "100%", marginRight: "1rem", marginBottom: "1rem" }}
-                />
-              ))}
-            </div>
-          )}
-          {images.length === 1 && (
+      <ImageContainer>
+      {images.length >= 2 && (
+        <div className="image-grid">
+          {images.slice(0, 4).map((image, index) => (
             <Image
-              src={"http://localhost:5050/image/" + images[0]}
-              height="250px"
-              width="250px"
-              radius="lg"
-              style={{ maxWidth: "100%" }}
+              key={index}
+              src={"http://localhost:5050/image/" + image}
+              className="grid-image"
             />
-          )}
-        </Group>
+          ))}
+        </div>
+      )}
+      {images.length === 1 && (
+        <Image
+          src={"http://localhost:5050/image/" + images[0]}
+          className="single-image"
+        />
+      )}
+    </ImageContainer>
         <Wrapper>
           <Heading align="left" weight={500}>{name.length > 50 ? name.slice(0, 50) + "..." : address}</Heading>
           <Group position="left" mt="md" mb="xs">

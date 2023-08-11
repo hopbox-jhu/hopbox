@@ -2,23 +2,28 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div`
   width: 700px;
+@media screen and (max-width: 820px) {
+width: 100%;
+max-width: 650px; 
+}
 
-  @media screen and (max-width: 820px) {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@media screen and (max-width: 450px) {
   width: 100%;
-  max-width: 600px; 
+  max-width: 350px; 
 }
+`;
 
-  @media screen and (max-width: 450px) {
+export const ImageContainer = styled.div`
   display: flex;
+  background:#961616;
   justify-content: center;
   align-items: center;
-  width: 700px;
-}
-
+  height: 100%;
+  width: 40%;
+  flex-direction: row;
 `;
+
+
 
 export const Divider = styled.div`
   display: flex;
@@ -27,80 +32,13 @@ export const Divider = styled.div`
   height: 100%;
 `;
 
-export const Header = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: white;
-  height: 180px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
-  img {
-    margin-right: 16px;
-    margin-left: 160px;
-    margin-top: 40px;
-    width: 160px;
-    height: 160px;
-    object-fit: contain; 
-  }
-`;
-
-export const Container = styled.div`
-display: flex;
-background: #FFF1F6;
-
-@media screen and (max-width: 768px) {
-  flex-direction: column;
-}
-
-@media screen and (max-width: 480px) {
-  flex-direction: column;
-
-}
-`;
-
-export const LeftContainer = styled.div`
-
-display: flex;
-flex-direction: column;
-background: #2a0e18;
-
-@media screen and (max-width: 768px) {
-  height: auto;
-
-}
-
-@media screen and (max-width: 480px) {
-  height: auto;
-
-}
-`;
-
-export const RightContainer = styled.div`
-
-display: flex;
-background: #e61860;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-
-@media screen and (max-width: 768px) {
-  height: auto;
-
-}
-
-@media screen and (max-width: 480px) {
-  height: auto;
-
-}
-`;
-
 export const Wrapper = styled.div`
   display: flex;
+  background:red;
   flex-direction: column;
-  margin-left: 1vw;
   justify-content: flex-start;
   padding: 0.5vw;
-  width: 70%;
+  width: 60%;
   height: 100%;
 `;
 

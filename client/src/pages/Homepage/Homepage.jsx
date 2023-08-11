@@ -26,22 +26,48 @@ export const MapContainerStyle = styled.div`
     max-height: 100%;
     bottom: 1vh;
     /* box-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.5); */
+    @media screen and (max-width: 820px) {
+    display: none;
+    }
+    @media screen and (max-width: 450px) {
+    display: none;
+    }
 `;
 
 export const Heading = styled.div`
     border-radius: 4px;
     width: 700px;
     height: 250px;
-    align-items: flex-start;
+    justify-content: center;
+  align-items: center;
     flex-direction: row;
+    @media screen and (max-width: 820px) {
+  width: 100%;
+  max-width: 650px; 
+}
+
+  @media screen and (max-width: 450px) {
+    width: 100%;
+    max-width: 350px; 
+}
 `;
 
 export const Sidebar = styled.div`
     overflow: hidden;
-    background:#d21c1ccafff;
+    background:#920f0facfff;
     border-radius: 2px;
     width: 800px;
     height: 100%;
+
+    @media screen and (max-width: 768px) {
+  height: auto;
+
+}
+
+@media screen and (max-width: 480px) {
+  height: auto;
+
+}
 `;
 
 export const Wrapper = styled.div`
@@ -54,10 +80,6 @@ export const Wrapper = styled.div`
 `;
 
 
-export const MapWrapper = styled.div`
-    background: #bb8686;
-`;
-
 export const Text1 = styled.p`
   font-size: 2rem;
   color: #000000;
@@ -65,12 +87,12 @@ export const Text1 = styled.p`
   line-height:1.3;
   margin-top: 20px;
 
-  @media screen and (max-width: 480px) {
-    font-size: 3.5vw;
+  @media screen and (max-width: 820px) {
+    font-size: 5vw;
   }
 
-  @media screen and (max-width: 768px) {
-    font-size: 3.5vw;
+  @media screen and (max-width: 450px) {
+    font-size: 7vw;
   }
 `;
 
