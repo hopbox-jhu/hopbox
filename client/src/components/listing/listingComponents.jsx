@@ -1,28 +1,23 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  width: 700px;
-@media screen and (max-width: 820px) {
-width: 100%;
-max-width: 650px; 
-}
 
 @media screen and (max-width: 450px) {
-  width: 100%;
-  max-width: 350px; 
+ height:
+
 }
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
-  background:#961616;
   justify-content: center;
   align-items: center;
   height: 100%;
   width: 40%;
-  flex-direction: row;
+  @media screen and (max-width: 450px) {
+  width: 80%;
+  }
 `;
-
 
 
 export const Divider = styled.div`
@@ -30,26 +25,28 @@ export const Divider = styled.div`
   justify-content: center;
   align-items: center;
   height: 100%;
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
+  }
 `;
 
 export const Wrapper = styled.div`
+  margin: 2%;
   display: flex;
-  background:red;
   flex-direction: column;
   justify-content: flex-start;
-  padding: 0.5vw;
+  padding: 2%;
   width: 60%;
   height: 100%;
+  @media screen and (max-width: 450px) {
+  width: 90%;
+  }
 `;
 
 export const Heading = styled.h1`
   font-size: 1.5rem;
   line-height: 1.5;
   font-weight: 350;
-
-
-  @media screen and (max-width: 1500px) {
-  }
 `;
 
 export const Subtitle = styled.p`
@@ -65,4 +62,21 @@ export const Subtitle2 = styled.p`
   color:#050557;
   font-weight: 400;
   word-wrap: break-word;
+`;
+
+
+export const GridImage = styled.img`
+  height: 100px;
+  width: 50px;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  max-width: 80%;
+`;
+
+export const SingleImage = styled.img`
+  height: 250px;
+  width: 250px;
+  border-radius: 8px;
+  max-width: 80%;
 `;

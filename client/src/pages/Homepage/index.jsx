@@ -342,10 +342,8 @@ function Homepage() {
             />
           </Filter>
         </Heading>
-          <Sidebar>
-            <ListingList listings={filteredListings} distances={distances} />
-          </Sidebar>
-          <MapContainerStyle ref={mapContainer} />
+        <ListingList listings={filteredListings} distances={distances} />
+        <MapContainerStyle ref={mapContainer} />
       </Wrapper>
     </Divider>
   );

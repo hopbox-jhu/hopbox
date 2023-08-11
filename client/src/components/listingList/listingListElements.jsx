@@ -2,16 +2,17 @@ import styled from 'styled-components';
 
 
 export const Wrapper = styled.div`
-  display: flex;
+
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 720px;
+  width: 700px;
   @media screen and (max-width: 820px) {
-  width: 100vw;
+  width: 95vw;
 }
 
 @media screen and (max-width: 450px) {
-  width: 100vw;
+  width: 95vw;
+
 }
 `;

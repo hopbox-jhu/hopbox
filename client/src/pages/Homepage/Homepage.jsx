@@ -1,19 +1,17 @@
 import styled from 'styled-components';
 
 export const Divider = styled.div`
-  display: absolute;
-  background: white;
   flex-direction: column;
-  overflow-y: scroll;
-
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   @media screen and (max-width: 768px) {
-
-    flex-direction: column;
+    width: 100%;
   }
-
   @media screen and (max-width: 480px) {
-
+    width: 100%;
     flex-direction: column;
+
   }
 `;
 
@@ -42,22 +40,19 @@ export const Heading = styled.div`
   align-items: center;
     flex-direction: row;
     @media screen and (max-width: 820px) {
-  width: 100%;
-  max-width: 650px; 
+    width: 95%;
 }
 
   @media screen and (max-width: 450px) {
-    width: 100%;
-    max-width: 350px; 
+    width: 95%;
 }
 `;
 
 export const Sidebar = styled.div`
-    overflow: hidden;
-    background:#920f0facfff;
     border-radius: 2px;
-    width: 800px;
-    height: 100%;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
 
     @media screen and (max-width: 768px) {
   height: auto;
@@ -71,12 +66,11 @@ export const Sidebar = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    margin-top: 100px;
-    margin-left: 2vw;
-    flex-direction: column;
-    display: flex;
-    overflow-y: scroll;
-
+  margin-top: 100px;
+  margin-left: 2vw;
+  flex-direction: column;
+  display: flex;
+  overflow-y: scroll;
 `;
 
 
@@ -88,7 +82,7 @@ export const Text1 = styled.p`
   margin-top: 20px;
 
   @media screen and (max-width: 820px) {
-    font-size: 5vw;
+    font-size: 4vw;
   }
 
   @media screen and (max-width: 450px) {
