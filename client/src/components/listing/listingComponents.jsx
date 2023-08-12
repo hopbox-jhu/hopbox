@@ -1,112 +1,82 @@
 import styled from 'styled-components';
-import { Link as LinkR } from 'react-router-dom';
-import { Link as LinkS } from 'react-scroll';
+
+export const CardContainer = styled.div`
+
+@media screen and (max-width: 450px) {
+ height:
+
+}
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 40%;
+  @media screen and (max-width: 450px) {
+  width: 80%;
+  }
+`;
+
 
 export const Divider = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  // padding: 10px;
-`;
-
-export const Header = styled.div`
-  display: flex;
-  align-items: center;
-  background-color: white;
-  height: 180px; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-
-  img {
-    margin-right: 16px;
-    margin-left: 160px;
-    margin-top: 40px;
-    width: 160px;
-    height: 160px;
-    object-fit: contain; 
+  @media screen and (max-width: 450px) {
+    flex-direction: column;
   }
-`;
-
-export const Container = styled.div`
-display: flex;
-background: #FFF1F6;
-height: 100vh;
-width: 100vw;
-
-@media screen and (max-width: 768px) {
-  height: 200vh;
-  flex-direction: column;
-}
-
-@media screen and (max-width: 480px) {
-  height: 200vh;
-  flex-direction: column;
-
-}
-`;
-
-export const LeftContainer = styled.div`
-height: 100vh;
-width: 50vw;
-display: flex;
-flex-direction: column;
-background-color: #FFF1F6;
-
-@media screen and (max-width: 768px) {
-  height: auto;
-  width: 100vw;
-}
-
-@media screen and (max-width: 480px) {
-  height: auto;
-  width: 100vw;
-}
-`;
-
-export const RightContainer = styled.div`
-height: 100vh;
-width: 50vw;
-display: flex;
-background-color: #FFF1F6;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-
-@media screen and (max-width: 768px) {
-  height: auto;
-  width: 100vw;
-}
-
-@media screen and (max-width: 480px) {
-  height: auto;
-  width: 100vw;
-}
 `;
 
 export const Wrapper = styled.div`
+  margin: 2%;
   display: flex;
   flex-direction: column;
-  margin-left: 1vw;
   justify-content: flex-start;
-  padding: 0.5vw;
-  width: 70%;
+  padding: 2%;
+  width: 60%;
   height: 100%;
-`;
-
-export const Heading = styled.h1`
-  font-size: 1.2rem;
-  line-height: 1.5;
-  font-weight: 350;
-
-
-  @media screen and (max-width: 1500px) {
-    font-size: 0.8rem;
+  @media screen and (max-width: 450px) {
+  width: 90%;
   }
 `;
 
+export const Heading = styled.h1`
+  font-size: 1.5rem;
+  line-height: 1.5;
+  font-weight: 350;
+`;
+
 export const Subtitle = styled.p`
-  font-size: 0.85rem;
+  font-size: 1rem;
   line-height: 1.8;
   font-weight: 200;
   word-wrap: break-word;
+`;
+
+export const Subtitle2 = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color:#050557;
+  font-weight: 400;
+  word-wrap: break-word;
+`;
+
+
+export const GridImage = styled.img`
+  height: 100px;
+  width: 50px;
+  border-radius: 8px;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+  max-width: 80%;
+`;
+
+export const SingleImage = styled.img`
+  height: 250px;
+  width: 250px;
+  border-radius: 8px;
+  max-width: 80%;
 `;

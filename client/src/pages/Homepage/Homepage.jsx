@@ -1,76 +1,78 @@
 import styled from 'styled-components';
 
 export const Divider = styled.div`
-  display: flex;
-  background: white;
-  height: 100vh;
-  width: 100vw;
   flex-direction: column;
-  overflow: hidden;
-
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   @media screen and (max-width: 768px) {
-    height: 200vh;
-    flex-direction: column;
+    width: 100%;
   }
-
   @media screen and (max-width: 480px) {
-    height: 200vh;
+    width: 100%;
     flex-direction: column;
+
   }
 `;
 
 
 export const MapContainerStyle = styled.div`
-    position: absolute;
-    right: 2vw;
-    width: 55vw;
-    height: 84vh;
-    max-height: 84vh;
-    right: 2vw;
-    top: 14vh;
-    bottom: 10vh;
+    position: fixed;
+    left: 770px;
+    width: 60%;
+    height: 100vh;
+    max-height: 100%;
+    bottom: 1vh;
     /* box-shadow: 0.5px 0.5px 2px rgba(0, 0, 0, 0.5); */
+    @media screen and (max-width: 820px) {
+    display: none;
+    }
+    @media screen and (max-width: 450px) {
+    display: none;
+    }
 `;
 
 export const Heading = styled.div`
-    color: #fff;
-    padding: 6px 12px;
-    font-family: monospace;
-    z-index: 1;
-    position: absolute;
     border-radius: 4px;
-    width: 33vw;
-    height: 15vh;
-    align-items: flex-start;
+    width: 700px;
+    height: 250px;
+    justify-content: center;
+  align-items: center;
     flex-direction: row;
+    @media screen and (max-width: 820px) {
+    width: 95%;
+}
+
+  @media screen and (max-width: 450px) {
+    width: 95%;
+}
 `;
 
 export const Sidebar = styled.div`
-    overflow: scroll;
-    color: #fff;
-    padding: 6px 12px;
-    z-index: 1;
     border-radius: 2px;
-    width: 40vw;
-    height: 75vh;
-    margin-top: 20px;
-    bottom: auto;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+  height: auto;
+
+}
+
+@media screen and (max-width: 480px) {
+  height: auto;
+
+}
 `;
 
 export const Wrapper = styled.div`
-    margin-top: 12vh;
-    margin-left: 2vw;
-    display: flex;
+  margin-top: 100px;
+  margin-left: 2vw;
+  flex-direction: column;
+  display: flex;
+  overflow-y: scroll;
 `;
 
-export const ListingWrapper = styled.div`
-    margin-top: 21vh;
-    overflow: scroll;
-
-`;
-
-export const MapWrapper = styled.div`
-`;
 
 export const Text1 = styled.p`
   font-size: 2rem;
@@ -79,12 +81,12 @@ export const Text1 = styled.p`
   line-height:1.3;
   margin-top: 20px;
 
-  @media screen and (max-width: 480px) {
-    font-size: 3.5vw;
+  @media screen and (max-width: 820px) {
+    font-size: 4vw;
   }
 
-  @media screen and (max-width: 768px) {
-    font-size: 3.5vw;
+  @media screen and (max-width: 450px) {
+    font-size: 7vw;
   }
 `;
 
