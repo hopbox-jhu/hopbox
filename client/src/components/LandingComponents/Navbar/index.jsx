@@ -6,19 +6,33 @@ import { MenuIcon, Nav, NavbarContainer, NavItem, NavLink, NavLogo, NavMenu, Nav
 
 import logo from "../../../assets/images/logo.png";
 
-const index = ({ toggle }) => {
+const Index = ({ toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
 
   const changeNav = () => {
-    if (window.scrollY >= 80) {
-      setScrollNav(true);
-    } else {
-      setScrollNav(false); 
+    const screenWidthThreshold = 845; // Adjust this threshold to your preferred value
+    if (window.innerWidth >= screenWidthThreshold) {
+      if (window.scrollY >= 80) {
+        setScrollNav(true);
+      } else {
+        setScrollNav(false);
+      }
     }
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', changeNav);
+    changeNav(); // Call changeNav initially to set the initial state based on the screen size
+
+    const handleScroll = () => {
+      changeNav(); // Update scrollNav based on the screen size during scrolling
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleHome = () => {
@@ -27,29 +41,29 @@ const index = ({ toggle }) => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
+      <IconContext.Provider value={{ color: '#eb65a0', style: { marginTop: '0vw', }  }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-              <NavLogo onClick={toggleHome}>
-                <ImgLogo src={logo}/>
-              </NavLogo>
-              <MenuIcon onClick={toggle}>
+            <NavLogo onClick={toggleHome}>
+              <ImgLogo src={logo}/>
+            </NavLogo>
+            <MenuIcon onClick={toggle}>
               <FaBars />
             </MenuIcon>
             <NavMenu>
               <NavItem>
-                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80} >Renter</NavLink>
+                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80} >SIGN UP</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='discover' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Host</NavLink>
+                <NavLink to='about' smooth={true} duration={500} spy={true} exact='true' offset={-80}>OUR SERVICES</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign Up</NavLink>
+                <NavLink to='faq' smooth={true} duration={500} spy={true} exact='true' offset={-80}>FAQ</NavLink>
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink2 to="/signin">Sign In</NavBtnLink2>
-              <NavBtnLink to="/signup">Register</NavBtnLink>
+              <NavBtnLink2 to="/signin">SIGN IN</NavBtnLink2>
+              <NavBtnLink to="/signup">REGISTER</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>
@@ -58,4 +72,4 @@ const index = ({ toggle }) => {
   );
 };
 
-export default index;
+export default Index;

@@ -2,22 +2,32 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const FooterContainer = styled.footer`
-  background-color: #101522;
+  background-color: #eb65a0;
+  color: black;
+`;
+
+export const ImgLogo = styled.img`
+  width: 120px;
+  height: 25px;
+  @media screen and (max-width: 768px) {
+    width: 100px;
+    height: 22px;
+  }
 `;
 
 export const FooterWrapper = styled.div`
   padding: 48px 24px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
   max-width: 1100px;
   margin: 0 auto;
 `;
 
 export const FooterLinksContainer = styled.div`
   display: flex;
-  justify-content: center;
+  align-items: flex-start;
 
   @media screen and (max-width: 820px) {
     padding-top: 32px;
@@ -26,16 +36,26 @@ export const FooterLinksContainer = styled.div`
 
 export const FooterLinksWrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Updated this line to left align */
+  margin: 16px;
+  text-align: left;
+  width: 160px;
+  box-sizing: border-box;
+  color: #fff;
 
-  @media screen and (max-width: 820px) {
-    flex-direction: column;
+  @media screen and (max-width: 420px) {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
   }
 `;
+
 
 export const FooterLinkItems = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: left;
   margin: 16px;
   text-align: left;
   width: 160px;
@@ -61,7 +81,7 @@ export const FooterLink = styled(Link)`
   font-size: 14px;
 
   &:hover {
-    color: #01bf71;
+    color: #000;
     transition: 0.3s ease-out;
   }
 `;

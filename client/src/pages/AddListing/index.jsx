@@ -145,7 +145,9 @@ function AddListing() {
       <MainContent>
         <Container>
           <RightContainer>
-            We Want to Know About Your Space
+            <Heading>
+              We Want to Know About Your Space
+            </Heading>
             {currentPage === 1 && <PageTypeAddress key={uuidv4()} type={type} setType={setType} address={address} setAddress={setAddress} />}
             {currentPage === 2 && <PageDescription description={description} setDescription={setDescription} />}
             {currentPage === 3 && <PageSize length={length} setLength={setLength} width={width} setWidth={setWidth} height={height} setHeight={setHeight} />}

@@ -142,7 +142,9 @@ export const CoverBg = styled.div`
   width: 100%;
   height: 100vh;
   overflow: hidden;
+  background-color: #FFFFFF;
 `;
+
 
 export const VideoBg = styled.video`
   width: 100%;
@@ -163,6 +165,6 @@ export const Content = styled.div `
 `
 
 export const LogoImage = styled.img`
-  height: 120px;
-  paddingBottom: 20px;
+  height: 50px;
+  margin-bottom: 50px;
 `;
