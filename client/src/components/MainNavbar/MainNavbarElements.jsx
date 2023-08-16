@@ -4,8 +4,7 @@ import { Link as LinkS } from 'react-scroll';
 
 
 export const Nav = styled.nav`
-  background: #FFF1F6;
-  height: 100px;
+  background: #f9f1f1;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -14,19 +13,9 @@ export const Nav = styled.nav`
   position: fixed;
   top: 0;
   z-index: 10;
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.2), transparent);
-    z-index: 1;
-  }
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 768px) {
     transition: 0.8s all ease;
-    height:50px;
+    height: 70px;
   }
 `;
 
@@ -41,28 +30,26 @@ export const NavbarContainer = styled.div`
 `;
 
 export const NavLogo = styled(LinkR)`
-  color: #fff;
   justify-self: flex-start;
   cursor: pointer;
   display: flex;
   flex: 0 0 5%;
   align-items: center;
   margin-left: 3vw;
-
-
 `;
 
 export const MenuIcon = styled.div`
   display: none;
+  color: pink;
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
     top: 0;
     right: 0;
     transform: translate(-100%, 60%);
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     cursor: pointer;
-    color: #EB65A0;
+  
   }
 `;
 
@@ -91,9 +78,8 @@ margin-right: auto;
 margin-left: auto;
 
 @media screen and (max-width: 768px) {
-  flex-wrap: wrap;
+  display: none;
 }
-
 `;
 
 export const NavLink = styled(LinkS)`
@@ -111,8 +97,8 @@ export const NavLink = styled(LinkS)`
 export const NavBtn = styled.nav`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-
+  justify-content:center;
+  margin-right: 2vw;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -121,7 +107,7 @@ export const NavBtn = styled.nav`
 export const NavBtnLink = styled(LinkR)`
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 20px;
   white-space: nowrap;
   padding: 10px 20px;
   color: #EB65A0;
@@ -141,7 +127,7 @@ export const NavBtnLink = styled(LinkR)`
 export const NavBtnLink2 = styled(LinkR)`
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 20px;
   white-space: nowrap;
   padding: 10px 20px;
   color: Black;
@@ -158,13 +144,32 @@ export const NavBtnLink2 = styled(LinkR)`
   }
 `;
 
+export const NavBtnLink3 = styled(LinkR)`
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  white-space: nowrap;
+  padding: 10px 20px;
+  color: #ffffff;
+  background: #EB65A0;
+  font-size: 20px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #f7d7e060;
+  }
+`;
+
+
 export const NavSearch = styled(LinkR)`
   white-space: nowrap;
   padding: 10px;
   text-decoration: none;
   justify-self: flex-start;
-  
-
 `;
 
 
@@ -172,7 +177,7 @@ export const ImgLogo = styled.img`
   width: auto;
   height: 27px;
   @media screen and (max-width: 768px) {
-    width: 15vw;
-    height: 3vh;
+    width: auto;
+    height: 24px;
   }
 `;
