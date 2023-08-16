@@ -45,9 +45,7 @@ function Landing() {
         <Services />
         <InfoSection {...aboutObj} />
         <FaqSection {...FaqObj} />
-
         <Footer/>    
-
         {!isMobileScreen && (
         <div
           className="container"

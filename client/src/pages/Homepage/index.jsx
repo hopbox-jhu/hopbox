@@ -2,7 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import * as api from "../../api";
 import { Divider, MapContainerStyle, Sidebar, Wrapper, Heading, Text1, Text2, Filter, FilterBar } from "./Homepage";
 import { ListingList } from "../../components/listingList";
-import MainNavBar from "../../components/MainNavbar";
+import MainNavBar from "../../components/mainNavbar";
+import appSidebar from '../../components/appSidebar';
 import { Select, Switch } from "@mantine/core";
 import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken = 'pk.eyJ1Ijoia2l3aXRoZXBvb2RsZSIsImEiOiJjbGZ6dWNvZWQwb2lrM2x0YXM0MGJ1NHd0In0.muab2DZu9_51AY7dvrJwAw';
@@ -59,6 +60,7 @@ function sortListingsBySizeReverse(listings) {
 function Homepage() {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
   const [lng, setLng] = useState(-76.620277);
   const [lat, setLat] = useState(39.328888);
   const [zoom, setZoom] = useState(14);
@@ -69,6 +71,10 @@ function Homepage() {
   const [priceFilter, setPriceFilter] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
   const [address, setAddress] = useState("Johns Hopkins University");
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
 
   const handleSearch = async (query) => {
     setAddress(query);
@@ -279,8 +285,10 @@ function Homepage() {
   });
 
   return (
+    <>
+    <appSidebar isOpen={isOpen} toggle={toggle}/>
     <Divider>
-      <MainNavBar onSearch={handleSearch} />
+      <MainNavBar onSearch={handleSearch} toggle={toggle} />
       <Wrapper>
         <Heading>
           <Text1>
@@ -346,6 +354,7 @@ function Homepage() {
         <MapContainerStyle ref={mapContainer} />
       </Wrapper>
     </Divider>
+    </>
   );
 }
 
