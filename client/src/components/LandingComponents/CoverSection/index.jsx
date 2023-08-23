@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Video from '../../../assets/videos/Main(ver2).mp4';
 import VideoMobile from '../../../assets/videos/MainMobile2.mp4';
-import { CoverContainer, CoverBg, VideoBg, CoverContent, CoverH1, CoverP, ImgLogo } from './CoverElements';
+import { CoverContainer, VideoBg, CoverContent  } from './CoverElements';
 import { makeStyles } from '@material-ui/core/styles';
 import text from "../../../assets/images/logo.png";
 import { Button } from '../ButtonElements';
 import { useNavigate } from 'react-router-dom';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import the CSS
+
+// Initialize AOS
+AOS.init();
+
 
 
 
@@ -24,7 +30,7 @@ const CoverSection = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); // Adjust the breakpoint (768) to your desired mobile width
+      setIsMobile(window.innerWidth < 850); // Adjust the breakpoint (768) to your desired mobile width
     };
 
     // Add event listener for window resize
@@ -45,15 +51,13 @@ const CoverSection = () => {
 
   return (
     <CoverContainer id='home'>
-      <CoverBg>
         {isMobile ? (
           <VideoBg autoPlay loop muted src={VideoMobile} type='video/mp4' playsInline />
         ) : (
           <VideoBg autoPlay loop muted src={Video} type='video/mp4' playsInline />
         )}
-      </CoverBg>
       <CoverContent>
-      <Button  to='services' style={{padding: '30px', fontSize: '40px' }} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >SIGN UP NOW</Button>
+      <Button  to='services' style={{ padding: '30px', fontSize: '30px', borderRadius: '15px' }} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >SIGN UP NOW</Button>
       </CoverContent>
     </CoverContainer>
   );

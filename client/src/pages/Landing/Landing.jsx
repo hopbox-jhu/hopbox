@@ -11,6 +11,8 @@ import Footer from '../../components/Footer';
 import Services from "../../components/LandingComponents/Services"
 import icon from "/src/assets/images/Icon.png";
 
+
+
 function Landing() {
   const [isOpen, setIsOpen] = useState(false);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
