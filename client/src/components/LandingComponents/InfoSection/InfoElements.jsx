@@ -21,12 +21,14 @@ export const InfoWrapper = styled.div`
   margin-left: auto;
   padding: 0 0px;
   justify-content: center;
+  
 `;
 
 export const InfoRow = styled.div`
   display: grid;
   grid-auto-columns: minmax(auto, 1fr);
   align-items: center;
+  justify-content: center;
   grid-template-areas: ${({ imgStart }) => (imgStart ? `'col2 col1'` : `'col1 col2'`)};
 
   @media screen and (max-width: 768px) {
@@ -36,13 +38,17 @@ export const InfoRow = styled.div`
 
 export const Column1 = styled.div`
   margin-bottom: 15px;
-  padding: 0 15px;
+  margin-left: 20%;
+  margin-right: 20%;
   grid-area: col1;
 `;
 
 export const Column2 = styled.div`
+  margin-left: 20%;
+  margin-right: 20%;
+  width: 800px;
   margin-bottom: 15px;
-  padding: 0 15px;
+  padding: 15px;
   grid-area: col2;
 `;
 
@@ -88,15 +94,62 @@ export const BtnWrap = styled.div`
 `;
 
 export const ImgWrap = styled.div`
-  max-width: 100%;
-  height: 100%;
+  max-width: 65%;
+  height: 600px; /* Change to auto to allow images to control height */
+  position: relative; /* Needed for positioning child images */
+  perspective: 1000px;
 `;
 
-export const Img = styled.img`
+export const Img1 = styled.img`
   width: 100%;
-  margin: 0 0 10px 0;
-  padding-right: 0;
+  left: 40%;
+  position: absolute; /* Position absolutely within the ImgWrap */
+  bottom: 0; /* Align the first image at the top */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  transform: rotateX(0deg); /* Initial rotation */
+  transition: transform 0.3s ease; /* Adding transition for smooth effect */
+  z-index: 2;
+
+  &:hover {
+    transform: rotateX(10deg); /* Applying rotation on hover */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 2; /* Change z-index on hover */
+  }
 `;
+
+export const Img2 = styled.img`
+  width: 100%;
+  position: absolute; /* Position absolutely within the ImgWrap */
+  top: 50%; /* Align the second image at 50% from the top */
+  left: 10%;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-50%) rotateX(0deg); /* Initial rotation and vertical centering */
+  transition: transform 0.3s ease; /* Adding transition for smooth effect */
+  z-index: 1;
+
+  &:hover {
+    transform: translateY(-50%) rotateX(-10deg); /* Applying rotation on hover */
+    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
+    z-index: 2; /* Change z-index on hover */
+  }
+`;
+
+export const Img3 = styled.img`
+  width: 100%;
+  left: 30%;
+  position: absolute; /* Position absolutely within the ImgWrap */
+  top: 0; /* Align the third image at the bottom */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  transform: rotateX(0deg); /* Initial rotation */
+  transition: transform 0.3s ease; /* Adding transition for smooth effect */
+  z-index: 0;
+
+  &:hover {
+    transform: rotateX(-10deg); /* Applying rotation on hover */
+    z-index: 2; /* Change z-index on hover */
+  }
+`;
+
 
 
 export const BulletList = styled.ul`

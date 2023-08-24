@@ -3,7 +3,7 @@ import Video from '../../../assets/videos/Main(ver2).mp4';
 import VideoMobile from '../../../assets/videos/MainMobile2.mp4';
 import { CoverContainer, VideoBg, CoverContent  } from './CoverElements';
 import { makeStyles } from '@material-ui/core/styles';
-import text from "../../../assets/images/logo.png";
+
 import { Button } from '../ButtonElements';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
