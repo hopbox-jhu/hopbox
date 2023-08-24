@@ -28,6 +28,15 @@ class UserDAO {
     await user.save();
     return user;
   }
+  async updateUserPhotoByEmail(email, { profilePicture }) {
+    const user = await this.findUserByEmail(email);
+    if (!user) {
+      throw new Error(`User with email ${email} not found`);
+    }
+    user.profilePicture = profilePicture || user.profilePicture;
+    await user.save();
+    return user;
+  }
 }
 
 export default UserDAO;

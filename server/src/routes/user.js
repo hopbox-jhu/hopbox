@@ -46,6 +46,26 @@ router.post("/user/update", async (req, res) => {
   }
 });
 
+router.post("/user/updatePhoto", async (req, res) => {
+  try {
+    const { email, profilePicture } = req.body;
+    const existingUser = await userDAO.findUserByEmail(email);
+    if (!existingUser) {
+      return res.status(404).json({
+        message: `User with email ${email} not found`,
+      });
+    }
+    const updatedUser = await userDAO.updateUserPhotoByEmail(email, { profilePicture });
+    res.json({
+      status: 200,
+      message: "Successfully updated user!",
+      data: updatedUser,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.get("/user/:email", async (req, res) => {
   try {
     const user = await userDAO.findUserByEmail(req.params.email);

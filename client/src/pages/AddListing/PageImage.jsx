@@ -32,7 +32,7 @@ function PageImage(props) {
         <Label htmlFor="images">Add images</Label>
         <div>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <SizeLabel htmlFor="length">Images</SizeLabel>
+            <SizeLabel htmlFor="length">Images: please add up to 4 images to display your storage space</SizeLabel>
             {images.map((imageUrl, index) => (
               <Avatar key={index} radius="md" size={160} src={imageUrl} />
             ))}

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { clearAuth } from '../../api/auth';
 import { useAuth } from '../../context/AuthContext';
@@ -8,6 +8,7 @@ import { RentalList } from '../../components/rentalList';
 import MainNavBar from "../../components/mainNavbar";
 import { ContentTitle, Wrapper, Divider, OptionList, MainContent } from "../Profile/ProfilePage";
 import * as api from "../../api";
+import { uploadImage } from "../../api/image";
 import { List } from "@material-ui/core";
 import { Application } from '../../components/application';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -20,6 +21,8 @@ import {
   Container,
   Content,
   ProfilePicture,
+  ProfileImage,
+  HiddenInput,
   Name,
   Info,
   ListingContent,
@@ -30,6 +33,7 @@ import {
 
 const ProfilePage = ({ user }) => {
   let { profilePicture, name, email, bio, address, school, occupation, phone } = user;
+  profilePicture = localStorage.getItem("profilePicture");
   name = localStorage.getItem("user_name");
   email = localStorage.getItem("email");
   bio = localStorage.getItem("bio");
@@ -37,6 +41,7 @@ const ProfilePage = ({ user }) => {
   school = localStorage.getItem("school");
   occupation = localStorage.getItem("occupation");
   phone = localStorage.getItem("phone");
+  const [profilePhoto, setProfilePhoto] = useState(profilePicture);
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -109,6 +114,21 @@ const ProfilePage = ({ user }) => {
     getApplications();
   })
 
+  const handleImageChange = async (event) => {
+    const imageFile = event.target.files[0];
+    const newFile = [];
+    newFile.push(imageFile);
+    let imageID = "";
+    const fd = new FormData();
+    if (newFile[0]) {
+      fd.append('image', newFile[0], newFile[0].name);
+      const { data } = await uploadImage(fd);
+      imageID = data;
+    }
+    setProfilePhoto(imageID);
+    api.updateUserPhoto(email, imageID);
+  };
+
   return (
     <Divider>
       <MainNavBar />
@@ -169,7 +189,10 @@ const ProfilePage = ({ user }) => {
               <ContentTitle>Profile Information</ContentTitle>
               <Container>
                 <Content>
-                  <ProfilePicture src={profilePicture} alt="Profile Picture" />
+                  <ProfilePicture>
+                    <ProfileImage src={"http://localhost:5050/image/" + profilePhoto} alt="Profile Picture" />
+                    <HiddenInput type="file" accept="image/*" onChange={handleImageChange} max="1"/>
+                  </ProfilePicture>
                   <div>
                     <Name>{name}</Name>
                     <Info>{email}</Info>

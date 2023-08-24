@@ -33,6 +33,15 @@ export async function createUser(name, email, password) {
   }
 }
 
+export async function updateUserPhoto(email, profilePicture) {
+  try {
+    const response = await axiosInstance.post("/user/updatePhoto", { email: email, profilePicture: profilePicture });
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+}
+
 export async function updateUser(email, bio, address, school, occupation, phone) {
   try {
     const response = await axiosInstance.post("/user/update", { email: email, bio: bio, address: address, school: school, occupation: occupation, phone: phone });
