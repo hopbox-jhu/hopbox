@@ -190,7 +190,7 @@ const ProfilePage = ({ user }) => {
               <Container>
                 <Content>
                   <ProfilePicture>
-                    <ProfileImage src={"http://localhost:5050/image/" + profilePhoto} alt="Profile Picture" />
+                    <ProfileImage src={"http://localhost:5050/image/" + profilePhoto} alt="Profile Picture"/>
                     <HiddenInput type="file" accept="image/*" onChange={handleImageChange} max="1"/>
                   </ProfilePicture>
                   <div>
