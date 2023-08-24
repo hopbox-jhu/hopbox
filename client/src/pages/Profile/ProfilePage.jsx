@@ -273,7 +273,7 @@ export const MainContent = styled.div`
   padding: '2rem';
   backgroundColor: '#FFFFFF';
   overflow-y: scroll;
-  margin-top: 70px;
+  margin-top: 0px;
   max-height: 100%;
 `;
 
