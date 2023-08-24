@@ -76,28 +76,28 @@ export const RightContainer = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    height: 520px;
+    height: 50%;
+    width: 90vw;
   }
 
   @media screen and (max-width: 480px) {
-    width: 380px;
-    height: 520px;
+    width: 90vw;
+    height: 50%;
   }
 `;
 
 export const ButtonsWrapper = styled.div`
   display: flex;
-  margin-top: 2.5vw;
-  margin-left: 1vw;
+  margin-top: 5vh;
   justify-content: center;
-
+  width: 100%;
 `;
 
 export const NameInputWrapper = styled.div`
 display: space-between;
 grid-template-columns: 1fr 1fr;
 margin-top: 5vh;
-margin-left: 1vw;
+margin-left: 8%;
 `;
 
 
@@ -251,7 +251,6 @@ const glowAnimation = keyframes`
 
 export const ImageButton = styled.button`
   cursor: pointer;
-  padding: 4vw;
 
 
   border: ${({ clicked }) => (clicked ? '2px solid black' : 'none')}; // Add border when clicked
@@ -261,7 +260,10 @@ export const ImageButton = styled.button`
     margin-right: 4vw; // Adjust this value as needed for the desired space
 
   @media screen and (max-width: 480px) {
+  width: 140px; /* Set your desired width */
+  height: 140px; /* Set your desired height */
   }
+
 
   @media screen and (max-width: 768px) {
 
@@ -284,6 +286,10 @@ export const ImageButton = styled.button`
     /* Add the glowing effect when clicked */
     animation: ${glowAnimation} 1s ease infinite;
     background-color: black;
+  }
+  @media screen and (max-width: 480px) {
+  width: 140px; /* Set your desired width */
+  height: 140px; /* Set your desired height */
   }
 `;
 

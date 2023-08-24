@@ -103,8 +103,9 @@ const Services = () => {
             hopbox.jhu@gmail.com
           </ServicesH5>
         </LeftContainer>
-          <RightContainer data-aos="fade-left" data-aos-duration="1500">
-            <form onSubmit={handleSubmit}>
+          <RightContainer data-aos="fade-left" data-aos-duration="1500" >
+          {/* <RightContainer data-aos="fade-left" data-aos-duration="1500"> */}
+            <form onSubmit={handleSubmit} style={{width:"90%"}}>
               <NameInputWrapper>
               <ServicesH2>Email</ServicesH2>
                 <TextField
@@ -144,7 +145,6 @@ const Services = () => {
                 clicked={renterButtonClicked}
               />
               </ButtonsWrapper>
-
               <ButtonsWrapper>  
               <SubmitButton 
               type="submit" 
