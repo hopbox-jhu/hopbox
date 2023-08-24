@@ -42,6 +42,7 @@ const ProfilePage = ({ user }) => {
   occupation = localStorage.getItem("occupation");
   phone = localStorage.getItem("phone");
   const [profilePhoto, setProfilePhoto] = useState(profilePicture);
+  const [image, setImage] = useState(null);
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
@@ -126,6 +127,8 @@ const ProfilePage = ({ user }) => {
       imageID = data;
     }
     setProfilePhoto(imageID);
+    const imageUrl = URL.createObjectURL(imageFile);
+    setImage(imageUrl);
     api.updateUserPhoto(email, imageID);
   };
 
@@ -190,7 +193,7 @@ const ProfilePage = ({ user }) => {
               <Container>
                 <Content>
                   <ProfilePicture>
-                    <ProfileImage src={"http://localhost:5050/image/" + profilePhoto} alt="Profile Picture"/>
+                    <ProfileImage src={image == null ? "http://localhost:5050/image/" + profilePhoto : image} alt="Profile Picture"/>
                     <HiddenInput type="file" accept="image/*" onChange={handleImageChange} max="1"/>
                   </ProfilePicture>
                   <div>
