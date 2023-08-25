@@ -73,7 +73,7 @@ const index = ({ onSearch, toggle }) => {
       <IconContext.Provider value={{ color: '#fff' }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
-            <NavLogo onClick={toggleHome}>
+            <NavLogo onClick={toggleHome} to="/homepage">
               <ImgLogo src={logo} />
             </NavLogo>
             <NavSearchAndButton>
