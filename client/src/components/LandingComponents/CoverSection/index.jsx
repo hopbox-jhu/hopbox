@@ -56,7 +56,7 @@ const CoverSection = () => {
           <VideoBg autoPlay loop muted src={Video} type='video/mp4' playsInline />
         )}
       <CoverContent>
-      <Button  to='services' style={{ padding: '30px', fontSize: '30px', borderRadius: '15px' }} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >SIGN UP NOW</Button>
+      <Button  to='services' style={{ padding: '30px', fontSize: '30px' }} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >SIGN UP NOW</Button>
       </CoverContent>
     </CoverContainer>
   );
