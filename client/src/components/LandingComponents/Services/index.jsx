@@ -9,6 +9,8 @@ import { ServicesBox, SubmitButton, ServicesH3, ServicesH4, ServicesH5, RightCon
 import * as smoketest from '../../../api';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
+
+
 const useStyles = makeStyles((theme) => ({
   underline: {
     '&:hover:not($disabled):before': {
@@ -87,7 +89,7 @@ const Services = () => {
   return (
     <Divider id="services">
       <ServicesContainer>
-        <LeftContainer>
+        <LeftContainer data-aos="fade-right" data-aos-duration="1500" >
           <ServicesH1>
            SIGN UP<br></br>NOW
           </ServicesH1>
@@ -101,32 +103,9 @@ const Services = () => {
             hopbox.jhu@gmail.com
           </ServicesH5>
         </LeftContainer>
-          <RightContainer>
-            <form onSubmit={handleSubmit}>
-              <NameInputWrapper>
-              <ServicesH2>Name</ServicesH2>
-              <TextField
-                type="text"
-                value={name}
-                onChange={handleNameChange}
-                placeholder="Your Name"
-                className={`my-custom-class ${classes.underline}`}
-                InputProps={{
-                  classes: {
-                    underline: classes.underline,
-                    disabled: classes.disabled,
-                  },
-                  style: {
-                    color: 'white',
-                  },
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: 'white',
-                  },
-                }}
-              />
-              </NameInputWrapper>
+          <RightContainer data-aos="fade-left" data-aos-duration="1500" >
+          {/* <RightContainer data-aos="fade-left" data-aos-duration="1500"> */}
+            <form onSubmit={handleSubmit} style={{width:"90%"}}>
               <NameInputWrapper>
               <ServicesH2>Email</ServicesH2>
                 <TextField
@@ -166,14 +145,13 @@ const Services = () => {
                 clicked={renterButtonClicked}
               />
               </ButtonsWrapper>
-
               <ButtonsWrapper>  
               <SubmitButton 
               type="submit" 
               onClick={handleSubmit}
               clicked={submitButtonClicked} 
               >
-                <ServicesH2>SUBMIT</ServicesH2>
+                SUBMIT
               </SubmitButton>
               </ButtonsWrapper>
             </form>

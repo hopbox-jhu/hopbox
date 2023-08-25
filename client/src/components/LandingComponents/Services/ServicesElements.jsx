@@ -8,22 +8,34 @@ export const Divider = styled.div`
   background-color: white;
 
   @media screen and (max-width: 768px) {
-    height: 200vh;
+    height: 110vh;
     flex-direction: column;
   }
 
   @media screen and (max-width: 480px) {
-    height: 200vh;
+    height: 110vh;
     flex-direction: column;
-
   }
 `;
 
 export const LeftContainer = styled.div`
+  background-color: #ffffff50;
   display: flex;
   flex-direction: column;
-  padding: 20px;
-  width: 50%;
+
+  width: 650px;
+  @media screen and (max-width: 768px) {
+    margin-left: 10%;
+    height: 400px;
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-left: 5%;
+    width: 400px;
+    height: 420px;
+    margin-bottom: 35px;
+  }
+
 `;
 
 
@@ -36,14 +48,19 @@ export const ServicesContainer = styled.div`
   background-color: white;
   padding: 20vh;
 
+
   @media screen and (max-width: 768px) {
     height: auto;
-    width: 100vw;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
   }
 
   @media screen and (max-width: 480px) {
     height: auto;
-    width: 100vw;
+    width: 100%;
   }
 `;
 
@@ -53,26 +70,37 @@ export const RightContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+  width: 650px;
+
+
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: 1fr; /* Change back to one column for smaller screens */
+  }
+
+  @media screen and (max-width: 768px) {
+    height: 50%;
+    width: 90vw;
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 90vw;
+    height: 50%;
   }
 `;
 
 export const ButtonsWrapper = styled.div`
   display: flex;
-  margin-top: 2.5vw;
-  margin-left: 1vw;
+  margin-top: 5vh;
   justify-content: center;
-
+  width: 100%;
 `;
 
 export const NameInputWrapper = styled.div`
 display: space-between;
 grid-template-columns: 1fr 1fr;
 margin-top: 5vh;
-margin-left: 1vw;
+margin-left: 8%;
 `;
 
 
@@ -116,25 +144,25 @@ export const ServicesH1 = styled.span`
   line-height: 0.9;
 
   @media screen and (max-width: 480px) {
-    font-size: 3.5vw;
+    font-size: 3.5rem;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 3.5vw;
+    font-size: 4rem;
   }
 `;
 
 export const ServicesH2 = styled.h2`
-  font-size: 1.0vw;
+  font-size: 1.25rem;
   color:white;
   font-weight:300;
   
   @media screen and (max-width: 480px) {
-    font-size: 4vw;
+    font-size: 1rem;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 4vw;
+    font-size: 1rem;
   }
 `;
 
@@ -167,11 +195,11 @@ export const ServicesH4 = styled.h2`
 
   
   @media screen and (max-width: 480px) {
-    font-size: 4vw;
+    font-size: 2rem;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 4vw;
+    font-size: 1.25rem;
   }
 `;
 
@@ -184,11 +212,11 @@ export const ServicesH5 = styled.h2`
 
   
   @media screen and (max-width: 480px) {
-    font-size: 4vw;
+    font-size: 1.5rem;
   }
 
   @media screen and (max-width: 768px) {
-    font-size: 4vw;
+    font-size: 1.5rem;
   }
 `;
 
@@ -204,10 +232,10 @@ export const ServicesP = styled.p`
     margin-bottom: 10px;
   }
   @media screen and (max-width: 480px) {
-    font-size: 4vw;
+    font-size: 2rem;
   }
   @media screen and (max-width: 768px) {
-    font-size: 4vw;
+    font-size: 1.5rem;
   }
 `;
 
@@ -226,13 +254,23 @@ const glowAnimation = keyframes`
 
 export const ImageButton = styled.button`
   cursor: pointer;
-  padding: 4vw;
+
 
   border: ${({ clicked }) => (clicked ? '2px solid black' : 'none')}; // Add border when clicked
   background-color: ${({ clicked }) => (clicked ? 'black' : 'transparent')}; // Change background color when clicked
 
   &:not(:last-child) {
     margin-right: 4vw; // Adjust this value as needed for the desired space
+
+  @media screen and (max-width: 480px) {
+  width: 140px; /* Set your desired width */
+  height: 140px; /* Set your desired height */
+  }
+
+
+  @media screen and (max-width: 768px) {
+
+  }
   }
 
   /* Add your image file as the background */
@@ -252,6 +290,10 @@ export const ImageButton = styled.button`
     animation: ${glowAnimation} 1s ease infinite;
     background-color: black;
   }
+  @media screen and (max-width: 480px) {
+  width: 140px; /* Set your desired width */
+  height: 140px; /* Set your desired height */
+  }
 `;
 
 
@@ -260,8 +302,8 @@ export const SubmitButton = styled.button`
   justify-content: center;
   align-items: center;
   border-radius: 40px;
+  color: white;
   border: 2px solid black; 
-  border-weight: bold;
   height: 5vh;
   width: 14vw;
 
@@ -271,11 +313,11 @@ export const SubmitButton = styled.button`
   }
 
   @media screen and (max-width: 480px) {
-    width: 30vw;
+    width: 20vw;
   }
 
   @media screen and (max-width: 768px) {
-    width: 30vw;
+    width: 20vw;
   }
 };
 `;
