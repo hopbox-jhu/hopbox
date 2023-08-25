@@ -29,10 +29,12 @@ export const CoverContent = styled.div`
   z-index: 3;
   position: absolute;
   display: flex;
-  margin-top: 555px;
-  margin-right: 1000px;
+  margin-top: 60vh;
+  margin-right: 60vw;
   @media screen and (max-width: 850px) {
-    margin-top: 90%;
+    margin-top: 60vh;
+  margin-right: 50%;
+  margin-left: 50%;
   }
 `;
 

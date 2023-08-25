@@ -5,7 +5,9 @@ import { useNavigate } from 'react-router-dom';
 import framework1 from "../../../assets/images/framework1.png";
 import framework2 from "../../../assets/images/framework2.png";
 import framework3 from "../../../assets/images/framework3.png";
-
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // Import the CSS
+AOS.init();
 
 const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
         <InfoWrapper>
           <InfoRow imgStart={imgStart}>
             <Column1>
-              <TextWrapper>
+              <TextWrapper data-aos="zoom-in-right" data-aos-duration="1500" >
                 <TopLine>Our Services</TopLine>
                 <BulletList>
                   <BulletPoint>Find a good host for your belongings</BulletPoint>
@@ -38,7 +40,7 @@ const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
               </TextWrapper>
             </Column1>
             <Column2>
-              <ImgWrap>
+              <ImgWrap data-aos="zoom-in-left" data-aos-duration="1500">
                 <Img1 src={framework1} alt={alt} />
                 <Img2 src={framework2} alt={alt} />
                 <Img3 src={framework3} alt={alt} />

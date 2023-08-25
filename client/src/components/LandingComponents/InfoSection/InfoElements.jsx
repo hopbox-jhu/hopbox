@@ -8,6 +8,7 @@ export const InfoContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     padding: 100px 0;
+    height: 120%;
   }
 `;
 
@@ -21,6 +22,10 @@ export const InfoWrapper = styled.div`
   margin-left: auto;
   padding: 0 0px;
   justify-content: center;
+  @media screen and (max-width: 768px) {
+    padding: 100px 0;
+    height: 120%;
+  }
   
 `;
 
@@ -29,6 +34,7 @@ export const InfoRow = styled.div`
   grid-auto-columns: minmax(auto, 1fr);
   align-items: center;
   justify-content: center;
+  width: 100vw;
   grid-template-areas: ${({ imgStart }) => (imgStart ? `'col2 col1'` : `'col1 col2'`)};
 
   @media screen and (max-width: 768px) {
@@ -37,30 +43,42 @@ export const InfoRow = styled.div`
 `;
 
 export const Column1 = styled.div`
+ width: 100%;
   margin-bottom: 15px;
   margin-left: 20%;
   margin-right: 20%;
   grid-area: col1;
+
+  @media screen and (max-width: 768px) {
+  margin-left: 0%;
+  }
 `;
 
 export const Column2 = styled.div`
-  margin-left: 20%;
-  margin-right: 20%;
-  width: 800px;
+ width: 100%;
+ margin-left: 5%;
+ margin-right: 5%;
   margin-bottom: 15px;
-  padding: 15px;
   grid-area: col2;
+  @media screen and (max-width: 768px) {
+  margin-left: 0%;
+  margin-right: 0%;
+  }
 `;
 
 export const TextWrapper = styled.div`
-  max-width: 540px;
+  width: 30vw;
   padding-top: 0;
-  padding-bottom: 60px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 50%;
+    padding:10%;
+  }
 `;
 
 export const TopLine = styled.p`
   color: black;
-  font-size: 35px;
+  font-size: 2rem;
   line-height: 5vh;
   font-weight: 900;
   letter-spacing: 1.4px;
@@ -81,7 +99,6 @@ export const Heading = styled.h1`
 `;
 
 export const Subtitle = styled.p`
-  max-width: 440px;
   margin-bottom: 35px;
   font-size: 24px;
   line-height: 35px;
@@ -94,58 +111,67 @@ export const BtnWrap = styled.div`
 `;
 
 export const ImgWrap = styled.div`
-  max-width: 65%;
-  height: 600px; /* Change to auto to allow images to control height */
+
+  width: 50vw;
+  height: 800px; /* Change to auto to allow images to control height */
   position: relative; /* Needed for positioning child images */
   perspective: 1000px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding:10%;
+    height: 50vh
+  }
 `;
 
 export const Img1 = styled.img`
-  width: 100%;
-  left: 40%;
+  width: 70%;
+  left: 30%;
   position: absolute; /* Position absolutely within the ImgWrap */
-  bottom: 0; /* Align the first image at the top */
+  top: 0; /* Align the first image at the top */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  transform: rotateX(0deg); /* Initial rotation */
-  transition: transform 0.3s ease; /* Adding transition for smooth effect */
+  transform: rotate(-5deg) rotateY(20deg) rotateX(30deg); /* Initial rotation */
+  transition: transform 0.5s ease; /* Adding transition for smooth effect */
   z-index: 2;
 
   &:hover {
-    transform: rotateX(10deg); /* Applying rotation on hover */
+    width: 80%;
+    transform: rotateX(0deg); /* Applying rotation on hover */
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
     z-index: 2; /* Change z-index on hover */
   }
 `;
 
 export const Img2 = styled.img`
-  width: 100%;
+  width: 70%;
+  left:10%;
   position: absolute; /* Position absolutely within the ImgWrap */
   top: 50%; /* Align the second image at 50% from the top */
-  left: 10%;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-50%) rotateX(0deg); /* Initial rotation and vertical centering */
+  transform: translateY(-50%) rotate(-5deg) rotateY(20deg) rotateX(30deg); /* Initial rotation and vertical centering */
   transition: transform 0.3s ease; /* Adding transition for smooth effect */
   z-index: 1;
 
   &:hover {
-    transform: translateY(-50%) rotateX(-10deg); /* Applying rotation on hover */
+    width: 80%;
+    transform: translateY(-50%) rotateX(0deg); /* Applying rotation on hover */
     box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.3);
     z-index: 2; /* Change z-index on hover */
   }
 `;
 
 export const Img3 = styled.img`
-  width: 100%;
+  width: 70%;
   left: 30%;
   position: absolute; /* Position absolutely within the ImgWrap */
-  top: 0; /* Align the third image at the bottom */
+  bottom: 0; /* Align the third image at the bottom */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  transform: rotateX(0deg); /* Initial rotation */
+  transform: rotate(-5deg) rotateY(20deg) rotateX(30deg); /* Initial rotation */
   transition: transform 0.3s ease; /* Adding transition for smooth effect */
   z-index: 0;
 
   &:hover {
-    transform: rotateX(-10deg); /* Applying rotation on hover */
+    width: 80%;
+    transform: rotateX(0deg); /* Applying rotation on hover */
     z-index: 2; /* Change z-index on hover */
   }
 `;

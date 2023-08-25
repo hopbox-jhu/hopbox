@@ -25,12 +25,15 @@ export const LeftContainer = styled.div`
 
   width: 650px;
   @media screen and (max-width: 768px) {
+    margin-left: 10%;
     height: 400px;
   }
 
   @media screen and (max-width: 480px) {
-    width: 380px;
+    margin-left: 5%;
+    width: 400px;
     height: 420px;
+    margin-bottom: 35px;
   }
 
 `;
