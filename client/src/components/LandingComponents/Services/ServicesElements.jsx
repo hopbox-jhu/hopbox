@@ -5,16 +5,21 @@ export const Divider = styled.div`
   height: 100vh;
   width: 100vw;
   color: black;
-  background-color: white;
+  display: flex;
+  padding: 20vh;
+
 
   @media screen and (max-width: 768px) {
     height: 110vh;
     flex-direction: column;
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
   }
 
   @media screen and (max-width: 480px) {
-    height: 110vh;
-    flex-direction: column;
+
   }
 `;
 
@@ -22,30 +27,29 @@ export const LeftContainer = styled.div`
   background-color: #ffffff50;
   display: flex;
   flex-direction: column;
+  margin-left: 5%;
 
   width: 650px;
   @media screen and (max-width: 768px) {
     margin-left: 10%;
+    width: 80vw;
     height: 400px;
   }
 
   @media screen and (max-width: 480px) {
     margin-left: 5%;
-    width: 400px;
+    width: 90vw;
     height: 420px;
     margin-bottom: 35px;
   }
 
 `;
 
-
-
-
 export const ServicesContainer = styled.div`
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
-  background-color: white;
+  background-color: #c83e3e;
   padding: 20vh;
 
 
@@ -71,8 +75,6 @@ export const RightContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 650px;
-
-
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: 1fr; /* Change back to one column for smaller screens */

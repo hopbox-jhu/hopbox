@@ -88,7 +88,6 @@ const Services = () => {
 
   return (
     <Divider id="services">
-      <ServicesContainer>
         <LeftContainer data-aos="fade-right" data-aos-duration="1500" >
           <ServicesH1>
            SIGN UP<br></br>NOW
@@ -156,8 +155,7 @@ const Services = () => {
               </ButtonsWrapper>
             </form>
           </RightContainer>
-      </ServicesContainer>
-      <ServicesH3></ServicesH3>
+
     </Divider>
   );
 };

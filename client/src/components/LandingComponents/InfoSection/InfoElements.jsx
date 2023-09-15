@@ -43,10 +43,11 @@ export const InfoRow = styled.div`
 `;
 
 export const Column1 = styled.div`
- width: 100%;
+  
+  width: 100%;
   margin-bottom: 15px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 5%;
+  margin-right: 5%;
   grid-area: col1;
 
   @media screen and (max-width: 768px) {
@@ -67,7 +68,7 @@ export const Column2 = styled.div`
 `;
 
 export const TextWrapper = styled.div`
-  width: 30vw;
+  width: 40vw;
   padding-top: 0;
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -113,7 +114,7 @@ export const BtnWrap = styled.div`
 export const ImgWrap = styled.div`
 
   width: 50vw;
-  height: 800px; /* Change to auto to allow images to control height */
+  height: 600px; /* Change to auto to allow images to control height */
   position: relative; /* Needed for positioning child images */
   perspective: 1000px;
   @media screen and (max-width: 768px) {
@@ -124,7 +125,7 @@ export const ImgWrap = styled.div`
 `;
 
 export const Img1 = styled.img`
-  width: 70%;
+  width: 60%;
   left: 30%;
   position: absolute; /* Position absolutely within the ImgWrap */
   top: 0; /* Align the first image at the top */
@@ -142,7 +143,7 @@ export const Img1 = styled.img`
 `;
 
 export const Img2 = styled.img`
-  width: 70%;
+  width: 60%;
   left:10%;
   position: absolute; /* Position absolutely within the ImgWrap */
   top: 50%; /* Align the second image at 50% from the top */
@@ -160,7 +161,7 @@ export const Img2 = styled.img`
 `;
 
 export const Img3 = styled.img`
-  width: 70%;
+  width: 60%;
   left: 30%;
   position: absolute; /* Position absolutely within the ImgWrap */
   bottom: 0; /* Align the third image at the bottom */
@@ -185,7 +186,8 @@ export const BulletList = styled.ul`
 
 export const BulletPoint = styled.li`
   color: #eb65a0; /* Change the color to your desired pink color */
-  font-size: 24px;
+  font-size: 30px;
+  font-weight: 500;
   display: flex;
   align-items: center;
   margin-bottom: 15px;
@@ -193,7 +195,7 @@ export const BulletPoint = styled.li`
 
 export const BulletText = styled.p`
   color: grey; /* Change the color to your desired grey color */
-  font-size: 16px;
+  font-size: 20px;
   margin-left: 20px;
   margin-bottom: 20px;
 `;

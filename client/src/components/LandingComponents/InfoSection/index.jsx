@@ -25,14 +25,14 @@ const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
               <TextWrapper data-aos="zoom-in-right" data-aos-duration="1500" >
                 <TopLine>Our Services</TopLine>
                 <BulletList>
-                  <BulletPoint>Find a good host for your belongings</BulletPoint>
-                  <BulletText>Effortlessly find the perfect space that satisfies all your needs near your place. It could be your friend’s place too!</BulletText>
+                  <BulletPoint>The Ultimate Student Storage Marketplace</BulletPoint>
+                  <BulletText>HopBox connects students who have extra space with those who need it, right in your campus community. No more storage hassles, just convenience.</BulletText>
                   
-                  <BulletPoint>Your Second Service</BulletPoint>
-                  <BulletText>Description for the second service goes here.</BulletText>
+                  <BulletPoint>For those who have space</BulletPoint>
+                  <BulletText>If you've got space to spare during the summer and don't want to deal with the hassle of subletting, Hopbox offers a simple, secure way to earn extra income, making the most of your rent.</BulletText>
                   
-                  <BulletPoint>Your Third Service</BulletPoint>
-                  <BulletText>Description for the third service goes here.</BulletText>
+                  <BulletPoint>For those who need space</BulletPoint>
+                  <BulletText>Hopbox offers affordable, by-campus storage that is flexible in space and duration, making it the perfect solution for your storage challenges.</BulletText>
                 </BulletList>
                 <BtnWrap>
                   <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1}>{buttonLabel}</NavLink>
