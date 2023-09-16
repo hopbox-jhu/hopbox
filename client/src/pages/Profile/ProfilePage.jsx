@@ -157,13 +157,15 @@ export const Title = styled.h1`
 `;
 
 export const Content = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 1rem;
-  background-color: #FFFFFF;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 1rem;
+background-color: #FFFFFF;
+flex-wrap: wrap;
+max-width: 2500px; /* Set a maximum width for the content */
+margin: 0 auto; /* Center the content on the page */
 `;
 
 export const Name = styled.div`
@@ -265,13 +267,13 @@ export const List = styled.ul`
 `;
 
 export const MainContent = styled.div`
-  flex: '1';
-  display: 'flex';
-  alignItems: 'center';
-  justifyContent: 'center';
-  flexDirection: 'column';
-  padding: '2rem';
-  backgroundColor: '#FFFFFF';
+  flex: 1;
+  display: flex;
+  alignItems: center;
+  justifyContent: center;
+  flexDirection: column;
+  padding: 2rem;
+  backgroundColor: #FFFFFF;
   overflow-y: scroll;
   margin-top: 0px;
   max-height: 100%;
@@ -294,12 +296,82 @@ export const ToggleButton = styled.button`
   }
 `;
 
+export const ChangePhotoButton = styled.button`
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: #EB65A0;
+  cursor: pointer;
+`;
+
+export const SingleLineTextBox = styled.textarea`
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 170%;
+  height: 36px;
+  resize: none;
+  font-size: inherit;
+  line-height: inherit;
+  overflow: hidden; /* Hide overflow content */
+  white-space: nowrap; /* Prevent text wrapping */
+  border-radius: 8px; /* Add this line to round the corners */
+  /* Add margin to the right to space them out */
+  margin-right: 0px;
+`;
+
+export const ProfileGeneralInfo = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+`;
+
+export const ProfileOtherInfo = styled.div`
+display: flex;
+flex-direction: row;
+align-items: center;
+`;
+
+export const ProfileContent = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 10px; /* Add margin to separate sections */
+margin-right: 170px;
+`;
+
+export const MultiLineTextBox = styled.textarea`
+  border: 1px solid #ccc;
+  padding: 8px;
+  width: 140%;
+  height: 140px; /* Adjust the height as needed */
+  resize: none;
+  font-size: inherit;
+  line-height: inherit;
+  border-radius: 8px; /* Add this line to round the corners */
+  margin-right: -20px;
+`;
+
+export const SaveButton = styled.button`
+  background-color: #EB65A0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #ffb6c1;
+  }
+`;
+
 
 export {
   ProfileListItem,
   ListingsListItem,
   RentalsListItem,
   ApplicationsListItem,
-  LogoutListItem
-
+  LogoutListItem,
 };

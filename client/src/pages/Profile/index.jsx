@@ -6,11 +6,12 @@ import PopupForm from './EditProfile';
 import { ListingList } from '../../components/listingList';
 import { RentalList } from '../../components/rentalList';
 import MainNavBar from "../../components/mainNavbar";
-import { ContentTitle, Wrapper, Divider, OptionList, MainContent } from "../Profile/ProfilePage";
+import { ContentTitle, Wrapper, Divider, OptionList, MainContent, SingleLineTextBox } from "../Profile/ProfilePage";
 import * as api from "../../api";
 import { List } from "@material-ui/core";
 import { Application } from '../../components/application';
 import MenuIcon from '@material-ui/icons/Menu';
+import * as postApi from "../../api/index";
 import {
   ProfileListItem,
   ListingsListItem,
@@ -24,6 +25,12 @@ import {
   Info,
   ListingContent,
   ToggleButton,
+  ChangePhotoButton,
+  ProfileGeneralInfo,
+  ProfileContent,
+  ProfileOtherInfo,
+  MultiLineTextBox,
+  SaveButton,
 
 } from './ProfilePage';
 
@@ -57,6 +64,28 @@ const ProfilePage = ({ user }) => {
   const handleOptionClick = (option) => {
     setSelectedOption(option === selectedOption ? null : option);
   };
+
+  const handleSubmit = async (event) => {
+    try {
+        event.preventDefault();
+        localStorage.setItem("name", name);
+        localStorage.setItem("bio", bio);
+        //localStorage.setItem("address", address);
+        localStorage.setItem("school", school);
+        localStorage.setItem("occupation", occupation);
+        //localStorage.setItem("phone", phone);
+        const email = localStorage.getItem("email");
+        const user = await postApi.updateUser(email, bio, address, school, occupation, phone);
+        if (user) {
+            alert("Successfully edited profile.");
+        }
+        window.location.reload();
+    } catch (err) {
+        console.log(err);
+        console.log(err.message);
+    }
+
+};
 
   const [selectedOption, setSelectedOption] = useState('Profile');
   const navigate = useNavigate();
@@ -169,17 +198,37 @@ const ProfilePage = ({ user }) => {
               <ContentTitle>Profile Information</ContentTitle>
               <Container>
                 <Content>
-                  <ProfilePicture src={profilePicture} alt="Profile Picture" />
-                  <div>
-                    <Name>{name}</Name>
-                    <Info>{email}</Info>
-                    <Info>Bio: {bio}</Info>
-                    <Info>Address: {address}</Info>
-                    <Info>School/College: {school}</Info>
-                    <Info>Occupation: {occupation}</Info>
-                    <Info>Phone number: {phone}</Info>
-                  </div>
-                  <PopupForm isOpen={isPopupOpen} onClose={handleClosePopup} />
+                  <ProfileGeneralInfo>
+                    <ProfileContent>
+                      <ProfilePicture src={profilePicture} alt="Profile Picture" />
+                      <ChangePhotoButton>Change Photo</ChangePhotoButton>
+                    </ProfileContent>
+                    <ProfileContent>
+                      <label>First Name*</label>
+                      <SingleLineTextBox>{name}</SingleLineTextBox>
+                    </ProfileContent>
+                    <ProfileContent>
+                      <label>Last Name*</label>
+                      <SingleLineTextBox>Yu</SingleLineTextBox>
+                    </ProfileContent>
+                  </ProfileGeneralInfo>
+
+                  <ProfileOtherInfo style={{ marginTop: '20px' }}>
+                    <ProfileContent>
+                      <label>Bio</label>
+                      <MultiLineTextBox placeholder="Tell a little about yourself.">{bio}</MultiLineTextBox>
+                    </ProfileContent>
+                    <ProfileContent>
+                      <label>School (Optional)</label>
+                      <SingleLineTextBox>{school}</SingleLineTextBox>
+                    </ProfileContent>
+                    <ProfileContent>
+                      <label>Work (Optional)</label>
+                      <SingleLineTextBox>{occupation}</SingleLineTextBox>
+                    </ProfileContent>
+                  </ProfileOtherInfo>
+                  <SaveButton onClick={handleSubmit}>Save</SaveButton>
+
                 </Content>
               </Container>
             </ListingContent>
