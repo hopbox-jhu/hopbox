@@ -130,7 +130,7 @@ export const Img1 = styled.img`
   position: absolute; /* Position absolutely within the ImgWrap */
   top: 0; /* Align the first image at the top */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  transform: rotate(-5deg) rotateY(20deg) rotateX(30deg); /* Initial rotation */
+  transform: rotate(10deg) rotateY(0deg) rotateX(0deg); /* Initial rotation */
   transition: transform 0.5s ease; /* Adding transition for smooth effect */
   z-index: 2;
 
@@ -148,7 +148,7 @@ export const Img2 = styled.img`
   position: absolute; /* Position absolutely within the ImgWrap */
   top: 50%; /* Align the second image at 50% from the top */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  transform: translateY(-50%) rotate(-5deg) rotateY(20deg) rotateX(30deg); /* Initial rotation and vertical centering */
+  transform: translateY(-50%) rotate(10deg) rotateY(0deg) rotateX(0deg); /* Initial rotation and vertical centering */
   transition: transform 0.3s ease; /* Adding transition for smooth effect */
   z-index: 1;
 
@@ -166,7 +166,7 @@ export const Img3 = styled.img`
   position: absolute; /* Position absolutely within the ImgWrap */
   bottom: 0; /* Align the third image at the bottom */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-  transform: rotate(-5deg) rotateY(20deg) rotateX(30deg); /* Initial rotation */
+  transform: rotate(10deg) rotateY(0deg) rotateX(0deg); /* Initial rotation */
   transition: transform 0.3s ease; /* Adding transition for smooth effect */
   z-index: 0;
 
@@ -185,9 +185,9 @@ export const BulletList = styled.ul`
 `;
 
 export const BulletPoint = styled.li`
-  color: #eb65a0; /* Change the color to your desired pink color */
+  color: #000000; /* Change the color to your desired pink color */
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 600;
   display: flex;
   align-items: center;
   margin-bottom: 15px;

@@ -28,11 +28,11 @@ const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
                   <BulletPoint>The Ultimate Student Storage Marketplace</BulletPoint>
                   <BulletText>HopBox connects students who have extra space with those who need it, right in your campus community. No more storage hassles, just convenience.</BulletText>
                   
-                  <BulletPoint>For those who have space</BulletPoint>
+                  <BulletPoint>For Those Who Have Space</BulletPoint>
                   <BulletText>If you've got space to spare during the summer and don't want to deal with the hassle of subletting, Hopbox offers a simple, secure way to earn extra income, making the most of your rent.</BulletText>
                   
-                  <BulletPoint>For those who need space</BulletPoint>
-                  <BulletText>Hopbox offers affordable, by-campus storage that is flexible in space and duration, making it the perfect solution for your storage challenges.</BulletText>
+                  <BulletPoint>For Those Who Need Space</BulletPoint>
+                  <BulletText>If you are going to move out and have no place to store your belongings during breaks, Hopbox offers affordable, by-campus storage that is flexible in space and duration.</BulletText>
                 </BulletList>
                 <BtnWrap>
                   <NavLink to='services' smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1}>{buttonLabel}</NavLink>
