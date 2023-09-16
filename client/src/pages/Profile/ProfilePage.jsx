@@ -139,13 +139,25 @@ export const Container = styled.div`
   padding-top: 3rem;
 `;
 
-export const ProfilePicture = styled.img`
+export const ProfilePicture = styled.label`
+  display: inline-block;
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  object-fit: cover;
+  overflow: hidden;
   margin-bottom: 1rem;
   border: 4px solid #EB65A0;
+  cursor: pointer;
+`;
+
+export const HiddenInput = styled.input`
+  display: none;
+`;
+
+export const ProfileImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 `;
 
 export const Title = styled.h1`
