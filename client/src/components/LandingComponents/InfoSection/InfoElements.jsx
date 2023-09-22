@@ -181,13 +181,13 @@ export const Img3 = styled.img`
 
 export const BulletList = styled.ul`
   list-style: none;
-  padding: 20px;
+  padding: 0px;
 `;
 
 export const BulletPoint = styled.li`
   color: #000000; /* Change the color to your desired pink color */
-  font-size: 30px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 400;
   display: flex;
   align-items: center;
   margin-bottom: 15px;
@@ -196,6 +196,7 @@ export const BulletPoint = styled.li`
 export const BulletText = styled.p`
   color: grey; /* Change the color to your desired grey color */
   font-size: 20px;
+  font-weight: 200;
   margin-left: 20px;
   margin-bottom: 20px;
 `;
