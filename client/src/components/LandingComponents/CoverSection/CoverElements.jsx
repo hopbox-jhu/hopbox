@@ -29,14 +29,11 @@ export const CoverContent = styled.div`
   z-index: 3;
   position: absolute;
   display: flex;
-  margin-top: 60vh;
-  margin-right: 60vw;
+  margin-top: 50vh;
+  margin-right: 65vw;
   @media screen and (max-width: 850px) {
-    margin-top: 60vh;
+  margin-top: 50vh;
   margin-right: 50%;
   margin-left: 50%;
   }
 `;
-
-
-

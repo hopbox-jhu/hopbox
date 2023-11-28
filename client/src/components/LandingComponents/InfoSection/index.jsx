@@ -23,7 +23,6 @@ const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
           <InfoRow imgStart={imgStart}>
             <Column1>
               <TextWrapper data-aos="zoom-in-right" data-aos-duration="1500" >
-                <TopLine>Our Services</TopLine>
                 <BulletList>
                   <BulletPoint>The Ultimate Student Storage Marketplace</BulletPoint>
                   <BulletText>HopBox connects students who have extra space with those who need it, right in your campus community. No more storage hassles, just convenience.</BulletText>

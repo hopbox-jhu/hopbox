@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Video from '../../../assets/videos/Main(ver2).mp4';
 import VideoMobile from '../../../assets/videos/MainMobile2.mp4';
-import { CoverContainer, VideoBg, CoverContent  } from './CoverElements';
+import { CoverContainer, VideoBg, CoverContent } from './CoverElements';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '../ButtonElements';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import the CSS
+import './styles.css';
 
 // Initialize AOS
 AOS.init();
@@ -56,7 +56,17 @@ const CoverSection = () => {
           <VideoBg autoPlay loop muted src={Video} type='video/mp4' playsInline />
         )}
       <CoverContent>
-      <Button  to='services' style={{ padding: '30px', fontSize: '30px' }} smooth={true} duration={500} spy={true} exact='true' offset={-80} primary={1} >SIGN UP NOW</Button>
+      <Button
+      to="services"
+      smooth={true}
+      duration={500}
+      >
+      <svg className="arrows" viewBox="0 0 120 280" xmlns="http://www.w3.org/2000/svg">
+        <path className="a1" d="M0 100 L60 164 L120 100"></path>
+        <path className="a2" d="M0 140 L60 204 L120 140"></path>
+        <path className="a3" d="M0 180 L60 244 L120 180"></path>
+      </svg>
+    </Button>
       </CoverContent>
     </CoverContainer>
   );
