@@ -6,7 +6,6 @@ import framework1 from "../../../assets/images/framework1.png";
 import framework2 from "../../../assets/images/framework2.png";
 import framework3 from "../../../assets/images/framework3.png";
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import the CSS
 AOS.init();
 
 const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
