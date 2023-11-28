@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '../ButtonElements';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
-import 'aos/dist/aos.css'; // Import the CSS
 import './styles.css';
 
 // Initialize AOS
