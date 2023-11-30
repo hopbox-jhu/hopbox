@@ -5,11 +5,9 @@ import { CoverContainer, VideoBg, CoverContent } from './CoverElements';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button } from '../ButtonElements';
 import { useNavigate } from 'react-router-dom';
-import AOS from 'aos';
 import './styles.css';
 
 // Initialize AOS
-AOS.init();
 
 
 

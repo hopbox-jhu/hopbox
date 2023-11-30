@@ -5,8 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import framework1 from "../../../assets/images/framework1.png";
 import framework2 from "../../../assets/images/framework2.png";
 import framework3 from "../../../assets/images/framework3.png";
-import AOS from 'aos';
-AOS.init();
+
 
 const InfoSection = ({ lightBg, id, imgStart, buttonLabel, img, alt }) => {
   const navigate = useNavigate();

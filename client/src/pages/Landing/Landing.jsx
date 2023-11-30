@@ -46,7 +46,7 @@ function Landing() {
         <CoverSection />
         <Services />
         <InfoSection {...aboutObj} />
-        <FaqSection {...FaqObj} />
+        {/* <FaqSection {...FaqObj} /> */}
         <Footer/>    
         {!isMobileScreen && (
         <div
