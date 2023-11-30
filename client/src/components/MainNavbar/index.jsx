@@ -12,7 +12,7 @@ import { useContext } from 'react';
 
 import logo from "/src/assets/images/logo.png";
 
-const index = ({ onSearch, toggle }) => {
+const MainNavBar = ({ onSearch, toggle }) => {
   const [scrollNav, setScrollNav] = useState(false);
   const { isAuth } = useContext(AuthContext); //TODO: not importing...
 
@@ -99,4 +99,4 @@ const index = ({ onSearch, toggle }) => {
   );
 };
 
-export default index;
+export default MainNavBar;
