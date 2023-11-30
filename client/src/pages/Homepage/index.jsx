@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import * as api from "../../api";
 import { Divider, MapContainerStyle, Sidebar, Wrapper, Heading, Text1, Text2, Filter, FilterBar } from "./Homepage";
 import { ListingList } from "../../components/listingList";
-import MainNavBar from "../../components/mainNavbar";
+import MainNavBar from "../../components/MainNavBar";
 import appSidebar from '../../components/appSidebar';
 import { Select, Switch } from "@mantine/core";
 import mapboxgl from 'mapbox-gl';

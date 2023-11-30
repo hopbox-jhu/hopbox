@@ -5,7 +5,7 @@ import { useAuth } from '../../context/AuthContext';
 import PopupForm from './EditProfile';
 import { ListingList } from '../../components/listingList';
 import { RentalList } from '../../components/rentalList';
-import MainNavBar from "../../components/mainNavbar";
+import MainNavBar from "../../components/MainNavBar";
 import { ContentTitle, Wrapper, Divider, OptionList, MainContent } from "../Profile/ProfilePage";
 import * as api from "../../api";
 import { List } from "@material-ui/core";

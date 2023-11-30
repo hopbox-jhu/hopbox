@@ -11,7 +11,7 @@ import PageImage from "./PageImage";
 import { uploadImage } from "../../api/image";
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import MainNavBar from "../../components/mainNavbar";
+import MainNavBar from "../../components/MainNavBar";
 
 
 function AddListing() {
