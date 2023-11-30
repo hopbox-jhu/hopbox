@@ -8,7 +8,7 @@ import PageNeeds from "./PageNeeds";
 import PageInsurance from "./PageInsurance";
 import PageCreditCard from "./PageCreditCard";
 import { useNavigate, Link } from 'react-router-dom';
-import MainNavBar from "../../components/MainNavBar";
+// import MainNavBar from "../../components/MainNavBar";
 import { RxFontSize } from "react-icons/rx";
 
 
@@ -88,7 +88,7 @@ function Application() {
 
   return (
     <div>
-      <MainNavBar />
+      {/* <MainNavBar /> */}
       <MainContent>
         <Container>
           <RightContainer>
